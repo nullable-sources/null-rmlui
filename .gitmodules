@@ -1,0 +1,6 @@
+[submodule "third-party/null-sdk"]
+	path = third-party/null-sdk
+	url = https://github.com/nullptr-sources/null-sdk
+[submodule "third-party/null-render"]
+	path = third-party/null-render
+	url = https://github.com/nullptr-sources/null-render
