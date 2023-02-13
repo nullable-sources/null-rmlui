@@ -24,6 +24,7 @@ int main() {
 
 	window.callbacks.at<utils::win::e_window_callbacks::on_main_loop>().add(main_loop);
 	window.callbacks.at<utils::win::e_window_callbacks::on_wnd_proc>().add([&](HWND hwnd, UINT msg, WPARAM w_param, LPARAM l_param) { return null::rml::backend::wnd_proc(context, hwnd, msg, w_param, l_param); });
+	window.callbacks.at<utils::win::e_window_callbacks::on_wnd_proc>().add([](HWND, UINT msg, WPARAM, LPARAM) { if(msg == WM_SIZE) Rml::ReleaseTextures(); return -1; });
 
 	try {
 		window.create();
