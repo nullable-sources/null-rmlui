@@ -1,3 +1,5 @@
 build/
 .vs/
 *.user
+third-party/null-render/src/renderers/null-renderer-directx11/src/shaders/pixel/compiled/
+third-party/null-render/src/renderers/null-renderer-directx11/src/shaders/vertex/compiled/
