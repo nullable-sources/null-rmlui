@@ -19,30 +19,30 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\null-rmlui.vcxproj">
+    <ProjectReference Include="..\..\..\..\null-rmlui.vcxproj">
       <Project>{220d4d11-15cc-489d-8d93-58cfe85348bd}</Project>
     </ProjectReference>
     <ProjectReference Include="$(SolutionDir)third-party\null-render\null-render.vcxproj">
       <Project>{4abcf635-9767-40f9-989e-f0cdf5fb68ae}</Project>
     </ProjectReference>
-    <ProjectReference Include="$(SolutionDir)third-party\null-render\src\renderer\null-renderer-opengl3\null-renderer-opengl3.vcxproj">
-      <Project>{97a6b7ae-9878-4584-a0b8-15287db604ac}</Project>
+    <ProjectReference Include="$(SolutionDir)third-party\null-render\src\renderer\null-renderer-directx9\null-renderer-directx9.vcxproj">
+      <Project>{95843de7-57a5-4b57-b7f2-7a60b0115992}</Project>
     </ProjectReference>
     <ProjectReference Include="$(SolutionDir)third-party\null-sdk\null-sdk.vcxproj">
       <Project>{f7a10a5c-0fae-424b-8f2b-6cc4e4d898d1}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\null-rmlui-renderer-opengl3.cpp" />
+    <ClCompile Include="src\null-rmlui-renderer-directx9.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\null-rmlui-renderer-opengl3.h" />
+    <ClInclude Include="src\null-rmlui-renderer-directx9.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{64527024-e33c-4590-ac2d-eb2bf9c8225d}</ProjectGuid>
-    <RootNamespace>null_rmlui_renderer_opengl3</RootNamespace>
+    <ProjectGuid>{57ff0ac9-5ed6-4b00-96fe-d44f6f05a3a5}</ProjectGuid>
+    <RootNamespace>null_rmlui_renderer_directx9</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

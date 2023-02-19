@@ -25,7 +25,7 @@
     <ProjectReference Include="..\..\null-rmlui.vcxproj">
       <Project>{220d4d11-15cc-489d-8d93-58cfe85348bd}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\render-interface\null-rmlui-renderer-directx9\null-rmlui-renderer-directx9.vcxproj">
+    <ProjectReference Include="..\..\src\rmlui-implementation\render-interface\null-rmlui-renderer-directx9\null-rmlui-renderer-directx9.vcxproj">
       <Project>{57ff0ac9-5ed6-4b00-96fe-d44f6f05a3a5}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\third-party\null-render\null-render.vcxproj">

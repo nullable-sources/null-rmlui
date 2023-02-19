@@ -27,23 +27,27 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\backend\backend.cpp" />
-    <ClCompile Include="src\file-interface\file-interface.cpp" />
+    <ClCompile Include="src\extensions\decorators\checkmark\checkmark.cpp" />
     <ClCompile Include="src\null-rmlui.cpp" />
-    <ClCompile Include="src\render-interface\render-interface.cpp" />
-    <ClCompile Include="src\system-interface\system-interface.cpp" />
+    <ClCompile Include="src\rmlui-implementation\backend\backend.cpp" />
+    <ClCompile Include="src\rmlui-implementation\file-interface\file-interface.cpp" />
+    <ClCompile Include="src\rmlui-implementation\render-interface\render-interface.cpp" />
+    <ClCompile Include="src\rmlui-implementation\system-interface\system-interface.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\backend\backend.h" />
     <ClInclude Include="src\compatibility\color.h" />
     <ClInclude Include="src\compatibility\vec2.h" />
-    <ClInclude Include="src\file-interface\file-interface.h" />
-    <ClInclude Include="src\file-interface\loaders\default-file-loader.h" />
-    <ClInclude Include="src\file-interface\loaders\file-loader.h" />
-    <ClInclude Include="src\file-interface\loaders\resource-loader.h" />
+    <ClInclude Include="src\extensions\decorators\checkmark\checkmark.h" />
+    <ClInclude Include="src\extensions\decorators\decorators.h" />
     <ClInclude Include="src\null-rmlui.h" />
-    <ClInclude Include="src\render-interface\render-interface.h" />
-    <ClInclude Include="src\system-interface\system-interface.h" />
+    <ClInclude Include="src\rmlui-implementation\backend\backend.h" />
+    <ClInclude Include="src\rmlui-implementation\file-interface\file-interface.h" />
+    <ClInclude Include="src\rmlui-implementation\file-interface\loaders\default-file-loader.h" />
+    <ClInclude Include="src\rmlui-implementation\file-interface\loaders\file-loader.h" />
+    <ClInclude Include="src\rmlui-implementation\file-interface\loaders\resource-loader.h" />
+    <ClInclude Include="src\rmlui-implementation\file-interface\loaders\system-font-loader.h" />
+    <ClInclude Include="src\rmlui-implementation\render-interface\render-interface.h" />
+    <ClInclude Include="src\rmlui-implementation\system-interface\system-interface.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

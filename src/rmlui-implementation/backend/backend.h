@@ -2,8 +2,8 @@
 #include <RmlUi/Core.h>
 #include <null-sdk.h>
 
-#include <system-interface/system-interface.h>
-#include <render-interface/render-interface.h>
+#include <rmlui-implementation/system-interface/system-interface.h>
+#include <rmlui-implementation/render-interface/render-interface.h>
 
 namespace null::rml::backend {
     int wnd_proc(Rml::Context* context, HWND window_handle, UINT message, WPARAM w_param, LPARAM l_param);

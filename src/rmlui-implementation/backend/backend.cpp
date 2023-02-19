@@ -1,6 +1,7 @@
 #include <windows.h>
 #include <null-render.h>
-#include <backend/backend.h>
+
+#include <rmlui-implementation/backend/backend.h>
 
 namespace null::rml::backend {
 	int wnd_proc(Rml::Context* context, HWND window_handle, UINT message, WPARAM w_param, LPARAM l_param) {
@@ -21,7 +22,7 @@ namespace null::rml::backend {
 			case WM_MBUTTONDOWN: { if(!context->ProcessMouseButtonDown(2, get_key_modifier_state())) return 0; } break;
 			case WM_MBUTTONUP: { if(!context->ProcessMouseButtonUp(2, get_key_modifier_state())) return 0; } break;
 
-			case WM_MOUSEWHEEL: { if(!context->ProcessMouseWheel(HIWORD(w_param) / (float)(-WHEEL_DELTA), get_key_modifier_state())) return 0; } break;
+			case WM_MOUSEWHEEL: { if(!context->ProcessMouseWheel((float)((short)HIWORD(w_param)) / (float)(-WHEEL_DELTA), get_key_modifier_state())) return 0; } break;
 			case WM_MOUSEMOVE: {
 				if(!tracking_mouse_leave) {
 					TRACKMOUSEEVENT tme{

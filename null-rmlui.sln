@@ -27,11 +27,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "directx11", "examples\direc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "opengl3", "examples\opengl3\opengl3.vcxproj", "{6A0DF21B-0EA1-4991-8C51-8ACDA29FF360}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-rmlui-renderer-directx9", "src\render-interface\null-rmlui-renderer-directx9\null-rmlui-renderer-directx9.vcxproj", "{57FF0AC9-5ED6-4B00-96FE-D44F6F05A3A5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-rmlui-renderer-directx9", "src\rmlui-implementation\render-interface\null-rmlui-renderer-directx9\null-rmlui-renderer-directx9.vcxproj", "{57FF0AC9-5ED6-4B00-96FE-D44F6F05A3A5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-rmlui-renderer-directx11", "src\render-interface\null-rmlui-renderer-directx11\null-rmlui-renderer-directx11.vcxproj", "{6086E27B-CAD4-474C-8C53-89C5E1D49199}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-rmlui-renderer-directx11", "src\rmlui-implementation\render-interface\null-rmlui-renderer-directx11\null-rmlui-renderer-directx11.vcxproj", "{6086E27B-CAD4-474C-8C53-89C5E1D49199}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-rmlui-renderer-opengl3", "src\render-interface\null-rmlui-renderer-opengl3\null-rmlui-renderer-opengl3.vcxproj", "{64527024-E33C-4590-AC2D-EB2BF9C8225D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-rmlui-renderer-opengl3", "src\rmlui-implementation\render-interface\null-rmlui-renderer-opengl3\null-rmlui-renderer-opengl3.vcxproj", "{64527024-E33C-4590-AC2D-EB2BF9C8225D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

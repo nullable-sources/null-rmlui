@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\null-rmlui.vcxproj">
+    <ProjectReference Include="..\..\..\..\null-rmlui.vcxproj">
       <Project>{220d4d11-15cc-489d-8d93-58cfe85348bd}</Project>
     </ProjectReference>
     <ProjectReference Include="$(SolutionDir)third-party\null-render\null-render.vcxproj">

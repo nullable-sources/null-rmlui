@@ -4,72 +4,96 @@
     <Filter Include="src">
       <UniqueIdentifier>{d11addc5-089b-4237-a3dd-c21f8f81dcf1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\backend">
-      <UniqueIdentifier>{eee1824a-5020-4319-a2cd-940a5cf3012e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\file-interface">
-      <UniqueIdentifier>{e60e39ef-60da-40a9-a04b-7dd7be9b55a4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\render-interface">
-      <UniqueIdentifier>{5c05d40f-7242-4656-ac0a-88632fd0f78d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\system-interface">
-      <UniqueIdentifier>{b2b916ca-fdf6-43cd-a0ed-3f90f67d433e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\file-interface\loaders">
-      <UniqueIdentifier>{a4ee8d09-1c8e-47e9-96d5-61c1cd3420d8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\compatibility">
       <UniqueIdentifier>{0bc36266-8ef6-46a5-936c-5c3415d3f6e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation">
+      <UniqueIdentifier>{e0f37d85-2d29-40d9-af23-13e542845f8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\backend">
+      <UniqueIdentifier>{6160a0a5-6b9e-4785-ad78-79869acbc920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\file-interface">
+      <UniqueIdentifier>{19734107-5828-499c-8617-e8049b8827a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\file-interface\loaders">
+      <UniqueIdentifier>{8177076d-6d90-4f53-896b-1291aead2531}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\render-interface">
+      <UniqueIdentifier>{2b7aff8a-45b1-492c-a3f7-47123f421d64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\system-interface">
+      <UniqueIdentifier>{e37c2fed-55f7-427e-864d-ecc07f7ba987}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\extensions">
+      <UniqueIdentifier>{f32b4621-6f02-4524-8027-f21723ef9357}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\extensions\decorators">
+      <UniqueIdentifier>{07910c16-cecb-4b58-8af6-0701cda9c11c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\extensions\decorators\checkmark">
+      <UniqueIdentifier>{67dc7c01-5aab-4af8-bc48-09e018622e32}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\null-rmlui.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\system-interface\system-interface.cpp">
-      <Filter>src\system-interface</Filter>
+    <ClCompile Include="src\rmlui-implementation\backend\backend.cpp">
+      <Filter>src\rmlui-implementation\backend</Filter>
     </ClCompile>
-    <ClCompile Include="src\render-interface\render-interface.cpp">
-      <Filter>src\render-interface</Filter>
+    <ClCompile Include="src\rmlui-implementation\file-interface\file-interface.cpp">
+      <Filter>src\rmlui-implementation\file-interface</Filter>
     </ClCompile>
-    <ClCompile Include="src\file-interface\file-interface.cpp">
-      <Filter>src\file-interface</Filter>
+    <ClCompile Include="src\rmlui-implementation\render-interface\render-interface.cpp">
+      <Filter>src\rmlui-implementation\render-interface</Filter>
     </ClCompile>
-    <ClCompile Include="src\backend\backend.cpp">
-      <Filter>src\backend</Filter>
+    <ClCompile Include="src\rmlui-implementation\system-interface\system-interface.cpp">
+      <Filter>src\rmlui-implementation\system-interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\extensions\decorators\checkmark\checkmark.cpp">
+      <Filter>src\extensions\decorators\checkmark</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\null-rmlui.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\system-interface\system-interface.h">
-      <Filter>src\system-interface</Filter>
-    </ClInclude>
-    <ClInclude Include="src\render-interface\render-interface.h">
-      <Filter>src\render-interface</Filter>
-    </ClInclude>
-    <ClInclude Include="src\file-interface\file-interface.h">
-      <Filter>src\file-interface</Filter>
-    </ClInclude>
-    <ClInclude Include="src\backend\backend.h">
-      <Filter>src\backend</Filter>
-    </ClInclude>
-    <ClInclude Include="src\file-interface\loaders\file-loader.h">
-      <Filter>src\file-interface\loaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\file-interface\loaders\resource-loader.h">
-      <Filter>src\file-interface\loaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\file-interface\loaders\default-file-loader.h">
-      <Filter>src\file-interface\loaders</Filter>
-    </ClInclude>
     <ClInclude Include="src\compatibility\color.h">
       <Filter>src\compatibility</Filter>
     </ClInclude>
     <ClInclude Include="src\compatibility\vec2.h">
       <Filter>src\compatibility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rmlui-implementation\backend\backend.h">
+      <Filter>src\rmlui-implementation\backend</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rmlui-implementation\file-interface\file-interface.h">
+      <Filter>src\rmlui-implementation\file-interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rmlui-implementation\file-interface\loaders\file-loader.h">
+      <Filter>src\rmlui-implementation\file-interface\loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rmlui-implementation\file-interface\loaders\resource-loader.h">
+      <Filter>src\rmlui-implementation\file-interface\loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rmlui-implementation\file-interface\loaders\system-font-loader.h">
+      <Filter>src\rmlui-implementation\file-interface\loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rmlui-implementation\file-interface\loaders\default-file-loader.h">
+      <Filter>src\rmlui-implementation\file-interface\loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rmlui-implementation\render-interface\render-interface.h">
+      <Filter>src\rmlui-implementation\render-interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rmlui-implementation\system-interface\system-interface.h">
+      <Filter>src\rmlui-implementation\system-interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\extensions\decorators\checkmark\checkmark.h">
+      <Filter>src\extensions\decorators\checkmark</Filter>
+    </ClInclude>
+    <ClInclude Include="src\extensions\decorators\decorators.h">
+      <Filter>src\extensions\decorators</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

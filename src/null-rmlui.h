@@ -5,10 +5,10 @@
 
 #include <RmlUi/Core.h>
 
-#include <backend/backend.h>
-#include <file-interface/file-interface.h>
-#include <system-interface/system-interface.h>
-#include <render-interface/render-interface.h>
+#include <rmlui-implementation/backend/backend.h>
+#include <rmlui-implementation/file-interface/file-interface.h>
+#include <rmlui-implementation/system-interface/system-interface.h>
+#include <rmlui-implementation/render-interface/render-interface.h>
 
 #include <compatibility/vec2.h>
 #include <compatibility/color.h>
