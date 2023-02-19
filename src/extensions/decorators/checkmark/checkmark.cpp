@@ -32,9 +32,9 @@ namespace null::rml::extensions::decorators {
 	}
 
 	Rml::DecoratorDataHandle c_checkmark::GenerateElementData(Rml::Element* element) const {
-		vec2_t kick{ vec2_t{ std::cos(style.kick_angle), std::sin(style.kick_angle) } *style.kick_length };
-		vec2_t stem{ vec2_t{ std::cos(style.stem_angle), std::sin(style.stem_angle) } *style.stem_length };
-		vec2_t offset{ element->GetBox().GetSize(Rml::Box::BORDER) / 2.f + vec2_t{ -(kick.x + stem.x), std::max(std::abs(kick.y), std::abs(stem.y)) } / 2.f };
+		vec2_t kick{ vec2_t{ std::cos(style.kick_angle), std::sin(style.kick_angle) } * style.kick_length };
+		vec2_t stem{ vec2_t{ std::cos(style.stem_angle), std::sin(style.stem_angle) } * style.stem_length };
+		vec2_t offset{ element->GetBox().GetSize(Rml::Box::BORDER) / 2.f + vec2_t{ -(kick.x + stem.x), -std::min(kick.y, stem.y) } / 2.f };
 
 		return (Rml::DecoratorDataHandle)new data_t{ kick + offset, stem + offset, offset };
 	}
