@@ -24,9 +24,9 @@ namespace null::rml::extensions::decorators {
 
 		public:
 			std::shared_ptr<Rml::Decorator> InstanceDecorator(const std::string& name, const Rml::PropertyDictionary& properties, const Rml::DecoratorInstancerInterface& instancer_interface) override;
-		} static inline instancer{ };
+		}; static inline std::unique_ptr<instancer_t> instancer{ };
 
-		static void register_instancer() { Rml::Factory::RegisterDecoratorInstancer("checkmark", &instancer); }
+		static void register_instancer() { instancer = std::make_unique<instancer_t>(); Rml::Factory::RegisterDecoratorInstancer("checkmark", &instancer); }
 
 	public:
 		struct style_t {
