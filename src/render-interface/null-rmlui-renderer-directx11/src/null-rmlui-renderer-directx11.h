@@ -5,12 +5,10 @@
 namespace null::rml::renderer {
 	class c_directx11 : public i_render_interface {
 	public:
-		Rml::TextureHandle empty_texture{ };
 		ID3D11RasterizerState* disabled_scissor{ }, *enabled_scissor{ };
 
 	public:
 		~c_directx11() {
-			ReleaseTexture(empty_texture);
 			if(disabled_scissor) { disabled_scissor->Release(); disabled_scissor = nullptr; }
 			if(enabled_scissor) { enabled_scissor->Release(); enabled_scissor = nullptr; }
 		}
@@ -22,6 +20,5 @@ namespace null::rml::renderer {
 	public:
 		void enable_scissor_region(const bool& enable) override;
 		void set_transform(const matrix4x4_t& transform) override;
-		Rml::TextureHandle convert_texture(const Rml::TextureHandle& texture) override;
 	};
 }

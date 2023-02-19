@@ -19,6 +19,9 @@
     <Filter Include="src\file-interface\loaders">
       <UniqueIdentifier>{a4ee8d09-1c8e-47e9-96d5-61c1cd3420d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\compatibility">
+      <UniqueIdentifier>{0bc36266-8ef6-46a5-936c-5c3415d3f6e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\null-rmlui.cpp">
@@ -61,6 +64,12 @@
     </ClInclude>
     <ClInclude Include="src\file-interface\loaders\default-file-loader.h">
       <Filter>src\file-interface\loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\compatibility\color.h">
+      <Filter>src\compatibility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\compatibility\vec2.h">
+      <Filter>src\compatibility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

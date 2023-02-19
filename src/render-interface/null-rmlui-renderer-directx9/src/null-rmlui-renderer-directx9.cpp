@@ -32,10 +32,6 @@ namespace null::rml::renderer {
 	}
 
 	void c_directx9::set_transform(const matrix4x4_t& transform) {
-		null::renderer::directx9->device->SetTransform(D3DTS_PROJECTION, (D3DMATRIX*)(matrix4x4_t::project_ortho(0.5f, null::renderer::draw_data_t::screen_size.x + 0.5f, null::renderer::draw_data_t::screen_size.y + 0.5f, 0.5f, -10000.f, 10000.f) * transform).linear_array.data());
-	}
-
-	Rml::TextureHandle c_directx9::convert_texture(const Rml::TextureHandle& texture) {
-		return !texture ? Rml::TextureHandle{ } : texture;
+		null::renderer::directx9->device->SetTransform(D3DTS_PROJECTION, (D3DMATRIX*)(matrix4x4_t::project_ortho(0.5f, null::render::shared::viewport.x + 0.5f, null::render::shared::viewport.y + 0.5f, 0.5f, -10000.f, 10000.f) * transform).linear_array.data());
 	}
 }

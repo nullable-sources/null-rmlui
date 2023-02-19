@@ -2,6 +2,9 @@
 #include <null-render.h>
 
 #include <null-rmlui-renderer-opengl3.h>
+#include <shaders/shaders.h>
+#include <shaders/general-color/general-color.h>
+#include <shaders/general-texture/general-texture.h>
 
 namespace null::rml::renderer {
 	bool c_opengl3::GenerateTexture(Rml::TextureHandle& texture_handle, const Rml::byte* source, const Rml::Vector2i& source_dimensions) {
@@ -26,14 +29,8 @@ namespace null::rml::renderer {
 	}
 
 	void c_opengl3::set_transform(const matrix4x4_t& transform) {
-		opengl::uniform_matrix4fv(null::renderer::opengl3->attribute_proj_mtx, 1, false, (matrix4x4_t::project_ortho(0.f, null::renderer::draw_data_t::screen_size.x, null::renderer::draw_data_t::screen_size.y, 0.f, -10000.f, 10000.f) * transform).linear_array.data());
-	}
-
-	Rml::TextureHandle c_opengl3::convert_texture(const Rml::TextureHandle& texture) {
-		if(!texture) {
-			if(!empty_texture) GenerateTexture(empty_texture, std::vector<std::uint8_t>(4, 0xFF).data(), { 1, 1 });
-			return empty_texture;
-		}
-		return texture;
+		matrix4x4_t new_matrix{ matrix4x4_t::project_ortho(0.f, null::render::shared::viewport.x, null::render::shared::viewport.y, 0.f, -10000.f, 10000.f) * transform };
+		null::render::shaders::general_color.matrix.setup(new_matrix);
+		null::render::shaders::general_texture.matrix.setup(new_matrix);
 	}
 }

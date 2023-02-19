@@ -24,6 +24,8 @@ namespace null::rml {
 	}
 
 	void shutdown() {
+		Rml::Shutdown();
+
 		render_interface.reset();
 		system_interface.reset();
 		file_interface.reset();

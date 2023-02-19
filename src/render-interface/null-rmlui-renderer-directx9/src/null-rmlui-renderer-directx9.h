@@ -11,6 +11,5 @@ namespace null::rml::renderer {
 	public:
 		void enable_scissor_region(const bool& enable) override;
 		void set_transform(const matrix4x4_t& transform) override;
-		Rml::TextureHandle convert_texture(const Rml::TextureHandle& texture) override;
 	};
 }

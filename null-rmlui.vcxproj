@@ -35,6 +35,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\backend\backend.h" />
+    <ClInclude Include="src\compatibility\color.h" />
+    <ClInclude Include="src\compatibility\vec2.h" />
     <ClInclude Include="src\file-interface\file-interface.h" />
     <ClInclude Include="src\file-interface\loaders\default-file-loader.h" />
     <ClInclude Include="src\file-interface\loaders\file-loader.h" />

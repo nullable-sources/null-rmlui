@@ -3,6 +3,7 @@
 #include <shaders/shaders.h>
 
 #include <null-rmlui-renderer-directx11.h>
+#include <shaders/vertex/vertex.h>
 
 namespace null::rml::renderer {
     bool c_directx11::GenerateTexture(Rml::TextureHandle& texture_handle, const Rml::byte* source, const Rml::Vector2i& source_dimensions) {
@@ -68,14 +69,6 @@ namespace null::rml::renderer {
     }
 
     void c_directx11::set_transform(const matrix4x4_t& transform) {
-        null::render::shaders::vertex::shader.edit_constant(null::render::shaders::vertex::constant{ matrix4x4_t::project_ortho(0.f, null::renderer::draw_data_t::screen_size.x, null::renderer::draw_data_t::screen_size.y, 0.f, -10000.f, 10000.f) * transform });
-    }
-
-    Rml::TextureHandle c_directx11::convert_texture(const Rml::TextureHandle& texture) {
-		if(!texture) {
-			if(!empty_texture) GenerateTexture(empty_texture, std::vector<std::uint8_t>(4, 0xFF).data(), { 1, 1 });
-			return empty_texture;
-		}
-        return texture;
+        null::render::shaders::vertex::shader.edit_matrix(matrix4x4_t::project_ortho(0.f, null::render::shared::viewport.x, null::render::shared::viewport.y, 0.f, -10000.f, 10000.f) * transform);
     }
 }
