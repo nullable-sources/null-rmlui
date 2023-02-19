@@ -1,7 +1,7 @@
 # null-rmlui
 renderer, system and file interfaces for rmlui with with small extensions.
 
-# main functions
+# rmlui implementation
 * render interface
     * support all null-render renderers
 * file interface
@@ -9,6 +9,10 @@ renderer, system and file interfaces for rmlui with with small extensions.
     * formatting paths for up to regular files
 * system interface
     * wnd_proc and small helper functions
+
+# extensions
+* decorators
+    * checkmark
 
 # credits
 [RmlUi](https://github.com/mikke89/RmlUi) \

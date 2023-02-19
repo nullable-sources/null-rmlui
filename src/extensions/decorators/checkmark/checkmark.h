@@ -2,8 +2,6 @@
 #include <RmlUi/Core.h>
 #include <null-render.h>
 
-#include <rmlui-implementation/render-interface/render-interface.h>
-#include <compatibility/vec2.h>
 #include <compatibility/color.h>
 
 namespace null::rml::extensions::decorators {

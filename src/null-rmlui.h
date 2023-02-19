@@ -10,6 +10,8 @@
 #include <rmlui-implementation/system-interface/system-interface.h>
 #include <rmlui-implementation/render-interface/render-interface.h>
 
+#include <extensions/decorators/decorators.h>
+
 #include <compatibility/vec2.h>
 #include <compatibility/color.h>
 

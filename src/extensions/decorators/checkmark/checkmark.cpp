@@ -1,3 +1,5 @@
+#include <rmlui-implementation/render-interface/render-interface.h>
+#include <compatibility/vec2.h>
 #include <extensions/decorators/checkmark/checkmark.h>
 
 namespace null::rml::extensions::decorators {
