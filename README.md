@@ -13,6 +13,8 @@ renderer, system and file interfaces for rmlui with with small extensions.
 # extensions
 * decorators
     * checkmark
+* elements
+    * multiselect
 
 # credits
 [RmlUi](https://github.com/mikke89/RmlUi) \

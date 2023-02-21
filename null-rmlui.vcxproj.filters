@@ -34,6 +34,12 @@
     <Filter Include="src\extensions\decorators\checkmark">
       <UniqueIdentifier>{67dc7c01-5aab-4af8-bc48-09e018622e32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\extensions\elements">
+      <UniqueIdentifier>{27195157-7796-4396-9209-016b3c797c2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\extensions\elements\multiselect">
+      <UniqueIdentifier>{bf547e49-20c7-4851-90ea-c4293b5f1231}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\null-rmlui.cpp">
@@ -53,6 +59,9 @@
     </ClCompile>
     <ClCompile Include="src\extensions\decorators\checkmark\checkmark.cpp">
       <Filter>src\extensions\decorators\checkmark</Filter>
+    </ClCompile>
+    <ClCompile Include="src\extensions\elements\multiselect\multiselect.cpp">
+      <Filter>src\extensions\elements\multiselect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +103,12 @@
     </ClInclude>
     <ClInclude Include="src\extensions\decorators\decorators.h">
       <Filter>src\extensions\decorators</Filter>
+    </ClInclude>
+    <ClInclude Include="src\extensions\elements\elements.h">
+      <Filter>src\extensions\elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\extensions\elements\multiselect\multiselect.h">
+      <Filter>src\extensions\elements\multiselect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

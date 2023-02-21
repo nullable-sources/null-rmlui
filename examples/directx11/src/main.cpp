@@ -36,7 +36,7 @@ int main() {
 		null::rml::initialize();
 		null::rml::load_system_font();
 
-		if(!(context = Rml::CreateContext("main", { window.size.x, window.size.y })))
+		if(!(context = Rml::CreateContext("main", window.size)))
 			throw std::runtime_error{ "Rml::CreateContext return nullptr" };
 
 		if(Rml::ElementDocument* document{ context->LoadDocument("<resource:rml> tutorial.rml") })

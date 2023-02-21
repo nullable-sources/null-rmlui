@@ -11,6 +11,7 @@
 #include <rmlui-implementation/render-interface/render-interface.h>
 
 #include <extensions/decorators/decorators.h>
+#include <extensions/elements/elements.h>
 
 #include <compatibility/vec2.h>
 #include <compatibility/color.h>
