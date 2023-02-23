@@ -5,7 +5,7 @@
 
 template <>
 struct null::compatibility::data_type_converter_t<null::sdk::i_color<float>, Rml::Colourf> {
-    static Rml::Colourf convert(const null::sdk::i_color<float>& color) { return { color.r(), color.g(), color.b(), color.a() }; }
+    static Rml::Colourf convert(const null::sdk::i_color<float>& color) { return { color.r, color.g, color.b, color.a }; }
 };
 
 template <>
@@ -15,7 +15,7 @@ struct null::compatibility::data_type_converter_t<Rml::Colourf, null::sdk::i_col
 
 template <>
 struct null::compatibility::data_type_converter_t<null::sdk::i_color<int>, Rml::Colourb> {
-    static Rml::Colourb convert(const null::sdk::i_color<int>& color) { return { (byte)color.r(), (byte)color.g(), (byte)color.b(), (byte)color.a() }; }
+    static Rml::Colourb convert(const null::sdk::i_color<int>& color) { return { (byte)color.r, (byte)color.g, (byte)color.b, (byte)color.a }; }
 };
 
 template <>
