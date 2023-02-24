@@ -19,108 +19,109 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Colourb.h" />
-    <ClInclude Include="src\Colourf.h" />
-    <ClInclude Include="src\Context.h" />
-    <ClInclude Include="src\ContextDocumentsProxy.h" />
-    <ClInclude Include="src\Document.h" />
-    <ClInclude Include="src\Element.h" />
-    <ClInclude Include="src\ElementAttributesProxy.h" />
-    <ClInclude Include="src\ElementChildNodesProxy.h" />
-    <ClInclude Include="src\ElementInstancer.h" />
-    <ClInclude Include="src\ElementStyleProxy.h" />
-    <ClInclude Include="src\Elements\As.h" />
-    <ClInclude Include="src\Elements\DataFormatter.h" />
-    <ClInclude Include="src\Elements\DataSource.h" />
-    <ClInclude Include="src\Elements\ElementDataGrid.h" />
-    <ClInclude Include="src\Elements\ElementDataGridRow.h" />
-    <ClInclude Include="src\Elements\ElementForm.h" />
-    <ClInclude Include="src\Elements\ElementFormControl.h" />
-    <ClInclude Include="src\Elements\ElementFormControlDataSelect.h" />
-    <ClInclude Include="src\Elements\ElementFormControlInput.h" />
-    <ClInclude Include="src\Elements\ElementFormControlSelect.h" />
-    <ClInclude Include="src\Elements\ElementFormControlTextArea.h" />
-    <ClInclude Include="src\Elements\ElementTabSet.h" />
-    <ClInclude Include="src\Elements\LuaDataFormatter.h" />
-    <ClInclude Include="src\Elements\LuaDataSource.h" />
-    <ClInclude Include="src\Elements\SelectOptionsProxy.h" />
-    <ClInclude Include="src\ElementText.h" />
-    <ClInclude Include="src\Event.h" />
-    <ClInclude Include="src\EventParametersProxy.h" />
-    <ClInclude Include="src\GlobalLuaFunctions.h" />
-    <ClInclude Include="src\Header.h" />
-    <ClInclude Include="src\IncludeLua.h" />
-    <ClInclude Include="src\Interpreter.h" />
-    <ClInclude Include="src\Log.h" />
-    <ClInclude Include="src\Lua.h" />
-    <ClInclude Include="src\LuaDataModel.h" />
-    <ClInclude Include="src\LuaDocument.h" />
-    <ClInclude Include="src\LuaDocumentElementInstancer.h" />
-    <ClInclude Include="src\LuaElementInstancer.h" />
-    <ClInclude Include="src\LuaEventListener.h" />
-    <ClInclude Include="src\LuaEventListenerInstancer.h" />
-    <ClInclude Include="src\LuaPlugin.h" />
-    <ClInclude Include="src\LuaType.h" />
-    <ClInclude Include="src\Pairs.h" />
-    <ClInclude Include="src\RmlUi.h" />
-    <ClInclude Include="src\RmlUiContextsProxy.h" />
-    <ClInclude Include="src\Utilities.h" />
-    <ClInclude Include="src\Vector2f.h" />
-    <ClInclude Include="src\Vector2i.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\Colourb.cpp" />
-    <ClCompile Include="src\Colourf.cpp" />
-    <ClCompile Include="src\Context.cpp" />
-    <ClCompile Include="src\ContextDocumentsProxy.cpp" />
-    <ClCompile Include="src\Document.cpp" />
-    <ClCompile Include="src\Element.cpp" />
-    <ClCompile Include="src\ElementAttributesProxy.cpp" />
-    <ClCompile Include="src\ElementChildNodesProxy.cpp" />
-    <ClCompile Include="src\ElementInstancer.cpp" />
-    <ClCompile Include="src\ElementStyleProxy.cpp" />
-    <ClCompile Include="src\Elements\DataFormatter.cpp" />
-    <ClCompile Include="src\Elements\DataSource.cpp" />
-    <ClCompile Include="src\Elements\ElementDataGrid.cpp" />
-    <ClCompile Include="src\Elements\ElementDataGridRow.cpp" />
-    <ClCompile Include="src\Elements\ElementForm.cpp" />
-    <ClCompile Include="src\Elements\ElementFormControl.cpp" />
-    <ClCompile Include="src\Elements\ElementFormControlDataSelect.cpp" />
-    <ClCompile Include="src\Elements\ElementFormControlInput.cpp" />
-    <ClCompile Include="src\Elements\ElementFormControlSelect.cpp" />
-    <ClCompile Include="src\Elements\ElementFormControlTextArea.cpp" />
-    <ClCompile Include="src\Elements\ElementTabSet.cpp" />
-    <ClCompile Include="src\Elements\LuaDataFormatter.cpp" />
-    <ClCompile Include="src\Elements\LuaDataSource.cpp" />
-    <ClCompile Include="src\Elements\SelectOptionsProxy.cpp" />
-    <ClCompile Include="src\ElementText.cpp" />
-    <ClCompile Include="src\Event.cpp" />
-    <ClCompile Include="src\EventParametersProxy.cpp" />
-    <ClCompile Include="src\GlobalLuaFunctions.cpp" />
-    <ClCompile Include="src\Interpreter.cpp" />
-    <ClCompile Include="src\Log.cpp" />
-    <ClCompile Include="src\Lua.cpp" />
-    <ClCompile Include="src\LuaDataModel.cpp" />
-    <ClCompile Include="src\LuaDocument.cpp" />
-    <ClCompile Include="src\LuaDocumentElementInstancer.cpp" />
-    <ClCompile Include="src\LuaElementInstancer.cpp" />
-    <ClCompile Include="src\LuaEventListener.cpp" />
-    <ClCompile Include="src\LuaEventListenerInstancer.cpp" />
-    <ClCompile Include="src\LuaPlugin.cpp" />
-    <ClCompile Include="src\LuaType.cpp" />
-    <ClCompile Include="src\RmlUi.cpp" />
-    <ClCompile Include="src\RmlUiContextsProxy.cpp" />
-    <ClCompile Include="src\Utilities.cpp" />
-    <ClCompile Include="src\Vector2f.cpp" />
-    <ClCompile Include="src\Vector2i.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\LuaType.inl" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="$(SolutionDir)third-party\null-lua\null-lua.vcxproj">
       <Project>{a586b490-eb0c-4e06-978f-20fd6e1ef345}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\null-rmlui-lua.h" />
+    <ClInclude Include="src\RmlUi\Colourb.h" />
+    <ClInclude Include="src\RmlUi\Colourf.h" />
+    <ClInclude Include="src\RmlUi\Context.h" />
+    <ClInclude Include="src\RmlUi\ContextDocumentsProxy.h" />
+    <ClInclude Include="src\RmlUi\Document.h" />
+    <ClInclude Include="src\RmlUi\Element.h" />
+    <ClInclude Include="src\RmlUi\ElementAttributesProxy.h" />
+    <ClInclude Include="src\RmlUi\ElementChildNodesProxy.h" />
+    <ClInclude Include="src\RmlUi\ElementInstancer.h" />
+    <ClInclude Include="src\RmlUi\ElementStyleProxy.h" />
+    <ClInclude Include="src\RmlUi\Elements\As.h" />
+    <ClInclude Include="src\RmlUi\Elements\DataFormatter.h" />
+    <ClInclude Include="src\RmlUi\Elements\DataSource.h" />
+    <ClInclude Include="src\RmlUi\Elements\ElementDataGrid.h" />
+    <ClInclude Include="src\RmlUi\Elements\ElementDataGridRow.h" />
+    <ClInclude Include="src\RmlUi\Elements\ElementForm.h" />
+    <ClInclude Include="src\RmlUi\Elements\ElementFormControl.h" />
+    <ClInclude Include="src\RmlUi\Elements\ElementFormControlDataSelect.h" />
+    <ClInclude Include="src\RmlUi\Elements\ElementFormControlInput.h" />
+    <ClInclude Include="src\RmlUi\Elements\ElementFormControlSelect.h" />
+    <ClInclude Include="src\RmlUi\Elements\ElementFormControlTextArea.h" />
+    <ClInclude Include="src\RmlUi\Elements\ElementTabSet.h" />
+    <ClInclude Include="src\RmlUi\Elements\LuaDataFormatter.h" />
+    <ClInclude Include="src\RmlUi\Elements\LuaDataSource.h" />
+    <ClInclude Include="src\RmlUi\Elements\SelectOptionsProxy.h" />
+    <ClInclude Include="src\RmlUi\ElementText.h" />
+    <ClInclude Include="src\RmlUi\Event.h" />
+    <ClInclude Include="src\RmlUi\EventParametersProxy.h" />
+    <ClInclude Include="src\RmlUi\GlobalLuaFunctions.h" />
+    <ClInclude Include="src\RmlUi\Header.h" />
+    <ClInclude Include="src\RmlUi\IncludeLua.h" />
+    <ClInclude Include="src\RmlUi\Interpreter.h" />
+    <ClInclude Include="src\RmlUi\Log.h" />
+    <ClInclude Include="src\RmlUi\Lua.h" />
+    <ClInclude Include="src\RmlUi\LuaDataModel.h" />
+    <ClInclude Include="src\RmlUi\LuaDocument.h" />
+    <ClInclude Include="src\RmlUi\LuaDocumentElementInstancer.h" />
+    <ClInclude Include="src\RmlUi\LuaElementInstancer.h" />
+    <ClInclude Include="src\RmlUi\LuaEventListener.h" />
+    <ClInclude Include="src\RmlUi\LuaEventListenerInstancer.h" />
+    <ClInclude Include="src\RmlUi\LuaPlugin.h" />
+    <ClInclude Include="src\RmlUi\LuaType.h" />
+    <ClInclude Include="src\RmlUi\Pairs.h" />
+    <ClInclude Include="src\RmlUi\RmlUi.h" />
+    <ClInclude Include="src\RmlUi\RmlUiContextsProxy.h" />
+    <ClInclude Include="src\RmlUi\Utilities.h" />
+    <ClInclude Include="src\RmlUi\Vector2f.h" />
+    <ClInclude Include="src\RmlUi\Vector2i.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\RmlUi\Colourb.cpp" />
+    <ClCompile Include="src\RmlUi\Colourf.cpp" />
+    <ClCompile Include="src\RmlUi\Context.cpp" />
+    <ClCompile Include="src\RmlUi\ContextDocumentsProxy.cpp" />
+    <ClCompile Include="src\RmlUi\Document.cpp" />
+    <ClCompile Include="src\RmlUi\Element.cpp" />
+    <ClCompile Include="src\RmlUi\ElementAttributesProxy.cpp" />
+    <ClCompile Include="src\RmlUi\ElementChildNodesProxy.cpp" />
+    <ClCompile Include="src\RmlUi\ElementInstancer.cpp" />
+    <ClCompile Include="src\RmlUi\ElementStyleProxy.cpp" />
+    <ClCompile Include="src\RmlUi\Elements\DataFormatter.cpp" />
+    <ClCompile Include="src\RmlUi\Elements\DataSource.cpp" />
+    <ClCompile Include="src\RmlUi\Elements\ElementDataGrid.cpp" />
+    <ClCompile Include="src\RmlUi\Elements\ElementDataGridRow.cpp" />
+    <ClCompile Include="src\RmlUi\Elements\ElementForm.cpp" />
+    <ClCompile Include="src\RmlUi\Elements\ElementFormControl.cpp" />
+    <ClCompile Include="src\RmlUi\Elements\ElementFormControlDataSelect.cpp" />
+    <ClCompile Include="src\RmlUi\Elements\ElementFormControlInput.cpp" />
+    <ClCompile Include="src\RmlUi\Elements\ElementFormControlSelect.cpp" />
+    <ClCompile Include="src\RmlUi\Elements\ElementFormControlTextArea.cpp" />
+    <ClCompile Include="src\RmlUi\Elements\ElementTabSet.cpp" />
+    <ClCompile Include="src\RmlUi\Elements\LuaDataFormatter.cpp" />
+    <ClCompile Include="src\RmlUi\Elements\LuaDataSource.cpp" />
+    <ClCompile Include="src\RmlUi\Elements\SelectOptionsProxy.cpp" />
+    <ClCompile Include="src\RmlUi\ElementText.cpp" />
+    <ClCompile Include="src\RmlUi\Event.cpp" />
+    <ClCompile Include="src\RmlUi\EventParametersProxy.cpp" />
+    <ClCompile Include="src\RmlUi\GlobalLuaFunctions.cpp" />
+    <ClCompile Include="src\RmlUi\Interpreter.cpp" />
+    <ClCompile Include="src\RmlUi\Log.cpp" />
+    <ClCompile Include="src\RmlUi\Lua.cpp" />
+    <ClCompile Include="src\RmlUi\LuaDataModel.cpp" />
+    <ClCompile Include="src\RmlUi\LuaDocument.cpp" />
+    <ClCompile Include="src\RmlUi\LuaDocumentElementInstancer.cpp" />
+    <ClCompile Include="src\RmlUi\LuaElementInstancer.cpp" />
+    <ClCompile Include="src\RmlUi\LuaEventListener.cpp" />
+    <ClCompile Include="src\RmlUi\LuaEventListenerInstancer.cpp" />
+    <ClCompile Include="src\RmlUi\LuaPlugin.cpp" />
+    <ClCompile Include="src\RmlUi\LuaType.cpp" />
+    <ClCompile Include="src\RmlUi\RmlUi.cpp" />
+    <ClCompile Include="src\RmlUi\RmlUiContextsProxy.cpp" />
+    <ClCompile Include="src\RmlUi\Utilities.cpp" />
+    <ClCompile Include="src\RmlUi\Vector2f.cpp" />
+    <ClCompile Include="src\RmlUi\Vector2i.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\RmlUi\LuaType.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -202,7 +203,7 @@
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_STATIC_LIB;NOMINMAX;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -230,7 +231,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_STATIC_LIB;NOMINMAX;_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -258,7 +259,7 @@
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_STATIC_LIB;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -286,7 +287,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_STATIC_LIB;NOMINMAX;_CRT_SECURE_NO_WARNINGS;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
