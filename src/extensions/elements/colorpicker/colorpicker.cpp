@@ -12,7 +12,6 @@ namespace null::rml::extensions::elements {
 		parent_element->AddEventListener(Rml::EventId::Click, this, true);
 		parent_element->AddEventListener(Rml::EventId::Blur, this);
 		parent_element->AddEventListener(Rml::EventId::Focus, this);
-		parent_element->AddEventListener(Rml::EventId::Keydown, this, true);
 	}
 
 	c_widget_colorpicker::~c_widget_colorpicker() {
@@ -21,7 +20,6 @@ namespace null::rml::extensions::elements {
 		parent_element->RemoveEventListener(Rml::EventId::Click, this, true);
 		parent_element->RemoveEventListener(Rml::EventId::Blur, this);
 		parent_element->RemoveEventListener(Rml::EventId::Focus, this);
-		parent_element->RemoveEventListener(Rml::EventId::Keydown, this, true);
 	}
 
 	void c_widget_colorpicker::on_update() {

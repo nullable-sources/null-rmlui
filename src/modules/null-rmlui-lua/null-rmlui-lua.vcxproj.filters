@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d11addc5-089b-4237-a3dd-c21f8f81dcf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Elements">
+      <UniqueIdentifier>{48cc18ee-cedd-4495-8f95-e60a22d65e96}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Elements\DataFormatter.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Elements\DataSource.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Elements\ElementDataGrid.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Elements\ElementDataGridRow.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Elements\ElementForm.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Elements\ElementFormControl.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Elements\ElementFormControlDataSelect.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Elements\ElementFormControlInput.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Elements\ElementFormControlSelect.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Elements\ElementFormControlTextArea.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Elements\ElementTabSet.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Elements\LuaDataFormatter.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Elements\LuaDataSource.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Elements\SelectOptionsProxy.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Elements\As.h">
+      <Filter>src\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Colourf.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Context.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ContextDocumentsProxy.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Document.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Element.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ElementAttributesProxy.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ElementChildNodesProxy.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ElementInstancer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ElementStyleProxy.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ElementText.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EventParametersProxy.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GlobalLuaFunctions.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Header.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IncludeLua.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Interpreter.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Log.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lua.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LuaDataModel.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LuaDocument.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LuaDocumentElementInstancer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LuaElementInstancer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LuaEventListener.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LuaEventListenerInstancer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LuaPlugin.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LuaType.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pairs.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RmlUi.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RmlUiContextsProxy.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vector2f.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vector2i.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Colourb.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Elements\DataSource.cpp">
+      <Filter>src\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Elements\ElementDataGrid.cpp">
+      <Filter>src\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Elements\ElementDataGridRow.cpp">
+      <Filter>src\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Elements\ElementForm.cpp">
+      <Filter>src\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Elements\ElementFormControl.cpp">
+      <Filter>src\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Elements\ElementFormControlDataSelect.cpp">
+      <Filter>src\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Elements\ElementFormControlInput.cpp">
+      <Filter>src\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Elements\ElementFormControlSelect.cpp">
+      <Filter>src\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Elements\ElementFormControlTextArea.cpp">
+      <Filter>src\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Elements\ElementTabSet.cpp">
+      <Filter>src\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Elements\LuaDataFormatter.cpp">
+      <Filter>src\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Elements\LuaDataSource.cpp">
+      <Filter>src\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Elements\SelectOptionsProxy.cpp">
+      <Filter>src\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Elements\DataFormatter.cpp">
+      <Filter>src\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Context.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ContextDocumentsProxy.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Document.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Element.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ElementAttributesProxy.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ElementChildNodesProxy.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ElementInstancer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ElementStyleProxy.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ElementText.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EventParametersProxy.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GlobalLuaFunctions.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Interpreter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Log.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lua.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LuaDataModel.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LuaDocument.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LuaDocumentElementInstancer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LuaElementInstancer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LuaEventListener.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LuaEventListenerInstancer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LuaPlugin.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LuaType.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RmlUi.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RmlUiContextsProxy.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vector2f.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vector2i.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Colourb.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Colourf.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\LuaType.inl">
+      <Filter>src</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -16,6 +16,10 @@ renderer, system and file interfaces for rmlui with with small extensions.
 * elements
     * multiselect
 
+# modules
+* lua
+    * default RmlUi lua module, requires null-lua to use or override lua include paths 
+
 # credits
 [RmlUi](https://github.com/mikke89/RmlUi) \
 [ezEngine](https://github.com/ezEngine/ezEngine)

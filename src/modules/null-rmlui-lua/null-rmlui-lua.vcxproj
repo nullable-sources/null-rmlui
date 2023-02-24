@@ -19,30 +19,114 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\null-rmlui.vcxproj">
-      <Project>{220d4d11-15cc-489d-8d93-58cfe85348bd}</Project>
-    </ProjectReference>
-    <ProjectReference Include="$(SolutionDir)third-party\null-render\null-render.vcxproj">
-      <Project>{4abcf635-9767-40f9-989e-f0cdf5fb68ae}</Project>
-    </ProjectReference>
-    <ProjectReference Include="$(SolutionDir)third-party\null-render\src\renderer\null-renderer-directx9\null-renderer-directx9.vcxproj">
-      <Project>{95843de7-57a5-4b57-b7f2-7a60b0115992}</Project>
-    </ProjectReference>
-    <ProjectReference Include="$(SolutionDir)third-party\null-sdk\null-sdk.vcxproj">
-      <Project>{f7a10a5c-0fae-424b-8f2b-6cc4e4d898d1}</Project>
-    </ProjectReference>
+    <ClInclude Include="src\Colourb.h" />
+    <ClInclude Include="src\Colourf.h" />
+    <ClInclude Include="src\Context.h" />
+    <ClInclude Include="src\ContextDocumentsProxy.h" />
+    <ClInclude Include="src\Document.h" />
+    <ClInclude Include="src\Element.h" />
+    <ClInclude Include="src\ElementAttributesProxy.h" />
+    <ClInclude Include="src\ElementChildNodesProxy.h" />
+    <ClInclude Include="src\ElementInstancer.h" />
+    <ClInclude Include="src\ElementStyleProxy.h" />
+    <ClInclude Include="src\Elements\As.h" />
+    <ClInclude Include="src\Elements\DataFormatter.h" />
+    <ClInclude Include="src\Elements\DataSource.h" />
+    <ClInclude Include="src\Elements\ElementDataGrid.h" />
+    <ClInclude Include="src\Elements\ElementDataGridRow.h" />
+    <ClInclude Include="src\Elements\ElementForm.h" />
+    <ClInclude Include="src\Elements\ElementFormControl.h" />
+    <ClInclude Include="src\Elements\ElementFormControlDataSelect.h" />
+    <ClInclude Include="src\Elements\ElementFormControlInput.h" />
+    <ClInclude Include="src\Elements\ElementFormControlSelect.h" />
+    <ClInclude Include="src\Elements\ElementFormControlTextArea.h" />
+    <ClInclude Include="src\Elements\ElementTabSet.h" />
+    <ClInclude Include="src\Elements\LuaDataFormatter.h" />
+    <ClInclude Include="src\Elements\LuaDataSource.h" />
+    <ClInclude Include="src\Elements\SelectOptionsProxy.h" />
+    <ClInclude Include="src\ElementText.h" />
+    <ClInclude Include="src\Event.h" />
+    <ClInclude Include="src\EventParametersProxy.h" />
+    <ClInclude Include="src\GlobalLuaFunctions.h" />
+    <ClInclude Include="src\Header.h" />
+    <ClInclude Include="src\IncludeLua.h" />
+    <ClInclude Include="src\Interpreter.h" />
+    <ClInclude Include="src\Log.h" />
+    <ClInclude Include="src\Lua.h" />
+    <ClInclude Include="src\LuaDataModel.h" />
+    <ClInclude Include="src\LuaDocument.h" />
+    <ClInclude Include="src\LuaDocumentElementInstancer.h" />
+    <ClInclude Include="src\LuaElementInstancer.h" />
+    <ClInclude Include="src\LuaEventListener.h" />
+    <ClInclude Include="src\LuaEventListenerInstancer.h" />
+    <ClInclude Include="src\LuaPlugin.h" />
+    <ClInclude Include="src\LuaType.h" />
+    <ClInclude Include="src\Pairs.h" />
+    <ClInclude Include="src\RmlUi.h" />
+    <ClInclude Include="src\RmlUiContextsProxy.h" />
+    <ClInclude Include="src\Utilities.h" />
+    <ClInclude Include="src\Vector2f.h" />
+    <ClInclude Include="src\Vector2i.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\null-rmlui-renderer-directx9.cpp" />
+    <ClCompile Include="src\Colourb.cpp" />
+    <ClCompile Include="src\Colourf.cpp" />
+    <ClCompile Include="src\Context.cpp" />
+    <ClCompile Include="src\ContextDocumentsProxy.cpp" />
+    <ClCompile Include="src\Document.cpp" />
+    <ClCompile Include="src\Element.cpp" />
+    <ClCompile Include="src\ElementAttributesProxy.cpp" />
+    <ClCompile Include="src\ElementChildNodesProxy.cpp" />
+    <ClCompile Include="src\ElementInstancer.cpp" />
+    <ClCompile Include="src\ElementStyleProxy.cpp" />
+    <ClCompile Include="src\Elements\DataFormatter.cpp" />
+    <ClCompile Include="src\Elements\DataSource.cpp" />
+    <ClCompile Include="src\Elements\ElementDataGrid.cpp" />
+    <ClCompile Include="src\Elements\ElementDataGridRow.cpp" />
+    <ClCompile Include="src\Elements\ElementForm.cpp" />
+    <ClCompile Include="src\Elements\ElementFormControl.cpp" />
+    <ClCompile Include="src\Elements\ElementFormControlDataSelect.cpp" />
+    <ClCompile Include="src\Elements\ElementFormControlInput.cpp" />
+    <ClCompile Include="src\Elements\ElementFormControlSelect.cpp" />
+    <ClCompile Include="src\Elements\ElementFormControlTextArea.cpp" />
+    <ClCompile Include="src\Elements\ElementTabSet.cpp" />
+    <ClCompile Include="src\Elements\LuaDataFormatter.cpp" />
+    <ClCompile Include="src\Elements\LuaDataSource.cpp" />
+    <ClCompile Include="src\Elements\SelectOptionsProxy.cpp" />
+    <ClCompile Include="src\ElementText.cpp" />
+    <ClCompile Include="src\Event.cpp" />
+    <ClCompile Include="src\EventParametersProxy.cpp" />
+    <ClCompile Include="src\GlobalLuaFunctions.cpp" />
+    <ClCompile Include="src\Interpreter.cpp" />
+    <ClCompile Include="src\Log.cpp" />
+    <ClCompile Include="src\Lua.cpp" />
+    <ClCompile Include="src\LuaDataModel.cpp" />
+    <ClCompile Include="src\LuaDocument.cpp" />
+    <ClCompile Include="src\LuaDocumentElementInstancer.cpp" />
+    <ClCompile Include="src\LuaElementInstancer.cpp" />
+    <ClCompile Include="src\LuaEventListener.cpp" />
+    <ClCompile Include="src\LuaEventListenerInstancer.cpp" />
+    <ClCompile Include="src\LuaPlugin.cpp" />
+    <ClCompile Include="src\LuaType.cpp" />
+    <ClCompile Include="src\RmlUi.cpp" />
+    <ClCompile Include="src\RmlUiContextsProxy.cpp" />
+    <ClCompile Include="src\Utilities.cpp" />
+    <ClCompile Include="src\Vector2f.cpp" />
+    <ClCompile Include="src\Vector2i.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\null-rmlui-renderer-directx9.h" />
+    <None Include="src\LuaType.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)third-party\null-lua\null-lua.vcxproj">
+      <Project>{a586b490-eb0c-4e06-978f-20fd6e1ef345}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{57ff0ac9-5ed6-4b00-96fe-d44f6f05a3a5}</ProjectGuid>
-    <RootNamespace>null_rmlui_renderer_directx9</RootNamespace>
+    <ProjectGuid>{dcfa6d9f-6602-42be-b54d-8b03885e2677}</ProjectGuid>
+    <RootNamespace>null_rmlui_lua</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -94,25 +178,25 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
-    <PublicIncludeDirectories>src\</PublicIncludeDirectories>
+    <PublicIncludeDirectories>src;</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
-    <PublicIncludeDirectories>src\</PublicIncludeDirectories>
+    <PublicIncludeDirectories>src;</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
-    <PublicIncludeDirectories>src\</PublicIncludeDirectories>
+    <PublicIncludeDirectories>src;</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
-    <PublicIncludeDirectories>src\</PublicIncludeDirectories>
+    <PublicIncludeDirectories>src;</PublicIncludeDirectories>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
     <ClCompile>
@@ -125,14 +209,20 @@
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\;$(ProjectDir)../../../third-party\RmlUi\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>$(ProjectDir)../../../third-party\RmlUi\libs\</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
     <ClCompile>
@@ -147,8 +237,8 @@
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\;$(ProjectDir)../../../third-party\RmlUi\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -157,6 +247,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>$(ProjectDir)../../../third-party\RmlUi\libs\</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
     <ClCompile>
@@ -169,14 +265,20 @@
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\;$(ProjectDir)../../../third-party\RmlUi\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>$(ProjectDir)../../../third-party\RmlUi\libs\</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
     <ClCompile>
@@ -191,8 +293,8 @@
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\;$(ProjectDir)../../../third-party\RmlUi\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -201,6 +303,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>$(ProjectDir)../../../third-party\RmlUi\libs\</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

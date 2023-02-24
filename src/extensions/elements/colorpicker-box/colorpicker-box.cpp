@@ -107,8 +107,6 @@ namespace null::rml::extensions::elements {
 		alpha_slider->AddEventListener(Rml::EventId::Change, this);
 
 		parent_element->AddEventListener(Rml::EventId::Click, this, true);
-		parent_element->AddEventListener(Rml::EventId::Blur, this);
-		parent_element->AddEventListener(Rml::EventId::Focus, this);
 		parent_element->AddEventListener(Rml::EventId::Keydown, this, true);
 	}
 
@@ -123,8 +121,6 @@ namespace null::rml::extensions::elements {
 		alpha_slider->RemoveEventListener(Rml::EventId::Change, this);
 
 		parent_element->RemoveEventListener(Rml::EventId::Click, this, true);
-		parent_element->RemoveEventListener(Rml::EventId::Blur, this);
-		parent_element->RemoveEventListener(Rml::EventId::Focus, this);
 		parent_element->RemoveEventListener(Rml::EventId::Keydown, this, true);
 	}
 
