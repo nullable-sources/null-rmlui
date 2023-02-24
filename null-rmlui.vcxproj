@@ -28,6 +28,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\extensions\decorators\checkmark\checkmark.cpp" />
+    <ClCompile Include="src\extensions\elements\colorpicker-box\colorpicker-box.cpp" />
+    <ClCompile Include="src\extensions\elements\colorpicker\colorpicker.cpp" />
     <ClCompile Include="src\extensions\elements\multiselect\multiselect.cpp" />
     <ClCompile Include="src\null-rmlui.cpp" />
     <ClCompile Include="src\rmlui-implementation\backend\backend.cpp" />
@@ -40,6 +42,8 @@
     <ClInclude Include="src\compatibility\vec2.h" />
     <ClInclude Include="src\extensions\decorators\checkmark\checkmark.h" />
     <ClInclude Include="src\extensions\decorators\decorators.h" />
+    <ClInclude Include="src\extensions\elements\colorpicker-box\colorpicker-box.h" />
+    <ClInclude Include="src\extensions\elements\colorpicker\colorpicker.h" />
     <ClInclude Include="src\extensions\elements\elements.h" />
     <ClInclude Include="src\extensions\elements\multiselect\multiselect.h" />
     <ClInclude Include="src\null-rmlui.h" />
