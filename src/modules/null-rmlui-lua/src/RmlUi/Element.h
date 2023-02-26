@@ -60,6 +60,7 @@ int ElementReplaceChild(lua_State* L, Element* obj);
 int ElementScrollIntoView(lua_State* L, Element* obj);
 int ElementSetAttribute(lua_State* L, Element* obj);
 int ElementSetClass(lua_State* L, Element* obj);
+int ElementSetPseudoClass(lua_State* L, Element* obj);
 
 //getters
 int ElementGetAttrattributes(lua_State* L);

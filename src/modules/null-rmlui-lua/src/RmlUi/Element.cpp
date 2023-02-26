@@ -291,6 +291,13 @@ int ElementSetClass(lua_State* L, Element* obj)
     return 0;
 }
 
+int ElementSetPseudoClass(lua_State* L, Element* obj) {
+    const char* name = luaL_checkstring(L, 1);
+    bool value = RMLUI_CHECK_BOOL(L, 2);
+    obj->SetPseudoClass(name, value);
+    return 0;
+}
+
 //getters
 int ElementGetAttrattributes(lua_State* L)
 {
@@ -600,6 +607,7 @@ RegType<Element> ElementMethods[] =
     RMLUI_LUAMETHOD(Element,ScrollIntoView)
     RMLUI_LUAMETHOD(Element,SetAttribute)
     RMLUI_LUAMETHOD(Element,SetClass)
+    RMLUI_LUAMETHOD(Element,SetPseudoClass)
     { nullptr, nullptr },
 };
 

@@ -1,7 +1,6 @@
 #pragma once
 #include <RmlUi/Core.h>
 
-
 #include <null-sdk.h>
 
 namespace null::rml::extensions::elements {
