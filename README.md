@@ -20,6 +20,9 @@ renderer, system and file interfaces for rmlui with with small extensions.
 * lua
     * default RmlUi lua module, requires null-lua to use or override lua include paths 
 
+# examples
+![screen](https://i.imgur.com/Y3lniql_d.webp?maxwidth=760&fidelity=grand)
+
 # credits
 [RmlUi](https://github.com/mikke89/RmlUi) \
 [ezEngine](https://github.com/ezEngine/ezEngine)

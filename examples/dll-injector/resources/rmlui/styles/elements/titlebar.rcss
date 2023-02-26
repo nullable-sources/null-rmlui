@@ -1,0 +1,17 @@
+div.titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 25px;
+    padding: 0px 5px;
+    
+    background-color: rgb(50, 50, 50);
+}
+
+div.title-buttons-wrapper { display: inline-block; }
+div.title-buttons-wrapper > *:not(:last-child) { margin-right: 5px; }
+
+button.title-button { padding: 0px 5px; }
+button.title-button:hover { background-color: rgb(60, 60, 60); }
+button.title-button:active { background-color: rgb(80, 80, 80); }

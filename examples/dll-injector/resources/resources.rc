@@ -1,0 +1,14 @@
+main.rml rml "rmlui/main.rml"
+
+styles/main.rcss							rml "rmlui/styles/main.rcss"
+styles/elements/widget-wrapper.rcss			rml "rmlui/styles/elements/widget-wrapper.rcss"
+styles/elements/titlebar.rcss				rml "rmlui/styles/elements/titlebar.rcss"
+styles/elements/body-content.rcss			rml "rmlui/styles/elements/body-content.rcss"
+styles/elements/widgets/text-input.rcss		rml "rmlui/styles/elements/widgets/text-input.rcss"
+styles/elements/widgets/radio.rcss			rml "rmlui/styles/elements/widgets/radio.rcss"
+styles/elements/widgets/process-list.rcss	rml "rmlui/styles/elements/widgets/process-list.rcss"
+styles/elements/widgets/button.rcss			rml "rmlui/styles/elements/widgets/button.rcss"
+
+scripts/main-script.lua rml "rmlui/scripts/main-script.lua"
+
+icon.ico ICON "window/icon.ico"

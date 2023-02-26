@@ -1,4 +1,5 @@
-﻿#include <null-rmlui-renderer-directx9.h>
+﻿#define RMLUI_STATIC_LIB
+#include <null-rmlui-renderer-directx9.h>
 #include <null-rmlui.h>
 
 Rml::Context* context{ };

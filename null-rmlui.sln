@@ -39,6 +39,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-rmlui-lua", "src\modul
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-lua", "third-party\null-lua\null-lua.vcxproj", "{A586B490-EB0C-4E06-978F-20FD6E1EF345}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dll-injector", "examples\dll-injector\dll-injector.vcxproj", "{2CA77C73-54FD-43D6-A31D-4BDB2680B87F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		debug|x64 = debug|x64
@@ -159,6 +161,14 @@ Global
 		{A586B490-EB0C-4E06-978F-20FD6E1EF345}.release|x64.Build.0 = release|x64
 		{A586B490-EB0C-4E06-978F-20FD6E1EF345}.release|x86.ActiveCfg = release|Win32
 		{A586B490-EB0C-4E06-978F-20FD6E1EF345}.release|x86.Build.0 = release|Win32
+		{2CA77C73-54FD-43D6-A31D-4BDB2680B87F}.debug|x64.ActiveCfg = debug|x64
+		{2CA77C73-54FD-43D6-A31D-4BDB2680B87F}.debug|x64.Build.0 = debug|x64
+		{2CA77C73-54FD-43D6-A31D-4BDB2680B87F}.debug|x86.ActiveCfg = debug|Win32
+		{2CA77C73-54FD-43D6-A31D-4BDB2680B87F}.debug|x86.Build.0 = debug|Win32
+		{2CA77C73-54FD-43D6-A31D-4BDB2680B87F}.release|x64.ActiveCfg = release|x64
+		{2CA77C73-54FD-43D6-A31D-4BDB2680B87F}.release|x64.Build.0 = release|x64
+		{2CA77C73-54FD-43D6-A31D-4BDB2680B87F}.release|x86.ActiveCfg = release|Win32
+		{2CA77C73-54FD-43D6-A31D-4BDB2680B87F}.release|x86.Build.0 = release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -177,6 +187,7 @@ Global
 		{64527024-E33C-4590-AC2D-EB2BF9C8225D} = {E29A7E9A-A5AD-4262-ABF4-F407CA66C3B8}
 		{DCFA6D9F-6602-42BE-B54D-8B03885E2677} = {5697427B-E446-4462-8455-0F5774011E14}
 		{A586B490-EB0C-4E06-978F-20FD6E1EF345} = {0E44340B-A1AF-405B-8692-E37BA47BE40F}
+		{2CA77C73-54FD-43D6-A31D-4BDB2680B87F} = {4F0E8130-A58B-44D3-AF2B-D88B217A8C36}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8D2E0DD0-212D-4DB5-A7FE-90DB0305BDA7}

@@ -1,0 +1,17 @@
+div.body-content {
+    display: inline-block;
+    width: 100%;
+}
+
+div.body-column {
+    display: inline-block;
+    box-sizing: border-box;
+    
+    vertical-align: top;
+
+    width: 50%;
+
+    padding: 5px;
+}
+
+div.body-column > *:not(:last-child) { margin-bottom: 5px; }

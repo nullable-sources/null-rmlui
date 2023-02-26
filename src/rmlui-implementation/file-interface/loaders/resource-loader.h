@@ -57,7 +57,7 @@ namespace null::rml {
 		};
 
 	public:
-		static inline const std::regex regex{ "(<resource:([^\\>]*)>|<resource>)\\s*([^\\s]*)" }; //@note: <resource:type> name
+		static inline const std::regex regex{ "(<resource(:|\\|)([^\\>]*)>|<resource>)\\s*([^\\s]*)" }; //@note: <resource:type> name or <resource|type> name
 
 	public:
 		resource_loader_t() { memory::c_module::self().load_resources(); }
@@ -66,9 +66,9 @@ namespace null::rml {
 		virtual bool create(std::string& path) override {
 			std::smatch match{ };
 			if(!std::regex_search(path, match, regex)) return false;
-			if(match[2].matched && std::ranges::find_if(memory::c_module::self().resources, [&](const memory::resource_t& resource) { return resource.type == match[2].str(); }) == memory::c_module::self().resources.end()) return false;
+			if(match[3].matched && std::ranges::find_if(memory::c_module::self().resources, [&](const memory::resource_t& resource) { return resource.type == match[3].str(); }) == memory::c_module::self().resources.end()) return false;
 
-			opened_files[path] = std::make_unique<file_t>(match[3].str(), match[2].matched ? match[2].str() : "");
+			opened_files[path] = std::make_unique<file_t>(match[4].str(), match[3].matched ? match[3].str() : "");
 			return true;
 		}
 	} inline resource_loader{ };

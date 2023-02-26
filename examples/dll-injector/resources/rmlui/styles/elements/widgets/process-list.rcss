@@ -1,0 +1,28 @@
+div.process-list {
+    box-sizing: border-box;
+    display: block;
+
+    overflow-y: auto;
+
+    height: 150px;
+    
+    padding: 5px;
+
+    background-color: rgb(35, 35, 35);
+}
+
+sliderbar {
+    background-color: rgb(50, 50, 50);
+}
+
+sliderbar:hover, sliderbar:active {
+    background-color:  rgb(70, 70, 70);
+}
+
+scrollbarvertical {
+    width: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    background-color: rgb(40, 40, 40);
+}

@@ -1,0 +1,9 @@
+input.text {
+    box-sizing: border-box;
+
+    padding: 2px 5px;
+
+    width: 100%;
+    height: 20px;
+    background-color: rgb(40, 40, 40);
+}

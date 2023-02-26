@@ -1,0 +1,51 @@
+﻿<rml>
+	<head>
+		<link type="text/css" href="<resource:rml> styles/main.rcss"/>
+
+		<link type="text/css" href="<resource:rml> styles/elements/titlebar.rcss"/>
+        <link type="text/css" href="<resource:rml> styles/elements/body-content.rcss"/>
+        <link type="text/css" href="<resource:rml> styles/elements/widget-wrapper.rcss"/>
+        <link type="text/css" href="<resource:rml> styles/elements/widgets/text-input.rcss"/>
+        <link type="text/css" href="<resource:rml> styles/elements/widgets/button.rcss"/>
+        <link type="text/css" href="<resource:rml> styles/elements/widgets/process-list.rcss"/>
+        <link type="text/css" href="<resource:rml> styles/elements/widgets/radio.rcss"/>
+
+        <script src="<resource:rml> scripts/main-script.lua"></script>
+	</head>
+	<body class="window" onload="get_process_list(document)">
+        <div id="titlebar" class="titlebar">
+            <handle move_target>
+                <p>example injector</p>
+            </handle>
+            <div class="title-buttons-wrapper">
+                <button class="title-button" onclick="impl_minimize_window()">-</button>
+                <button class="title-button" onclick="impl_close_window()">X</button>
+            </div>
+        </div>
+        <div class="body-content">
+            <div class="body-column">
+                <div class="widget-wrapper">
+                    <label for="filter">name filter</label>
+                    <input id="filter" type="text" onchange="filter(document, element)"/>
+                </div>
+                <div class="widget-wrapper">
+                    <div class="process-list">
+                        <form id="process-form">
+                        </form>
+                    </div>
+                </div>
+                <div class="widget-wrapper">
+                    <button class="widget" onclick="get_process_list(document)">update</button>
+                </div>
+            </div>
+            <div class="body-column">
+                <div class="widget-wrapper">
+                    <button class="widget" onclick="select_dll()">select dll</button>
+                </div>
+                <div class="widget-wrapper">
+                    <button class="widget" onclick="inject()">inject</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</rml>

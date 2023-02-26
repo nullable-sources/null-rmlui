@@ -1,4 +1,5 @@
-﻿#define null_renderer_use_glfw
+﻿#define RMLUI_STATIC_LIB
+#define null_renderer_use_glfw
 #include <null-rmlui-renderer-opengl3.h>
 #include <null-rmlui.h>
 

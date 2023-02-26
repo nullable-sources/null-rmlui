@@ -1,0 +1,17 @@
+#pragma once
+#include <null-rmlui-renderer-directx9.h>
+#include <null-rmlui.h>
+
+namespace ui {
+	inline null::renderer::c_window window{ };
+
+	inline Rml::Context* context{ };
+	inline Rml::ElementDocument* document{ };
+
+	class c_event_listener : public Rml::EventListener {
+	public:
+		void ProcessEvent(Rml::Event& event) override;
+	} inline event_listener{ };
+
+	void initialize();
+}

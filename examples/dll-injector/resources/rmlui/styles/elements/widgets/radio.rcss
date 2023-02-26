@@ -1,0 +1,16 @@
+input.radio {
+    display: inline-block;
+    box-sizing: border-box;
+
+    padding: 0px 5px;
+
+    width: 100%;
+    height: 15px;
+
+    font-size: 12px;
+
+    background-color: transparent;
+}
+
+input.radio:hover { background-color: rgb(50, 50, 50); }
+input.radio:checked { background-color: rgb(60, 60, 60); }
