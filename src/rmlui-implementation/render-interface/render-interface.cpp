@@ -7,11 +7,13 @@ namespace null::rml {
     void i_render_interface::RenderGeometry(Rml::Vertex* vertices, int num_vertices, int* indices, int num_indices, const Rml::TextureHandle texture, const Rml::Vector2f& translation) {
         buffer.cmd_buffer.back().texture = (void*)texture;
 
-        buffer.add_idx(std::vector<std::uint32_t>{ indices, indices + num_indices }, buffer.vtx_buffer.size());
+        buffer.cmd_buffer.back().element_count += num_indices;
+        std::ranges::move(std::vector<std::uint32_t>{ indices, indices + num_indices }, std::back_inserter(buffer.idx_buffer));
+        buffer.cmd_buffer.back().vtx_offset = buffer.vtx_buffer.size();
 
-        buffer.add_vtx(std::views::transform(std::vector<Rml::Vertex>{ vertices, vertices + num_vertices }, [&](const Rml::Vertex& vertex) {
+        std::ranges::transform(std::vector<Rml::Vertex>{ vertices, vertices + num_vertices }, std::back_inserter(buffer.vtx_buffer), [&](const Rml::Vertex& vertex) {
             return null::render::vertex_t{ vertex.position + translation, vertex.tex_coord, vertex.colour };
-            }) | std::ranges::to<std::vector>());
+            });
 
         buffer.add_cmd();
     }
