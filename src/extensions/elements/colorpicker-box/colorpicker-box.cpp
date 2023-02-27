@@ -142,38 +142,47 @@ namespace null::rml::extensions::elements {
 
 	void c_widget_colorpicker_box::on_render() {
 		if(update_picker_and_preview) on_update();
+
+		const Rml::ComputedValues& picker_box_computed{ picker_box->GetComputedValues() };
+		std::array<float, 4> picker_box_roundings{
+			picker_box_computed.border_top_left_radius(),
+			picker_box_computed.border_top_right_radius(),
+			picker_box_computed.border_bottom_left_radius(),
+			picker_box_computed.border_bottom_right_radius()
+		};
+		
 		color_t<int> sv_box_color{ hsv_color_t{ hue_slider->GetAttribute("value", 0.f) } };
 		rect_t<float> sv_box_rect{ vec2_t<float>{ picker_box->GetAbsoluteOffset(Rml::Box::BORDER) }, vec2_t<float>{ picker_box->GetBox().GetSize(Rml::Box::BORDER) }, e_rect_origin::top_left };
-		render_interface->buffer.add_rect_filled_multicolor(sv_box_rect, { color_t<int>::palette_t::white, sv_box_color, color_t<int>{ 255, 0 }, color_t<int>{ sv_box_color, 0 } });
-		render_interface->buffer.add_rect_filled_multicolor(sv_box_rect, { 0, 0, color_t<int>::palette_t::black, color_t<int>::palette_t::black });
+		render_interface->buffer.add_rect_filled_multicolor(sv_box_rect, { color_t<int>::palette_t::white, sv_box_color, color_t<int>{ 255, 0 }, color_t<int>{ sv_box_color, 0 } }, picker_box_roundings);
+		render_interface->buffer.add_rect_filled_multicolor(sv_box_rect, { 0, 0, color_t<int>::palette_t::black, color_t<int>::palette_t::black }, picker_box_roundings);
 
 		vec2_t<float> picker_indicator_radius{ picker_indicator->GetBox().GetSize(Rml::Box::BORDER) / 2.f };
 		float content_radius{ std::max(picker_indicator_radius.x, picker_indicator_radius.y) };
 		render_interface->buffer.add_circle(vec2_t<float>{ picker_indicator->GetAbsoluteOffset(Rml::Box::BORDER) } + content_radius, { 45, 200 }, content_radius);
 		render_interface->buffer.add_circle(vec2_t<float>{ picker_indicator->GetAbsoluteOffset(Rml::Box::BORDER) } + content_radius, color_t<int>{ build_color(), 255 }, content_radius - 2.f);
 
+		const Rml::ComputedValues& hue_slider_computed{ hue_slider->GetComputedValues() };
 		rect_t<float> hue_slider_rect{ vec2_t<float>{ hue_slider->GetAbsoluteOffset(Rml::Box::CONTENT) }, vec2_t<float>{ hue_slider->GetBox().GetSize(Rml::Box::CONTENT) }, e_rect_origin::top_left };
 		vec2_t<float> segment_size{ std::round(hue_slider_rect.size().x / 6.f), hue_slider_rect.size().y };
 		for(const int& segment : std::views::iota(0, 6)) {
 			color_t<int> hsv{ hsv_color_t{ segment * 60.f } }, next_hsv{ hsv_color_t{ (segment + 1) * 60.f } };
 			if(segment == 0) {
-				float border_radius{ std::max(hue_slider->GetComputedValues().border_top_left_radius(), hue_slider->GetComputedValues().border_bottom_left_radius()) };
-				render_interface->buffer.add_rect_filled_multicolor(hue_slider_rect.min, hue_slider_rect.min + math::round(segment_size), { hsv, next_hsv, hsv, next_hsv }, border_radius, render::e_corner_flags::left);
+				render_interface->buffer.add_rect_filled_multicolor(hue_slider_rect.min, hue_slider_rect.min + math::round(segment_size), { hsv, next_hsv, hsv, next_hsv }, { hue_slider_computed.border_top_left_radius(), hue_slider_computed.border_bottom_left_radius(), render::e_corner_flags::left });
 			} else if(segment == 5) {
-				float border_radius{ std::max(hue_slider->GetComputedValues().border_top_right_radius(), hue_slider->GetComputedValues().border_bottom_right_radius()) };
-				render_interface->buffer.add_rect_filled_multicolor(rect_t{ hue_slider_rect.max, math::round(segment_size), e_rect_origin::bottom_right }, { hsv, next_hsv, hsv, next_hsv }, border_radius, render::e_corner_flags::right);
+				render_interface->buffer.add_rect_filled_multicolor(rect_t{ hue_slider_rect.max, math::round(segment_size), e_rect_origin::bottom_right }, { hsv, next_hsv, hsv, next_hsv }, { hue_slider_computed.border_top_right_radius(), hue_slider_computed.border_bottom_right_radius(), render::e_corner_flags::right });
 			} else render_interface->buffer.add_rect_filled_multicolor(rect_t{ hue_slider_rect.min + vec2_t{ segment_size.x * segment, 0.f }, segment_size, e_rect_origin::top_left }, { hsv, next_hsv, hsv, next_hsv });
 		}
 
 		if(alpha_slider->IsVisible()) {
 			rect_t<float> alpha_slider_rect{ vec2_t<float>{ alpha_slider->GetAbsoluteOffset(Rml::Box::CONTENT) }, vec2_t<float>{ alpha_slider->GetBox().GetSize(Rml::Box::CONTENT) }, e_rect_origin::top_left };
-			float border_radius{ std::ranges::max({
-				hue_slider->GetComputedValues().border_top_left_radius(),
-				hue_slider->GetComputedValues().border_top_right_radius(),
-				hue_slider->GetComputedValues().border_bottom_left_radius(),
-				hue_slider->GetComputedValues().border_bottom_right_radius()
-			}) };
-			render_interface->buffer.add_rect_filled_multicolor(alpha_slider_rect, { color_t<int>::palette_t::white, color_t<int>{ build_color(), 255 }, color_t<int>::palette_t::white, color_t<int>{ build_color(), 255 } }, border_radius);
+			const Rml::ComputedValues& alpha_slider_computed{ picker_box->GetComputedValues() };
+			std::array<float, 4> alpha_slider_roundings{
+				alpha_slider_computed.border_top_left_radius(),
+				alpha_slider_computed.border_top_right_radius(),
+				alpha_slider_computed.border_bottom_left_radius(),
+				alpha_slider_computed.border_bottom_right_radius()
+			};
+			render_interface->buffer.add_rect_filled_multicolor(alpha_slider_rect, { color_t<int>::palette_t::white, color_t<int>{ build_color(), 255 }, color_t<int>::palette_t::white, color_t<int>{ build_color(), 255 } }, alpha_slider_roundings);
 		}
 
 		render_interface->buffer.add_cmd();
