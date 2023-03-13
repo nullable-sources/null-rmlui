@@ -17,6 +17,6 @@ namespace lua {
 		null::lua::shared_state.set_function("impl_minimize_window", [&]() { ShowWindow(ui::window.wnd_handle, SW_MINIMIZE); });
 		null::lua::shared_state.set_function("impl_close_window", []() { PostQuitMessage(0); });
 
-		Rml::Lua::Initialise(null::lua::shared_state);
+		null::rml::modules::lua::initialize(null::lua::shared_state);
 	}
 }

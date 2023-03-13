@@ -14,18 +14,20 @@ renderer, system and file interfaces for rmlui with with small extensions.
 * decorators
     * checkmark
 * elements
+    * colorpicker and colorpicker-box
     * multiselect
 
 # modules
 * lua
-    * default RmlUi lua module, requires null-lua to use or override lua include paths 
+    * RmlSolLua with little changes
 
 # examples
 ![screen](https://i.imgur.com/Y3lniql_d.webp?maxwidth=760&fidelity=grand)
 
 # credits
 [RmlUi](https://github.com/mikke89/RmlUi) \
-[ezEngine](https://github.com/ezEngine/ezEngine)
+[ezEngine](https://github.com/ezEngine/ezEngine) \
+[RmlSolLua](https://github.com/LoneBoco/RmlSolLua)
 
 # dependencies
 [null-render](https://github.com/nullptr-sources/null-render) \

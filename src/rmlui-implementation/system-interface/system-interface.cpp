@@ -68,4 +68,16 @@ namespace null::rml {
 			ImmReleaseContext(wnd_handle, himc);
 		}
 	}
+
+	bool c_system_interface::LogMessage(Rml::Log::Type log_type, const std::string& message) {
+		switch(log_type) {
+			case Rml::Log::LT_ALWAYS: { std::cout << "\033[1;47;30m[always | rmlui]\033[0m \x1B[37m" << message << "\033[0m" << std::endl; } break;
+			case Rml::Log::LT_ERROR: { std::cout << "\033[3;42;30m[error | rmlui]\033[0m \x1B[31m" << message << "\033[0m" << std::endl; } break;
+			case Rml::Log::LT_WARNING: { std::cout << "\033[3;43;30m[warning | rmlui]\033[0m \x1B[33m" << message << "\033[0m" << std::endl; } break;
+			case Rml::Log::LT_INFO: { std::cout << "\033[3;104;30m[info | rmlui]\033[0m \x1B[36m" << message << "\033[0m" << std::endl; } break;
+			case Rml::Log::LT_DEBUG: { std::cout << "\033[3;47;30m[debug | rmlui]\033[0m \x1B[37m" << message << "\033[0m" << std::endl; } break;
+			default: { return SystemInterface::LogMessage(log_type, message); } break;
+		}
+		return true;
+	}
 }

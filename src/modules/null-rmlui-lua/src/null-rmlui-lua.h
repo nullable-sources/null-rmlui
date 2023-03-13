@@ -1,6 +1,8 @@
-#pragma once
-#define RMLUI_STATIC_LIB
-#include <RmlUi/Lua.h>
-#include <RmlUi/IncludeLua.h>
-#include <RmlUi/LuaType.h>
-#include <RmlUi/Interpreter.h>
+﻿#pragma once
+#include <RmlUi/Core.h>
+#include <null-lua.h>
+
+namespace null::rml::modules::lua {
+    void initialize(sol::state_view& state_view);
+    void register_bindings(sol::state_view& state_view);
+}

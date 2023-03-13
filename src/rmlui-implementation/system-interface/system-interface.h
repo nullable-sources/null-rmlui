@@ -32,5 +32,7 @@ namespace null::rml {
 		void GetClipboardText(std::string& text) override;
 
 		void ActivateKeyboard(Rml::Vector2f caret_position, float line_height) override;
+
+		bool LogMessage(Rml::Log::Type log_type, const std::string& message) override;
 	}; inline std::unique_ptr<c_system_interface> system_interface{ };
 }
