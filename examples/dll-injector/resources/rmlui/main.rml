@@ -1,49 +1,102 @@
-﻿<rml>
-	<head>
-		<link type="text/css" href="<resource:rml> styles/main.rcss"/>
+<rml>
+    <head>
+        <link type="text/rcss" href="<resource:rml> styles/body.rcss"/>
+        <link type="text/rcss" href="<resource:rml> styles/main-window.rcss"/>
 
-		<link type="text/css" href="<resource:rml> styles/elements/titlebar.rcss"/>
-        <link type="text/css" href="<resource:rml> styles/elements/body-content.rcss"/>
-        <link type="text/css" href="<resource:rml> styles/elements/widget-wrapper.rcss"/>
-        <link type="text/css" href="<resource:rml> styles/elements/widgets/text-input.rcss"/>
-        <link type="text/css" href="<resource:rml> styles/elements/widgets/button.rcss"/>
-        <link type="text/css" href="<resource:rml> styles/elements/widgets/process-list.rcss"/>
-        <link type="text/css" href="<resource:rml> styles/elements/widgets/radio.rcss"/>
+        <link type="text/rcss" href="<resource:rml> styles/widgets/widgets.rcss"/>
+
+        <link type="text/rcss" href="<resource:rml> styles/widgets/titlebar.rcss"/>
+        <link type="text/rcss" href="<resource:rml> styles/widgets/group.rcss"/>
+
+        <link type="text/rcss" href="<resource:rml> styles/widgets/multiselect.rcss"/>
+        <link type="text/rcss" href="<resource:rml> styles/widgets/scrollbar.rcss"/>
+        <link type="text/rcss" href="<resource:rml> styles/widgets/process-list.rcss"/>
+        <link type="text/rcss" href="<resource:rml> styles/widgets/dll-list.rcss"/>
+
+        <link type="text/rcss" href="<resource:rml> styles/widgets/inputs/text.rcss"/>
+        <link type="text/rcss" href="<resource:rml> styles/widgets/inputs/radio.rcss"/>
 
         <script src="<resource:rml> scripts/main-script.lua"></script>
-	</head>
-	<body class="window" onload="get_process_list(document)">
-        <div id="titlebar" class="titlebar">
-            <handle move_target>
-                <p>example injector</p>
-            </handle>
-            <div class="title-buttons-wrapper">
-                <button class="title-button" onclick="impl_minimize_window()">-</button>
-                <button class="title-button" onclick="impl_close_window()">X</button>
+        <script src="<resource:rml> scripts/dll-list.lua"></script>
+        <script src="<resource:rml> scripts/filter-processes.lua"></script>
+        <script src="<resource:rml> scripts/fill-processes.lua"></script>
+    </head>
+    <body class="main-window" onload="on_load(document)">
+        <div class="titlebar" id="titlebar">
+            <div class="titlebar-name-container">
+                <handle move_target class="titlebar-name-content">
+                    <span style="color: rgb(255, 255, 255)">null</span>
+                    <span style="color: rgb(140, 140, 255)">injector</span>
+                </handle>
+            </div>
+            <div class="titlebar-content-container">
+                <div class="titlebar-buttons-content">
+                    <span id="build-architecture" style="color: rgb(50, 50, 50)"></span>
+                    <button class="titlebar" id="collapse" onclick="sdk.collapse()">_</button>
+                    <button class="titlebar" id="close" onclick="sdk.close()">X</button>
+                </div>
             </div>
         </div>
-        <div class="body-content">
-            <div class="body-column">
-                <div class="widget-wrapper">
-                    <label for="filter">name filter</label>
-                    <input id="filter" type="text" onchange="filter(document, element)"/>
-                </div>
-                <div class="widget-wrapper">
-                    <div class="process-list">
-                        <form id="process-form">
-                        </form>
+        <div class="body">
+            <div class="column" id="processes">
+                <div class="widget-container">
+                    <div class="widget-name">
+                        <div class="widget-name-content">
+                            <span>name</span>
+                        </div>
+                    </div>
+                    <div class="widget-content">
+                        <input type="text" onchange="update_name_filter(document, element, event)"/>
                     </div>
                 </div>
-                <div class="widget-wrapper">
-                    <button class="widget" onclick="get_process_list(document)">update</button>
+                <div class="widget-container">
+                    <div class="widget-name">
+                        <div class="widget-name-content">
+                            <span>filters</span>
+                        </div>
+                    </div>
+                    <div class="widget-content">
+                        <multiselect name="subjdect" id="multiselect" onchange="update_type_and_architecture_filter(document, element)">
+                            <option value="application">application</option>
+                            <option value="background">background</option>
+                            <option value="x64">x64</option>
+                            <option value="x86">x86</option>
+                        </multiselect>
+                    </div>
+                </div>
+                <div class="process-list">
+                    <form id="process-form">
+                    </form>
+
+                    <div class="statistic-container">
+                        <button id="update-processes" onclick="fill_processes(document)">update</button>
+                        <div>
+                            <span id="showed">showed: </span>
+                            <span id="showed-value"></span>
+                        </div>
+                        <div>
+                            <span id="finded">finded: </span>
+                            <span id="finded-value"></span>
+                        </div>
+                        <div>
+                            <span id="all">all: </span>
+                            <span id="all-value"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="body-column">
-                <div class="widget-wrapper">
-                    <button class="widget" onclick="select_dll()">select dll</button>
+            <div class="column">
+                <div class="dll-list">
+                    <form id="dll-form">
+                    </form>
                 </div>
-                <div class="widget-wrapper">
-                    <button class="widget" onclick="inject()">inject</button>
+
+                <div class="dll-buttons">
+                    <div>
+                        <button onclick="add_dll(document)">add</button>
+                        <button onclick="remove_dll(document)">remove</button>
+                    </div>
+                    <button onclick="inject()">inject</button>
                 </div>
             </div>
         </div>

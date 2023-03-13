@@ -519,25 +519,25 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
-    <PublicIncludeDirectories>src\;third-party\RmlUi\RmlUi\Include;</PublicIncludeDirectories>
+    <PublicIncludeDirectories>src\;third-party\RmlUi\RmlUi\Include\;</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
-    <PublicIncludeDirectories>src\;third-party\RmlUi\RmlUi\Include;</PublicIncludeDirectories>
+    <PublicIncludeDirectories>src\;third-party\RmlUi\RmlUi\Include\;</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
-    <PublicIncludeDirectories>src\;third-party\RmlUi\;</PublicIncludeDirectories>
+    <PublicIncludeDirectories>src\;third-party\RmlUi\RmlUi\Include\;</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
-    <PublicIncludeDirectories>src\;third-party\RmlUi\;</PublicIncludeDirectories>
+    <PublicIncludeDirectories>src\;third-party\RmlUi\RmlUi\Include\;</PublicIncludeDirectories>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
     <ClCompile>
@@ -552,6 +552,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(ProjectDir)src\;$(ProjectDir)third-party\RmlUi\RmlUi\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -580,6 +581,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(ProjectDir)src\;$(ProjectDir)third-party\RmlUi\RmlUi\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -607,8 +609,9 @@
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\;$(ProjectDir)third-party\RmlUi\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\;$(ProjectDir)third-party\RmlUi\RmlUi\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -635,8 +638,9 @@
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\;$(ProjectDir)third-party\RmlUi\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\;$(ProjectDir)third-party\RmlUi\RmlUi\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>

@@ -15,11 +15,11 @@ namespace null::rml::modules::lua{
 		return pfr;
 	}
 
-	void c_document::LoadInlineScript(const std::string & content, const std::string & source_path, int source_line) {
+	void c_document::LoadInlineScript(const std::string& content, const std::string& source_path, int source_line) {
 		state_view.safe_script(std::format("--[{}][{}]:[{}]\n{}", GetContext()->GetName(), GetSourceURL(), source_line, content), environment, error_handler);
 	}
 
-	void c_document::LoadExternalScript(const std::string & source_path) {
+	void c_document::LoadExternalScript(const std::string& source_path) {
 		Rml::FileInterface* file_interface{ Rml::GetFileInterface() };
 		Rml::FileHandle handle{ file_interface->Open(source_path) };
 		if(handle == 0) {

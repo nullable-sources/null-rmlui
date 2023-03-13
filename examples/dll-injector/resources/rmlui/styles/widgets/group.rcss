@@ -1,0 +1,16 @@
+div.column {
+    display: inline-block;
+
+    box-sizing: border-box;
+
+    width: 220px;
+    height: 100%;
+    
+    background-color: rgb(19, 19, 19);
+
+    padding: 5px;
+
+    border-radius: 4px;
+}
+
+div.column#processes { width: 320px; }

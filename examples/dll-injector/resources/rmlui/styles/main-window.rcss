@@ -1,0 +1,9 @@
+body.main-window {    
+    width: 560px;
+    height: 300px;
+    
+    background-color: rgb(15, 15, 15);
+    border-radius: 4px;
+
+    font-family: Tahoma;
+}

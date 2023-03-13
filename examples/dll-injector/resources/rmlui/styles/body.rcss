@@ -1,0 +1,13 @@
+div.body {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 90%;
+
+    padding: 6px;
+}

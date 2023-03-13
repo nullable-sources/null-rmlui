@@ -22,7 +22,7 @@ renderer, system and file interfaces for rmlui with with small extensions.
     * RmlSolLua with little changes
 
 # examples
-![screen](https://i.imgur.com/Y3lniql_d.webp?maxwidth=760&fidelity=grand)
+![screen](https://i.imgur.com/nX18QpX.png)
 
 # credits
 [RmlUi](https://github.com/mikke89/RmlUi) \
