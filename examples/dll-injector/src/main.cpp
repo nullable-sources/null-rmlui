@@ -4,12 +4,11 @@
 
 #include "lua/lua.h"
 #include "ui/ui.h"
-
 int main() {
 #ifndef _DEBUG
 	ShowWindow(::GetConsoleWindow(), SW_HIDE);
 #endif
-	ui::window = null::renderer::c_window{ };
+	ui::window = null::render::backend::directx11::c_window{ };
 	ui::window.wnd_class.hIcon = (HICON)LoadImage(GetModuleHandleA(nullptr), L"icon.ico", IMAGE_ICON, 256, 256, LR_DEFAULTCOLOR);
 	ui::window.size = { 560, 300 };
 	ui::window.clear_color = { 0, 0 };
@@ -23,6 +22,10 @@ int main() {
 			ui::context->Update();
 			ui::context->Render();
 		} null::render::end_frame();
+
+		null::render::backend::renderer->begin_render();
+		null::rml::render_interface->render();
+		null::render::backend::renderer->end_render();
 		});
 
 	try {

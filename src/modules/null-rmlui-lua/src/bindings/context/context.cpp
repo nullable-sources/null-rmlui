@@ -88,7 +88,10 @@ namespace null::rml::modules::lua::context_bindings {
 			"process_mouse_move", &Rml::Context::ProcessMouseMove,
 			"process_mouse_button_down", &Rml::Context::ProcessMouseButtonDown,
 			"process_mouse_button_up", &Rml::Context::ProcessMouseButtonUp,
-			"process_mouse_wheel", &Rml::Context::ProcessMouseWheel,
+			"process_mouse_wheel", sol::overload(
+				[](Rml::Context& self, float wheel_delta, int key_modifier_state) { return self.ProcessMouseWheel(wheel_delta, key_modifier_state); },
+				[](Rml::Context& self, Rml::Vector2f wheel_delta, int key_modifier_state) { return self.ProcessMouseWheel(wheel_delta, key_modifier_state); }
+			),
 			"process_mouse_leave", &Rml::Context::ProcessMouseLeave,
 			"process_key_down", &Rml::Context::ProcessKeyDown,
 			"process_key_up", &Rml::Context::ProcessKeyUp,

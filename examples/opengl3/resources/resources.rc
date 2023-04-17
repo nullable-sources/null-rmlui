@@ -1,2 +1,3 @@
-#include <null-renderer-opengl3-resources.rc>
+#include <null-backend-opengl3-resources.rc>
+#include <null-rmlui-opengl3-resources.rc>
 #include <shared-resources.rc>

@@ -3,21 +3,26 @@
 #include <null-rmlui.h>
 
 Rml::Context* context{ };
-null::renderer::c_window window{ };
+null::render::backend::directx9::c_window window{ };
 utils::c_cumulative_time_measurement frame_counter{ 60 };
 
 void main_loop() {
 	null::render::begin_frame(window); {
-		null::render::background.add_text(std::format("[ directx9 ] fps: {:3.0f}", 1.f / std::chrono::duration<float>{ frame_counter.representation() }.count()), { (float)window.get_window_size().x, 10.f }, { }, null::render::e_text_flags{ -null::render::e_text_flags::aligin_right | -null::render::e_text_flags::aligin_center_y | -null::render::e_text_flags::outline });
+		//null::render::background.add_text(std::format("[ directx9 ] fps: {:3.0f}", 1.f / std::chrono::duration<float>{ frame_counter.representation() }.count()), { (float)window.get_window_size().x, 10.f }, { }, null::render::e_text_flags{ -null::render::e_text_flags::aligin_right | -null::render::e_text_flags::aligin_center_y | -null::render::e_text_flags::outline });
+		null::render::foreground.add_text(std::format("[ directx11 ] fps: {:3.0f}", 1.f / std::chrono::duration<float>{ frame_counter.representation() }.count()), { 200, 10 }, { });
 
 		context->Update();
 		context->Render();
 	} null::render::end_frame();
+
+	null::render::backend::renderer->begin_render();
+	null::rml::render_interface->render();
+	null::render::backend::renderer->end_render();
 }
 
 
 int main() {
-	window = null::renderer::c_window{ };
+	window = null::render::backend::directx9::c_window{ };
 	window.size = { 1024, 768 };
 
 	window.callbacks.at<utils::win::e_window_callbacks::on_create>().add([&] { frame_counter.begin(); });
@@ -39,7 +44,7 @@ int main() {
 		null::rml::load_system_font();
 
 		if(!(context = Rml::CreateContext("main", window.size)))
-			throw std::runtime_error{ "Rml::CreateContext return nullptr" };
+			utils::logger.log(utils::e_log_type::error, "Rml::CreateContext return nullptr");
 
 		if(Rml::ElementDocument* document{ context->LoadDocument("<resource:rml> tutorial.rml") })
 			document->Show();

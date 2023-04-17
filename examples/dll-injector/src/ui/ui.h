@@ -1,9 +1,10 @@
 #pragma once
 #include <null-rmlui-renderer-directx11.h>
+#include <null-backend-directx11.h>
 #include <null-rmlui.h>
 
 namespace ui {
-	inline null::renderer::c_window window{ };
+	inline null::render::backend::directx11::c_window window{ };
 
 	inline Rml::Context* context{ };
 	inline Rml::ElementDocument* document{ };

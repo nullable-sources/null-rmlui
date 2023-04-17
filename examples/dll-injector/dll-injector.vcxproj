@@ -31,7 +31,7 @@
     <ProjectReference Include="..\..\src\modules\null-rmlui-lua\null-rmlui-lua.vcxproj">
       <Project>{dcfa6d9f-6602-42be-b54d-8b03885e2677}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\rmlui-implementation\render-interface\null-rmlui-renderer-directx11\null-rmlui-renderer-directx11.vcxproj">
+    <ProjectReference Include="..\..\src\rmlui-implementation\render-interfaces\null-rmlui-renderer-directx11\null-rmlui-renderer-directx11.vcxproj">
       <Project>{6086e27b-cad4-474c-8c53-89c5e1d49199}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\third-party\null-lua\null-lua.vcxproj">
@@ -40,7 +40,7 @@
     <ProjectReference Include="..\..\third-party\null-render\null-render.vcxproj">
       <Project>{4abcf635-9767-40f9-989e-f0cdf5fb68ae}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\third-party\null-render\src\renderer\null-renderer-directx11\null-renderer-directx11.vcxproj">
+    <ProjectReference Include="..\..\third-party\null-render\src\backends\null-backend-directx11\null-backend-directx11.vcxproj">
       <Project>{d51ad3ae-de95-488a-b202-a4192f685a59}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\third-party\null-sdk\null-sdk.vcxproj">

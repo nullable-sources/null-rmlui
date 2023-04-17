@@ -12,19 +12,23 @@ namespace null::rml {
 
 	void initialize() {
 		if(file_interface) Rml::SetFileInterface(file_interface.get());
-		else throw std::runtime_error{ "file_interface empty" };
+		else utils::logger.log(utils::e_log_type::error, "file_interface is empty.");
 
 		if(system_interface) Rml::SetSystemInterface(system_interface.get());
-		else throw std::runtime_error{ "system_interface" };
+		else utils::logger.log(utils::e_log_type::error, "system_interface is empty.");
 		
 		if(render_interface) Rml::SetRenderInterface(render_interface.get());
-		else throw std::runtime_error{ "render_interface empty" };
+		else utils::logger.log(utils::e_log_type::error, "system_interface is empty.");
 
-		if(!Rml::Initialise()) throw std::runtime_error{ "Rml::Initialise return false" };
+		render_interface->initialize();
+
+		if(!Rml::Initialise()) utils::logger.log(utils::e_log_type::error, "Rml::Initialise return false.");
 	}
 
 	void shutdown() {
 		Rml::Shutdown();
+
+		render_interface->shutdown();
 
 		render_interface.reset();
 		system_interface.reset();

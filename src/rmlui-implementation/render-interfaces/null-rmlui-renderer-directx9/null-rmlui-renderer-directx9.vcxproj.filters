@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d11addc5-089b-4237-a3dd-c21f8f81dcf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\impl">
+      <UniqueIdentifier>{bc90c303-2721-4b65-b863-5b75cd6a3bcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\impl\commands">
+      <UniqueIdentifier>{54096a98-a66e-4400-b5c1-295a69903ad1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\impl\mesh">
+      <UniqueIdentifier>{c7304932-bf9a-43f5-bb44-4fb0898b8371}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\impl\shaders">
+      <UniqueIdentifier>{eadd7532-ae76-448a-b858-73a33c180fb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\impl\shaders\compiled-objects">
+      <UniqueIdentifier>{bca343e1-6fc2-4689-816d-eb434ac0c7bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\impl\shaders\passthrough-color">
+      <UniqueIdentifier>{75e8eae8-83aa-4522-9a34-a893a5005062}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\impl\shaders\passthrough-texture">
+      <UniqueIdentifier>{5b79ca15-498a-45c3-bb57-2d794a15ba8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\impl\shaders\compiled-objects\passthrough">
+      <UniqueIdentifier>{3e7b25a2-3a9e-4214-9457-b94e01e959a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\impl\shaders\compiled-objects\passthrough\hlsl">
+      <UniqueIdentifier>{56daf3c0-813c-4ee3-9565-9ed5f6ad3817}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\impl\mesh\mesh.cpp">
+      <Filter>src\impl\mesh</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\null-rmlui-renderer-directx9.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\impl\mesh\mesh.h">
+      <Filter>src\impl\mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\impl\comands\commands.h">
+      <Filter>src\impl\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="src\impl\shaders\compiled-objects\passthrough\passthrough.h">
+      <Filter>src\impl\shaders\compiled-objects\passthrough</Filter>
+    </ClInclude>
+    <ClInclude Include="src\impl\shaders\passthrough-color\passthrough-color.h">
+      <Filter>src\impl\shaders\passthrough-color</Filter>
+    </ClInclude>
+    <ClInclude Include="src\impl\shaders\passthrough-texture\passthrough-texture.h">
+      <Filter>src\impl\shaders\passthrough-texture</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="src\impl\shaders\compiled-objects\passthrough\hlsl\passthrough.hlsl">
+      <Filter>src\impl\shaders\compiled-objects\passthrough\hlsl</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

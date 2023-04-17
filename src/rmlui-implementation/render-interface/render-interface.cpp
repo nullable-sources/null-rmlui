@@ -2,32 +2,29 @@
 #include <stb_image.h>
 
 #include <null-rmlui.h>
+#include <backend/renderer/renderer.h>
+#include <graphic/commands/clip-command/clip-command.h>
+#include <graphic/commands/matrix-command/matrix-command.h>
 
 namespace null::rml {
-    void i_render_interface::RenderGeometry(Rml::Vertex* vertices, int num_vertices, int* indices, int num_indices, const Rml::TextureHandle texture, const Rml::Vector2f& translation) {
-        buffer.cmd_buffer.back().texture = (void*)texture;
-
-        buffer.cmd_buffer.back().element_count += num_indices;
-        std::ranges::move(std::vector<std::uint32_t>{ indices, indices + num_indices }, std::back_inserter(buffer.idx_buffer));
-        buffer.cmd_buffer.back().vtx_offset = buffer.vtx_buffer.size();
-
-        std::ranges::transform(std::vector<Rml::Vertex>{ vertices, vertices + num_vertices }, std::back_inserter(buffer.vtx_buffer), [&](const Rml::Vertex& vertex) {
-            return null::render::vertex_t{ vertex.position + translation, vertex.tex_coord, vertex.colour };
-            });
-
-        buffer.add_cmd();
-    }
-
-    void i_render_interface::EnableScissorRegion(bool enable) {
-        buffer.cmd_buffer.back().callbacks.at<null::render::e_cmd_callbacks::on_draw>().set([this, enable](null::render::c_geometry_buffer::cmd_t&) {
-            enable_scissor_region(enable);
-            return false;
-            });
-        buffer.add_cmd();
-    }
-
     void i_render_interface::SetScissorRegion(int x, int y, int width, int height) {
-        buffer.push_clip_rect(rect_t{ vec2_t{ x, y }, vec2_t{ width, height }, null::e_rect_origin::top_left });
+        draw_list.add_command(std::make_unique<null::render::commands::c_clip>(rect_t<float>{ (float)x, (float)y, (float)x + (float)width, (float)y + (float)height }));
+    }
+    
+    void i_render_interface::EnableScissorRegion(bool enable) {
+        draw_list.add_command(instatnce_clip_enable_command(enable));
+    }
+
+    void i_render_interface::SetTransform(const Rml::Matrix4f* transform) {
+        matrix4x4_t matrix{ render::backend::renderer->get_projection_matrix() };
+        if(transform) matrix *= matrix4x4_t{ *(std::array<float, 16>*)transform->data() };
+        draw_list.add_command(std::make_unique<render::commands::c_matrix>(matrix));
+    }
+
+    void i_render_interface::RenderGeometry(Rml::Vertex* vertices, int num_vertices, int* indices, int num_indices, Rml::TextureHandle texture, const Rml::Vector2f& translation) {
+        draw_list.add_command(instance_geometry_command(num_indices, num_vertices, translation, texture));
+        renderer::impl::mesh->geometry_buffer.add_vertex_buffer({ vertices, (size_t)num_vertices });
+        renderer::impl::mesh->geometry_buffer.add_index_buffer({ indices, (size_t)num_indices });
     }
 
     bool i_render_interface::LoadTexture(Rml::TextureHandle& texture_handle, Rml::Vector2i& texture_dimensions, const std::string& source) {
@@ -40,19 +37,42 @@ namespace null::rml {
 
         std::uint8_t* data{ stbi_load_from_memory(file_data.data(), file_data.size(), &texture_dimensions.x, &texture_dimensions.y, nullptr, 4) };
 
-        if(!GenerateTexture(texture_handle, data, texture_dimensions))
-            throw std::runtime_error{ "cant generate texture from file" };
+        GenerateTexture(texture_handle, data, texture_dimensions);
 
         stbi_image_free(data);
 
         return true;
     }
 
-    void i_render_interface::SetTransform(const Rml::Matrix4f* transform) {
-        buffer.cmd_buffer.back().callbacks.at<null::render::e_cmd_callbacks::on_draw>().set([this, transform](null::render::c_geometry_buffer::cmd_t&) {
-            set_transform(transform ? matrix4x4_t{ *(std::array<float, 16>*)transform->data() } : matrix4x4_t::identity());
-            return false;
-            });
-        buffer.add_cmd();
+    bool i_render_interface::GenerateTexture(Rml::TextureHandle& texture_handle, const byte* source, const Rml::Vector2i& source_dimensions) {
+        texture_handle = (Rml::TextureHandle)render::backend::renderer->create_texture({ (float)source_dimensions.x, (float)source_dimensions.y }, (void*)source);
+        return true;
+    }
+
+    void i_render_interface::ReleaseTexture(Rml::TextureHandle texture) {
+        render::backend::renderer->destroy_texture((void*)texture);
+    }
+
+    void i_render_interface::initialize() {
+        renderer::impl::mesh = instance_mesh();
+
+        renderer::impl::shaders::passthrough_color = instance_passthrough_color_shader();
+        renderer::impl::shaders::passthrough_texture = instance_passthrough_texture_shader();
+    }
+
+    void i_render_interface::shutdown() {
+        renderer::impl::mesh->destroy();
+    }
+
+    void i_render_interface::render() {
+        renderer::impl::mesh->create();
+
+        renderer::impl::mesh->compile();
+
+        draw_list.handle();
+        draw_list.clear();
+
+        renderer::impl::mesh->clear_geometry();
+        render::backend::renderer->setup_state();
     }
 }

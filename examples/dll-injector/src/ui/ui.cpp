@@ -24,7 +24,7 @@ namespace ui {
 
 	void initialize() {
 		if(!(context = Rml::CreateContext("main", window.size)))
-			throw std::runtime_error{ "Rml::CreateContext return nullptr" };
+			utils::logger.log(utils::e_log_type::error, "Rml::CreateContext return nullptr");
 
 		if(document = context->LoadDocument("<resource:rml> main.rml")) {
 			document->Show();
