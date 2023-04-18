@@ -47,22 +47,22 @@
     <ClInclude Include="src\Geometry.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Header.h">
+    <ClInclude Include="src\Header.hpp">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\InfoSource.h">
+    <ClInclude Include="src\InfoSource.hpp">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\LogSource.h">
+    <ClInclude Include="src\LogSource.hpp">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\MenuSource.h">
+    <ClInclude Include="src\MenuSource.hpp">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\BeaconSource.h">
+    <ClInclude Include="src\BeaconSource.hpp">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\CommonSource.h">
+    <ClInclude Include="src\CommonSource.hpp">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Debugger.h">

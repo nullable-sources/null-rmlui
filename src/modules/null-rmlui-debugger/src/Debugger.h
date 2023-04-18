@@ -29,7 +29,7 @@
 #ifndef RMLUI_DEBUGGER_DEBUGGER_H
 #define RMLUI_DEBUGGER_DEBUGGER_H
 
-#include "Header.h"
+#include "Header.hpp"
 
 namespace Rml {
 

@@ -27,9 +27,9 @@
  */
 
 #include "ElementLog.h"
-#include "CommonSource.h"
-#include "BeaconSource.h"
-#include "LogSource.h"
+#include "CommonSource.hpp"
+#include "BeaconSource.hpp"
+#include "LogSource.hpp"
 #include <RmlUi/Core/Context.h>
 #include <RmlUi/Core/Factory.h>
 #include <limits.h>

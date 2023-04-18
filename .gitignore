@@ -2,6 +2,8 @@ build/
 .vs/
 *.user
 
+examples/opengl3/glfw/GLFW
+
 src/rmlui-implementation/render-interfaces/null-rmlui-renderer-directx11/src/impl/shaders/compiled-objects/passthrough/compiled
 src/rmlui-implementation/render-interfaces/null-rmlui-renderer-directx9/src/impl/shaders/compiled-objects/passthrough/compiled
 
