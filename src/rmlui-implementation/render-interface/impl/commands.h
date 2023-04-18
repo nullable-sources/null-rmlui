@@ -6,6 +6,15 @@
 #include <backend/renderer/renderer.h>
 
 namespace null::rml::renderer::impl::commands {
+	//@note: use before starting drawing via i_render_interface::draw_list
+	class c_restore : public render::commands::i_command {
+	public:
+		void handle() override {
+			render::backend::mesh->set();
+			render::backend::shaders::passthrough_color->use();
+		}
+	};
+
 	class i_geometry : public render::commands::c_geometry {
 	public:
 		Rml::Vector2f translation{ };
@@ -30,13 +39,9 @@ namespace null::rml::renderer::impl::commands {
 				shaders::passthrough_color->set_translation(translation);
 				shaders::passthrough_color->use();
 			}
-
 			mesh->set();
 
 			render::backend::renderer->draw_geometry(vertex_count, index_count, vertex_offset, index_offset);
-
-			render::backend::mesh->set();
-			render::backend::shaders::passthrough_color->use();
 		}
 	};
 

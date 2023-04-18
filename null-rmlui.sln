@@ -41,6 +41,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-rmlui-renderer-directx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-rmlui-renderer-opengl3", "src\rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\null-rmlui-renderer-opengl3.vcxproj", "{64527024-E33C-4590-AC2D-EB2BF9C8225D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-rmlui-debugger", "src\modules\null-rmlui-debugger\null-rmlui-debugger.vcxproj", "{2EB1770E-753A-40B6-941C-ACC1DCCDB3D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		debug|x64 = debug|x64
@@ -169,6 +171,14 @@ Global
 		{64527024-E33C-4590-AC2D-EB2BF9C8225D}.release|x64.Build.0 = release|x64
 		{64527024-E33C-4590-AC2D-EB2BF9C8225D}.release|x86.ActiveCfg = release|Win32
 		{64527024-E33C-4590-AC2D-EB2BF9C8225D}.release|x86.Build.0 = release|Win32
+		{2EB1770E-753A-40B6-941C-ACC1DCCDB3D4}.debug|x64.ActiveCfg = debug|x64
+		{2EB1770E-753A-40B6-941C-ACC1DCCDB3D4}.debug|x64.Build.0 = debug|x64
+		{2EB1770E-753A-40B6-941C-ACC1DCCDB3D4}.debug|x86.ActiveCfg = debug|Win32
+		{2EB1770E-753A-40B6-941C-ACC1DCCDB3D4}.debug|x86.Build.0 = debug|Win32
+		{2EB1770E-753A-40B6-941C-ACC1DCCDB3D4}.release|x64.ActiveCfg = release|x64
+		{2EB1770E-753A-40B6-941C-ACC1DCCDB3D4}.release|x64.Build.0 = release|x64
+		{2EB1770E-753A-40B6-941C-ACC1DCCDB3D4}.release|x86.ActiveCfg = release|Win32
+		{2EB1770E-753A-40B6-941C-ACC1DCCDB3D4}.release|x86.Build.0 = release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -188,6 +198,7 @@ Global
 		{57FF0AC9-5ED6-4B00-96FE-D44F6F05A3A5} = {E29A7E9A-A5AD-4262-ABF4-F407CA66C3B8}
 		{6086E27B-CAD4-474C-8C53-89C5E1D49199} = {E29A7E9A-A5AD-4262-ABF4-F407CA66C3B8}
 		{64527024-E33C-4590-AC2D-EB2BF9C8225D} = {E29A7E9A-A5AD-4262-ABF4-F407CA66C3B8}
+		{2EB1770E-753A-40B6-941C-ACC1DCCDB3D4} = {5697427B-E446-4462-8455-0F5774011E14}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8D2E0DD0-212D-4DB5-A7FE-90DB0305BDA7}

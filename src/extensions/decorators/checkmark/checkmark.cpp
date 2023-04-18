@@ -43,6 +43,7 @@ namespace null::rml::extensions::decorators {
 		data_t* data{ (data_t*)element_data };
 		vec2_t element_position{ element->GetAbsoluteOffset(Rml::Box::BORDER) };
 
+		render_interface->draw_list.add_command(std::make_unique<null::rml::renderer::impl::commands::c_restore>());
 		render_interface->draw_list.add_poly_line(
 			{ data->kick + element_position, data->start + element_position, data->stem + element_position },
 			null::render::stroke_t{ }.set_thickness(style.thickness),

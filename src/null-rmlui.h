@@ -1,8 +1,4 @@
 #pragma once
-#if _DEBUG
-	#include <RmlUi/Debugger.h>
-#endif
-
 #include <RmlUi/Core.h>
 
 #include <rmlui-implementation/backend/backend.h>

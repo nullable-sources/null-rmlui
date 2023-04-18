@@ -42,7 +42,7 @@ namespace null::rml::renderer::directx11::impl {
 			if(index_buffer) { index_buffer->Release(); index_buffer = nullptr; }
 			index_buffer_size = geometry_buffer.index_buffers_size + 10000;
 			D3D11_BUFFER_DESC buffer_desc{
-				.ByteWidth{ index_buffer_size * sizeof(Rml::Vertex) },
+				.ByteWidth{ index_buffer_size * sizeof(int) },
 				.Usage{ D3D11_USAGE_DYNAMIC },
 				.BindFlags{ D3D11_BIND_INDEX_BUFFER },
 				.CPUAccessFlags{ D3D11_CPU_ACCESS_WRITE },

@@ -52,6 +52,9 @@ int main() {
 		if(!(context = Rml::CreateContext("main", window.size)))
 			utils::logger.log(utils::e_log_type::error, "Rml::CreateContext return nullptr");
 
+		Rml::Debugger::Initialise(context);
+		Rml::Debugger::SetVisible(true);
+
 		if(Rml::ElementDocument* document{ context->LoadDocument("<resource:rml> tutorial.rml") })
 			document->Show();
 		

@@ -2,29 +2,19 @@
 #include <null-rmlui-renderer-directx11.h>
 #include <null-rmlui.h>
 #include <null-backend-directx11.h>
+#include <Debugger.h>
 Rml::Context* context{ };
 null::render::backend::directx11::c_window window{ };
 utils::c_cumulative_time_measurement frame_counter{ 60 };
 
 void main_loop() {
 	null::render::begin_frame(window); {
-		//null::render::background.add_text(std::format("[ directx11 ] fps: {:3.0f}", 1.f / std::chrono::duration<float>{ frame_counter.representation() }.count()), { (float)window.get_window_size().x, 10.f }, { }, null::render::e_text_flags{ -null::render::e_text_flags::aligin_right | -null::render::e_text_flags::aligin_center_y | -null::render::e_text_flags::outline });
-		
 		context->Update();
 		context->Render();
-
-		null::render::brush_t brush{ };
-		brush.set_color({ 100, 100, 255 });
-
-		null::render::background.add_convex_shape(
-			null::render::path::make_rect({ 290, 50 }, { 390, 100 }),
-			brush
-		);
 	} null::render::end_frame();
 
 	null::render::backend::renderer->begin_render();
-	null::rml::render_interface->draw_list.handle();
-	null::rml::render_interface->draw_list.clear();
+	null::rml::render_interface->render();
 	null::render::backend::renderer->end_render();
 }
 
@@ -52,6 +42,9 @@ int main() {
 
 		if(!(context = Rml::CreateContext("main", window.size)))
 			utils::logger.log(utils::e_log_type::error, "Rml::CreateContext return nullptr");
+
+		Rml::Debugger::Initialise(context);
+		Rml::Debugger::SetVisible(true);
 
 		if(Rml::ElementDocument* document{ context->LoadDocument("<resource:rml> tutorial.rml") })
 			document->Show();

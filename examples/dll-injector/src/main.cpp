@@ -2,8 +2,10 @@
 #pragma comment(lib, "dwmapi.lib")
 #include <dwmapi.h>
 
+
 #include "lua/lua.h"
 #include "ui/ui.h"
+utils::c_cumulative_time_measurement frame_counter{ 60 };
 int main() {
 #ifndef _DEBUG
 	ShowWindow(::GetConsoleWindow(), SW_HIDE);
@@ -15,6 +17,9 @@ int main() {
 	ui::window.wnd_class.style = 0x2;
 	ui::window.styles = WS_POPUP;
 
+	ui::window.callbacks.at<utils::win::e_window_callbacks::on_create>().add([&] { frame_counter.begin(); });
+	ui::window.callbacks.at<utils::win::e_window_callbacks::on_main_loop>().add([&] { frame_counter.update(); });
+
 	ui::window.callbacks.at<utils::win::e_window_callbacks::on_wnd_proc>().add([&](HWND hwnd, UINT msg, WPARAM w_param, LPARAM l_param) { return null::rml::backend::wnd_proc(ui::context, hwnd, msg, w_param, l_param); });
 	ui::window.callbacks.at<utils::win::e_window_callbacks::on_wnd_proc>().add([](HWND, UINT msg, WPARAM, LPARAM) { if(msg == WM_SIZE) Rml::ReleaseTextures(); return -1; });
 	ui::window.callbacks.at<utils::win::e_window_callbacks::on_main_loop>().add([&]() {
@@ -22,6 +27,8 @@ int main() {
 			ui::context->Update();
 			ui::context->Render();
 		} null::render::end_frame();
+
+		null::render::foreground.add_text(std::format("[ directx11 ] fps: {:3.0f}", 1.f / std::chrono::duration<float>{ frame_counter.representation() }.count()), { }, { });
 
 		null::render::backend::renderer->begin_render();
 		null::rml::render_interface->render();

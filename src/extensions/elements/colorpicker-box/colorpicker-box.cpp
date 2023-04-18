@@ -143,6 +143,8 @@ namespace null::rml::extensions::elements {
 	void c_widget_colorpicker_box::on_render() {
 		if(update_picker_and_preview) on_update();
 
+		render_interface->draw_list.add_command(std::make_unique<null::rml::renderer::impl::commands::c_restore>());
+
 		const Rml::ComputedValues& picker_box_computed{ picker_box->GetComputedValues() };
 		std::array<float, 4> picker_box_roundings{
 			picker_box_computed.border_top_left_radius(),
