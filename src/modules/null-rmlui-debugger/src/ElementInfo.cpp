@@ -38,8 +38,8 @@
 #include <RmlUi/Core/SystemInterface.h>
 #include <RmlUi/Core/PropertyDefinition.h>
 #include "Geometry.h"
-#include "CommonSource.hpp"
-#include "InfoSource.hpp"
+#include "CommonSource.h"
+#include "InfoSource.h"
 #include <algorithm>
 
 namespace Rml {

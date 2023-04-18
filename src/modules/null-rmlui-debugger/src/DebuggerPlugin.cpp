@@ -38,7 +38,7 @@
 #include "ElementLog.h"
 #include "FontSource.h"
 #include "Geometry.h"
-#include "MenuSource.hpp"
+#include "MenuSource.h"
 #include "DebuggerSystemInterface.h"
 #include <stack>
 

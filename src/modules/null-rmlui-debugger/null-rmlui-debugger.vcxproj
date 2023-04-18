@@ -39,8 +39,8 @@
     <ClCompile Include="src\Geometry.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\BeaconSource.hpp" />
-    <ClInclude Include="src\CommonSource.hpp" />
+    <ClInclude Include="src\BeaconSource.h" />
+    <ClInclude Include="src\CommonSource.h" />
     <ClInclude Include="src\Debugger.h" />
     <ClInclude Include="src\DebuggerPlugin.h" />
     <ClInclude Include="src\DebuggerSystemInterface.h" />
@@ -49,10 +49,10 @@
     <ClInclude Include="src\ElementLog.h" />
     <ClInclude Include="src\FontSource.h" />
     <ClInclude Include="src\Geometry.h" />
-    <ClInclude Include="src\Header.hpp" />
-    <ClInclude Include="src\InfoSource.hpp" />
-    <ClInclude Include="src\LogSource.hpp" />
-    <ClInclude Include="src\MenuSource.hpp" />
+    <ClInclude Include="src\Header.h" />
+    <ClInclude Include="src\InfoSource.h" />
+    <ClInclude Include="src\LogSource.h" />
+    <ClInclude Include="src\MenuSource.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\LICENSE.txt" />
