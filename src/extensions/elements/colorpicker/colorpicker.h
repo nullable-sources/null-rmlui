@@ -4,60 +4,41 @@
 #include <null-sdk.h>
 
 namespace null::rml::extensions::elements {
-	class c_element_form_control_colorpicker_box;
-	class c_widget_colorpicker : public Rml::EventListener {
+	//@note: you style the necessary colorpicker yourself, an example will be later
+	class i_widget_colorpicker : public Rml::EventListener {
 	protected:
 		Rml::ElementFormControl* parent_element{ };
 
-		c_element_form_control_colorpicker_box* colorpicker_box{ };
+		Rml::Element* canvas{ }, *indicator{ }; //@note: indicator should not be part of DOM
 
-		bool color_dirty{ };
-		bool box_layout_dirty{ };
+		Rml::Element* preview{ };
+
+		Rml::Element* hue_slider{ }, *alpha_slider{ };
+		Rml::Element* value_input{ }, *copy_button{ }, *paste_button{ }; //@note: these elements are optional, but there is functionality for them, so just create them to use
+
+		bool value_dirty{ true }, value_from_input{ };
 		bool lock_value{ };
-		bool box_visible{ };
 
-	public:
-		c_widget_colorpicker(Rml::ElementFormControl* element);
-		virtual ~c_widget_colorpicker();
+	protected:
+		virtual void add_events();
+		virtual void remove_events();
+
+		virtual void update_colors(const color_t<int>& color) { } //@note: here you update the colors of the elements you need, such as preview, canvas, shoe slider, alpha slider, etc.
 
 	public:
 		void on_update();
-		void on_render();
-		void on_layout();
 
 		void ProcessEvent(Rml::Event& event) override;
 
-		void on_value_change(const std::string& value);
+		void on_value_change(const std::string_view& value);
+
+		color_t<int> build_color() const { return color_t<int>{ hsv_color_t{ hue_slider->GetAttribute("value", 0.f), canvas->GetAttribute("saturation", 0.f), canvas->GetAttribute("brightness", 0.f), alpha_slider->GetAttribute("value", 0.f) } }; }
+		std::string build_color_to_string() const {
+			color_t<int> color{ build_color() };
+			return std::format("#{:02X}{:02X}{:02X}{:02X}", color.r, color.g, color.b, color.a);
+		}
 
 	private:
-		void show_colorpicker_box(const bool& show);
 		void update_value();
-	};
-
-	class c_element_form_control_colorpicker : public Rml::ElementFormControl {
-	public:
-		static inline Rml::ElementInstancerGeneric<c_element_form_control_colorpicker> instancer{ };
-
-		static void register_instancer() { Rml::Factory::RegisterElementInstancer("colorpicker", &instancer); }
-
-	protected:
-		c_widget_colorpicker* widget{ };
-
-	public:
-		c_element_form_control_colorpicker(const std::string& tag) : Rml::ElementFormControl{ tag }, widget{ new c_widget_colorpicker{ this } } { }
-		virtual ~c_element_form_control_colorpicker() { delete widget; }
-
-	public:
-		std::string GetValue() const override { return GetAttribute("value", std::string{ }); }
-		void SetValue(const std::string& value) override { SetAttribute("value", value); }
-
-	protected:
-		void OnLayout() override { widget->on_layout(); }
-		void OnRender() override { Rml::ElementFormControl::OnRender(); widget->on_render(); }
-		void OnUpdate() override { Rml::ElementFormControl::OnUpdate(); widget->on_update(); }
-
-		bool GetIntrinsicDimensions(Rml::Vector2f& intrinsic_dimensions, float& intrinsic_ratio) override { intrinsic_dimensions = { 16, 16 }; intrinsic_ratio = 1; return true; }
-
-		void OnAttributeChange(const Rml::ElementAttributes& changed_attributes) override;
 	};
 }

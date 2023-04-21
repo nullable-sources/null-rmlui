@@ -11,10 +11,12 @@ third-party/null-render/src/backends/null-backend-directx9/src/shaders/compiled-
 third-party/null-render/src/backends/null-backend-directx9/src/shaders/compiled-objects/passthrough-color/compiled
 third-party/null-render/src/backends/null-backend-directx9/src/shaders/compiled-objects/passthrough-texture/compiled
 third-party/null-render/src/backends/null-backend-directx9/src/shaders/compiled-objects/quad-gradient/compiled
+third-party/null-render/src/backends/null-backend-directx9/src/shaders/compiled-objects/linear-gradient/compiled
 third-party/null-render/src/backends/null-backend-directx9/src/shaders/compiled-objects/sdf/compiled
 
 third-party/null-render/src/backends/null-backend-directx11/src/shaders/compiled-objects/passthrough/compiled
 third-party/null-render/src/backends/null-backend-directx11/src/shaders/compiled-objects/passthrough-color/compiled
 third-party/null-render/src/backends/null-backend-directx11/src/shaders/compiled-objects/passthrough-texture/compiled
 third-party/null-render/src/backends/null-backend-directx11/src/shaders/compiled-objects/quad-gradient/compiled
+third-party/null-render/src/backends/null-backend-directx11/src/shaders/compiled-objects/linear-gradient/compiled
 third-party/null-render/src/backends/null-backend-directx11/src/shaders/compiled-objects/sdf/compiled
