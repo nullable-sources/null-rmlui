@@ -93,13 +93,10 @@ namespace null::rml::extensions::elements {
 	}
 
 	void i_widget_colorpicker::on_value_change(const std::string_view& value) {
-		if(!lock_value) {
-			std::vector<int> color{ };
-			if(value.starts_with("#") && 7 >= value.size() <= 9) {
-				color = value | std::views::drop(1) | std::views::chunk(2) | std::views::transform([](const auto& range) { return (int)std::strtoul(std::string{ range.begin(), range.end() }.c_str(), nullptr, 16); }) | std::ranges::to<std::vector>();
-			}
+		if(!lock_value && value.starts_with("#") && 7 >= value.size() <= 9) {
+			std::vector<int> color{ value | std::views::drop(1) | std::views::chunk(2) | std::views::transform([](const auto& range) { return (int)std::strtoul(std::string{ range.begin(), range.end() }.c_str(), nullptr, 16); }) | std::ranges::to<std::vector>() };
 
-			hsv_color_t hsv{ color_t<float>{ color } };
+			hsv_color_t hsv{ color_t<int>{ color } };
 			hue_slider->SetAttribute("value", hsv.h);
 			canvas->SetAttribute("saturation", hsv.s);
 			canvas->SetAttribute("brightness", hsv.v);

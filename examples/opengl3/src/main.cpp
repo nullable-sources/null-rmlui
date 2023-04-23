@@ -3,6 +3,7 @@
 #include <null-rmlui-renderer-opengl3.h>
 #include <null-backend-opengl3.h>
 #include <null-rmlui.h>
+#include <Debugger.h>
 #include <Windows.h>
 
 WNDPROC old_wnd_proc{ };

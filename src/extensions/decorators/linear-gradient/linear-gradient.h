@@ -72,7 +72,8 @@ namespace null::rml::extensions::decorators {
 			radians_t angle{ };
 			std::vector<std::pair<color_t<int>, float>> stops{ };
 
-			std::vector<vec2_t<float>> path{ };
+			rect_t<float> box{ };
+			null::render::path::rounding_t rounding{ };
 		};
 
 	public:

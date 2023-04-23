@@ -28,6 +28,9 @@
     <ProjectReference Include="..\..\null-rmlui.vcxproj">
       <Project>{220d4d11-15cc-489d-8d93-58cfe85348bd}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\modules\null-rmlui-debugger\null-rmlui-debugger.vcxproj">
+      <Project>{2eb1770e-753a-40b6-941c-acc1dccdb3d4}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\null-rmlui-renderer-opengl3.vcxproj">
       <Project>{64527024-e33c-4590-ac2d-eb2bf9c8225d}</Project>
     </ProjectReference>
@@ -126,7 +129,7 @@
       <AdditionalLibraryDirectories>glfw/libs/</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-backend-opengl3\resources;$(SolutionDir)rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-backend-opengl3\resources;$(SolutionDir)src\rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
@@ -150,7 +153,7 @@
       <AdditionalLibraryDirectories>glfw/libs/</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-backend-opengl3\resources;$(SolutionDir)rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-backend-opengl3\resources;$(SolutionDir)src\rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
@@ -170,7 +173,7 @@
       <AdditionalLibraryDirectories>glfw/libs/</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-backend-opengl3\resources;$(SolutionDir)rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-backend-opengl3\resources;$(SolutionDir)src\rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
@@ -194,7 +197,7 @@
       <AdditionalLibraryDirectories>glfw/libs/</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-backend-opengl3\resources;$(SolutionDir)rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-backend-opengl3\resources;$(SolutionDir)src\rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

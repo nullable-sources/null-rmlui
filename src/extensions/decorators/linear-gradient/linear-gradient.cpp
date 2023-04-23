@@ -66,7 +66,8 @@ namespace null::rml::extensions::decorators {
 		return (Rml::DecoratorDataHandle)new data_t{
 			style.angle,
 			std::views::zip(style.colors, style.stops) | std::views::take(style.num_stops) | std::views::transform([](std::tuple<const color_t<int>&, const float&> tuple) { return std::pair{ std::get<const color_t<int>&>(tuple), std::get<const float&>(tuple) * 0.01f }; }) | std::ranges::to<std::vector>(),
-			render::path::make_rect(border + padding_position, border + padding_position + padding_size, { computed.border_top_left_radius(), computed.border_top_right_radius(), computed.border_bottom_left_radius(), computed.border_bottom_right_radius() })
+			{ padding_position, padding_position + padding_size },
+			{ computed.border_top_left_radius(), computed.border_top_right_radius(), computed.border_bottom_left_radius(), computed.border_bottom_right_radius() }
 		};
 	}
 
@@ -76,7 +77,7 @@ namespace null::rml::extensions::decorators {
 		const Rml::ComputedValues& computed{ element->GetComputedValues() };
 		render_interface->draw_list.add_command(std::make_unique<null::rml::renderer::impl::commands::c_restore>());
 		render_interface->draw_list.add_convex_shape(
-			data->path,
+			render::path::make_rect(data->box + (vec2_t<float>)element->GetAbsoluteOffset(Rml::Box::BORDER), data->rounding),
 			null::render::linear_gradient_brush_t{ }
 				.set_color({ 255, 255, 255, int(computed.opacity() * 255.f) })
 				.set_angle(data->angle)

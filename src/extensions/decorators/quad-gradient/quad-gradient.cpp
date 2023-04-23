@@ -19,12 +19,12 @@ namespace null::rml::extensions::decorators {
 
 		const Rml::Vector2f padding_size{ box.GetSize(Rml::Box::PADDING).Round() };
 		const Rml::Vector2f padding_position{ Rml::Math::RoundFloat(box.GetEdge(Rml::Box::BORDER, Rml::Box::Edge::LEFT)), Rml::Math::RoundFloat(box.GetEdge(Rml::Box::BORDER, Rml::Box::Edge::TOP)) };
-		const Rml::Vector2f border{ element->GetAbsoluteOffset(Rml::Box::BORDER) };
 
 		const Rml::ComputedValues& computed{ element->GetComputedValues() };
 		return (Rml::DecoratorDataHandle)new data_t{
 			{ style.color_tl, style.color_tr, style.color_bl, style.color_br },
-			render::path::make_rect(border + padding_position, border + padding_position + padding_size, { computed.border_top_left_radius(), computed.border_top_right_radius(), computed.border_bottom_left_radius(), computed.border_bottom_right_radius() })
+			{ padding_position, padding_position + padding_size },
+			{ computed.border_top_left_radius(), computed.border_top_right_radius(), computed.border_bottom_left_radius(), computed.border_bottom_right_radius() }
 		};
 	}
 
@@ -34,7 +34,7 @@ namespace null::rml::extensions::decorators {
 		const Rml::ComputedValues& computed{ element->GetComputedValues() };
 		render_interface->draw_list.add_command(std::make_unique<null::rml::renderer::impl::commands::c_restore>());
 		render_interface->draw_list.add_convex_shape(
-			data->path,
+			render::path::make_rect(data->box + (vec2_t<float>)element->GetAbsoluteOffset(Rml::Box::BORDER), data->rounding),
 			null::render::quad_gradient_brush_t{ }
 				.set_color({ 255, 255, 255, int(computed.opacity() * 255.f) })
 				.set_colors(data->colors)
