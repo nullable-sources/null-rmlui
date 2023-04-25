@@ -217,18 +217,23 @@ namespace null::rml::modules::lua::global_bindings {
 			{ "target_and_bubble", Rml::DefaultActionPhase::TargetAndBubble }
 		});
 		
-		rmlui.set("create_context", &Rml::CreateContext);
-		rmlui.set("load_font_face", sol::overload(
+		rmlui.set_function("create_context", &Rml::CreateContext);
+		rmlui.set_function("load_font_face", sol::overload(
 			[](const std::string& file) { return Rml::LoadFontFace(file); },
 			[](const std::string& file, bool fallback) { return Rml::LoadFontFace(file, fallback); },
 			[](const std::string& file, bool fallback, Rml::Style::FontWeight weight) { return Rml::LoadFontFace(file, fallback, weight); }
 		));
-		rmlui.set("get_context", sol::resolve<Rml::Context* (const std::string&)>(&Rml::GetContext));
-		rmlui.set("register_event_type", sol::overload(
+		rmlui.set_function("get_context", sol::overload(
+			[](const std::string& name) { return Rml::GetContext(name); },
+			[](const int& id) { return Rml::GetContext(id); }
+		));
+
+		rmlui.set_function("register_event_type", sol::overload(
 			[](const std::string& type, bool interruptible, bool bubbles, Rml::DefaultActionPhase default_action_phase) { return Rml::RegisterEventType(type, interruptible, bubbles, default_action_phase); },
 			[](const std::string& type, bool interruptible, bool bubbles) { return Rml::RegisterEventType(type, interruptible, bubbles, Rml::DefaultActionPhase::None); }
 		));
-		rmlui.set("contexts", sol::readonly_property(&get_indexed_table<Rml::Context, &functions::get_context, &functions::get_max_contexts>));
-		rmlui.set("version", sol::readonly_property(&Rml::GetVersion));
+
+		rmlui.set_function("get_contexts", get_indexed_table<Rml::Context, &functions::get_context, &functions::get_max_contexts>);
+		rmlui.set_function("get_version", &Rml::GetVersion);
 	}
 }
