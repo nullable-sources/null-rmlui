@@ -14,16 +14,16 @@ namespace null::rml::extensions::decorators {
 
 		if(const Rml::Property * property{ properties.GetProperty(kick_angle) }) {
 			switch(property->unit) {
-				case Rml::Property::DEG: { style.kick_angle = -math::degrees_to_radians(90.f + property->Get<float>()); } break;
-				case Rml::Property::RAD: { style.kick_angle = -math::degrees_to_radians(90.f) + property->Get<float>(); } break;
+				case Rml::Property::DEG: { style.kick_angle = -(radians_t)angle_t<radians_t>{ 90.f + property->Get<float>() }; } break;
+				case Rml::Property::RAD: { style.kick_angle = -(radians_t)angle_t<radians_t>{ 90.f } + property->Get<double>(); } break;
 				default: return nullptr;
 			}
 		}
 
 		if(const Rml::Property * property{ properties.GetProperty(stem_angle) }) {
 			switch(property->unit) {
-				case Rml::Property::DEG: { style.stem_angle = -math::degrees_to_radians(90.f - property->Get<float>()); } break;
-				case Rml::Property::RAD: { style.stem_angle = -math::degrees_to_radians(90.f) - property->Get<float>(); } break;
+				case Rml::Property::DEG: { style.stem_angle = -(radians_t)angle_t<radians_t>{ 90.f - property->Get<float>() }; } break;
+				case Rml::Property::RAD: { style.stem_angle = -(radians_t)angle_t<radians_t>{ 90.f } - property->Get<double>(); } break;
 				default: return nullptr;
 			}
 		}
@@ -32,8 +32,8 @@ namespace null::rml::extensions::decorators {
 	}
 
 	Rml::DecoratorDataHandle c_checkmark::GenerateElementData(Rml::Element* element) const {
-		vec2_t kick{ vec2_t{ std::cos(style.kick_angle), std::sin(style.kick_angle) } * style.kick_length };
-		vec2_t stem{ vec2_t{ std::cos(style.stem_angle), std::sin(style.stem_angle) } * style.stem_length };
+		vec2_t kick{ vec2_t<float>{ std::cosf(style.kick_angle), std::sinf(style.kick_angle) } * style.kick_length };
+		vec2_t stem{ vec2_t<float>{ std::cosf(style.stem_angle), std::sinf(style.stem_angle) } * style.stem_length };
 		vec2_t offset{ element->GetBox().GetSize(Rml::Box::BORDER) / 2.f - (kick + stem) / 3.f };
 
 		return (Rml::DecoratorDataHandle)new data_t{ kick + offset, stem + offset, offset };

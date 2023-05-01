@@ -36,8 +36,8 @@ namespace null::rml::extensions::decorators {
 			float thickness{ };
 			vec2_t<Rml::Style::LengthPercentage> padding{ };
 
-			float kick_length{ }, kick_angle{ };
-			float stem_length{ }, stem_angle{ };
+			float kick_length{ }, stem_length{ };
+			radians_t kick_angle{ }, stem_angle{ };
 		} style{ };
 
 		struct data_t {

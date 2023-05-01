@@ -28,8 +28,6 @@ int main() {
 			ui::context->Render();
 		} null::render::end_frame();
 
-		null::render::foreground.add_text(std::format("[ directx11 ] fps: {:3.0f}", 1.f / std::chrono::duration<float>{ frame_counter.representation() }.count()), { }, { });
-
 		null::render::backend::renderer->begin_render();
 		null::rml::render_interface->render();
 		null::render::backend::renderer->end_render();
