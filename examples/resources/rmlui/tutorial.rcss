@@ -5,10 +5,6 @@ body
 	font-style: normal;
 	font-size: 15dp;
 	color: white;
-
-	padding-top: 43dp;
-	padding-left: 11dp;
-	padding-bottom: 20dp;
 }
 
 body.window

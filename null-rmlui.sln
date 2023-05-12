@@ -29,11 +29,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-lua", "third-party\nul
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dll-injector", "examples\dll-injector\dll-injector.vcxproj", "{2CA77C73-54FD-43D6-A31D-4BDB2680B87F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-backend-directx9", "third-party\null-render\src\backends\null-backend-directx9\null-backend-directx9.vcxproj", "{95843DE7-57A5-4B57-B7F2-7A60B0115992}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-render-backend-directx9", "third-party\null-render\src\backends\null-render-backend-directx9\null-render-backend-directx9.vcxproj", "{95843DE7-57A5-4B57-B7F2-7A60B0115992}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-backend-directx11", "third-party\null-render\src\backends\null-backend-directx11\null-backend-directx11.vcxproj", "{D51AD3AE-DE95-488A-B202-A4192F685A59}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-render-backend-directx11", "third-party\null-render\src\backends\null-render-backend-directx11\null-render-backend-directx11.vcxproj", "{D51AD3AE-DE95-488A-B202-A4192F685A59}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-backend-opengl3", "third-party\null-render\src\backends\null-backend-opengl3\null-backend-opengl3.vcxproj", "{97A6B7AE-9878-4584-A0B8-15287DB604AC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-render-backend-opengl3", "third-party\null-render\src\backends\null-render-backend-opengl3\null-render-backend-opengl3.vcxproj", "{97A6B7AE-9878-4584-A0B8-15287DB604AC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "null-rmlui-renderer-directx9", "src\rmlui-implementation\render-interfaces\null-rmlui-renderer-directx9\null-rmlui-renderer-directx9.vcxproj", "{57FF0AC9-5ED6-4B00-96FE-D44F6F05A3A5}"
 EndProject

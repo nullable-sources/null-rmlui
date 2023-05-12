@@ -28,7 +28,7 @@
     <ProjectReference Include="$(SolutionDir)third-party\null-sdk\null-sdk.vcxproj">
       <Project>{f7a10a5c-0fae-424b-8f2b-6cc4e4d898d1}</Project>
     </ProjectReference>
-    <ProjectReference Include="$(SolutionDir)third-party\null-render\src\backends\null-backend-opengl3\null-backend-opengl3.vcxproj">
+    <ProjectReference Include="$(SolutionDir)third-party\null-render\src\backends\null-render-backend-opengl3\null-render-backend-opengl3.vcxproj">
       <Project>{97a6b7ae-9878-4584-a0b8-15287db604ac}</Project>
     </ProjectReference>
   </ItemGroup>

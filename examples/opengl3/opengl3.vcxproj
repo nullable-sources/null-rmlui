@@ -37,7 +37,7 @@
     <ProjectReference Include="..\..\third-party\null-render\null-render.vcxproj">
       <Project>{4abcf635-9767-40f9-989e-f0cdf5fb68ae}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\third-party\null-render\src\backends\null-backend-opengl3\null-backend-opengl3.vcxproj">
+    <ProjectReference Include="..\..\third-party\null-render\src\backends\null-render-backend-opengl3\null-render-backend-opengl3.vcxproj">
       <Project>{97a6b7ae-9878-4584-a0b8-15287db604ac}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\third-party\null-sdk\null-sdk.vcxproj">
@@ -129,7 +129,7 @@
       <AdditionalLibraryDirectories>glfw/libs/</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-backend-opengl3\resources;$(SolutionDir)src\rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-render-backend-opengl3\resources;$(SolutionDir)src\rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
@@ -153,7 +153,7 @@
       <AdditionalLibraryDirectories>glfw/libs/</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-backend-opengl3\resources;$(SolutionDir)src\rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-render-backend-opengl3\resources;$(SolutionDir)src\rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
@@ -173,7 +173,7 @@
       <AdditionalLibraryDirectories>glfw/libs/</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-backend-opengl3\resources;$(SolutionDir)src\rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-render-backend-opengl3\resources;$(SolutionDir)src\rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
@@ -197,7 +197,7 @@
       <AdditionalLibraryDirectories>glfw/libs/</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-backend-opengl3\resources;$(SolutionDir)src\rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)examples\resources;$(SolutionDir)third-party\null-render\src\backends\null-render-backend-opengl3\resources;$(SolutionDir)src\rmlui-implementation\render-interfaces\null-rmlui-renderer-opengl3\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
