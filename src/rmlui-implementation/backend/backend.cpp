@@ -33,7 +33,7 @@ namespace null::rml::backend {
 					tracking_mouse_leave = TrackMouseEvent(&tme);
 				}
 
-				if(!context->ProcessMouseMove(LOWORD(l_param), HIWORD(l_param), get_key_modifier_state())) return 0;
+				if(!context->ProcessMouseMove((short)LOWORD(l_param), (short)HIWORD(l_param), get_key_modifier_state())) return 0;
 			} break;
 
 			case WM_MOUSELEAVE: { tracking_mouse_leave = false; if(!context->ProcessMouseLeave()) return 0; } break;
