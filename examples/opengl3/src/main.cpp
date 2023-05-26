@@ -56,7 +56,7 @@ int main() {
 		Rml::Debugger::Initialise(context);
 		Rml::Debugger::SetVisible(true);
 
-		if(Rml::ElementDocument* document{ context->LoadDocument("<resource:rml> tutorial.rml") })
+		if(Rml::ElementDocument* document{ context->LoadDocument("[resource:rml] tutorial.rml") })
 			document->Show();
 		
 		/*old_wnd_proc = (WNDPROC)GetWindowLongPtr(window.wnd_handle, (-4));

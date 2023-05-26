@@ -57,7 +57,7 @@ namespace null::rml {
 		};
 
 	public:
-		static inline const std::regex regex{ "(<resource(:|\\|)([^\\>]*)>|<resource>)\\s*([^\\s]*)" }; //@note: <resource:type> name or <resource|type> name
+		static inline const std::regex regex{ "(\\[resource(:|\\|)([^\\]]*)\\]|\\[resource\\])\\s*([^\\s]*)" }; //@note: [resource:type] name or [resource|type] name
 
 	public:
 		resource_loader_t() { memory::c_module::self().load_resources(); }

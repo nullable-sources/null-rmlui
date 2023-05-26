@@ -110,9 +110,6 @@
     <ClInclude Include="src\rmlui-implementation\file-interface\loaders\resource-loader.h">
       <Filter>src\rmlui-implementation\file-interface\loaders</Filter>
     </ClInclude>
-    <ClInclude Include="src\rmlui-implementation\file-interface\loaders\system-font-loader.h">
-      <Filter>src\rmlui-implementation\file-interface\loaders</Filter>
-    </ClInclude>
     <ClInclude Include="src\rmlui-implementation\file-interface\loaders\default-file-loader.h">
       <Filter>src\rmlui-implementation\file-interface\loaders</Filter>
     </ClInclude>

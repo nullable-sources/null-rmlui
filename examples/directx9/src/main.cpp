@@ -43,7 +43,7 @@ int main() {
 		if(!(context = Rml::CreateContext("main", window.size)))
 			utils::logger.log(utils::e_log_type::error, "Rml::CreateContext return nullptr");
 
-		if(Rml::ElementDocument* document{ context->LoadDocument("<resource:rml> tutorial.rml") })
+		if(Rml::ElementDocument* document{ context->LoadDocument("[resource:rml] tutorial.rml") })
 			document->Show();
 
 		window.main_loop();

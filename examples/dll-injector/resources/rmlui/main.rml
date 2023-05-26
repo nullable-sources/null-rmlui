@@ -1,25 +1,25 @@
 <rml>
     <head>
-        <link type="text/rcss" href="<resource:rml> styles/body.rcss"/>
-        <link type="text/rcss" href="<resource:rml> styles/main-window.rcss"/>
+        <link type="text/rcss" href="[resource:rml] styles/body.rcss"/>
+        <link type="text/rcss" href="[resource:rml] styles/main-window.rcss"/>
 
-        <link type="text/rcss" href="<resource:rml> styles/widgets/widgets.rcss"/>
+        <link type="text/rcss" href="[resource:rml] styles/widgets/widgets.rcss"/>
 
-        <link type="text/rcss" href="<resource:rml> styles/widgets/titlebar.rcss"/>
-        <link type="text/rcss" href="<resource:rml> styles/widgets/group.rcss"/>
+        <link type="text/rcss" href="[resource:rml] styles/widgets/titlebar.rcss"/>
+        <link type="text/rcss" href="[resource:rml] styles/widgets/group.rcss"/>
 
-        <link type="text/rcss" href="<resource:rml> styles/widgets/multiselect.rcss"/>
-        <link type="text/rcss" href="<resource:rml> styles/widgets/scrollbar.rcss"/>
-        <link type="text/rcss" href="<resource:rml> styles/widgets/process-list.rcss"/>
-        <link type="text/rcss" href="<resource:rml> styles/widgets/dll-list.rcss"/>
+        <link type="text/rcss" href="[resource:rml] styles/widgets/multiselect.rcss"/>
+        <link type="text/rcss" href="[resource:rml] styles/widgets/scrollbar.rcss"/>
+        <link type="text/rcss" href="[resource:rml] styles/widgets/process-list.rcss"/>
+        <link type="text/rcss" href="[resource:rml] styles/widgets/dll-list.rcss"/>
 
-        <link type="text/rcss" href="<resource:rml> styles/widgets/inputs/text.rcss"/>
-        <link type="text/rcss" href="<resource:rml> styles/widgets/inputs/radio.rcss"/>
+        <link type="text/rcss" href="[resource:rml] styles/widgets/inputs/text.rcss"/>
+        <link type="text/rcss" href="[resource:rml] styles/widgets/inputs/radio.rcss"/>
 
-        <script src="<resource:rml> scripts/main-script.lua"></script>
-        <script src="<resource:rml> scripts/dll-list.lua"></script>
-        <script src="<resource:rml> scripts/filter-processes.lua"></script>
-        <script src="<resource:rml> scripts/fill-processes.lua"></script>
+        <script src="[resource:rml] scripts/main-script.lua"></script>
+        <script src="[resource:rml] scripts/dll-list.lua"></script>
+        <script src="[resource:rml] scripts/filter-processes.lua"></script>
+        <script src="[resource:rml] scripts/fill-processes.lua"></script>
     </head>
     <body class="main-window" onload="on_load(document)">
         <div class="titlebar" id="titlebar">

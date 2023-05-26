@@ -1,6 +1,6 @@
 ﻿<rml>
 <head>
-	<link type="text/css" href="<resource:rml> tutorial.rcss"/>
+	<link type="text/css" href="[resource:rml] tutorial.rcss"/>
 	<title>Window</title>
 	<style>
 		body

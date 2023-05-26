@@ -26,7 +26,7 @@ namespace ui {
 		if(!(context = Rml::CreateContext("main", window.size)))
 			utils::logger.log(utils::e_log_type::error, "Rml::CreateContext return nullptr");
 
-		if(document = context->LoadDocument("<resource:rml> main.rml")) {
+		if(document = context->LoadDocument("[resource:rml] main.rml")) {
 			document->Show();
 			document->GetElementById("titlebar")->AddEventListener(Rml::EventId::Handledrag, &event_listener);
 			document->GetElementById("titlebar")->AddEventListener(Rml::EventId::Dragstart, &event_listener);
