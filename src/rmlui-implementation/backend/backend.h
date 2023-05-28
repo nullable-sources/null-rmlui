@@ -12,5 +12,6 @@ namespace null::rml::backend {
     std::wstring convert_to_utf16(const std::string_view& str);
 
     Rml::Input::KeyIdentifier convert_key(const int& win32_key_code);
+    int convert_key(const Rml::Input::KeyIdentifier& rml_key_code);
     int get_key_modifier_state();
 }
