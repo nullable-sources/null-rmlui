@@ -1,7 +1,7 @@
 #include <impl/mesh/mesh.h>
 
 namespace null::rml::renderer::directx9::impl {
-    void c_mesh::create() {
+    void c_mesh::on_create() {
         if(vertex_declaration) return;
 
         constexpr D3DVERTEXELEMENT9 elements[]{
@@ -15,7 +15,7 @@ namespace null::rml::renderer::directx9::impl {
             utils::logger.log(utils::e_log_type::error, "cant create vertex input layout, return code {}.", result);
     }
 
-    void c_mesh::destroy() {
+    void c_mesh::on_destroy() {
         if(index_buffer) { index_buffer->Release(); index_buffer = nullptr; }
         if(vertex_buffer) { vertex_buffer->Release(); vertex_buffer = nullptr; }
         if(vertex_declaration) { vertex_declaration->Release(); vertex_declaration = nullptr; }

@@ -23,7 +23,7 @@ namespace null::rml {
 
 	public:
 		virtual void initialize();
-		virtual void shutdown();
+		virtual void shutdown() { }
 
 		virtual void render();
 

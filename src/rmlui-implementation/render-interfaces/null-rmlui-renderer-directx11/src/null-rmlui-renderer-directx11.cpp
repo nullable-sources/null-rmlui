@@ -24,8 +24,6 @@ namespace null::rml::renderer {
 	}
 
 	void c_directx11::shutdown() {
-		i_render_interface::shutdown();
-
 		if(disabled_scissor) { disabled_scissor->Release(); disabled_scissor = nullptr; }
 		if(enabled_scissor) { enabled_scissor->Release(); enabled_scissor = nullptr; }
 	}

@@ -2,7 +2,7 @@
 #include <impl/mesh/mesh.h>
 
 namespace null::rml::renderer::opengl3::impl {
-    void c_mesh::create() {
+    void c_mesh::on_create() {
         if(vao != 0) return;
 
         opengl::gen_vertex_arrays(1, &vao);
@@ -26,7 +26,7 @@ namespace null::rml::renderer::opengl3::impl {
         opengl::bind_vertex_array(0);
     }
 
-    void c_mesh::destroy() {
+    void c_mesh::on_destroy() {
         opengl::delete_vertex_arrays(1, &vao);
         opengl::delete_buffers(1, &vbo);
         opengl::delete_buffers(1, &ibo);

@@ -60,13 +60,7 @@ namespace null::rml {
         renderer::impl::shaders::passthrough_texture = instance_passthrough_texture_shader();
     }
 
-    void i_render_interface::shutdown() {
-        renderer::impl::mesh->destroy();
-    }
-
     void i_render_interface::render() {
-        renderer::impl::mesh->create();
-
         renderer::impl::mesh->compile();
 
         draw_list.handle();
