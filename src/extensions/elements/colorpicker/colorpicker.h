@@ -16,7 +16,7 @@ namespace null::rml::extensions::elements {
 		Rml::Element* hue_slider{ }, *alpha_slider{ };
 		Rml::Element* value_input{ }, *copy_button{ }, *paste_button{ }; //@note: these elements are optional, but there is functionality for them, so just create them to use
 
-		bool value_dirty{ true }, value_from_input{ };
+		bool value_dirty{ true }, value_from_input{ }, indicator_dirty{ };
 		bool lock_value{ };
 
 	protected:
