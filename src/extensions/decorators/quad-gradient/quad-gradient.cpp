@@ -32,12 +32,12 @@ namespace null::rml::extensions::decorators {
 		data_t* data{ (data_t*)element_data };
 
 		const Rml::ComputedValues& computed{ element->GetComputedValues() };
-		render_interface->draw_list.add_command(std::make_unique<null::rml::renderer::impl::commands::c_restore>());
+		render_interface->draw_list.add_command(std::make_unique<rml::renderer::impl::commands::c_restore>());
 		render_interface->draw_list.add_convex_shape(
 			render::path::make_rect(data->box + (vec2_t<float>)element->GetAbsoluteOffset(Rml::Box::BORDER), data->rounding),
-			null::render::quad_gradient_brush_t{ }
+			render::filter_brush_t{ }
 				.set_color({ 255, 255, 255, int(computed.opacity() * 255.f) })
-				.set_colors(data->colors)
+				.set_filter(render::filters::quad_gradient_t{ }.set_colors(data->colors))
 		);
 	}
 }

@@ -41,7 +41,7 @@ namespace null::rml::extensions::decorators {
 			std::array<color_t<int>, 4> colors{ };
 
 			rect_t<float> box{ };
-			null::render::path::rounding_t rounding{ };
+			render::path::rounding_t rounding{ };
 		};
 
 	public:

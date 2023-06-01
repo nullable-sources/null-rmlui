@@ -73,7 +73,7 @@ namespace null::rml::extensions::decorators {
 			std::vector<std::pair<color_t<int>, float>> stops{ };
 
 			rect_t<float> box{ };
-			null::render::path::rounding_t rounding{ };
+			render::path::rounding_t rounding{ };
 		};
 
 	public:

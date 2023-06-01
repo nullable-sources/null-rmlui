@@ -2,8 +2,8 @@
 
 namespace null::rml {
 	void set_default_interfaces(const utils::win::c_window& window) {
-		file_interface = std::make_unique<null::rml::c_file_interface>();
-		system_interface = std::make_unique<null::rml::c_system_interface>(window);
+		file_interface = std::make_unique<rml::c_file_interface>();
+		system_interface = std::make_unique<rml::c_system_interface>(window);
 	}
 
 	void load_system_font() {

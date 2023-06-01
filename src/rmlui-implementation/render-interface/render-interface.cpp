@@ -8,7 +8,7 @@
 
 namespace null::rml {
     void i_render_interface::SetScissorRegion(int x, int y, int width, int height) {
-        draw_list.add_command(std::make_unique<null::render::commands::c_clip>(rect_t<float>{ (float)x, (float)y, (float)x + (float)width, (float)y + (float)height }));
+        draw_list.add_command(std::make_unique<render::commands::c_clip>(rect_t<float>{ (float)x, (float)y, (float)x + (float)width, (float)y + (float)height }));
     }
     
     void i_render_interface::EnableScissorRegion(bool enable) {

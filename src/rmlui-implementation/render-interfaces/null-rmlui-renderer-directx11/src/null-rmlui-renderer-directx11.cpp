@@ -15,7 +15,7 @@ namespace null::rml::renderer {
 					.DepthClipEnable{ scissor_enable },
 					.ScissorEnable{ scissor_enable }
 				};
-				null::render::backend::directx11::shared.device->CreateRasterizerState(&desc, rasterizer_state);
+				render::backend::directx11::shared.device->CreateRasterizerState(&desc, rasterizer_state);
 			}
 		};
 
