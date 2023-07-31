@@ -6,7 +6,7 @@ namespace null::rml {
 		if(std::ranges::any_of(file_loaders, [&](const auto& loader) { return loader->create(new_path); }))
 			return (Rml::FileHandle)i_file_loader::opened_files[new_path].get();
 		
-		utils::logger.log(utils::e_log_type::warning, "couldn't find a suitable loader for '{}'", path);
+		utils::logger(utils::e_log_type::warning, "couldn't find a suitable loader for '{}'", path);
 		return Rml::FileHandle{ };
 	}
 }

@@ -11,7 +11,7 @@ namespace null::rml::renderer::directx11::impl {
 			{ "COLOR",    0, DXGI_FORMAT_R8G8B8A8_UNORM,	0, (UINT)offsetof(Rml::Vertex, colour), D3D11_INPUT_PER_VERTEX_DATA, 0 },
 		};
 		if(auto result{ render::backend::directx11::shared.device->CreateInputLayout(desc, 3, shaders::compiled_objects::sources::passthrough().data(), shaders::compiled_objects::sources::passthrough().size(), &input_layout) }; FAILED(result))
-			utils::logger.log(utils::e_log_type::error, "cant create vertex input layout, return code {}.", result);
+			utils::logger(utils::e_log_type::error, "cant create vertex input layout, return code {}.", result);
 	}
 
 	void c_mesh::on_destroy() {
@@ -33,7 +33,7 @@ namespace null::rml::renderer::directx11::impl {
 				.MiscFlags{ 0 }
 			};
 			if(auto result{ render::backend::directx11::shared.device->CreateBuffer(&buffer_desc, nullptr, &vertex_buffer) }; FAILED(result)) {
-				utils::logger.log(utils::e_log_type::error, "cant create vertex buffer, return code {}.", result);
+				utils::logger(utils::e_log_type::error, "cant create vertex buffer, return code {}.", result);
 				return;
 			}
 		}
@@ -50,18 +50,18 @@ namespace null::rml::renderer::directx11::impl {
 			};
 
 			if(auto result{ render::backend::directx11::shared.device->CreateBuffer(&buffer_desc, nullptr, &index_buffer) }; FAILED(result)) {
-				utils::logger.log(utils::e_log_type::error, "cant create index buffer, return code {}.", result);
+				utils::logger(utils::e_log_type::error, "cant create index buffer, return code {}.", result);
 				return;
 			}
 		}
 
 		D3D11_MAPPED_SUBRESOURCE vertex_buffer_subresource{ }, index_buffer_subresource{ };
 		if(auto result{ render::backend::directx11::shared.context->Map(vertex_buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &vertex_buffer_subresource) }; FAILED(result)) {
-			utils::logger.log(utils::e_log_type::error, "map vertex buffer failed, return code {}.", result);
+			utils::logger(utils::e_log_type::error, "map vertex buffer failed, return code {}.", result);
 			return;
 		}
 		if(auto result{ render::backend::directx11::shared.context->Map(index_buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &index_buffer_subresource) }; FAILED(result)) {
-			utils::logger.log(utils::e_log_type::error, "map index buffer failed, return code {}.", result);
+			utils::logger(utils::e_log_type::error, "map index buffer failed, return code {}.", result);
 			return;
 		}
 

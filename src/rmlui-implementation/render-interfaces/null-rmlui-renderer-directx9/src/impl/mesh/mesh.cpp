@@ -12,7 +12,7 @@ namespace null::rml::renderer::directx9::impl {
         };
 
         if(auto result{ render::backend::directx9::shared.device->CreateVertexDeclaration(elements, &vertex_declaration) }; FAILED(result))
-            utils::logger.log(utils::e_log_type::error, "cant create vertex input layout, return code {}.", result);
+            utils::logger(utils::e_log_type::error, "cant create vertex input layout, return code {}.", result);
     }
 
     void c_mesh::on_destroy() {
@@ -27,22 +27,22 @@ namespace null::rml::renderer::directx9::impl {
             if(vertex_buffer) { vertex_buffer->Release(); vertex_buffer = nullptr; }
             vtx_buffer_size = geometry_buffer.vertex_buffers_size + 5000;
             if(auto result{ render::backend::directx9::shared.device->CreateVertexBuffer(vtx_buffer_size * sizeof(Rml::Vertex), D3DUSAGE_DYNAMIC | D3DUSAGE_WRITEONLY, 0, D3DPOOL_DEFAULT, &vertex_buffer, nullptr) }; FAILED(result))
-                utils::logger.log(utils::e_log_type::error, "cant create vertex buffer, return code {}.", result);
+                utils::logger(utils::e_log_type::error, "cant create vertex buffer, return code {}.", result);
         }
 
         if(!index_buffer || idx_buffer_size < geometry_buffer.index_buffers_size) {
             if(index_buffer) { index_buffer->Release(); index_buffer = nullptr; }
             idx_buffer_size = geometry_buffer.index_buffers_size + 10000;
             if(auto result{ render::backend::directx9::shared.device->CreateIndexBuffer(idx_buffer_size * sizeof(int), D3DUSAGE_DYNAMIC | D3DUSAGE_WRITEONLY, D3DFMT_INDEX32, D3DPOOL_DEFAULT, &index_buffer, nullptr) }; FAILED(result))
-                utils::logger.log(utils::e_log_type::error, "cant create index buffer, return code {}.", result);
+                utils::logger(utils::e_log_type::error, "cant create index buffer, return code {}.", result);
         }
 
         Rml::Vertex* vertex_dst{ };
         int* index_dst{ };
         if(auto result{ vertex_buffer->Lock(0, (UINT)(geometry_buffer.vertex_buffers_size * sizeof(Rml::Vertex)), (void**)&vertex_dst, D3DLOCK_DISCARD) }; FAILED(result))
-            utils::logger.log(utils::e_log_type::error, "cant lock vertex buffer, return code {}.", result);
+            utils::logger(utils::e_log_type::error, "cant lock vertex buffer, return code {}.", result);
         if(auto result{ index_buffer->Lock(0, (UINT)(geometry_buffer.index_buffers_size * sizeof(int)), (void**)&index_dst, D3DLOCK_DISCARD) }; FAILED(result))
-            utils::logger.log(utils::e_log_type::error, "cant lock index buffer, return code {}.", result);
+            utils::logger(utils::e_log_type::error, "cant lock index buffer, return code {}.", result);
 
         size_t vertex_offset{ };
         for(const std::span<Rml::Vertex>& vertex_buffer : geometry_buffer.vertex_buffers) {

@@ -41,7 +41,7 @@ int main() {
 		null::rml::load_system_font();
 
 		if(!(context = Rml::CreateContext("main", window.size)))
-			utils::logger.log(utils::e_log_type::error, "Rml::CreateContext return nullptr");
+			utils::logger(utils::e_log_type::error, "Rml::CreateContext return nullptr");
 
 		Rml::Debugger::Initialise(context);
 		Rml::Debugger::SetVisible(true);

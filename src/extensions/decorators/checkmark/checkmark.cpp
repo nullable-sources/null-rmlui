@@ -32,16 +32,16 @@ namespace null::rml::extensions::decorators {
 	}
 
 	Rml::DecoratorDataHandle c_checkmark::GenerateElementData(Rml::Element* element) const {
-		vec2_t kick{ vec2_t<float>{ std::cosf(style.kick_angle), std::sinf(style.kick_angle) } * style.kick_length };
-		vec2_t stem{ vec2_t<float>{ std::cosf(style.stem_angle), std::sinf(style.stem_angle) } * style.stem_length };
-		vec2_t offset{ element->GetBox().GetSize(Rml::Box::BORDER) / 2.f - (kick + stem) / 3.f };
+		vec2_t<float> kick{ vec2_t<float>{ std::cosf(style.kick_angle), std::sinf(style.kick_angle) } * style.kick_length };
+		vec2_t<float> stem{ vec2_t<float>{ std::cosf(style.stem_angle), std::sinf(style.stem_angle) } * style.stem_length };
+		vec2_t<float> offset{ element->GetBox().GetSize(Rml::Box::BORDER) / 2.f - (kick + stem) / 3.f };
 
 		return (Rml::DecoratorDataHandle)new data_t{ kick + offset, stem + offset, offset };
 	}
 
 	void c_checkmark::RenderElement(Rml::Element* element, Rml::DecoratorDataHandle element_data) const {
 		data_t* data{ (data_t*)element_data };
-		vec2_t element_position{ element->GetAbsoluteOffset(Rml::Box::BORDER) };
+		vec2_t<float> element_position{ element->GetAbsoluteOffset(Rml::Box::BORDER) };
 
 		render_interface->draw_list.add_command(std::make_unique<rml::renderer::impl::commands::c_restore>());
 		render_interface->draw_list.add_poly_line(

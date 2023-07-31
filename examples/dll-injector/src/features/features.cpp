@@ -125,7 +125,7 @@ namespace features {
 
 			IMAGE_NT_HEADERS headers{ };
 			if(!get_image_file_headers(opf.lpstrFile, headers))
-				utils::logger.log(utils::e_log_type::error, "get_image_file_headers return false.");
+				utils::logger(utils::e_log_type::error, "get_image_file_headers return false.");
 
 			switch(headers.FileHeader.Machine) {
 				case IMAGE_FILE_MACHINE_I386: { dll_info.architecture = "x86"; } break;
