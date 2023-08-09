@@ -1,4 +1,4 @@
-#include <bindings/bindings.h>
+#include "bindings/bindings.h"
 
 namespace null::rml::modules::lua::event_bindings {
 	namespace functions {

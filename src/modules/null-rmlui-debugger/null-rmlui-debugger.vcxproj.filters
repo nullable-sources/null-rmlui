@@ -65,7 +65,7 @@
     <ClInclude Include="src\CommonSource.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Debugger.h">
+    <ClInclude Include="src\null-rmlui-debugger.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\DebuggerPlugin.h">

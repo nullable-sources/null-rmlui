@@ -28,32 +28,23 @@
     <Filter Include="src\extensions">
       <UniqueIdentifier>{f32b4621-6f02-4524-8027-f21723ef9357}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\extensions\decorators">
-      <UniqueIdentifier>{07910c16-cecb-4b58-8af6-0701cda9c11c}</UniqueIdentifier>
+    <Filter Include="src\extensions\checkmark-decorator">
+      <UniqueIdentifier>{3e0ce3dc-62f4-4bbe-b57d-b585a7733237}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\extensions\decorators\checkmark">
-      <UniqueIdentifier>{67dc7c01-5aab-4af8-bc48-09e018622e32}</UniqueIdentifier>
+    <Filter Include="src\extensions\linear-gradient-decorator">
+      <UniqueIdentifier>{0b286ac0-b715-4f5e-a72c-480ea52ff14d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\extensions\elements">
-      <UniqueIdentifier>{27195157-7796-4396-9209-016b3c797c2c}</UniqueIdentifier>
+    <Filter Include="src\extensions\quad-gradient-decorator">
+      <UniqueIdentifier>{83ba2b5b-28a5-478c-80e6-cf459a44861a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\extensions\elements\multiselect">
-      <UniqueIdentifier>{bf547e49-20c7-4851-90ea-c4293b5f1231}</UniqueIdentifier>
+    <Filter Include="src\extensions\multiselect-element">
+      <UniqueIdentifier>{9d385adb-60d8-44f0-a2af-7f95c9902ab3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\extensions\elements\colorpicker">
-      <UniqueIdentifier>{5fbdb1c4-d2c2-4dec-b6ab-f2f3f1ebad31}</UniqueIdentifier>
+    <Filter Include="src\extensions\colorpicker-element">
+      <UniqueIdentifier>{4d411ede-f420-47e7-a059-b19be71921cf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\rmlui-implementation\render-interface\impl">
+    <Filter Include="src\rmlui-implementation\render-interface\interfaces">
       <UniqueIdentifier>{988a476f-7849-426b-a1dd-da5946de0714}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\render-interface\impl\shaders">
-      <UniqueIdentifier>{9bd1171b-7d38-494a-9270-867decfe2db5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\extensions\decorators\linear-gradient">
-      <UniqueIdentifier>{4c8d6439-fdaa-4a8d-8622-fb7bcb9deeee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\extensions\decorators\quad-gradient">
-      <UniqueIdentifier>{a3ea0e1c-84d9-444f-b8cd-66e67eda0475}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -72,20 +63,20 @@
     <ClCompile Include="src\rmlui-implementation\system-interface\system-interface.cpp">
       <Filter>src\rmlui-implementation\system-interface</Filter>
     </ClCompile>
-    <ClCompile Include="src\extensions\decorators\checkmark\checkmark.cpp">
-      <Filter>src\extensions\decorators\checkmark</Filter>
+    <ClCompile Include="src\extensions\checkmark-decorator\checkmark-decorator.cpp">
+      <Filter>src\extensions\checkmark-decorator</Filter>
     </ClCompile>
-    <ClCompile Include="src\extensions\elements\multiselect\multiselect.cpp">
-      <Filter>src\extensions\elements\multiselect</Filter>
+    <ClCompile Include="src\extensions\colorpicker-element\colorpicker-element.cpp">
+      <Filter>src\extensions\colorpicker-element</Filter>
     </ClCompile>
-    <ClCompile Include="src\extensions\elements\colorpicker\colorpicker.cpp">
-      <Filter>src\extensions\elements\colorpicker</Filter>
+    <ClCompile Include="src\extensions\linear-gradient-decorator\linear-gradient-decorator.cpp">
+      <Filter>src\extensions\linear-gradient-decorator</Filter>
     </ClCompile>
-    <ClCompile Include="src\extensions\decorators\linear-gradient\linear-gradient.cpp">
-      <Filter>src\extensions\decorators\linear-gradient</Filter>
+    <ClCompile Include="src\extensions\multiselect-element\multiselect-element.cpp">
+      <Filter>src\extensions\multiselect-element</Filter>
     </ClCompile>
-    <ClCompile Include="src\extensions\decorators\quad-gradient\quad-gradient.cpp">
-      <Filter>src\extensions\decorators\quad-gradient</Filter>
+    <ClCompile Include="src\extensions\quad-gradient-decorator\quad-gradient-decorator.cpp">
+      <Filter>src\extensions\quad-gradient-decorator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -119,35 +110,32 @@
     <ClInclude Include="src\rmlui-implementation\system-interface\system-interface.h">
       <Filter>src\rmlui-implementation\system-interface</Filter>
     </ClInclude>
-    <ClInclude Include="src\extensions\decorators\checkmark\checkmark.h">
-      <Filter>src\extensions\decorators\checkmark</Filter>
+    <ClInclude Include="src\extensions\extensions.h">
+      <Filter>src\extensions</Filter>
     </ClInclude>
-    <ClInclude Include="src\extensions\decorators\decorators.h">
-      <Filter>src\extensions\decorators</Filter>
+    <ClInclude Include="src\extensions\checkmark-decorator\checkmark-decorator.h">
+      <Filter>src\extensions\checkmark-decorator</Filter>
     </ClInclude>
-    <ClInclude Include="src\extensions\elements\elements.h">
-      <Filter>src\extensions\elements</Filter>
+    <ClInclude Include="src\extensions\colorpicker-element\colorpicker-element.h">
+      <Filter>src\extensions\colorpicker-element</Filter>
     </ClInclude>
-    <ClInclude Include="src\extensions\elements\multiselect\multiselect.h">
-      <Filter>src\extensions\elements\multiselect</Filter>
+    <ClInclude Include="src\extensions\linear-gradient-decorator\linear-gradient-decorator.h">
+      <Filter>src\extensions\linear-gradient-decorator</Filter>
     </ClInclude>
-    <ClInclude Include="src\extensions\elements\colorpicker\colorpicker.h">
-      <Filter>src\extensions\elements\colorpicker</Filter>
+    <ClInclude Include="src\extensions\multiselect-element\multiselect-element.h">
+      <Filter>src\extensions\multiselect-element</Filter>
     </ClInclude>
-    <ClInclude Include="src\rmlui-implementation\render-interface\impl\shaders\passthrough.h">
-      <Filter>src\rmlui-implementation\render-interface\impl\shaders</Filter>
+    <ClInclude Include="src\extensions\quad-gradient-decorator\quad-gradient-decorator.h">
+      <Filter>src\extensions\quad-gradient-decorator</Filter>
     </ClInclude>
-    <ClInclude Include="src\rmlui-implementation\render-interface\impl\mesh.h">
-      <Filter>src\rmlui-implementation\render-interface\impl</Filter>
+    <ClInclude Include="src\rmlui-implementation\render-interface\interfaces\commands.h">
+      <Filter>src\rmlui-implementation\render-interface\interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="src\rmlui-implementation\render-interface\impl\commands.h">
-      <Filter>src\rmlui-implementation\render-interface\impl</Filter>
+    <ClInclude Include="src\rmlui-implementation\render-interface\interfaces\mesh.h">
+      <Filter>src\rmlui-implementation\render-interface\interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="src\extensions\decorators\linear-gradient\linear-gradient.h">
-      <Filter>src\extensions\decorators\linear-gradient</Filter>
-    </ClInclude>
-    <ClInclude Include="src\extensions\decorators\quad-gradient\quad-gradient.h">
-      <Filter>src\extensions\decorators\quad-gradient</Filter>
+    <ClInclude Include="src\rmlui-implementation\render-interface\interfaces\shaders.h">
+      <Filter>src\rmlui-implementation\render-interface\interfaces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

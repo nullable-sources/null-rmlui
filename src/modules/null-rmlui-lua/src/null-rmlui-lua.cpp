@@ -1,7 +1,7 @@
-﻿#include <null-rmlui-lua.h>
+﻿#include "null-rmlui-lua.h"
 
-#include <bindings/bindings.h>
-#include <plugin/plugin.h>
+#include "bindings/bindings.h"
+#include "plugin/plugin.h"
 
 namespace null::rml::modules::lua {
     void initialize(sol::state_view& state_view) {

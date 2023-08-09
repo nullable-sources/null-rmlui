@@ -10,7 +10,7 @@ int main() {
 #ifndef _DEBUG
 	ShowWindow(::GetConsoleWindow(), SW_HIDE);
 #endif
-	ui::window = null::render::backend::directx11::c_window{ };
+	ui::window = null::render::directx11::c_window{ };
 	ui::window.wnd_class.hIcon = (HICON)LoadImage(GetModuleHandleA(nullptr), L"icon.ico", IMAGE_ICON, 256, 256, LR_DEFAULTCOLOR);
 	ui::window.size = { 560, 300 };
 	ui::window.clear_color = { 0, 0 };
@@ -45,13 +45,12 @@ int main() {
 		DwmEnableBlurBehindWindow(ui::window.wnd_handle, &blur_behind);
 		DeleteObject(region);
 
-		null::rml::render_interface = std::make_unique<null::rml::renderer::c_directx11>();
+		null::rml::render_interface = std::make_unique<null::rml::directx11::c_render>();
 		null::rml::set_default_interfaces(ui::window);
 		null::rml::initialize();
 		null::rml::load_system_font();
 
-		null::rml::extensions::decorators::register_all();
-		null::rml::extensions::elements::register_all();
+		null::rml::extensions::register_all();
 
 		lua::initialize();
 		ui::initialize();

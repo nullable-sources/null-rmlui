@@ -1,9 +1,9 @@
 #pragma once
 #include <RmlUi/Core.h>
-
 #include <null-render.h>
-#include <rmlui-implementation/render-interface/impl/commands.h>
-#include <rmlui-implementation/render-interface/impl/shaders/passthrough.h>
+
+#include "rmlui-implementation/render-interface/interfaces/commands.h"
+#include "rmlui-implementation/render-interface/interfaces/shaders.h"
 
 namespace null::rml {
 	class i_render_interface : public Rml::RenderInterface {
@@ -28,11 +28,11 @@ namespace null::rml {
 		virtual void render();
 
 	public:
-		virtual std::unique_ptr<renderer::impl::i_mesh> instance_mesh() = 0;
-		virtual std::unique_ptr<renderer::impl::commands::i_geometry> instance_geometry_command(const size_t& index_count, const size_t& vertex_count, const Rml::Vector2f& translation, const Rml::TextureHandle& texture) { { return std::make_unique<renderer::impl::commands::i_geometry>(index_count, vertex_count, translation, texture); } }
-		virtual std::unique_ptr<renderer::impl::commands::i_clip_enable> instatnce_clip_enable_command(const bool& enable) = 0;
+		virtual std::unique_ptr<renderer::i_mesh> instance_mesh() = 0;
+		virtual std::unique_ptr<renderer::i_geometry_command> instance_geometry_command(size_t index_count, size_t vertex_count, const Rml::Vector2f& translation, Rml::TextureHandle texture) { { return std::make_unique<renderer::i_geometry_command>(index_count, vertex_count, translation, texture); } }
+		virtual std::unique_ptr<renderer::i_clip_enable_command> instatnce_clip_enable_command(bool enable) = 0;
 
-		virtual std::unique_ptr<renderer::impl::shaders::i_passthrough_color> instance_passthrough_color_shader() = 0;
-		virtual std::unique_ptr<renderer::impl::shaders::i_passthrough_texture> instance_passthrough_texture_shader() = 0;
+		virtual std::unique_ptr<renderer::i_passthrough_color_shader> instance_passthrough_color_shader() = 0;
+		virtual std::unique_ptr<renderer::i_passthrough_texture_shader> instance_passthrough_texture_shader() = 0;
 	}; inline std::unique_ptr<i_render_interface> render_interface{ };
 }

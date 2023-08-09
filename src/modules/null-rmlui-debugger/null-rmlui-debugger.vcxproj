@@ -41,7 +41,7 @@
   <ItemGroup>
     <ClInclude Include="src\BeaconSource.h" />
     <ClInclude Include="src\CommonSource.h" />
-    <ClInclude Include="src\Debugger.h" />
+    <ClInclude Include="src\null-rmlui-debugger.h" />
     <ClInclude Include="src\DebuggerPlugin.h" />
     <ClInclude Include="src\DebuggerSystemInterface.h" />
     <ClInclude Include="src\ElementContextHook.h" />

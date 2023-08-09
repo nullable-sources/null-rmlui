@@ -1,11 +1,10 @@
+#include <format>
 #include <RmlUi/Core/Stream.h>
 #include <RmlUi/Core/Log.h>
 #include <RmlUi/Core/Context.h>
 #include <RmlUi/Core/FileInterface.h>
 
-#include <plugin/document/document.h>
-
-#include <format>
+#include "plugin/document/document.h"
 
 namespace null::rml::modules::lua{
 	sol::protected_function_result error_handler(lua_State*, sol::protected_function_result pfr) {

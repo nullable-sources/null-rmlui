@@ -1,10 +1,8 @@
 #include <windows.h>
-#include <null-render.h>
+#include "null-rmlui-renderer-directx11.h"
 
-#include <null-rmlui-renderer-directx11.h>
-
-namespace null::rml::renderer {
-	void c_directx11::initialize() {
+namespace null::rml::directx11 {
+	void c_render::initialize() {
 		i_render_interface::initialize();
 
 		static const auto create_rasterizer_state{
@@ -15,7 +13,7 @@ namespace null::rml::renderer {
 					.DepthClipEnable{ scissor_enable },
 					.ScissorEnable{ scissor_enable }
 				};
-				render::backend::directx11::shared.device->CreateRasterizerState(&desc, rasterizer_state);
+				render::directx11::shared.device->CreateRasterizerState(&desc, rasterizer_state);
 			}
 		};
 
@@ -23,7 +21,7 @@ namespace null::rml::renderer {
 		create_rasterizer_state(&enabled_scissor, true);
 	}
 
-	void c_directx11::shutdown() {
+	void c_render::shutdown() {
 		if(disabled_scissor) { disabled_scissor->Release(); disabled_scissor = nullptr; }
 		if(enabled_scissor) { enabled_scissor->Release(); enabled_scissor = nullptr; }
 	}

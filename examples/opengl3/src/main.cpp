@@ -3,13 +3,13 @@
 #include <null-rmlui-renderer-opengl3.h>
 #include <null-render-backend-opengl3.h>
 #include <null-rmlui.h>
-#include <Debugger.h>
+#include <null-rmlui-debugger.h>
 #include <Windows.h>
 
 WNDPROC old_wnd_proc{ };
 
 Rml::Context* context{ };
-null::render::backend::opengl3::c_window window{ };
+null::render::opengl3::c_window window{ };
 utils::c_cumulative_time_measurement frame_counter{ 60 };
 
 void main_loop() {
@@ -31,7 +31,7 @@ static LRESULT CALLBACK win_proc(HWND hwnd, UINT msg, WPARAM w_param, LPARAM l_p
 }
 
 int main() {
-	window = null::render::backend::opengl3::c_window{ };
+	window = null::render::opengl3::c_window{ };
 	window.size = { 1024, 768 };
 
 	window.callbacks.at<utils::win::e_window_callbacks::on_create>().add([&] { frame_counter.begin(); });
@@ -45,7 +45,7 @@ int main() {
 		null::render::c_font::config_t config{ .glyph_config{ .ranges{ null::render::c_font::glyph_t::ranges_cyrillic() } } };
 		null::render::atlas.add_font_default(&config);
 
-		null::rml::render_interface = std::make_unique<null::rml::renderer::c_opengl3>();
+		null::rml::render_interface = std::make_unique<null::rml::opengl3::c_render>();
 		null::rml::set_default_interfaces(window);
 		null::rml::initialize();
 		null::rml::load_system_font();

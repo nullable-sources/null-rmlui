@@ -1,6 +1,6 @@
 #include <optional>
 
-#include <plugin/data-model/data-model.h>
+#include "plugin/data-model/data-model.h"
 
 namespace null::rml::modules::lua {
 	bool c_object_definition::Get(void* ptr, Rml::Variant& variant) {

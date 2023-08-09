@@ -1,7 +1,7 @@
-#include <plugin/instancer/instancer.h>
+#include "plugin/instancer/instancer.h"
 
-#include <plugin/document/document.h>
-#include <plugin/event-listener/event-listener.h>
+#include "plugin/document/document.h"
+#include "plugin/event-listener/event-listener.h"
 
 
 namespace null::rml::modules::lua {

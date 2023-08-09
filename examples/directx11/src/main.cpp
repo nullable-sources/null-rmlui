@@ -1,10 +1,9 @@
 ﻿#define RMLUI_STATIC_LIB
 #include <null-rmlui-renderer-directx11.h>
 #include <null-rmlui.h>
-#include <null-render-backend-directx11.h>
-#include <Debugger.h>
+#include <null-rmlui-debugger.h>
 Rml::Context* context{ };
-null::render::backend::directx11::c_window window{ };
+null::render::directx11::c_window window{ };
 utils::c_cumulative_time_measurement frame_counter{ 60 };
 
 void main_loop() {
@@ -20,7 +19,7 @@ void main_loop() {
 
 
 int main() {
-	window = null::render::backend::directx11::c_window{ };
+	window = null::render::directx11::c_window{ };
 	window.size = { 1024, 768 };
 
 	window.callbacks.at<utils::win::e_window_callbacks::on_create>().add([&] { frame_counter.begin(); });
@@ -35,7 +34,7 @@ int main() {
 		null::render::c_font::config_t config{ .glyph_config{ .ranges{ null::render::c_font::glyph_t::ranges_cyrillic() } } };
 		null::render::atlas.add_font_default(&config);
 
-		null::rml::render_interface = std::make_unique<null::rml::renderer::c_directx11>();
+		null::rml::render_interface = std::make_unique<null::rml::directx11::c_render>();
 		null::rml::set_default_interfaces(window);
 		null::rml::initialize();
 		null::rml::load_system_font();

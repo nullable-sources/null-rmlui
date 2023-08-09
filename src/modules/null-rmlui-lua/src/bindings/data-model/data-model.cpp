@@ -1,7 +1,7 @@
-#include <bindings/bindings.h>
+#include "bindings/bindings.h"
 
-#include <plugin/document/document.h>
-#include <plugin/data-model/data-model.h>
+#include "plugin/document/document.h"
+#include "plugin/data-model/data-model.h"
 
 namespace null::rml::modules::lua::data_model_bindings {
 	void bind(sol::state_view& state_view) {

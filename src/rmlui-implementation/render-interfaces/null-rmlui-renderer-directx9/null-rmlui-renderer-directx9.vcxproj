@@ -33,30 +33,27 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\impl\mesh\mesh.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\impl\comands\commands.h" />
-    <ClInclude Include="src\impl\mesh\mesh.h" />
-    <ClInclude Include="src\impl\shaders\compiled-objects\passthrough\passthrough.h" />
-    <ClInclude Include="src\impl\shaders\passthrough-color\passthrough-color.h" />
-    <ClInclude Include="src\impl\shaders\passthrough-texture\passthrough-texture.h" />
+    <ClInclude Include="src\comands\commands.h" />
+    <ClInclude Include="src\mesh\mesh.h" />
     <ClInclude Include="src\null-rmlui-renderer-directx9.h" />
+    <ClInclude Include="src\shaders\compiled-objects\passthrough\passthrough.h" />
+    <ClInclude Include="src\shaders\passthrough-color\passthrough-color.h" />
+    <ClInclude Include="src\shaders\passthrough-texture\passthrough-texture.h" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\impl\shaders\compiled-objects\passthrough\hlsl\passthrough.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='release|Win32'">Vertex</ShaderType>
+    <FxCompile Include="src\shaders\compiled-objects\passthrough\hlsl\passthrough.hlsl">
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='release|Win32'">3.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+      </ObjectFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='release|Win32'">shader_data</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='release|Win32'">%(RootDir)%(Directory)..\compiled\%(Filename).h</HeaderFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">Vertex</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">3.0</ShaderModel>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='release|x64'">Vertex</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='release|x64'">3.0</ShaderModel>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='debug|x64'">Vertex</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='debug|x64'">3.0</ShaderModel>
-      <VariableName Condition="'$(Configuration)|$(Platform)'=='release|Win32'">shader_data</VariableName>
-      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='release|Win32'">%(RootDir)%(Directory)..\compiled\%(Filename).h</HeaderFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
-      </ObjectFileOutput>
       <VariableName Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">shader_data</VariableName>
       <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">%(RootDir)%(Directory)..\compiled\%(Filename).h</HeaderFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
@@ -70,6 +67,11 @@
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
       </ObjectFileOutput>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\mesh\mesh.cpp" />
+    <ClCompile Include="src\shaders\passthrough-color\passthrough-color.cpp" />
+    <ClCompile Include="src\shaders\passthrough-texture\passthrough-texture.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -1,14 +1,12 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
+#include <null-render.h>
 
-#include <null-rmlui.h>
-#include <backend/renderer/renderer.h>
-#include <graphic/commands/clip-command/clip-command.h>
-#include <graphic/commands/matrix-command/matrix-command.h>
+#include "null-rmlui.h"
 
 namespace null::rml {
     void i_render_interface::SetScissorRegion(int x, int y, int width, int height) {
-        draw_list.add_command(std::make_unique<render::commands::c_clip>(rect_t<float>{ (float)x, (float)y, (float)x + (float)width, (float)y + (float)height }));
+        draw_list.add_command(std::make_unique<render::c_clip_command>(rect_t<float>{ (float)x, (float)y, (float)x + (float)width, (float)y + (float)height }));
     }
     
     void i_render_interface::EnableScissorRegion(bool enable) {
@@ -18,13 +16,13 @@ namespace null::rml {
     void i_render_interface::SetTransform(const Rml::Matrix4f* transform) {
         matrix4x4_t matrix{ render::backend::renderer->get_projection_matrix() };
         if(transform) matrix *= matrix4x4_t{ *(std::array<float, 16>*)transform->data() };
-        draw_list.add_command(std::make_unique<render::commands::c_matrix>(matrix));
+        draw_list.add_command(std::make_unique<render::c_matrix_command>(matrix));
     }
 
     void i_render_interface::RenderGeometry(Rml::Vertex* vertices, int num_vertices, int* indices, int num_indices, Rml::TextureHandle texture, const Rml::Vector2f& translation) {
         draw_list.add_command(instance_geometry_command(num_indices, num_vertices, translation, texture));
-        renderer::impl::mesh->geometry_buffer.add_vertex_buffer({ vertices, (size_t)num_vertices });
-        renderer::impl::mesh->geometry_buffer.add_index_buffer({ indices, (size_t)num_indices });
+        renderer::mesh->geometry_buffer.add_vertex_buffer({ vertices, (size_t)num_vertices });
+        renderer::mesh->geometry_buffer.add_index_buffer({ indices, (size_t)num_indices });
     }
 
     bool i_render_interface::LoadTexture(Rml::TextureHandle& texture_handle, Rml::Vector2i& texture_dimensions, const std::string& source) {
@@ -54,19 +52,19 @@ namespace null::rml {
     }
 
     void i_render_interface::initialize() {
-        renderer::impl::mesh = instance_mesh();
+        renderer::mesh = instance_mesh();
 
-        renderer::impl::shaders::passthrough_color = instance_passthrough_color_shader();
-        renderer::impl::shaders::passthrough_texture = instance_passthrough_texture_shader();
+        renderer::passthrough_color_shader = instance_passthrough_color_shader();
+        renderer::passthrough_texture_shader = instance_passthrough_texture_shader();
     }
 
     void i_render_interface::render() {
-        renderer::impl::mesh->compile();
+        renderer::mesh->compile();
 
         draw_list.handle();
         draw_list.clear();
 
-        renderer::impl::mesh->clear_geometry();
+        renderer::mesh->clear_geometry();
         render::backend::renderer->setup_state();
     }
 }

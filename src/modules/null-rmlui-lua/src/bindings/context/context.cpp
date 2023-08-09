@@ -1,6 +1,6 @@
-#include <bindings/bindings.h>
-#include <plugin/document/document.h>
-#include <plugin/data-model/data-model.h>
+#include "bindings/bindings.h"
+#include "plugin/document/document.h"
+#include "plugin/data-model/data-model.h"
 
 namespace null::rml::modules::lua::context_bindings {
 	namespace document {

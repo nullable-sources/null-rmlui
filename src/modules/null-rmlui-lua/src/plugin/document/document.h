@@ -3,7 +3,6 @@
 
 #include <sol/sol.hpp>
 
-
 namespace null::rml::modules::lua {
 	sol::protected_function_result error_handler(lua_State*, sol::protected_function_result pfr);
 

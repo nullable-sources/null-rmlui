@@ -26,7 +26,7 @@
  *
  */
 
-#include "Debugger.h"
+#include "null-rmlui-debugger.h"
 #include <RmlUi/Core.h>
 #include "DebuggerPlugin.h"
 

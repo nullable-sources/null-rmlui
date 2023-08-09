@@ -5,9 +5,8 @@
 #include <RmlUi/Core/Plugin.h>
 #include <RmlUi/Core/Platform.h>
 
-#include <null-rmlui-lua.h>
-
-#include <plugin/instancer/instancer.h>
+#include "null-rmlui-lua.h"
+#include "plugin/instancer/instancer.h"
 
 namespace null::rml::modules::lua {
     class c_document_element_instancer;

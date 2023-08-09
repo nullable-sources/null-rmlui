@@ -54,7 +54,7 @@ void Geometry::RenderOutline(const Vector2f origin, const Vector2f dimensions, c
 	if (context == nullptr)
 		return;
 
-	null::rml::render_interface->draw_list.add_command(std::make_unique<null::rml::renderer::impl::commands::c_restore>());
+	null::rml::render_interface->draw_list.add_command(std::make_unique<null::rml::renderer::c_restore_command>());
 	null::rml::render_interface->draw_list.add_poly_line(
 		null::render::path::make_rect(origin, origin + dimensions),
 		null::render::stroke_t{ }.set_join(null::render::e_line_join::none).set_cap(null::render::e_line_cap::joint),
@@ -68,7 +68,7 @@ void Geometry::RenderBox(const Vector2f origin, const Vector2f dimensions, const
 	if (context == nullptr)
 		return;
 
-	null::rml::render_interface->draw_list.add_command(std::make_unique<null::rml::renderer::impl::commands::c_restore>());
+	null::rml::render_interface->draw_list.add_command(std::make_unique<null::rml::renderer::c_restore_command>());
 	null::rml::render_interface->draw_list.add_convex_shape(
 		null::render::path::make_rect(origin, origin + dimensions),
 		null::render::brush_t{ }.set_color(colour)

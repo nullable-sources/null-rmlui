@@ -1,5 +1,4 @@
-#include <bindings/bindings.h>
-#include <bindings/colour/colour.h>
+#include "bindings/bindings.h"
 
 namespace null::rml::modules::lua::colour_bindings {
 	template <typename data_t>

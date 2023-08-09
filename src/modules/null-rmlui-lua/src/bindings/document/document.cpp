@@ -1,5 +1,5 @@
-#include <bindings/bindings.h>
-#include <plugin/document/document.h>
+#include "bindings/bindings.h"
+#include "plugin/document/document.h"
 
 namespace null::rml::modules::lua::document_bindings {
 	void bind(sol::state_view& state_view) {

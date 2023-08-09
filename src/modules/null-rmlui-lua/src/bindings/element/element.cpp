@@ -1,11 +1,10 @@
-#include <bindings/bindings.h>
-
+#include <unordered_map>
 #include <RmlUi/Core.h>
 
-#include <plugin/document/document.h>
-#include <plugin/event-listener/event-listener.h>
+#include "bindings/bindings.h"
 
-#include <unordered_map>
+#include "plugin/document/document.h"
+#include "plugin/event-listener/event-listener.h"
 
 namespace null::rml::modules::lua::element_bindings {
 	namespace functions {

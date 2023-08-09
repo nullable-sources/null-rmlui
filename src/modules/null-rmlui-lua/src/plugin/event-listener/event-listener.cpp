@@ -6,8 +6,8 @@
 #include <string>
 #include <format>
 
-#include <plugin/event-listener/event-listener.h>
-#include <plugin/document/document.h>
+#include "plugin/event-listener/event-listener.h"
+#include "plugin/document/document.h"
 
 namespace null::rml::modules::lua {
 	c_event_listener::c_event_listener(sol::state_view& state_view, const std::string& code, Rml::Element* _element) : element{ _element } {

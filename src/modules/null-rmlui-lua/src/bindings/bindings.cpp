@@ -1,7 +1,4 @@
-#include <bindings/bindings.h>
-
-#include <functional>
-
+#include "bindings/bindings.h"
 
 namespace null::rml::modules::lua {
 	sol::object make_object_from_variant(const Rml::Variant* variant, const sol::state_view& state_view) {
