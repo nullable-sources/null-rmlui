@@ -1,7 +1,7 @@
-#include "shaders/passthrough-color/passthrough-color.h"
+#include "shaders/passthrough-texture-shader/passthrough-texture-shader.h"
 
 namespace null::rml::directx9 {
-	void c_passthrough_color_shader::use() {
+	void c_passthrough_texture_shader::use() {
 		if (empty()) return;
 		c_shader::use();
 

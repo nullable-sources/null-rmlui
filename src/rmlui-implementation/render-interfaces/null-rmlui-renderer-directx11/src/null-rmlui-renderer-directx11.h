@@ -1,8 +1,8 @@
 #pragma once
 #include "mesh/mesh.h"
 #include "commands/commands.h"
-#include "shaders/passthrough-color/passthrough-color.h"
-#include "shaders/passthrough-texture/passthrough-texture.h"
+#include "shaders/passthrough-color-shader/passthrough-color-shader.h"
+#include "shaders/passthrough-texture-shader/passthrough-texture-shader.h"
 
 namespace null::rml::directx11 {
 	class c_render : public i_render_interface {

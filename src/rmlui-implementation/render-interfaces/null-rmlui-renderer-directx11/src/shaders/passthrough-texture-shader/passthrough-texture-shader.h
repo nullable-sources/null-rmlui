@@ -1,6 +1,6 @@
 #pragma once
 #include <null-rmlui.h>
-#include "shaders/compiled-objects/passthrough/passthrough.h"
+#include "shaders/shared-compiled-objects/passthrough-object/compiled-object.h"
 
 namespace null::rml::directx11 {
 	class c_passthrough_texture_shader : public renderer::i_passthrough_texture_shader, public render::directx11::c_shader {

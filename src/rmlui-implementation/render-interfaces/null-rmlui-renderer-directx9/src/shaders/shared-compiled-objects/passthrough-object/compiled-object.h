@@ -4,7 +4,7 @@
 namespace null::rml::directx9 {
     namespace sources {
         static const std::vector<byte>& passthrough() {
-            #include <shaders/compiled-objects/passthrough/compiled/passthrough.h>
+            #include "compiled/passthrough.h"
             static const std::vector<byte> source{ shader_data, shader_data + sizeof(shader_data) };
             return source;
         }

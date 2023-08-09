@@ -36,20 +36,20 @@
     <ClInclude Include="src\commands\commands.h" />
     <ClInclude Include="src\mesh\mesh.h" />
     <ClInclude Include="src\null-rmlui-renderer-opengl3.h" />
-    <ClInclude Include="src\shaders\compiled-objects\passthrough\passthrough.h" />
-    <ClInclude Include="src\shaders\passthrough-color\passthrough-color.h" />
-    <ClInclude Include="src\shaders\passthrough-texture\passthrough-texture.h" />
+    <ClInclude Include="src\shaders\passthrough-color-shader\passthrough-color-shader.h" />
+    <ClInclude Include="src\shaders\passthrough-texture-shader\passthrough-texture-shader.h" />
+    <ClInclude Include="src\shaders\shared-compiled-objects\passthrough-object\compiled-object.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resources\null-rmlui-opengl3-resources.rc" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\mesh\mesh.cpp" />
-    <ClCompile Include="src\shaders\passthrough-color\passthrough-color.cpp" />
-    <ClCompile Include="src\shaders\passthrough-texture\passthrough-texture.cpp" />
+    <ClCompile Include="src\shaders\passthrough-color-shader\passthrough-color-shader.cpp" />
+    <ClCompile Include="src\shaders\passthrough-texture-shader\passthrough-texture-shader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shaders\compiled-objects\passthrough\glsl\passthrough.vert" />
+    <None Include="src\shaders\shared-compiled-objects\passthrough-object\glsl\passthrough.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

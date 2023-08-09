@@ -16,19 +16,19 @@
     <Filter Include="src\shaders">
       <UniqueIdentifier>{ceabbda5-3088-451d-85aa-94fa942b2d1e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\shaders\compiled-objects">
+    <Filter Include="src\shaders\shared-compiled-objects">
       <UniqueIdentifier>{d827e6ef-b290-4d08-94b4-69d7fe568975}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\shaders\compiled-objects\passthrough">
+    <Filter Include="src\shaders\shared-compiled-objects\passthrough-object">
       <UniqueIdentifier>{cc70ca9f-8243-4eab-a6d9-1253adc05d1e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\shaders\compiled-objects\passthrough\glsl">
+    <Filter Include="src\shaders\shared-compiled-objects\passthrough-object\glsl">
       <UniqueIdentifier>{076f7160-34bc-4e36-8ee7-5e05688573f7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\shaders\passthrough-color">
+    <Filter Include="src\shaders\passthrough-color-shader">
       <UniqueIdentifier>{0f5130ae-38b9-4855-8a54-cec6a02c10c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\shaders\passthrough-texture">
+    <Filter Include="src\shaders\passthrough-texture-shader">
       <UniqueIdentifier>{48f70e77-76b9-4676-814e-1116a0f5e197}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -42,14 +42,14 @@
     <ClInclude Include="src\mesh\mesh.h">
       <Filter>src\mesh</Filter>
     </ClInclude>
-    <ClInclude Include="src\shaders\compiled-objects\passthrough\passthrough.h">
-      <Filter>src\shaders\compiled-objects\passthrough</Filter>
+    <ClInclude Include="src\shaders\shared-compiled-objects\passthrough-object\compiled-object.h">
+      <Filter>src\shaders\shared-compiled-objects\passthrough-object</Filter>
     </ClInclude>
-    <ClInclude Include="src\shaders\passthrough-texture\passthrough-texture.h">
-      <Filter>src\shaders\passthrough-texture</Filter>
+    <ClInclude Include="src\shaders\passthrough-color-shader\passthrough-color-shader.h">
+      <Filter>src\shaders\passthrough-color-shader</Filter>
     </ClInclude>
-    <ClInclude Include="src\shaders\passthrough-color\passthrough-color.h">
-      <Filter>src\shaders\passthrough-color</Filter>
+    <ClInclude Include="src\shaders\passthrough-texture-shader\passthrough-texture-shader.h">
+      <Filter>src\shaders\passthrough-texture-shader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -61,16 +61,16 @@
     <ClCompile Include="src\mesh\mesh.cpp">
       <Filter>src\mesh</Filter>
     </ClCompile>
-    <ClCompile Include="src\shaders\passthrough-texture\passthrough-texture.cpp">
-      <Filter>src\shaders\passthrough-texture</Filter>
+    <ClCompile Include="src\shaders\passthrough-color-shader\passthrough-color-shader.cpp">
+      <Filter>src\shaders\passthrough-color-shader</Filter>
     </ClCompile>
-    <ClCompile Include="src\shaders\passthrough-color\passthrough-color.cpp">
-      <Filter>src\shaders\passthrough-color</Filter>
+    <ClCompile Include="src\shaders\passthrough-texture-shader\passthrough-texture-shader.cpp">
+      <Filter>src\shaders\passthrough-texture-shader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shaders\compiled-objects\passthrough\glsl\passthrough.vert">
-      <Filter>src\shaders\compiled-objects\passthrough\glsl</Filter>
+    <None Include="src\shaders\shared-compiled-objects\passthrough-object\glsl\passthrough.vert">
+      <Filter>src\shaders\shared-compiled-objects\passthrough-object\glsl</Filter>
     </None>
   </ItemGroup>
 </Project>
