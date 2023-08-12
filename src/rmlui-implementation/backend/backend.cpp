@@ -65,13 +65,13 @@ namespace null::rml::backend {
 		return -1;
 	}
 
-	std::string convert_to_utf8(const std::wstring_view& wstr) {
+	std::string convert_to_utf8(std::wstring_view wstr) {
 		std::string str(WideCharToMultiByte(CP_UTF8, 0, wstr.data(), (int)wstr.size(), NULL, 0, NULL, NULL), 0);
 		WideCharToMultiByte(CP_UTF8, 0, wstr.data(), -1, &str[0], str.size(), NULL, NULL);
 		return str;
 	}
 
-	std::wstring convert_to_utf16(const std::string_view& str) {
+	std::wstring convert_to_utf16(std::string_view str) {
 		std::wstring wstr(MultiByteToWideChar(CP_UTF8, 0, str.data(), (int)str.size(), NULL, 0), 0);
 		MultiByteToWideChar(CP_UTF8, 0, str.data(), (int)str.size(), &wstr[0], wstr.size());
 		return wstr;
@@ -89,7 +89,7 @@ namespace null::rml::backend {
 		return key_modifier_state;
 	}
 
-	Rml::Input::KeyIdentifier convert_key(const int& win32_key_code) {
+	Rml::Input::KeyIdentifier convert_key(int win32_key_code) {
 #define make_case(from, to) case from: return to;
 		switch(win32_key_code) {
 			make_case('A', Rml::Input::KI_A)
@@ -285,7 +285,7 @@ namespace null::rml::backend {
 		return Rml::Input::KI_UNKNOWN;
 	}
 
-	int convert_key(const Rml::Input::KeyIdentifier& rml_key_code) {
+	int convert_key(Rml::Input::KeyIdentifier rml_key_code) {
 #define make_case(to, from) case from: return to;
 		switch(rml_key_code) {
 			make_case('A', Rml::Input::KI_A)

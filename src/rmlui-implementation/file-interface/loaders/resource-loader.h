@@ -12,7 +12,7 @@ namespace null::rml {
 			size_t read_position{ };
 
 		public:
-			file_t(const std::string_view& name, const std::string_view& type) : i_file{ name } {
+			file_t(std::string_view name, std::string_view type) : i_file{ name } {
 				if(memory::resource_t* resource{ memory::c_module::self().find_resource(name, type) })
 					file = memory::resource_cast_t<std::string>::cast(resource->load());
 			}
@@ -21,7 +21,7 @@ namespace null::rml {
 			void open() override { }
 			void close() override { }
 
-			size_t read(void* buffer, const size_t& size) override {
+			size_t read(void* buffer, size_t size) override {
 				size_t bytes{ std::min(size, file.size() - read_position) };
 				if(!bytes) return 0;
 
@@ -36,7 +36,7 @@ namespace null::rml {
 				return bytes;
 			}
 
-			bool seek(const long& offset, const int& origin) override {
+			bool seek(long offset, int origin) override {
 				int new_read_position{ };
 
 				switch(origin) {
