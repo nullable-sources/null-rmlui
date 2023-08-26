@@ -49,7 +49,7 @@
     <ClCompile Include="src\shaders\passthrough-texture-shader\passthrough-texture-shader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shaders\shared-compiled-objects\passthrough-object\glsl\passthrough.vert" />
+    <None Include="src\shaders\shared-compiled-objects\passthrough-object\glsl\rml-passthrough.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

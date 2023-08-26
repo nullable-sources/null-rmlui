@@ -69,7 +69,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shaders\shared-compiled-objects\passthrough-object\glsl\passthrough.vert">
+    <None Include="src\shaders\shared-compiled-objects\passthrough-object\glsl\rml-passthrough.vert">
       <Filter>src\shaders\shared-compiled-objects\passthrough-object\glsl</Filter>
     </None>
   </ItemGroup>
