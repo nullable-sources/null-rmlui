@@ -13,16 +13,17 @@ renderer, system and file interfaces for rmlui with with small extensions.
 # extensions
 * decorators
     * checkmark
+    * linear and quad gradient from null-render
 * elements
-    * colorpicker and colorpicker-box
+    * colorpicker
     * multiselect
 
-# modules
-* lua
-    * RmlSolLua with little changes
+# plugins
+[null-rmlui-lua](https://github.com/nullptr-sources/null-rmlui-lua) - original [RmlSolLua](https://github.com/LoneBoco/RmlSolLua) lua bindings.\
+[null-rmlui-debugger](https://github.com/nullptr-sources/null-rmlui-debugger) - original debugger.\
+[null-rmlui-svg](https://github.com/nullptr-sources/null-rmlui-svg) - original plugin with lunasvg.
 
 # examples
-[![screen](https://i.imgur.com/nX18QpX.png)](https://github.com/nullptr-sources/null-rmlui/tree/master/examples/dll-injector)
 [![nullptr-injector](https://i.imgur.com/EAnyGo8.png)](https://github.com/nullptr-sources/nullptr-injector)
 
 # credits

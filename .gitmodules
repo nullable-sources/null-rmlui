@@ -4,6 +4,3 @@
 [submodule "third-party/null-render"]
 	path = third-party/null-render
 	url = https://github.com/nullptr-sources/null-render
-[submodule "third-party/null-lua"]
-	path = third-party/null-lua
-	url = https://github.com/nullptr-sources/null-lua

@@ -1,7 +1,6 @@
 ﻿#define RMLUI_STATIC_LIB
 #include <null-rmlui-renderer-directx11.h>
 #include <null-rmlui.h>
-#include <null-rmlui-debugger.h>
 Rml::Context* context{ };
 null::render::directx11::c_window window{ };
 utils::c_cumulative_time_measurement frame_counter{ 60 };
@@ -41,9 +40,6 @@ int main() {
 
 		if(!(context = Rml::CreateContext("main", window.size)))
 			utils::logger(utils::e_log_type::error, "Rml::CreateContext return nullptr");
-
-		Rml::Debugger::Initialise(context);
-		Rml::Debugger::SetVisible(true);
 
 		if(Rml::ElementDocument* document{ context->LoadDocument("[resource:rml] tutorial.rml") })
 			document->Show();
