@@ -5,7 +5,7 @@ namespace null::rml::extensions {
 	//@note: you style the necessary colorpicker yourself, an example will be later
 	class i_widget_colorpicker : public Rml::EventListener {
 	protected:
-		Rml::ElementFormControl* parent_element{ };
+		Rml::Element* parent{ };
 
 		Rml::Element* canvas{ }, *indicator{ }; //@note: indicator should not be part of DOM
 
@@ -21,22 +21,19 @@ namespace null::rml::extensions {
 		virtual void add_events();
 		virtual void remove_events();
 
-		virtual void update_colors(const color_t<int>& color) { } //@note: here you update the colors of the elements you need, such as preview, canvas, shoe slider, alpha slider, etc.
+		virtual void set_elements_color(const color_t<int>& color) { } //@note: here you update the colors of the elements you need, such as preview, canvas, shoe slider, alpha slider, etc.
 
-	public:
+	protected:
 		void on_update();
+		void format_elements();
 
-		void ProcessEvent(Rml::Event& event) override;
-
-		void on_value_change(const std::string_view& value);
+		void set_elements_value(const std::string& value);
+		void on_value_change(const std::string& value);
 
 		color_t<int> build_color() const { return color_t<int>{ hsv_color_t{ hue_slider->GetAttribute("value", 0.f), canvas->GetAttribute("saturation", 0.f), canvas->GetAttribute("brightness", 0.f), alpha_slider->GetAttribute("value", 0.f) } }; }
-		std::string build_color_to_string() const {
-			color_t<int> color{ build_color() };
-			return std::format("#{:02X}{:02X}{:02X}{:02X}", color.r, color.g, color.b, color.a);
-		}
+		std::string format_to_hex(const color_t<int>& color) const { return std::format("#{:02X}{:02X}{:02X}{:02X}", color.r, color.g, color.b, color.a); }
 
-	private:
-		void update_value();
+	public:
+		void ProcessEvent(Rml::Event& event) override;
 	};
 }

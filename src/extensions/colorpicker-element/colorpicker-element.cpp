@@ -12,7 +12,7 @@ namespace null::rml::extensions {
 		alpha_slider->AddEventListener(Rml::EventId::Change, this);
 		if(value_input) value_input->AddEventListener(Rml::EventId::Change, this);
 
-		parent_element->AddEventListener(Rml::EventId::Change, this);
+		parent->AddEventListener(Rml::EventId::Change, this);
 	}
 
 	void i_widget_colorpicker::remove_events() {
@@ -26,14 +26,15 @@ namespace null::rml::extensions {
 		alpha_slider->RemoveEventListener(Rml::EventId::Change, this);
 		if(value_input) value_input->RemoveEventListener(Rml::EventId::Change, this);
 
-		parent_element->RemoveEventListener(Rml::EventId::Change, this);
+		parent->RemoveEventListener(Rml::EventId::Change, this);
 	}
 
 	void i_widget_colorpicker::on_update() {
 		if(value_dirty) {
-			update_value();
-			if(value_input && !value_from_input) value_input->SetAttribute("value", build_color_to_string());
-			update_colors(build_color());
+			const color_t<int> color{ build_color() };
+			const std::string hex{ format_to_hex(color) };
+			set_elements_value(hex);
+			set_elements_color(color);
 
 			value_dirty = false;
 			value_from_input = false;
@@ -41,13 +42,11 @@ namespace null::rml::extensions {
 			indicator_dirty = true;
 		}
 
-		if(indicator_dirty && parent_element->IsVisible()) {
+		if(indicator_dirty && parent->IsVisible()) {
 			const vec2_t<float> box_size{ canvas->GetBox().GetSize(Rml::Box::BORDER) };
 			if(box_size == 0.f) return;
 
-			Rml::ElementUtilities::FormatElement(indicator, canvas->GetBox().GetSize(Rml::Box::BORDER));
-
-			const vec2_t<float> sv_offset{ canvas->GetBox().GetSize(Rml::Box::BORDER)* Rml::Vector2f{ canvas->GetAttribute("saturation", 0.f), 1.f - canvas->GetAttribute("brightness", 0.f) } };
+			const vec2_t<float> sv_offset{ canvas->GetBox().GetSize(Rml::Box::BORDER) * Rml::Vector2f{ canvas->GetAttribute("saturation", 0.f), 1.f - canvas->GetAttribute("brightness", 0.f) } };
 			const vec2_t<float> indicator_size{ indicator->GetBox().GetSize(Rml::Box::BORDER) };
 			indicator->SetOffset(math::min(math::max(sv_offset - indicator_size / 2.f, vec2_t{ 0.f }), box_size - indicator_size), canvas);
 
@@ -55,10 +54,33 @@ namespace null::rml::extensions {
 		}
 	}
 
-	void i_widget_colorpicker::ProcessEvent(Rml::Event& event) {
-		if(parent_element->IsDisabled())
-			return;
+	void i_widget_colorpicker::format_elements() {
+		Rml::ElementUtilities::FormatElement(indicator, canvas->GetBox().GetSize(Rml::Box::BORDER));
+	}
 
+	void i_widget_colorpicker::set_elements_value(const std::string& value) {
+		lock_value = true;
+		parent->SetAttribute("value", value);
+		if(value_input && !value_from_input)
+			value_input->SetAttribute("value", value);
+		lock_value = false;
+	}
+
+	void i_widget_colorpicker::on_value_change(const std::string& value) {
+		if(!lock_value && value.starts_with("#") && 7 >= value.size() <= 9) {
+			const std::vector<int> color{ value | std::views::drop(1) | std::views::chunk(2) | std::views::transform([](const auto& range) { return (int)std::strtoul(std::string{ range.begin(), range.end() }.c_str(), nullptr, 16); }) | std::ranges::to<std::vector>() };
+
+			const hsv_color_t hsv{ color_t<int>{ color } };
+			hue_slider->SetAttribute("value", hsv.h);
+			canvas->SetAttribute("saturation", hsv.s);
+			canvas->SetAttribute("brightness", hsv.v);
+			if(color.size() == 4) alpha_slider->SetAttribute("value", hsv.a);
+		}
+
+		parent->DispatchEvent(Rml::EventId::Change, { { "value", Rml::Variant{ value }  } });
+	}
+
+	void i_widget_colorpicker::ProcessEvent(Rml::Event& event) {
 		switch(event.GetId()) {
 			case Rml::EventId::Drag:
 			case Rml::EventId::Mousedown: {
@@ -74,13 +96,14 @@ namespace null::rml::extensions {
 				if(!copy_button || !paste_button || event.GetParameter("button", -1) != 0) break;
 
 				if(event.GetCurrentElement() == copy_button) {
-					update_value();
-					system_interface->SetClipboardText(parent_element->GetValue());
+					const std::string hex{ format_to_hex(build_color()) };
+					set_elements_value(hex);
+					system_interface->SetClipboardText(hex);
 				} else if(event.GetCurrentElement() == paste_button) {
 					std::string clipboard{ };
 					system_interface->GetClipboardText(clipboard);
 					if(!clipboard.empty() && (clipboard.starts_with("#") && 7 >= clipboard.size() <= 9)) {
-						parent_element->SetAttribute("value", clipboard);
+						parent->SetAttribute("value", clipboard);
 					}
 				}
 			} break;
@@ -93,25 +116,5 @@ namespace null::rml::extensions {
 				value_dirty = true;
 			} break;
 		}
-	}
-
-	void i_widget_colorpicker::on_value_change(const std::string_view& value) {
-		if(!lock_value && value.starts_with("#") && 7 >= value.size() <= 9) {
-			const std::vector<int> color{ value | std::views::drop(1) | std::views::chunk(2) | std::views::transform([](const auto& range) { return (int)std::strtoul(std::string{ range.begin(), range.end() }.c_str(), nullptr, 16); }) | std::ranges::to<std::vector>() };
-
-			const hsv_color_t hsv{ color_t<int>{ color } };
-			hue_slider->SetAttribute("value", hsv.h);
-			canvas->SetAttribute("saturation", hsv.s);
-			canvas->SetAttribute("brightness", hsv.v);
-			if(color.size() == 4) alpha_slider->SetAttribute("value", hsv.a);
-		}
-
-		parent_element->DispatchEvent(Rml::EventId::Change, { { "value", Rml::Variant{ std::string{ value } }  } });
-	}
-
-	void i_widget_colorpicker::update_value() {
-		lock_value = true;
-		parent_element->SetAttribute("value", build_color_to_string());
-		lock_value = false;
 	}
 }
