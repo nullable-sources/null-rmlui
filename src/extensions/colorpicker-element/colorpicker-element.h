@@ -5,7 +5,7 @@ namespace null::rml::extensions {
 	//@note: you style the necessary colorpicker yourself, an example will be later
 	class i_widget_colorpicker : public Rml::EventListener {
 	protected:
-		Rml::Element* parent{ };
+		Rml::Element* control_element{ };
 
 		Rml::Element* canvas{ }, *indicator{ }; //@note: indicator should not be part of DOM
 

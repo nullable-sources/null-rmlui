@@ -12,7 +12,7 @@ namespace null::rml::extensions {
 		alpha_slider->AddEventListener(Rml::EventId::Change, this);
 		if(value_input) value_input->AddEventListener(Rml::EventId::Change, this);
 
-		parent->AddEventListener(Rml::EventId::Change, this);
+		control_element->AddEventListener(Rml::EventId::Change, this);
 	}
 
 	void i_widget_colorpicker::remove_events() {
@@ -26,7 +26,7 @@ namespace null::rml::extensions {
 		alpha_slider->RemoveEventListener(Rml::EventId::Change, this);
 		if(value_input) value_input->RemoveEventListener(Rml::EventId::Change, this);
 
-		parent->RemoveEventListener(Rml::EventId::Change, this);
+		control_element->RemoveEventListener(Rml::EventId::Change, this);
 	}
 
 	void i_widget_colorpicker::on_update() {
@@ -42,7 +42,7 @@ namespace null::rml::extensions {
 			indicator_dirty = true;
 		}
 
-		if(indicator_dirty && parent->IsVisible()) {
+		if(indicator_dirty && control_element->IsVisible()) {
 			const vec2_t<float> box_size{ canvas->GetBox().GetSize(Rml::Box::BORDER) };
 			if(box_size == 0.f) return;
 
@@ -60,7 +60,7 @@ namespace null::rml::extensions {
 
 	void i_widget_colorpicker::set_elements_value(const std::string& value) {
 		lock_value = true;
-		parent->SetAttribute("value", value);
+		control_element->SetAttribute("value", value);
 		if(value_input && !value_from_input)
 			value_input->SetAttribute("value", value);
 		lock_value = false;
@@ -77,7 +77,7 @@ namespace null::rml::extensions {
 			if(color.size() == 4) alpha_slider->SetAttribute("value", hsv.a);
 		}
 
-		parent->DispatchEvent(Rml::EventId::Change, { { "value", Rml::Variant{ value }  } });
+		control_element->DispatchEvent(Rml::EventId::Change, { { "value", Rml::Variant{ value }  } });
 	}
 
 	void i_widget_colorpicker::ProcessEvent(Rml::Event& event) {
@@ -103,7 +103,7 @@ namespace null::rml::extensions {
 					std::string clipboard{ };
 					system_interface->GetClipboardText(clipboard);
 					if(!clipboard.empty() && (clipboard.starts_with("#") && 7 >= clipboard.size() <= 9)) {
-						parent->SetAttribute("value", clipboard);
+						control_element->SetAttribute("value", clipboard);
 					}
 				}
 			} break;
