@@ -1,5 +1,5 @@
 #pragma once
-#include <RmlUi/Core.h>
+#include <RmlUi/Include/RmlUi/Core.h>
 
 namespace null::rml::extensions {
 	class c_linear_gradient : public Rml::Decorator {

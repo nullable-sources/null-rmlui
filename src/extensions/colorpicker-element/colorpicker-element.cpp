@@ -43,11 +43,11 @@ namespace null::rml::extensions {
 		}
 
 		if(indicator_dirty && control_element->IsVisible()) {
-			const vec2_t<float> box_size{ canvas->GetBox().GetSize(Rml::Box::BORDER) };
+			const vec2_t<float> box_size{ canvas->GetBox().GetSize(Rml::BoxArea::Border) };
 			if(box_size == 0.f) return;
 
-			const vec2_t<float> sv_offset{ canvas->GetBox().GetSize(Rml::Box::BORDER) * Rml::Vector2f{ canvas->GetAttribute("saturation", 0.f), 1.f - canvas->GetAttribute("brightness", 0.f) } };
-			const vec2_t<float> indicator_size{ indicator->GetBox().GetSize(Rml::Box::BORDER) };
+			const vec2_t<float> sv_offset{ canvas->GetBox().GetSize(Rml::BoxArea::Border) * Rml::Vector2f{ canvas->GetAttribute("saturation", 0.f), 1.f - canvas->GetAttribute("brightness", 0.f) } };
+			const vec2_t<float> indicator_size{ indicator->GetBox().GetSize(Rml::BoxArea::Border) };
 			indicator->SetOffset(math::min(math::max(sv_offset - indicator_size / 2.f, vec2_t{ 0.f }), box_size - indicator_size), canvas);
 
 			indicator_dirty = false;
@@ -55,7 +55,7 @@ namespace null::rml::extensions {
 	}
 
 	void i_widget_colorpicker::format_elements() {
-		Rml::ElementUtilities::FormatElement(indicator, canvas->GetBox().GetSize(Rml::Box::BORDER));
+		Rml::ElementUtilities::FormatElement(indicator, canvas->GetBox().GetSize(Rml::BoxArea::Border));
 	}
 
 	void i_widget_colorpicker::set_elements_value(const std::string& value) {
@@ -85,7 +85,7 @@ namespace null::rml::extensions {
 			case Rml::EventId::Drag:
 			case Rml::EventId::Mousedown: {
 				if(event.GetCurrentElement() == canvas) {
-					Rml::Vector2f offset{ (Rml::Vector2f{ event.GetParameter("mouse_x", 0.f), event.GetParameter("mouse_y", 0.f) } - canvas->GetAbsoluteOffset(Rml::Box::BORDER)) / canvas->GetBox().GetSize(Rml::Box::BORDER) };
+					Rml::Vector2f offset{ (Rml::Vector2f{ event.GetParameter("mouse_x", 0.f), event.GetParameter("mouse_y", 0.f) } - canvas->GetAbsoluteOffset(Rml::BoxArea::Border)) / canvas->GetBox().GetSize(Rml::BoxArea::Border) };
 					canvas->SetAttribute("saturation", std::clamp(offset.x, 0.f, 1.f));
 					canvas->SetAttribute("brightness", std::clamp(1.f - offset.y, 0.f, 1.f));
 					value_dirty = true;

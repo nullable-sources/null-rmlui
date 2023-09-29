@@ -15,8 +15,8 @@ namespace null::rml::extensions {
 	Rml::DecoratorDataHandle c_quad_gradient::GenerateElementData(Rml::Element* element) const {
 		const Rml::Box& box{ element->GetBox() };
 
-		const Rml::Vector2f padding_size{ box.GetSize(Rml::Box::PADDING).Round() };
-		const Rml::Vector2f padding_position{ Rml::Math::RoundFloat(box.GetEdge(Rml::Box::BORDER, Rml::Box::Edge::LEFT)), Rml::Math::RoundFloat(box.GetEdge(Rml::Box::BORDER, Rml::Box::Edge::TOP)) };
+		const Rml::Vector2f padding_size{ box.GetSize(Rml::BoxArea::Padding).Round() };
+		const Rml::Vector2f padding_position{ Rml::Math::Round(box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Left)), Rml::Math::Round(box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Top)) };
 
 		const Rml::ComputedValues& computed{ element->GetComputedValues() };
 		return (Rml::DecoratorDataHandle)new data_t{
@@ -32,7 +32,7 @@ namespace null::rml::extensions {
 		const Rml::ComputedValues& computed{ element->GetComputedValues() };
 		render_interface->draw_list.add_command(std::make_unique<renderer::c_restore_command>());
 		render_interface->draw_list.add_convex_shape(
-			render::path::make_rect(data->box + (vec2_t<float>)element->GetAbsoluteOffset(Rml::Box::BORDER), data->rounding),
+			render::path::make_rect(data->box + (vec2_t<float>)element->GetAbsoluteOffset(Rml::BoxArea::Border), data->rounding),
 			render::filter_brush_t{ }
 				.set_color({ 255, 255, 255, int(computed.opacity() * 255.f) })
 				.set_filter(render::quad_gradient_filter_t{ }.set_colors(data->colors))

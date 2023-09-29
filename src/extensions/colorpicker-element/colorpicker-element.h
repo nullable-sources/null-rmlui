@@ -1,5 +1,5 @@
 #pragma once
-#include <RmlUi/Core.h>
+#include <RmlUi/Include/RmlUi/Core.h>
 
 namespace null::rml::extensions {
 	//@note: you style the necessary colorpicker yourself, an example will be later

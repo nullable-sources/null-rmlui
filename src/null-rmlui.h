@@ -1,6 +1,4 @@
 #pragma once
-#include <RmlUi/Core.h>
-
 #include "rmlui-implementation/backend/backend.h"
 #include "rmlui-implementation/file-interface/file-interface.h"
 #include "rmlui-implementation/system-interface/system-interface.h"

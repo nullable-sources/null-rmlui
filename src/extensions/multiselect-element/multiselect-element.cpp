@@ -10,7 +10,7 @@ namespace null::rml::extensions {
 		value_element->SetProperty(Rml::PropertyId::OverflowY, Rml::Property{ Rml::Style::Overflow::Hidden });
 
 		selection_element->SetProperty(Rml::PropertyId::Visibility, Rml::Property{ Rml::Style::Visibility::Hidden });
-		selection_element->SetProperty(Rml::PropertyId::ZIndex, Rml::Property{ 1.0f, Rml::Property::NUMBER });
+		selection_element->SetProperty(Rml::PropertyId::ZIndex, Rml::Property{ 1.0f, Rml::Unit::NUMBER });
 		selection_element->SetProperty(Rml::PropertyId::Clip, Rml::Property{ Rml::Style::Clip::Type::None });
 		selection_element->SetProperty(Rml::PropertyId::OverflowY, Rml::Property{ Rml::Style::Overflow::Auto });
 
@@ -68,28 +68,28 @@ namespace null::rml::extensions {
 			Rml::Box box{ };
 			Rml::ElementUtilities::BuildBox(box, parent_element->GetBox().GetSize(), selection_element);
 
-			const float offset_x{ box.GetEdge(Rml::Box::MARGIN, Rml::Box::LEFT) };
-			const float offset_y_below{ parent_element->GetBox().GetSize(Rml::Box::BORDER).y + box.GetEdge(Rml::Box::MARGIN, Rml::Box::TOP) };
-			const float offset_y_above{ -box.GetEdge(Rml::Box::MARGIN, Rml::Box::BOTTOM) };
+			const float offset_x{ box.GetEdge(Rml::BoxArea::Margin, Rml::BoxEdge::Left) };
+			const float offset_y_below{ parent_element->GetBox().GetSize(Rml::BoxArea::Border).y + box.GetEdge(Rml::BoxArea::Margin, Rml::BoxEdge::Top) };
+			const float offset_y_above{ -box.GetEdge(Rml::BoxArea::Margin, Rml::BoxEdge::Bottom) };
 
 			float window_height{ 100'000.f };
 			if(Rml::Context* context{ parent_element->GetContext() })
 				window_height = float(context->GetDimensions().y);
 
-			const float absolute_y{ parent_element->GetAbsoluteOffset(Rml::Box::BORDER).y };
+			const float absolute_y{ parent_element->GetAbsoluteOffset(Rml::BoxArea::Border).y };
 
 			const float height_below{ window_height - absolute_y - offset_y_below };
 			const float height_above{ absolute_y + offset_y_above };
 
-			Rml::ElementUtilities::FormatElement(selection_element, parent_element->GetBox().GetSize(Rml::Box::BORDER));
+			Rml::ElementUtilities::FormatElement(selection_element, parent_element->GetBox().GetSize(Rml::BoxArea::Border));
 			const float content_height{ selection_element->GetOffsetHeight() };
 
 			if(content_height < height_below) selection_element->SetOffset(Rml::Vector2f{ offset_x, offset_y_below }, parent_element);
 			else if(content_height < height_above) selection_element->SetOffset(Rml::Vector2f{ offset_x, -content_height + offset_y_above }, parent_element);
 			else {
 				const float padding_border_size{
-					box.GetEdge(Rml::Box::BORDER, Rml::Box::TOP) + box.GetEdge(Rml::Box::BORDER, Rml::Box::BOTTOM) +
-					box.GetEdge(Rml::Box::PADDING, Rml::Box::TOP) + box.GetEdge(Rml::Box::PADDING, Rml::Box::BOTTOM)
+					box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Top) + box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Bottom) +
+					box.GetEdge(Rml::BoxArea::Padding, Rml::BoxEdge::Top) + box.GetEdge(Rml::BoxArea::Padding, Rml::BoxEdge::Bottom)
 				};
 
 				float height{ };
@@ -103,9 +103,9 @@ namespace null::rml::extensions {
 					offset_y = offset_y_above - height_above;
 				}
 
-				selection_element->SetProperty(Rml::PropertyId::Height, Rml::Property{ height, Rml::Property::PX });
+				selection_element->SetProperty(Rml::PropertyId::Height, Rml::Property{ height, Rml::Unit::PX });
 				selection_element->GetOwnerDocument()->UpdateDocument();
-				Rml::ElementUtilities::FormatElement(selection_element, parent_element->GetBox().GetSize(Rml::Box::BORDER));
+				Rml::ElementUtilities::FormatElement(selection_element, parent_element->GetBox().GetSize(Rml::BoxArea::Border));
 
 				selection_element->SetOffset(Rml::Vector2f{ offset_x, offset_y }, parent_element);
 			}
@@ -114,8 +114,8 @@ namespace null::rml::extensions {
 		}
 
 		if(value_layout_dirty) {
-			Rml::ElementUtilities::FormatElement(value_element, parent_element->GetBox().GetSize(Rml::Box::BORDER));
-			value_element->SetOffset(parent_element->GetBox().GetPosition(Rml::Box::CONTENT), parent_element);
+			Rml::ElementUtilities::FormatElement(value_element, parent_element->GetBox().GetSize(Rml::BoxArea::Border));
+			value_element->SetOffset(parent_element->GetBox().GetPosition(Rml::BoxArea::Content), parent_element);
 
 			value_layout_dirty = false;
 		}
@@ -133,11 +133,11 @@ namespace null::rml::extensions {
 		Rml::ElementUtilities::PositionElement(selection_element, Rml::Vector2f{ 0, 0 }, Rml::ElementUtilities::TOP_LEFT);
 
 		Rml::Vector2f size{
-			parent_element->GetBox().GetSize(Rml::Box::CONTENT).x - button_element->GetBox().GetSize(Rml::Box::MARGIN).x,
-			parent_element->GetBox().GetSize(Rml::Box::CONTENT).y
+			parent_element->GetBox().GetSize(Rml::BoxArea::Content).x - button_element->GetBox().GetSize(Rml::BoxArea::Margin).x,
+			parent_element->GetBox().GetSize(Rml::BoxArea::Content).y
 		};
 
-		value_element->SetOffset(parent_element->GetBox().GetPosition(Rml::Box::CONTENT), parent_element);
+		value_element->SetOffset(parent_element->GetBox().GetPosition(Rml::BoxArea::Content), parent_element);
 		value_element->SetBox(Rml::Box{ size });
 
 		box_layout_dirty = true;
