@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d11addc5-089b-4237-a3dd-c21f8f81dcf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\plugin">
+      <UniqueIdentifier>{4c3f5e9a-8806-4acd-a7d1-f5682517faf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bindings">
+      <UniqueIdentifier>{46cd32be-f796-419d-939e-d6ed6a2cf8d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\plugin\data-model">
+      <UniqueIdentifier>{b1862b4a-3c20-49c1-a26b-012125820fc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\plugin\document">
+      <UniqueIdentifier>{836af744-b836-4f4f-bf31-a8c2b082caf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\plugin\event-listener">
+      <UniqueIdentifier>{7f0bbfa9-f502-40aa-81b9-cd82e9fecf54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\plugin\instancer">
+      <UniqueIdentifier>{51223e3e-2255-42f2-9362-0a153a079f08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bindings\colour">
+      <UniqueIdentifier>{dc4678cc-82f4-40b0-b371-45b5631f6c91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bindings\context">
+      <UniqueIdentifier>{f2056532-49e9-4ad5-ab0a-6ec794225fd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bindings\convert">
+      <UniqueIdentifier>{d4f32ecf-6b3f-43de-b301-5de3747928eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bindings\data-model">
+      <UniqueIdentifier>{2805948b-97a7-43cd-9957-4e1a611ccae7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bindings\document">
+      <UniqueIdentifier>{67e36b25-001e-42ad-be96-8fff85582ced}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bindings\element">
+      <UniqueIdentifier>{84ec783a-9e63-4195-8024-5fecbcc7b52d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bindings\element-derived">
+      <UniqueIdentifier>{ae71fa28-eabb-4eed-80d2-a20f38a2e71b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bindings\element-form">
+      <UniqueIdentifier>{5ff5b218-9437-4ec2-bd1e-5d688bd7158b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bindings\event">
+      <UniqueIdentifier>{acdcb611-b02f-4cb3-b5d3-ce792c655223}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bindings\global">
+      <UniqueIdentifier>{a842728f-a0c4-4a03-bb29-2cebc919de6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bindings\log">
+      <UniqueIdentifier>{fa592bb5-6de9-45c1-bfbb-637c112b5ae7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bindings\vector">
+      <UniqueIdentifier>{c3f407ff-88fe-4f7b-aea4-57bae80d0b84}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\null-rmlui-lua.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\plugin\data-model\data-model.h">
+      <Filter>src\plugin\data-model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\plugin\document\document.h">
+      <Filter>src\plugin\document</Filter>
+    </ClInclude>
+    <ClInclude Include="src\plugin\event-listener\event-listener.h">
+      <Filter>src\plugin\event-listener</Filter>
+    </ClInclude>
+    <ClInclude Include="src\plugin\instancer\instancer.h">
+      <Filter>src\plugin\instancer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\plugin\plugin.h">
+      <Filter>src\plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bindings\bindings.h">
+      <Filter>src\bindings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bindings\colour\colour.h">
+      <Filter>src\bindings\colour</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bindings\context\context.h">
+      <Filter>src\bindings\context</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bindings\convert\convert.h">
+      <Filter>src\bindings\convert</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bindings\data-model\data-model.h">
+      <Filter>src\bindings\data-model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bindings\document\document.h">
+      <Filter>src\bindings\document</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bindings\element\element.h">
+      <Filter>src\bindings\element</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bindings\element-derived\element-derived.h">
+      <Filter>src\bindings\element-derived</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bindings\element-form\element-form.h">
+      <Filter>src\bindings\element-form</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bindings\event\event.h">
+      <Filter>src\bindings\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bindings\vector\vector.h">
+      <Filter>src\bindings\vector</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bindings\log\log.h">
+      <Filter>src\bindings\log</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bindings\global\global.h">
+      <Filter>src\bindings\global</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\null-rmlui-lua.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\plugin\data-model\data-model.cpp">
+      <Filter>src\plugin\data-model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\plugin\document\document.cpp">
+      <Filter>src\plugin\document</Filter>
+    </ClCompile>
+    <ClCompile Include="src\plugin\event-listener\event-listener.cpp">
+      <Filter>src\plugin\event-listener</Filter>
+    </ClCompile>
+    <ClCompile Include="src\plugin\instancer\instancer.cpp">
+      <Filter>src\plugin\instancer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\plugin\plugin.cpp">
+      <Filter>src\plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindings\bindings.cpp">
+      <Filter>src\bindings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindings\colour\colour.cpp">
+      <Filter>src\bindings\colour</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindings\context\context.cpp">
+      <Filter>src\bindings\context</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindings\convert\convert.cpp">
+      <Filter>src\bindings\convert</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindings\data-model\data-model.cpp">
+      <Filter>src\bindings\data-model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindings\document\document.cpp">
+      <Filter>src\bindings\document</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindings\element\element.cpp">
+      <Filter>src\bindings\element</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindings\element-derived\element-derived.cpp">
+      <Filter>src\bindings\element-derived</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindings\element-form\element-form.cpp">
+      <Filter>src\bindings\element-form</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindings\event\event.cpp">
+      <Filter>src\bindings\event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindings\vector\vector.cpp">
+      <Filter>src\bindings\vector</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindings\log\log.cpp">
+      <Filter>src\bindings\log</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindings\global\global.cpp">
+      <Filter>src\bindings\global</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

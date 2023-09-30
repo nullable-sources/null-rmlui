@@ -4,6 +4,3 @@
 [submodule "third-party/null-render"]
 	path = third-party/null-render
 	url = https://github.com/nullptr-sources/null-render
-[submodule "third-party/RmlUi-vs-solution"]
-	path = third-party/RmlUi-vs-solution
-	url = https://github.com/0suddenly0/RmlUi-vs-solution

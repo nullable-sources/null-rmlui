@@ -21,10 +21,13 @@ renderer, system and file interfaces for rmlui with with small extensions.
 # plugins
 [null-rmlui-lua](https://github.com/nullptr-sources/null-rmlui-lua) - original [RmlSolLua](https://github.com/LoneBoco/RmlSolLua) lua bindings.\
 [null-rmlui-debugger](https://github.com/nullptr-sources/null-rmlui-debugger) - original debugger.\
-[null-rmlui-svg](https://github.com/nullptr-sources/null-rmlui-svg) - original plugin with lunasvg.
 
 # examples
 [![nullptr-injector](https://i.imgur.com/EAnyGo8.png)](https://github.com/nullptr-sources/nullptr-injector)
+
+# usage
+- compile RmlCore/RmlDebugger/RmlSvg in third-party\RmlUi folder
+- to use RmlSvg/RmlDebugger link the library in the folder third-party\RmlUi\libs
 
 # credits
 [RmlUi](https://github.com/mikke89/RmlUi) \

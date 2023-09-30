@@ -138,4 +138,7 @@
       <Filter>src\rmlui-implementation\render-interface\interfaces</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
 </Project>
