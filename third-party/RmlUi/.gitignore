@@ -1,4 +1,4 @@
 *.user
-libs/
+/libs
 build/
 .vs/
