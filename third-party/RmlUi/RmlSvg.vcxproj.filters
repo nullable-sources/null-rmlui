@@ -9,15 +9,15 @@
     <ClInclude Include="src\RmlUi\Include\RmlUi\SVG\ElementSVG.h">
       <Filter>RmlUi</Filter>
     </ClInclude>
-    <ClInclude Include="src\RmlUi\Source\SVG\SVGPlugin.h">
+    <ClInclude Include="src\RmlUi\RmlUi\SVG\SVGPlugin.h">
       <Filter>RmlUi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\RmlUi\Source\SVG\ElementSVG.cpp">
+    <ClCompile Include="src\RmlUi\RmlUi\SVG\ElementSVG.cpp">
       <Filter>RmlUi</Filter>
     </ClCompile>
-    <ClCompile Include="src\RmlUi\Source\SVG\SVGPlugin.cpp">
+    <ClCompile Include="src\RmlUi\RmlUi\SVG\SVGPlugin.cpp">
       <Filter>RmlUi</Filter>
     </ClCompile>
   </ItemGroup>

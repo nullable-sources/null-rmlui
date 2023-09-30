@@ -1,5 +1,5 @@
 #pragma once
-#include <RmlUi/Include/RmlUi/Core.h>
+#include <RmlUi/Core.h>
 #include <null-sdk.h>
 
 #include "rmlui-implementation/file-interface/loaders/resource-loader.h"

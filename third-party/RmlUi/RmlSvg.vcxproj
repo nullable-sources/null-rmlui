@@ -19,17 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\RmlUi\Include\RmlUi\SVG\ElementSVG.h" />
-    <ClInclude Include="src\RmlUi\Source\SVG\SVGPlugin.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\RmlUi\Source\SVG\ElementSVG.cpp" />
-    <ClCompile Include="src\RmlUi\Source\SVG\SVGPlugin.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="RmlCore.vcxproj">
       <Project>{e94bf49b-34b4-48ae-ba7c-93d8dd6bb795}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\RmlUi\Include\RmlUi\SVG\ElementSVG.h" />
+    <ClInclude Include="src\RmlUi\RmlUi\SVG\SVGPlugin.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\RmlUi\RmlUi\SVG\ElementSVG.cpp" />
+    <ClCompile Include="src\RmlUi\RmlUi\SVG\SVGPlugin.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

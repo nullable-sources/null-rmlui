@@ -1,5 +1,5 @@
 #pragma once
-#include <RmlUi/Include/RmlUi/Core.h>
+#include <RmlUi/Core.h>
 #include <null-render.h>
 
 #include "rmlui-implementation/render-interface/interfaces/commands.h"

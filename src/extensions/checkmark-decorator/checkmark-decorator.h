@@ -1,5 +1,5 @@
 #pragma once
-#include <RmlUi/Include/RmlUi/Core.h>
+#include <RmlUi/Core.h>
 
 namespace null::rml::extensions {
 	class c_checkmark : public Rml::Decorator {

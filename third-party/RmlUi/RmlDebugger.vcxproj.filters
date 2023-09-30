@@ -6,65 +6,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\RmlUi\Source\Debugger\ElementContextHook.cpp">
-      <Filter>RmlUi</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RmlUi\Source\Debugger\ElementInfo.cpp">
-      <Filter>RmlUi</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RmlUi\Source\Debugger\ElementLog.cpp">
-      <Filter>RmlUi</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RmlUi\Source\Debugger\Geometry.cpp">
-      <Filter>RmlUi</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RmlUi\Source\Debugger\Debugger.cpp">
-      <Filter>RmlUi</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RmlUi\Source\Debugger\DebuggerPlugin.cpp">
-      <Filter>RmlUi</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RmlUi\Source\Debugger\DebuggerSystemInterface.cpp">
-      <Filter>RmlUi</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\RmlUi\Source\Debugger\ElementContextHook.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\RmlUi\Source\Debugger\ElementInfo.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\RmlUi\Source\Debugger\ElementLog.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\RmlUi\Source\Debugger\FontSource.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\RmlUi\Source\Debugger\Geometry.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\RmlUi\Source\Debugger\InfoSource.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\RmlUi\Source\Debugger\LogSource.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\RmlUi\Source\Debugger\MenuSource.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\RmlUi\Source\Debugger\BeaconSource.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\RmlUi\Source\Debugger\CommonSource.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\RmlUi\Source\Debugger\DebuggerPlugin.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\RmlUi\Source\Debugger\DebuggerSystemInterface.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
     <ClInclude Include="src\RmlUi\Include\RmlUi\Debugger\Debugger.h">
       <Filter>RmlUi</Filter>
     </ClInclude>
@@ -74,15 +15,64 @@
     <ClInclude Include="src\RmlUi\Include\RmlUi\Debugger.h">
       <Filter>RmlUi</Filter>
     </ClInclude>
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\BeaconSource.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\CommonSource.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\DebuggerPlugin.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\DebuggerSystemInterface.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\ElementContextHook.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\ElementInfo.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\ElementLog.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\FontSource.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\Geometry.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\InfoSource.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\LogSource.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\MenuSource.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="src\RmlUi\Source\Debugger\LICENSE.txt">
+    <ClCompile Include="src\RmlUi\RmlUi\Debugger\Debugger.cpp">
       <Filter>RmlUi</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\RmlUi\Source\Debugger\.clang-format">
+    </ClCompile>
+    <ClCompile Include="src\RmlUi\RmlUi\Debugger\DebuggerPlugin.cpp">
       <Filter>RmlUi</Filter>
-    </None>
+    </ClCompile>
+    <ClCompile Include="src\RmlUi\RmlUi\Debugger\DebuggerSystemInterface.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RmlUi\RmlUi\Debugger\ElementContextHook.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RmlUi\RmlUi\Debugger\ElementInfo.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RmlUi\RmlUi\Debugger\ElementLog.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RmlUi\RmlUi\Debugger\Geometry.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
 #pragma once
-#include <RmlUi/Include/RmlUi/Core/Vertex.h>
+#include <RmlUi/Core/Vertex.h>
 
 namespace null::rml::renderer {
 	class c_geometry_buffer {

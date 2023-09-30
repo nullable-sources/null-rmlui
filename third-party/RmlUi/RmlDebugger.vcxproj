@@ -19,41 +19,35 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\RmlUi\Source\Debugger\Debugger.cpp" />
-    <ClCompile Include="src\RmlUi\Source\Debugger\DebuggerPlugin.cpp" />
-    <ClCompile Include="src\RmlUi\Source\Debugger\DebuggerSystemInterface.cpp" />
-    <ClCompile Include="src\RmlUi\Source\Debugger\ElementContextHook.cpp" />
-    <ClCompile Include="src\RmlUi\Source\Debugger\ElementInfo.cpp" />
-    <ClCompile Include="src\RmlUi\Source\Debugger\ElementLog.cpp" />
-    <ClCompile Include="src\RmlUi\Source\Debugger\Geometry.cpp" />
+    <ProjectReference Include="RmlCore.vcxproj">
+      <Project>{e94bf49b-34b4-48ae-ba7c-93d8dd6bb795}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\RmlUi\Include\RmlUi\Debugger.h" />
     <ClInclude Include="src\RmlUi\Include\RmlUi\Debugger\Debugger.h" />
     <ClInclude Include="src\RmlUi\Include\RmlUi\Debugger\Header.h" />
-    <ClInclude Include="src\RmlUi\Source\Debugger\BeaconSource.h" />
-    <ClInclude Include="src\RmlUi\Source\Debugger\CommonSource.h" />
-    <ClInclude Include="src\RmlUi\Source\Debugger\DebuggerPlugin.h" />
-    <ClInclude Include="src\RmlUi\Source\Debugger\DebuggerSystemInterface.h" />
-    <ClInclude Include="src\RmlUi\Source\Debugger\ElementContextHook.h" />
-    <ClInclude Include="src\RmlUi\Source\Debugger\ElementInfo.h" />
-    <ClInclude Include="src\RmlUi\Source\Debugger\ElementLog.h" />
-    <ClInclude Include="src\RmlUi\Source\Debugger\FontSource.h" />
-    <ClInclude Include="src\RmlUi\Source\Debugger\Geometry.h" />
-    <ClInclude Include="src\RmlUi\Source\Debugger\InfoSource.h" />
-    <ClInclude Include="src\RmlUi\Source\Debugger\LogSource.h" />
-    <ClInclude Include="src\RmlUi\Source\Debugger\MenuSource.h" />
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\BeaconSource.h" />
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\CommonSource.h" />
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\DebuggerPlugin.h" />
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\DebuggerSystemInterface.h" />
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\ElementContextHook.h" />
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\ElementInfo.h" />
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\ElementLog.h" />
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\FontSource.h" />
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\Geometry.h" />
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\InfoSource.h" />
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\LogSource.h" />
+    <ClInclude Include="src\RmlUi\RmlUi\Debugger\MenuSource.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="src\RmlUi\Source\Debugger\LICENSE.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\RmlUi\Source\Debugger\.clang-format" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="RmlCore.vcxproj">
-      <Project>{e94bf49b-34b4-48ae-ba7c-93d8dd6bb795}</Project>
-    </ProjectReference>
+    <ClCompile Include="src\RmlUi\RmlUi\Debugger\Debugger.cpp" />
+    <ClCompile Include="src\RmlUi\RmlUi\Debugger\DebuggerPlugin.cpp" />
+    <ClCompile Include="src\RmlUi\RmlUi\Debugger\DebuggerSystemInterface.cpp" />
+    <ClCompile Include="src\RmlUi\RmlUi\Debugger\ElementContextHook.cpp" />
+    <ClCompile Include="src\RmlUi\RmlUi\Debugger\ElementInfo.cpp" />
+    <ClCompile Include="src\RmlUi\RmlUi\Debugger\ElementLog.cpp" />
+    <ClCompile Include="src\RmlUi\RmlUi\Debugger\Geometry.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
