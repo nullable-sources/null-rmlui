@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup Label="NullProperties">
+        <NullRmluiRendererOpengl3Root>$(MSBuildThisFileDirectory)</NullRmluiRendererOpengl3Root>
+        <NullRmluiRendererOpengl3Configuration Condition="'$(UseDebugLibraries)' == 'true'">debug</NullRmluiRendererOpengl3Configuration>
+        <NullRmluiRendererOpengl3Configuration Condition="'$(UseDebugLibraries)' == 'false'">release</NullRmluiRendererOpengl3Configuration>
+    </PropertyGroup>
+
+    <ItemDefinitionGroup>
+        <ClCompile>
+            <AdditionalIncludeDirectories>$(NullRmluiRendererOpengl3Root)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+        </ClCompile>
+        <Lib>
+            <AdditionalLibraryDirectories>$(NullRmluiRendererOpengl3Root)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>null-rmlui-renderer-opengl3-$(NullRmluiRendererOpengl3Configuration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Lib>
+        <Link>
+            <AdditionalLibraryDirectories>$(NullRmluiRendererOpengl3Root)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>null-rmlui-renderer-opengl3-$(NullRmluiRendererOpengl3Configuration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Link>
+        <ResourceCompile>
+            <AdditionalIncludeDirectories>$(NullRmluiRendererOpengl3Root)resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+        </ResourceCompile>
+    </ItemDefinitionGroup>
+</Project>

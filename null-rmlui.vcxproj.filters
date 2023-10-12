@@ -51,31 +51,31 @@
     <ClCompile Include="src\null-rmlui.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\rmlui-implementation\backend\backend.cpp">
+    <ClCompile Include="src\null-rmlui\rmlui-implementation\backend\backend.cpp">
       <Filter>src\rmlui-implementation\backend</Filter>
     </ClCompile>
-    <ClCompile Include="src\rmlui-implementation\file-interface\file-interface.cpp">
+    <ClCompile Include="src\null-rmlui\rmlui-implementation\file-interface\file-interface.cpp">
       <Filter>src\rmlui-implementation\file-interface</Filter>
     </ClCompile>
-    <ClCompile Include="src\rmlui-implementation\render-interface\render-interface.cpp">
+    <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\render-interface.cpp">
       <Filter>src\rmlui-implementation\render-interface</Filter>
     </ClCompile>
-    <ClCompile Include="src\rmlui-implementation\system-interface\system-interface.cpp">
+    <ClCompile Include="src\null-rmlui\rmlui-implementation\system-interface\system-interface.cpp">
       <Filter>src\rmlui-implementation\system-interface</Filter>
     </ClCompile>
-    <ClCompile Include="src\extensions\checkmark-decorator\checkmark-decorator.cpp">
+    <ClCompile Include="src\null-rmlui\extensions\checkmark-decorator\checkmark-decorator.cpp">
       <Filter>src\extensions\checkmark-decorator</Filter>
     </ClCompile>
-    <ClCompile Include="src\extensions\colorpicker-element\colorpicker-element.cpp">
+    <ClCompile Include="src\null-rmlui\extensions\colorpicker-element\colorpicker-element.cpp">
       <Filter>src\extensions\colorpicker-element</Filter>
     </ClCompile>
-    <ClCompile Include="src\extensions\linear-gradient-decorator\linear-gradient-decorator.cpp">
+    <ClCompile Include="src\null-rmlui\extensions\linear-gradient-decorator\linear-gradient-decorator.cpp">
       <Filter>src\extensions\linear-gradient-decorator</Filter>
     </ClCompile>
-    <ClCompile Include="src\extensions\multiselect-element\multiselect-element.cpp">
+    <ClCompile Include="src\null-rmlui\extensions\multiselect-element\multiselect-element.cpp">
       <Filter>src\extensions\multiselect-element</Filter>
     </ClCompile>
-    <ClCompile Include="src\extensions\quad-gradient-decorator\quad-gradient-decorator.cpp">
+    <ClCompile Include="src\null-rmlui\extensions\quad-gradient-decorator\quad-gradient-decorator.cpp">
       <Filter>src\extensions\quad-gradient-decorator</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,58 +83,58 @@
     <ClInclude Include="src\null-rmlui.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\compatibility\color.h">
+    <ClInclude Include="src\null-rmlui\compatibility\color.h">
       <Filter>src\compatibility</Filter>
     </ClInclude>
-    <ClInclude Include="src\compatibility\vec2.h">
+    <ClInclude Include="src\null-rmlui\compatibility\vec2.h">
       <Filter>src\compatibility</Filter>
     </ClInclude>
-    <ClInclude Include="src\rmlui-implementation\backend\backend.h">
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\backend\backend.h">
       <Filter>src\rmlui-implementation\backend</Filter>
     </ClInclude>
-    <ClInclude Include="src\rmlui-implementation\file-interface\file-interface.h">
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\file-interface\file-interface.h">
       <Filter>src\rmlui-implementation\file-interface</Filter>
     </ClInclude>
-    <ClInclude Include="src\rmlui-implementation\file-interface\loaders\file-loader.h">
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\file-interface\loaders\file-loader.h">
       <Filter>src\rmlui-implementation\file-interface\loaders</Filter>
     </ClInclude>
-    <ClInclude Include="src\rmlui-implementation\file-interface\loaders\resource-loader.h">
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\file-interface\loaders\resource-loader.h">
       <Filter>src\rmlui-implementation\file-interface\loaders</Filter>
     </ClInclude>
-    <ClInclude Include="src\rmlui-implementation\file-interface\loaders\default-file-loader.h">
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\file-interface\loaders\default-file-loader.h">
       <Filter>src\rmlui-implementation\file-interface\loaders</Filter>
     </ClInclude>
-    <ClInclude Include="src\rmlui-implementation\render-interface\render-interface.h">
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\render-interface.h">
       <Filter>src\rmlui-implementation\render-interface</Filter>
     </ClInclude>
-    <ClInclude Include="src\rmlui-implementation\system-interface\system-interface.h">
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\system-interface\system-interface.h">
       <Filter>src\rmlui-implementation\system-interface</Filter>
     </ClInclude>
-    <ClInclude Include="src\extensions\extensions.h">
+    <ClInclude Include="src\null-rmlui\extensions\extensions.h">
       <Filter>src\extensions</Filter>
     </ClInclude>
-    <ClInclude Include="src\extensions\checkmark-decorator\checkmark-decorator.h">
+    <ClInclude Include="src\null-rmlui\extensions\checkmark-decorator\checkmark-decorator.h">
       <Filter>src\extensions\checkmark-decorator</Filter>
     </ClInclude>
-    <ClInclude Include="src\extensions\colorpicker-element\colorpicker-element.h">
+    <ClInclude Include="src\null-rmlui\extensions\colorpicker-element\colorpicker-element.h">
       <Filter>src\extensions\colorpicker-element</Filter>
     </ClInclude>
-    <ClInclude Include="src\extensions\linear-gradient-decorator\linear-gradient-decorator.h">
+    <ClInclude Include="src\null-rmlui\extensions\linear-gradient-decorator\linear-gradient-decorator.h">
       <Filter>src\extensions\linear-gradient-decorator</Filter>
     </ClInclude>
-    <ClInclude Include="src\extensions\multiselect-element\multiselect-element.h">
+    <ClInclude Include="src\null-rmlui\extensions\multiselect-element\multiselect-element.h">
       <Filter>src\extensions\multiselect-element</Filter>
     </ClInclude>
-    <ClInclude Include="src\extensions\quad-gradient-decorator\quad-gradient-decorator.h">
+    <ClInclude Include="src\null-rmlui\extensions\quad-gradient-decorator\quad-gradient-decorator.h">
       <Filter>src\extensions\quad-gradient-decorator</Filter>
     </ClInclude>
-    <ClInclude Include="src\rmlui-implementation\render-interface\interfaces\commands.h">
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\commands.h">
       <Filter>src\rmlui-implementation\render-interface\interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="src\rmlui-implementation\render-interface\interfaces\mesh.h">
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\mesh.h">
       <Filter>src\rmlui-implementation\render-interface\interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="src\rmlui-implementation\render-interface\interfaces\shaders.h">
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders.h">
       <Filter>src\rmlui-implementation\render-interface\interfaces</Filter>
     </ClInclude>
   </ItemGroup>

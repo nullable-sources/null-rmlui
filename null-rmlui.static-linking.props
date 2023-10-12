@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup Label="NullProperties">
+        <NullRmluiRoot>$(MSBuildThisFileDirectory)</NullRmluiRoot>
+        <NullRmluiConfiguration Condition="'$(UseDebugLibraries)' == 'true'">debug</NullRmluiConfiguration>
+        <NullRmluiConfiguration Condition="'$(UseDebugLibraries)' == 'false'">release</NullRmluiConfiguration>
+    </PropertyGroup>
+
+    <ItemDefinitionGroup>
+        <ClCompile>
+            <AdditionalIncludeDirectories>$(NullRmluiRoot)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+        </ClCompile>
+        <Lib>
+            <AdditionalLibraryDirectories>$(NullRmluiRoot)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>null-rmlui-$(NullRmluiConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Lib>
+        <Link>
+            <AdditionalLibraryDirectories>$(NullRmluiRoot)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>null-rmlui-$(NullRmluiConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Link>
+    </ItemDefinitionGroup>
+</Project>

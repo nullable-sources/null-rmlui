@@ -4,19 +4,19 @@ build/
 
 examples/opengl3/glfw/GLFW
 
-src/rmlui-implementation/render-interfaces/null-rmlui-renderer-directx11/src/shaders/shared-compiled-objects/passthrough-object/compiled
-src/rmlui-implementation/render-interfaces/null-rmlui-renderer-directx9/src/shaders/shared-compiled-objects/passthrough-object/compiled
+render-interfaces/directx11/src/null-rmlui-renderer-directx11/shaders/shared-objects/passthrough/compiled
+render-interfaces/directx9/src/null-rmlui-renderer-directx9/shaders/shared-objects/passthrough/compiled
 
-third-party/null-render/src/backends/null-render-backend-directx9/src/shaders/shared-compiled-objects/passthrough-object/compiled
-third-party/null-render/src/backends/null-render-backend-directx9/src/shaders/passthrough-color-shader/compiled
-third-party/null-render/src/backends/null-render-backend-directx9/src/shaders/passthrough-texture-shader/compiled
-third-party/null-render/src/backends/null-render-backend-directx9/src/shaders/quad-gradient-shader/compiled
-third-party/null-render/src/backends/null-render-backend-directx9/src/shaders/linear-gradient-shader/compiled
-third-party/null-render/src/backends/null-render-backend-directx9/src/shaders/sdf-shader/compiled
+third-party/null-render/backends/directx9/src/null-render-backend-directx9/shaders/shared-objects/passthrough/compiled
+third-party/null-render/backends/directx9/src/null-render-backend-directx9/shaders/passthrough-color/compiled
+third-party/null-render/backends/directx9/src/null-render-backend-directx9/shaders/passthrough-texture/compiled
+third-party/null-render/backends/directx9/src/null-render-backend-directx9/shaders/quad-gradient/compiled
+third-party/null-render/backends/directx9/src/null-render-backend-directx9/shaders/linear-gradient/compiled
+third-party/null-render/backends/directx9/src/null-render-backend-directx9/shaders/sdf/compiled
 
-third-party/null-render/src/backends/null-render-backend-directx11/src/shaders/shared-compiled-objects/passthrough-object/compiled
-third-party/null-render/src/backends/null-render-backend-directx11/src/shaders/passthrough-color-shader/compiled
-third-party/null-render/src/backends/null-render-backend-directx11/src/shaders/passthrough-texture-shader/compiled
-third-party/null-render/src/backends/null-render-backend-directx11/src/shaders/quad-gradient-shader/compiled
-third-party/null-render/src/backends/null-render-backend-directx11/src/shaders/linear-gradient-shader/compiled
-third-party/null-render/src/backends/null-render-backend-directx11/src/shaders/sdf-shader/compiled
+third-party/null-render/backends/directx11/src/null-render-backend-directx11/shaders/shared-objects/passthrough/compiled
+third-party/null-render/backends/directx11/src/null-render-backend-directx11/shaders/passthrough-color/compiled
+third-party/null-render/backends/directx11/src/null-render-backend-directx11/shaders/passthrough-texture/compiled
+third-party/null-render/backends/directx11/src/null-render-backend-directx11/shaders/quad-gradient/compiled
+third-party/null-render/backends/directx11/src/null-render-backend-directx11/shaders/linear-gradient/compiled
+third-party/null-render/backends/directx11/src/null-render-backend-directx11/shaders/sdf/compiled

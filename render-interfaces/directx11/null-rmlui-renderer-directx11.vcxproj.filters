@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d11addc5-089b-4237-a3dd-c21f8f81dcf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\commands">
+      <UniqueIdentifier>{b56adb19-43ac-491b-abf0-717c91312b3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mesh">
+      <UniqueIdentifier>{fc8cbc61-47a9-4f01-a0bc-4ebbce95b877}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders">
+      <UniqueIdentifier>{1e90c75f-fc55-45db-8931-99de96ef54d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\shared-objects">
+      <UniqueIdentifier>{4ef52bb6-bd0e-4191-aebc-7b910f964158}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\shared-objects\passthrough">
+      <UniqueIdentifier>{32786f28-6849-4d21-b027-9eafee648715}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\shared-objects\passthrough\hlsl">
+      <UniqueIdentifier>{fbf688d1-27cd-4134-a5e4-78651a956778}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\passthrough-texture">
+      <UniqueIdentifier>{be9505a0-1da5-4cc9-9ea1-55a5fe9f00b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\passthrough-color">
+      <UniqueIdentifier>{bef79e31-2e22-4e76-bd0a-818970f0f58e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\null-rmlui-renderer-directx11.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui-renderer-directx11\mesh\mesh.cpp">
+      <Filter>src\mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui-renderer-directx11\shaders\passthrough-texture\passthrough-texture.cpp">
+      <Filter>src\shaders\passthrough-texture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui-renderer-directx11\shaders\passthrough-color\passthrough-color.cpp">
+      <Filter>src\shaders\passthrough-color</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\null-rmlui-renderer-directx11.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-directx11\mesh\mesh.h">
+      <Filter>src\mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-directx11\commands\commands.h">
+      <Filter>src\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-directx11\shaders\shared-objects\passthrough\compiled-object.h">
+      <Filter>src\shaders\shared-objects\passthrough</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-directx11\shaders\passthrough-texture\passthrough-texture.h">
+      <Filter>src\shaders\passthrough-texture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-directx11\shaders\passthrough-color\passthrough-color.h">
+      <Filter>src\shaders\passthrough-color</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="src\null-rmlui-renderer-directx11\shaders\shared-objects\passthrough\hlsl\passthrough.hlsl">
+      <Filter>src\shaders\shared-objects\passthrough\hlsl</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

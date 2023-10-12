@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="RmlUi">
+      <UniqueIdentifier>{d11addc5-089b-4237-a3dd-c21f8f81dcf1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\RmlUi\Include\RmlUi\SVG\ElementSVG.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\SVG\SVGPlugin.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\RmlUi\RmlUi\SVG\ElementSVG.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RmlUi\RmlUi\SVG\SVGPlugin.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

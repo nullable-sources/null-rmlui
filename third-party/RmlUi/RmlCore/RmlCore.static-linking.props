@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup Label="NullProperties">
+        <RmlCoreRoot>$(MSBuildThisFileDirectory)</RmlCoreRoot>
+        <RmlCoreConfiguration Condition="'$(UseDebugLibraries)' == 'true'">debug</RmlCoreConfiguration>
+        <RmlCoreConfiguration Condition="'$(UseDebugLibraries)' == 'false'">release</RmlCoreConfiguration>
+    </PropertyGroup>
+
+    <ItemDefinitionGroup>
+        <ClCompile>
+            <AdditionalIncludeDirectories>$(RmlCoreRoot)..\src\RmlUi;$(RmlCoreRoot)..\src\RmlUi\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+        </ClCompile>
+        <Lib>
+            <AdditionalLibraryDirectories>$(RmlCoreRoot)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>RmlCore-$(RmlCoreConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Lib>
+        <Link>
+            <AdditionalLibraryDirectories>$(RmlCoreRoot)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>RmlCore-$(RmlCoreConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Link>
+    </ItemDefinitionGroup>
+</Project>

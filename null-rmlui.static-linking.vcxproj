@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{220d4d11-15cc-489d-8d93-58cfe85348bd}</ProjectGuid>
+  </PropertyGroup>
+  
+  <Import Project="null-rmlui.vcxproj" />
+  <ItemGroup>
+    <ProjectReference Remove="@(ProjectReference)" />
+  </ItemGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="third-party\RmlUi\RmlCore\RmlCore.static-linking.props" />
+    <Import Project="$(SolutionDir)third-party\null-sdk\null-sdk.static-linking.props" />
+    <Import Project="$(SolutionDir)third-party\null-render\null-render.static-linking.props" />
+  </ImportGroup>
+  
+  <PropertyGroup>
+    <NullProjectName>null-rmlui</NullProjectName>
+    <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(NullProjectName)\</IntDir>
+    <TargetName>$(NullProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
+  </PropertyGroup>
+</Project>

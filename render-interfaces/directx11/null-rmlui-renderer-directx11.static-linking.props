@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup Label="NullProperties">
+        <NullRmluiRendererDirectx11Root>$(MSBuildThisFileDirectory)</NullRmluiRendererDirectx11Root>
+        <NullRmluiRendererDirectx11Configuration Condition="'$(UseDebugLibraries)' == 'true'">debug</NullRmluiRendererDirectx11Configuration>
+        <NullRmluiRendererDirectx11Configuration Condition="'$(UseDebugLibraries)' == 'false'">release</NullRmluiRendererDirectx11Configuration>
+    </PropertyGroup>
+
+    <ItemDefinitionGroup>
+        <ClCompile>
+            <AdditionalIncludeDirectories>$(NullRmluiRendererDirectx11Root)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+        </ClCompile>
+        <Lib>
+            <AdditionalLibraryDirectories>$(NullRmluiRendererDirectx11Root)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>null-rmlui-renderer-directx11-$(NullRmluiRendererDirectx11Configuration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Lib>
+        <Link>
+            <AdditionalLibraryDirectories>$(NullRmluiRendererDirectx11Root)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>null-rmlui-renderer-directx11-$(NullRmluiRendererDirectx11Configuration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Link>
+    </ItemDefinitionGroup>
+</Project>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup Label="NullProperties">
+        <RmlDebuggerRoot>$(MSBuildThisFileDirectory)</RmlDebuggerRoot>
+        <RmlDebuggerConfiguration Condition="'$(UseDebugLibraries)' == 'true'">debug</RmlDebuggerConfiguration>
+        <RmlDebuggerConfiguration Condition="'$(UseDebugLibraries)' == 'false'">release</RmlDebuggerConfiguration>
+    </PropertyGroup>
+
+    <ItemDefinitionGroup>
+        <Lib>
+            <AdditionalLibraryDirectories>$(RmlDebuggerRoot)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>RmlDebugger-$(RmlDebuggerConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Lib>
+        <Link>
+            <AdditionalLibraryDirectories>$(RmlDebuggerRoot)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>RmlDebugger-$(RmlDebuggerConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Link>
+    </ItemDefinitionGroup>
+</Project>

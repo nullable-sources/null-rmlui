@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="RmlUi">
+      <UniqueIdentifier>{d11addc5-089b-4237-a3dd-c21f8f81dcf1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Debugger\Debugger.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Debugger\Header.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Debugger.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\BeaconSource.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\CommonSource.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\DebuggerPlugin.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\DebuggerSystemInterface.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\ElementContextHook.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\ElementInfo.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\ElementLog.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\FontSource.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\Geometry.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\InfoSource.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\LogSource.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\MenuSource.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\Debugger.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\DebuggerPlugin.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\DebuggerSystemInterface.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\ElementContextHook.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\ElementInfo.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\ElementLog.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\Geometry.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

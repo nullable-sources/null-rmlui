@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d11addc5-089b-4237-a3dd-c21f8f81dcf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{a0057da3-52a1-4121-b5b2-61a3066e670d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\commands">
+      <UniqueIdentifier>{f2fbbf86-a2a6-4619-8fa9-0ec5def0c7e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mesh">
+      <UniqueIdentifier>{71e7f982-1139-417c-94ea-f2ee22f3f1b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders">
+      <UniqueIdentifier>{ceabbda5-3088-451d-85aa-94fa942b2d1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\shared-objects">
+      <UniqueIdentifier>{d827e6ef-b290-4d08-94b4-69d7fe568975}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\shared-objects\passthrough">
+      <UniqueIdentifier>{cc70ca9f-8243-4eab-a6d9-1253adc05d1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\shared-objects\passthrough\glsl">
+      <UniqueIdentifier>{076f7160-34bc-4e36-8ee7-5e05688573f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\passthrough-color">
+      <UniqueIdentifier>{0f5130ae-38b9-4855-8a54-cec6a02c10c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\passthrough-texture">
+      <UniqueIdentifier>{48f70e77-76b9-4676-814e-1116a0f5e197}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\commands\commands.h">
+      <Filter>src\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\mesh\mesh.h">
+      <Filter>src\mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\shared-objects\passthrough\compiled-object.h">
+      <Filter>src\shaders\shared-objects\passthrough</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\passthrough-color\passthrough-color.h">
+      <Filter>src\shaders\passthrough-color</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\passthrough-texture\passthrough-texture.h">
+      <Filter>src\shaders\passthrough-texture</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources\null-rmlui-opengl3-resources.rc">
+      <Filter>resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\null-rmlui-renderer-opengl3\mesh\mesh.cpp">
+      <Filter>src\mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui-renderer-opengl3\shaders\passthrough-color\passthrough-color.cpp">
+      <Filter>src\shaders\passthrough-color</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui-renderer-opengl3\shaders\passthrough-texture\passthrough-texture.cpp">
+      <Filter>src\shaders\passthrough-texture</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\null-rmlui-renderer-opengl3\shaders\shared-objects\passthrough\glsl\rml-passthrough.vert">
+      <Filter>src\shaders\shared-objects\passthrough\glsl</Filter>
+    </None>
+  </ItemGroup>
+</Project>

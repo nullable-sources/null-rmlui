@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="debug|Win32">
@@ -19,54 +19,43 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\null-rmlui.vcxproj">
+      <Project>{220d4d11-15cc-489d-8d93-58cfe85348bd}</Project>
+    </ProjectReference>
     <ProjectReference Include="$(SolutionDir)third-party\null-render\null-render.vcxproj">
       <Project>{4abcf635-9767-40f9-989e-f0cdf5fb68ae}</Project>
     </ProjectReference>
     <ProjectReference Include="$(SolutionDir)third-party\null-sdk\null-sdk.vcxproj">
       <Project>{f7a10a5c-0fae-424b-8f2b-6cc4e4d898d1}</Project>
     </ProjectReference>
+    <ProjectReference Include="$(SolutionDir)third-party\null-render\backends\opengl3\null-render-backend-opengl3.vcxproj">
+      <Project>{97a6b7ae-9878-4584-a0b8-15287db604ac}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\null-rmlui\extensions\checkmark-decorator\checkmark-decorator.cpp" />
-    <ClCompile Include="src\null-rmlui\extensions\colorpicker-element\colorpicker-element.cpp" />
-    <ClCompile Include="src\null-rmlui\extensions\linear-gradient-decorator\linear-gradient-decorator.cpp" />
-    <ClCompile Include="src\null-rmlui\extensions\multiselect-element\multiselect-element.cpp" />
-    <ClCompile Include="src\null-rmlui\extensions\quad-gradient-decorator\quad-gradient-decorator.cpp" />
-    <ClCompile Include="src\null-rmlui.cpp" />
-    <ClCompile Include="src\null-rmlui\rmlui-implementation\backend\backend.cpp" />
-    <ClCompile Include="src\null-rmlui\rmlui-implementation\file-interface\file-interface.cpp" />
-    <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\render-interface.cpp" />
-    <ClCompile Include="src\null-rmlui\rmlui-implementation\system-interface\system-interface.cpp" />
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\commands\commands.h" />
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\mesh\mesh.h" />
+    <ClInclude Include="src\null-rmlui-renderer-opengl3.h" />
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\passthrough-color\passthrough-color.h" />
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\passthrough-texture\passthrough-texture.h" />
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\shared-objects\passthrough\compiled-object.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\null-rmlui\compatibility\color.h" />
-    <ClInclude Include="src\null-rmlui\compatibility\vec2.h" />
-    <ClInclude Include="src\null-rmlui\extensions\checkmark-decorator\checkmark-decorator.h" />
-    <ClInclude Include="src\null-rmlui\extensions\colorpicker-element\colorpicker-element.h" />
-    <ClInclude Include="src\null-rmlui\extensions\extensions.h" />
-    <ClInclude Include="src\null-rmlui\extensions\linear-gradient-decorator\linear-gradient-decorator.h" />
-    <ClInclude Include="src\null-rmlui\extensions\multiselect-element\multiselect-element.h" />
-    <ClInclude Include="src\null-rmlui\extensions\quad-gradient-decorator\quad-gradient-decorator.h" />
-    <ClInclude Include="src\null-rmlui.h" />
-    <ClInclude Include="src\null-rmlui\rmlui-implementation\backend\backend.h" />
-    <ClInclude Include="src\null-rmlui\rmlui-implementation\file-interface\file-interface.h" />
-    <ClInclude Include="src\null-rmlui\rmlui-implementation\file-interface\loaders\default-file-loader.h" />
-    <ClInclude Include="src\null-rmlui\rmlui-implementation\file-interface\loaders\file-loader.h" />
-    <ClInclude Include="src\null-rmlui\rmlui-implementation\file-interface\loaders\resource-loader.h" />
-    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\commands.h" />
-    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\mesh.h" />
-    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders.h" />
-    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\render-interface.h" />
-    <ClInclude Include="src\null-rmlui\rmlui-implementation\system-interface\system-interface.h" />
+    <ResourceCompile Include="resources\null-rmlui-opengl3-resources.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="README.md" />
+    <ClCompile Include="src\null-rmlui-renderer-opengl3\mesh\mesh.cpp" />
+    <ClCompile Include="src\null-rmlui-renderer-opengl3\shaders\passthrough-color\passthrough-color.cpp" />
+    <ClCompile Include="src\null-rmlui-renderer-opengl3\shaders\passthrough-texture\passthrough-texture.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\null-rmlui-renderer-opengl3\shaders\shared-objects\passthrough\glsl\rml-passthrough.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{220d4d11-15cc-489d-8d93-58cfe85348bd}</ProjectGuid>
-    <RootNamespace>null_rmlui</RootNamespace>
+    <ProjectGuid>{64527024-e33c-4590-ac2d-eb2bf9c8225d}</ProjectGuid>
+    <RootNamespace>null_rmlui_renderer_opengl3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -118,44 +107,43 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
-    <PublicIncludeDirectories>src\;third-party\RmlUi\src;third-party\RmlUi\src\RmlUi\Include;third-party\RmlUi\src\RmlUi</PublicIncludeDirectories>
+    <PublicIncludeDirectories>src\</PublicIncludeDirectories>
     <TargetName>$(ProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
-    <PublicIncludeDirectories>src\;third-party\RmlUi\src;third-party\RmlUi\src\RmlUi\Include;third-party\RmlUi\src\RmlUi</PublicIncludeDirectories>
+    <PublicIncludeDirectories>src\</PublicIncludeDirectories>
     <TargetName>$(ProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
-    <PublicIncludeDirectories>src\;third-party\RmlUi\src;third-party\RmlUi\src\RmlUi\Include;third-party\RmlUi\src\RmlUi</PublicIncludeDirectories>
+    <PublicIncludeDirectories>src\</PublicIncludeDirectories>
     <TargetName>$(ProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
-    <PublicIncludeDirectories>src\;third-party\RmlUi\src;third-party\RmlUi\src\RmlUi\Include;third-party\RmlUi\src\RmlUi</PublicIncludeDirectories>
+    <PublicIncludeDirectories>src\</PublicIncludeDirectories>
     <TargetName>$(ProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>RMLUI_STATIC_LIB;NOMINMAX;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\;$(ProjectDir)third-party\RmlUi\src\RmlUi;$(ProjectDir)third-party\RmlUi\src\RmlUi\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <ObjectFileName>$(IntDir)</ObjectFileName>
       <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
@@ -163,13 +151,6 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <Lib>
-      <AdditionalDependencies>$(ProjectDir)third-party\RmlUi\RmlCore\build\RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlDebugger\build\RmlDebugger-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlSvg\build\RmlSvg-$(ConfigurationName)-$(PlatformShortName).lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Lib>
-    <Lib>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
-    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
     <ClCompile>
@@ -177,16 +158,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>RMLUI_STATIC_LIB;NOMINMAX;_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\;$(ProjectDir)third-party\RmlUi\src\RmlUi;$(ProjectDir)third-party\RmlUi\src\RmlUi\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <ObjectFileName>$(IntDir)</ObjectFileName>
       <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
@@ -196,28 +176,20 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <Lib>
-      <AdditionalDependencies>$(ProjectDir)third-party\RmlUi\RmlCore\build\RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlDebugger\build\RmlDebugger-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlSvg\build\RmlSvg-$(ConfigurationName)-$(PlatformShortName).lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Lib>
-    <Lib>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
-    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>RMLUI_STATIC_LIB;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\;$(ProjectDir)third-party\RmlUi\src\RmlUi;$(ProjectDir)third-party\RmlUi\src\RmlUi\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <ObjectFileName>$(IntDir)</ObjectFileName>
       <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
@@ -225,13 +197,6 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <Lib>
-      <AdditionalDependencies>$(ProjectDir)third-party\RmlUi\RmlCore\build\RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlDebugger\build\RmlDebugger-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlSvg\build\RmlSvg-$(ConfigurationName)-$(PlatformShortName).lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Lib>
-    <Lib>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
-    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
     <ClCompile>
@@ -239,16 +204,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>RMLUI_STATIC_LIB;NOMINMAX;_CRT_SECURE_NO_WARNINGS;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\;$(ProjectDir)third-party\RmlUi\src\RmlUi;$(ProjectDir)third-party\RmlUi\src\RmlUi\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <ObjectFileName>$(IntDir)</ObjectFileName>
       <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
@@ -258,13 +222,6 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <Lib>
-      <AdditionalDependencies>$(ProjectDir)third-party\RmlUi\RmlCore\build\RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlDebugger\build\RmlDebugger-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlSvg\build\RmlSvg-$(ConfigurationName)-$(PlatformShortName).lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Lib>
-    <Lib>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
-    </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
