@@ -152,8 +152,10 @@ bool ContainerBox::CatchOverflow(const Vector2f content_overflow_size, const Box
 
 	RMLUI_ASSERT(available_space.x >= 0.f && available_space.y >= 0.f);
 
+#ifndef RMLUI_OLD_SCROLL_PADDING
 	// Allow overflow onto the padding area.
 	available_space += padding_bottom_right;
+#endif
 
 	ElementScroll* element_scroll = element->GetElementScroll();
 	bool scrollbar_size_changed = false;
@@ -167,7 +169,9 @@ bool ContainerBox::CatchOverflow(const Vector2f content_overflow_size, const Box
 			element_scroll->EnableScrollbar(ElementScroll::HORIZONTAL, padding_width);
 			const float new_size = element_scroll->GetScrollbarSize(ElementScroll::HORIZONTAL);
 			scrollbar_size_changed = (new_size != 0.f);
+#ifndef RMLUI_OLD_SCROLL_PADDING
 			available_space.y -= new_size;
+#endif
 		}
 	}
 
@@ -216,7 +220,11 @@ bool ContainerBox::SubmitBox(const Vector2f content_overflow_size, const Box& bo
 		};
 
 		// Scrollable overflow is the set of things extending our padding area, for which scrolling could be provided.
+#ifdef RMLUI_OLD_SCROLL_PADDING
+		const Vector2f scrollable_overflow_size = Math::Max(padding_size - scrollbar_size, padding_top_left + padding_bottom_right + content_overflow_size);
+#else
 		const Vector2f scrollable_overflow_size = Math::Max(padding_size - scrollbar_size, padding_top_left + content_overflow_size);
+#endif
 
 		element->SetBox(box);
 		element->SetScrollableOverflowRectangle(scrollable_overflow_size);

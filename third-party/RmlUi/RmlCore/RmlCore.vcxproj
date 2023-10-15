@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <None Include="README.md" />
+    <None Include="..\README.md" />
     <None Include="..\src\RmlUi\Include\RmlUi\Core\Colour.inl" />
     <None Include="..\src\RmlUi\Include\RmlUi\Core\Element.inl" />
     <None Include="..\src\RmlUi\Include\RmlUi\Core\Matrix4.inl" />
@@ -511,7 +511,7 @@
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -543,7 +543,7 @@
       </FunctionLevelLinking>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -572,7 +572,7 @@
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -606,7 +606,7 @@
       </FunctionLevelLinking>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>

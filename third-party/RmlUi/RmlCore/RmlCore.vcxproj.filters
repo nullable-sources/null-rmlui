@@ -6,7 +6,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\README.md" />
     <None Include="..\src\RmlUi\RmlUi\Core\Pool.inl">
       <Filter>RmlUi</Filter>
     </None>
@@ -34,6 +33,7 @@
     <None Include="..\src\RmlUi\Include\RmlUi\Core\Vector4.inl">
       <Filter>RmlUi</Filter>
     </None>
+    <None Include="..\README.md" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\BaseXMLParser.cpp">
