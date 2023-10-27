@@ -45,7 +45,7 @@ namespace null::rml::extensions {
 		if(const Rml::Property * property{ properties.GetProperty(angle) }) {
 			switch(property->unit) {
 				case Rml::Unit::RAD: { style.angle = property->Get<float>(); } break;
-				case Rml::Unit::DEG: { style.angle = angle_t<degrees_t>{ property->Get<float>() }; } break;
+				case Rml::Unit::DEG: { style.angle = angle_t<degrees_t>(property->Get<float>()); } break;
 				default: return nullptr;
 			}
 		}
@@ -54,16 +54,16 @@ namespace null::rml::extensions {
 	}
 
 	Rml::DecoratorDataHandle c_linear_gradient::GenerateElementData(Rml::Element* element) const {
-		const Rml::Box& box{ element->GetBox() };
+		const Rml::Box& box = element->GetBox();
 
-		const Rml::Vector2f padding_size{ box.GetSize(Rml::BoxArea::Padding).Round() };
-		const Rml::Vector2f padding_position{ Rml::Math::Round(box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Left)), Rml::Math::Round(box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Top)) };
-		const Rml::Vector2f border{ element->GetAbsoluteOffset(Rml::BoxArea::Border) };
+		const Rml::Vector2f padding_size = box.GetSize(Rml::BoxArea::Padding).Round();
+		const Rml::Vector2f padding_position(Rml::Math::Round(box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Left)), Rml::Math::Round(box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Top)));
+		const Rml::Vector2f border = element->GetAbsoluteOffset(Rml::BoxArea::Border);
 
-		const Rml::ComputedValues& computed{ element->GetComputedValues() };
+		const Rml::ComputedValues& computed = element->GetComputedValues();
 		return (Rml::DecoratorDataHandle)new data_t{
 			style.angle,
-			std::views::zip(style.colors, style.stops) | std::views::take(style.num_stops) | std::views::transform([](std::tuple<const color_t<int>&, const float&> tuple) { return std::pair{ std::get<const color_t<int>&>(tuple), std::get<const float&>(tuple) * 0.01f }; }) | std::ranges::to<std::vector>(),
+			std::views::zip(style.colors, style.stops) | std::views::take(style.num_stops) | std::views::transform([](std::tuple<const color_t<int>&, const float&> tuple) { return std::pair(std::get<const color_t<int>&>(tuple), std::get<const float&>(tuple) * 0.01f); }) | std::ranges::to<std::vector>(),
 			{ padding_position, padding_position + padding_size },
 			{ computed.border_top_left_radius(), computed.border_top_right_radius(), computed.border_bottom_left_radius(), computed.border_bottom_right_radius() }
 		};
@@ -72,7 +72,7 @@ namespace null::rml::extensions {
 	void c_linear_gradient::RenderElement(Rml::Element* element, Rml::DecoratorDataHandle element_data) const {
 		data_t* data{ (data_t*)element_data };
 
-		const Rml::ComputedValues& computed{ element->GetComputedValues() };
+		const Rml::ComputedValues& computed = element->GetComputedValues();
 		render_interface->draw_list.add_command(std::make_unique<renderer::c_restore_command>());
 		render_interface->draw_list.add_convex_shape(
 			render::path::make_rect(data->box + (vec2_t<float>)element->GetAbsoluteOffset(Rml::BoxArea::Border), data->rounding),

@@ -42,7 +42,7 @@ namespace null::rml::extensions {
 		};
 
 	public:
-		c_quad_gradient(const style_t& _style) : style{ _style } { }
+		c_quad_gradient(const style_t& _style) : style(_style) { }
 
 	public:
 		Rml::DecoratorDataHandle GenerateElementData(Rml::Element* element) const override;

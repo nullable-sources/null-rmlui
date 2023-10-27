@@ -28,9 +28,6 @@
     <Filter Include="src\extensions">
       <UniqueIdentifier>{f32b4621-6f02-4524-8027-f21723ef9357}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\extensions\checkmark-decorator">
-      <UniqueIdentifier>{3e0ce3dc-62f4-4bbe-b57d-b585a7733237}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\extensions\linear-gradient-decorator">
       <UniqueIdentifier>{0b286ac0-b715-4f5e-a72c-480ea52ff14d}</UniqueIdentifier>
     </Filter>
@@ -62,9 +59,6 @@
     </ClCompile>
     <ClCompile Include="src\null-rmlui\rmlui-implementation\system-interface\system-interface.cpp">
       <Filter>src\rmlui-implementation\system-interface</Filter>
-    </ClCompile>
-    <ClCompile Include="src\null-rmlui\extensions\checkmark-decorator\checkmark-decorator.cpp">
-      <Filter>src\extensions\checkmark-decorator</Filter>
     </ClCompile>
     <ClCompile Include="src\null-rmlui\extensions\colorpicker-element\colorpicker-element.cpp">
       <Filter>src\extensions\colorpicker-element</Filter>
@@ -112,9 +106,6 @@
     </ClInclude>
     <ClInclude Include="src\null-rmlui\extensions\extensions.h">
       <Filter>src\extensions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\null-rmlui\extensions\checkmark-decorator\checkmark-decorator.h">
-      <Filter>src\extensions\checkmark-decorator</Filter>
     </ClInclude>
     <ClInclude Include="src\null-rmlui\extensions\colorpicker-element\colorpicker-element.h">
       <Filter>src\extensions\colorpicker-element</Filter>

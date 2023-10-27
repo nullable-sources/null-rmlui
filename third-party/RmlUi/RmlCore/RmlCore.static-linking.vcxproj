@@ -4,10 +4,5 @@
     <ProjectGuid>{e94bf49b-34b4-48ae-ba7c-93d8dd6bb795}</ProjectGuid>
   </PropertyGroup>
   
-  <Import Project="RmlCore.vcxproj" />  
-  <PropertyGroup>
-    <NullProjectName>RmlCore</NullProjectName>
-    <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(NullProjectName)\</IntDir>
-    <TargetName>$(NullProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
-  </PropertyGroup>
+  <Import Project="RmlCore.vcxproj" />
 </Project>

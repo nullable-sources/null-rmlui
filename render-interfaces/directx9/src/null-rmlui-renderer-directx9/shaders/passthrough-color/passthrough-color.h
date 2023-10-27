@@ -8,7 +8,7 @@ namespace null::rml::directx9 {
 		Rml::Vector2f translation{ };
 
 	public:
-		c_passthrough_color_shader() : c_shader{ &render::directx9::passthrough_color_shader_object, &passthrough_shader_object } { }
+		c_passthrough_color_shader() : c_shader(&render::directx9::passthrough_color_shader_object, &passthrough_shader_object) { }
 
 	public:
 		void use() override;

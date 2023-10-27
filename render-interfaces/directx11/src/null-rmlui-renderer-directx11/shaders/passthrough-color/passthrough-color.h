@@ -8,7 +8,7 @@ namespace null::rml::directx11 {
 		c_passthrough_shader_object::constant_buffer_t constant{ };
 
 	public:
-		c_passthrough_color_shader() : c_shader{ &render::directx11::passthrough_color_shader_object, &passthrough_shader_object } { }
+		c_passthrough_color_shader() : c_shader(&render::directx11::passthrough_color_shader_object, &passthrough_shader_object) { }
 
 	public:
 		void use() override;

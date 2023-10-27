@@ -13,10 +13,4 @@
     <Import Project="$(SolutionDir)third-party\null-sdk\null-sdk.static-linking.props" />
     <Import Project="$(SolutionDir)third-party\null-render\null-render.static-linking.props" />
   </ImportGroup>
-  
-  <PropertyGroup>
-    <NullProjectName>null-rmlui</NullProjectName>
-    <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(NullProjectName)\</IntDir>
-    <TargetName>$(NullProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
-  </PropertyGroup>
 </Project>

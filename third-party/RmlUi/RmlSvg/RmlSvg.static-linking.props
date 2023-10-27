@@ -11,12 +11,12 @@
             <AdditionalIncludeDirectories>$(RmlSvgRoot)..\Dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
         </ClCompile>
         <Lib>
-            <AdditionalLibraryDirectories>$(RmlSvgRoot)build;$(RmlSvgRoot)..\Dependencies\libs%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-            <AdditionalDependencies>RmlSvg-$(RmlSvgConfiguration)-$(LibrariesArchitecture).lib;lunasvg-$(RmlSvgConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
+            <AdditionalLibraryDirectories>$(RmlSvgRoot)build;$(RmlSvgRoot)..\Dependencies\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>RmlSVG-$(RmlSvgConfiguration)-$(LibrariesArchitecture).lib;lunasvg-$(RmlSvgConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Lib>
         <Link>
-            <AdditionalLibraryDirectories>$(RmlSvgRoot)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-            <AdditionalDependencies>RmlSvg-$(RmlSvgConfiguration)-$(LibrariesArchitecture).lib;lunasvg-$(RmlSvgConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
+            <AdditionalLibraryDirectories>$(RmlSvgRoot)build;$(RmlSvgRoot)..\Dependencies\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>RmlSVG-$(RmlSvgConfiguration)-$(LibrariesArchitecture).lib;lunasvg-$(RmlSvgConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Link>
     </ItemDefinitionGroup>
 </Project>

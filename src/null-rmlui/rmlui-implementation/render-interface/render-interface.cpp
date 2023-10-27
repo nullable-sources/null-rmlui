@@ -6,7 +6,7 @@
 
 namespace null::rml {
     void i_render_interface::SetScissorRegion(int x, int y, int width, int height) {
-        draw_list.add_command(std::make_unique<render::c_clip_command>(rect_t<float>{ (float)x, (float)y, (float)x + (float)width, (float)y + (float)height }));
+        draw_list.add_command(std::make_unique<render::c_clip_command>(rect_t<float>(x, y, x + width, y + height)));
     }
     
     void i_render_interface::EnableScissorRegion(bool enable) {
@@ -14,8 +14,8 @@ namespace null::rml {
     }
 
     void i_render_interface::SetTransform(const Rml::Matrix4f* transform) {
-        matrix4x4_t matrix{ render::backend::renderer->get_projection_matrix() };
-        if(transform) matrix *= matrix4x4_t{ *(std::array<float, 16>*)transform->data() };
+        matrix4x4_t matrix = render::backend::renderer->get_projection_matrix();
+        if(transform) matrix *= matrix4x4_t(*(std::array<float, 16>*)transform->data());
         draw_list.add_command(std::make_unique<render::c_matrix_command>(matrix));
     }
 
@@ -26,24 +26,22 @@ namespace null::rml {
     }
 
     bool i_render_interface::LoadTexture(Rml::TextureHandle& texture_handle, Rml::Vector2i& texture_dimensions, const std::string& source) {
-        Rml::FileInterface* file_interface{ Rml::GetFileInterface() };
-        Rml::FileHandle file_handle{ file_interface->Open(source) };
+        Rml::FileInterface* file_interface = Rml::GetFileInterface();
+        Rml::FileHandle file_handle = file_interface->Open(source);
 
         std::vector<uint8_t> file_data(file_interface->Length(file_handle));
         file_interface->Read(file_data.data(), file_data.size(), file_handle);
         file_interface->Close(file_handle);
 
-        std::uint8_t* data{ stbi_load_from_memory(file_data.data(), file_data.size(), &texture_dimensions.x, &texture_dimensions.y, nullptr, 4) };
-
+        std::uint8_t* data = stbi_load_from_memory(file_data.data(), file_data.size(), &texture_dimensions.x, &texture_dimensions.y, nullptr, 4);
         GenerateTexture(texture_handle, data, texture_dimensions);
-
         stbi_image_free(data);
 
         return true;
     }
 
     bool i_render_interface::GenerateTexture(Rml::TextureHandle& texture_handle, const byte* source, const Rml::Vector2i& source_dimensions) {
-        texture_handle = (Rml::TextureHandle)render::backend::renderer->create_texture({ (float)source_dimensions.x, (float)source_dimensions.y }, (void*)source);
+        texture_handle = (Rml::TextureHandle)render::backend::renderer->create_texture(vec2_t<float>(source_dimensions.x, source_dimensions.y), (void*)source);
         return true;
     }
 

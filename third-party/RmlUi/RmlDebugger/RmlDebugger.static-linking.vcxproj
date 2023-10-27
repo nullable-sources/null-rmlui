@@ -11,9 +11,4 @@
   <ImportGroup Label="PropertySheets">
     <Import Project="..\RmlCore\RmlCore.static-linking.props" />
   </ImportGroup>
-  <PropertyGroup>
-    <NullProjectName>RmlDebugger</NullProjectName>
-    <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(NullProjectName)\</IntDir>
-    <TargetName>$(NullProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
-  </PropertyGroup>
 </Project>

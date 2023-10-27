@@ -11,7 +11,7 @@ namespace null::rml {
 			FILE* file{ };
 
 		public:
-			file_t(std::string_view _path) : i_file{ _path } { open(); }
+			file_t(std::string_view _path) : i_file(_path) { open(); }
 			~file_t() { close(); }
 
 		public:
@@ -34,7 +34,7 @@ namespace null::rml {
 			std::string replace{ };
 
 		public:
-			formatter_t(const std::regex& _regex, std::string_view _replace) : regex{ _regex }, replace{ _replace } { }
+			formatter_t(const std::regex& _regex, std::string_view _replace) : regex(_regex), replace(_replace) { }
 
 		public:
 			std::string format(const std::string& path) override { return std::regex_replace(path, regex, replace); }
@@ -44,7 +44,7 @@ namespace null::rml {
 		std::vector<std::unique_ptr<i_formatter>> formatters{ };
 
 	public:
-		default_file_loader_t() { add_formatter(std::regex{ "\\{system-fonts\\}" }, std::format("{}\\fonts", std::getenv("windir"))); }
+		default_file_loader_t() { add_formatter(std::regex("\\{system-fonts\\}"), std::format("{}\\fonts", std::getenv("windir"))); }
 
 	public:
 		virtual bool create(std::string& path) override {

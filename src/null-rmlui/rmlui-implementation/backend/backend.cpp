@@ -10,8 +10,7 @@ namespace null::rml::backend {
 
 		switch(message) {
 			case WM_SIZE: {
-				int width{ LOWORD(l_param) }, height{ HIWORD(l_param) };
-				context->SetDimensions({ width, height });
+				context->SetDimensions(Rml::Vector2i(LOWORD(l_param), HIWORD(l_param)));
 			} return 0;
 
 			case WM_LBUTTONDOWN: { SetCapture(window_handle); if(!context->ProcessMouseButtonDown(0, get_key_modifier_state())) return 0; } break;
@@ -45,13 +44,13 @@ namespace null::rml::backend {
 			case WM_CHAR: {
 				static wchar_t first_u16_code_unit{ };
 
-				wchar_t c{ (wchar_t)w_param };
+				wchar_t c = (wchar_t)w_param;
 				Rml::Character character{ c };
 
 				if(c >= 0xD800 && c < 0xDC00) {
 					first_u16_code_unit = c;
 				} else {
-					if(c >= 0xDC00 && c < 0xE000 && first_u16_code_unit != 0) character = Rml::StringUtilities::ToCharacter(convert_to_utf8(std::wstring{ first_u16_code_unit, c }).data());
+					if(c >= 0xDC00 && c < 0xE000 && first_u16_code_unit != 0) character = Rml::StringUtilities::ToCharacter(convert_to_utf8(std::wstring(first_u16_code_unit, c)).data());
 					else if(c == '\r') character = (Rml::Character)'\n';
 
 					first_u16_code_unit = 0;

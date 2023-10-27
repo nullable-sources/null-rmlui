@@ -27,7 +27,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\null-rmlui\extensions\checkmark-decorator\checkmark-decorator.cpp" />
     <ClCompile Include="src\null-rmlui\extensions\colorpicker-element\colorpicker-element.cpp" />
     <ClCompile Include="src\null-rmlui\extensions\linear-gradient-decorator\linear-gradient-decorator.cpp" />
     <ClCompile Include="src\null-rmlui\extensions\multiselect-element\multiselect-element.cpp" />
@@ -41,7 +40,6 @@
   <ItemGroup>
     <ClInclude Include="src\null-rmlui\compatibility\color.h" />
     <ClInclude Include="src\null-rmlui\compatibility\vec2.h" />
-    <ClInclude Include="src\null-rmlui\extensions\checkmark-decorator\checkmark-decorator.h" />
     <ClInclude Include="src\null-rmlui\extensions\colorpicker-element\colorpicker-element.h" />
     <ClInclude Include="src\null-rmlui\extensions\extensions.h" />
     <ClInclude Include="src\null-rmlui\extensions\linear-gradient-decorator\linear-gradient-decorator.h" />
@@ -119,28 +117,28 @@
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
     <PublicIncludeDirectories>src\;third-party\RmlUi\src;third-party\RmlUi\src\RmlUi\Include;third-party\RmlUi\src\RmlUi</PublicIncludeDirectories>
-    <TargetName>$(ProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
+    <TargetName>null-rmlui-$(Configuration)-$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
     <PublicIncludeDirectories>src\;third-party\RmlUi\src;third-party\RmlUi\src\RmlUi\Include;third-party\RmlUi\src\RmlUi</PublicIncludeDirectories>
-    <TargetName>$(ProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
+    <TargetName>null-rmlui-$(Configuration)-$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
     <PublicIncludeDirectories>src\;third-party\RmlUi\src;third-party\RmlUi\src\RmlUi\Include;third-party\RmlUi\src\RmlUi</PublicIncludeDirectories>
-    <TargetName>$(ProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
+    <TargetName>null-rmlui-$(Configuration)-$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
     <PublicIncludeDirectories>src\;third-party\RmlUi\src;third-party\RmlUi\src\RmlUi\Include;third-party\RmlUi\src\RmlUi</PublicIncludeDirectories>
-    <TargetName>$(ProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
+    <TargetName>null-rmlui-$(Configuration)-$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
     <ClCompile>

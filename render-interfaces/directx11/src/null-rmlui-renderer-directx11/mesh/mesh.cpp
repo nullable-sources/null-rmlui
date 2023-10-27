@@ -10,7 +10,7 @@ namespace null::rml::directx11 {
 			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,      0, (UINT)offsetof(Rml::Vertex, tex_coord),  D3D11_INPUT_PER_VERTEX_DATA, 0 },
 			{ "COLOR",    0, DXGI_FORMAT_R8G8B8A8_UNORM,	0, (UINT)offsetof(Rml::Vertex, colour), D3D11_INPUT_PER_VERTEX_DATA, 0 },
 		};
-		if(auto result{ render::directx11::shared.device->CreateInputLayout(desc, 3, sources::passthrough().data(), sources::passthrough().size(), &input_layout) }; FAILED(result))
+		if(auto result = render::directx11::shared.device->CreateInputLayout(desc, 3, sources::passthrough().data(), sources::passthrough().size(), &input_layout); FAILED(result))
 			utils::logger(utils::e_log_type::error, "cant create vertex input layout, return code {}.", result);
 	}
 
@@ -21,7 +21,7 @@ namespace null::rml::directx11 {
 	}
 
 	void c_mesh::compile() {
-		static int vertex_buffer_size{ 5000 }, index_buffer_size{ 10000 };
+		static int vertex_buffer_size = 5000, index_buffer_size = 10000;
 		if(!vertex_buffer || vertex_buffer_size < geometry_buffer.vertex_buffers_size) {
 			if(vertex_buffer) { vertex_buffer->Release(); vertex_buffer = nullptr; }
 			vertex_buffer_size = geometry_buffer.vertex_buffers_size + 5000;
@@ -32,7 +32,7 @@ namespace null::rml::directx11 {
 				.CPUAccessFlags{ D3D11_CPU_ACCESS_WRITE },
 				.MiscFlags{ 0 }
 			};
-			if(auto result{ render::directx11::shared.device->CreateBuffer(&buffer_desc, nullptr, &vertex_buffer) }; FAILED(result)) {
+			if(auto result = render::directx11::shared.device->CreateBuffer(&buffer_desc, nullptr, &vertex_buffer); FAILED(result)) {
 				utils::logger(utils::e_log_type::error, "cant create vertex buffer, return code {}.", result);
 				return;
 			}
@@ -49,18 +49,18 @@ namespace null::rml::directx11 {
 				.MiscFlags{ 0 }
 			};
 
-			if(auto result{ render::directx11::shared.device->CreateBuffer(&buffer_desc, nullptr, &index_buffer) }; FAILED(result)) {
+			if(auto result = render::directx11::shared.device->CreateBuffer(&buffer_desc, nullptr, &index_buffer); FAILED(result)) {
 				utils::logger(utils::e_log_type::error, "cant create index buffer, return code {}.", result);
 				return;
 			}
 		}
 
 		D3D11_MAPPED_SUBRESOURCE vertex_buffer_subresource{ }, index_buffer_subresource{ };
-		if(auto result{ render::directx11::shared.context->Map(vertex_buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &vertex_buffer_subresource) }; FAILED(result)) {
+		if(auto result = render::directx11::shared.context->Map(vertex_buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &vertex_buffer_subresource); FAILED(result)) {
 			utils::logger(utils::e_log_type::error, "map vertex buffer failed, return code {}.", result);
 			return;
 		}
-		if(auto result{ render::directx11::shared.context->Map(index_buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &index_buffer_subresource) }; FAILED(result)) {
+		if(auto result = render::directx11::shared.context->Map(index_buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &index_buffer_subresource); FAILED(result)) {
 			utils::logger(utils::e_log_type::error, "map index buffer failed, return code {}.", result);
 			return;
 		}
@@ -82,7 +82,7 @@ namespace null::rml::directx11 {
 	}
 
 	void c_mesh::set() {
-		std::uint32_t stride{ sizeof(Rml::Vertex) };
+		constexpr std::uint32_t stride = sizeof(Rml::Vertex);
 		std::uint32_t offset{ };
 		render::directx11::shared.context->IASetInputLayout(input_layout);
 		render::directx11::shared.context->IASetVertexBuffers(0, 1, &vertex_buffer, &stride, &offset);

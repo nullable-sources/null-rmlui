@@ -6,7 +6,7 @@ namespace null::rml::directx11 {
     namespace sources {
         static const std::vector<byte>& passthrough() {
             #include "compiled/passthrough.h"
-            static const std::vector<byte> source{ shader_data, shader_data + sizeof(shader_data) };
+            static const std::vector<byte> source(shader_data, shader_data + sizeof(shader_data));
             return source;
         }
     }

@@ -31,8 +31,8 @@ namespace null::rml::extensions {
 
 	void i_widget_colorpicker::on_update() {
 		if(value_dirty) {
-			const color_t<int> color{ build_color() };
-			const std::string hex{ format_to_hex(color) };
+			const color_t<int> color = build_color();
+			const std::string hex = format_to_hex(color);
 			set_elements_value(hex);
 			set_elements_color(color);
 
@@ -43,12 +43,12 @@ namespace null::rml::extensions {
 		}
 
 		if(indicator_dirty && control_element->IsVisible()) {
-			const vec2_t<float> box_size{ canvas->GetBox().GetSize(Rml::BoxArea::Border) };
+			const vec2_t<float> box_size = canvas->GetBox().GetSize(Rml::BoxArea::Border);
 			if(box_size == 0.f) return;
 
-			const vec2_t<float> sv_offset{ canvas->GetBox().GetSize(Rml::BoxArea::Border) * Rml::Vector2f{ canvas->GetAttribute("saturation", 0.f), 1.f - canvas->GetAttribute("brightness", 0.f) } };
-			const vec2_t<float> indicator_size{ indicator->GetBox().GetSize(Rml::BoxArea::Border) };
-			indicator->SetOffset(math::min(math::max(sv_offset - indicator_size / 2.f, vec2_t{ 0.f }), box_size - indicator_size), canvas);
+			const vec2_t<float> sv_offset = canvas->GetBox().GetSize(Rml::BoxArea::Border) * Rml::Vector2f(canvas->GetAttribute("saturation", 0.f), 1.f - canvas->GetAttribute("brightness", 0.f));
+			const vec2_t<float> indicator_size = indicator->GetBox().GetSize(Rml::BoxArea::Border);
+			indicator->SetOffset(math::min(math::max(sv_offset - indicator_size / 2.f, vec2_t(0.f)), box_size - indicator_size), canvas);
 
 			indicator_dirty = false;
 		}
@@ -68,9 +68,9 @@ namespace null::rml::extensions {
 
 	void i_widget_colorpicker::on_value_change(const std::string& value) {
 		if(!lock_value && value.starts_with("#") && 7 >= value.size() <= 9) {
-			const std::vector<int> color{ value | std::views::drop(1) | std::views::chunk(2) | std::views::transform([](const auto& range) { return (int)std::strtoul(std::string{ range.begin(), range.end() }.c_str(), nullptr, 16); }) | std::ranges::to<std::vector>() };
+			const std::vector<int> color = value | std::views::drop(1) | std::views::chunk(2) | std::views::transform([](const auto& range) { return (int)std::strtoul(std::string{ range.begin(), range.end() }.c_str(), nullptr, 16); }) | std::ranges::to<std::vector>();
 
-			const hsv_color_t hsv{ color_t<int>{ color } };
+			const hsv_color_t hsv = hsv_color_t(color_t<int>(color));
 			hue_slider->SetAttribute("value", hsv.h);
 			canvas->SetAttribute("saturation", hsv.s);
 			canvas->SetAttribute("brightness", hsv.v);
@@ -85,7 +85,7 @@ namespace null::rml::extensions {
 			case Rml::EventId::Drag:
 			case Rml::EventId::Mousedown: {
 				if(event.GetCurrentElement() == canvas) {
-					Rml::Vector2f offset{ (Rml::Vector2f{ event.GetParameter("mouse_x", 0.f), event.GetParameter("mouse_y", 0.f) } - canvas->GetAbsoluteOffset(Rml::BoxArea::Border)) / canvas->GetBox().GetSize(Rml::BoxArea::Border) };
+					Rml::Vector2f offset = (Rml::Vector2f(event.GetParameter("mouse_x", 0.f), event.GetParameter("mouse_y", 0.f)) - canvas->GetAbsoluteOffset(Rml::BoxArea::Border)) / canvas->GetBox().GetSize(Rml::BoxArea::Border);
 					canvas->SetAttribute("saturation", std::clamp(offset.x, 0.f, 1.f));
 					canvas->SetAttribute("brightness", std::clamp(1.f - offset.y, 0.f, 1.f));
 					value_dirty = true;
@@ -96,7 +96,7 @@ namespace null::rml::extensions {
 				if(!copy_button || !paste_button || event.GetParameter("button", -1) != 0) break;
 
 				if(event.GetCurrentElement() == copy_button) {
-					const std::string hex{ format_to_hex(build_color()) };
+					const std::string hex = format_to_hex(build_color());
 					set_elements_value(hex);
 					system_interface->SetClipboardText(hex);
 				} else if(event.GetCurrentElement() == paste_button) {

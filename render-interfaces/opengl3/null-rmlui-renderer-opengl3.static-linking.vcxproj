@@ -27,10 +27,4 @@
     <Import Project="..\..\third-party\RmlUi\RmlCore\RmlCore.static-linking.props" />
     <Import Project="..\..\null-rmlui.static-linking.props" />
   </ImportGroup>
-  
-  <PropertyGroup>
-    <NullProjectName>null-rmlui-renderer-opengl3</NullProjectName>
-    <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(NullProjectName)\</IntDir>
-    <TargetName>$(NullProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
-  </PropertyGroup>
 </Project>

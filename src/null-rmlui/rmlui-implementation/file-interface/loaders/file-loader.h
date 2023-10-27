@@ -9,7 +9,7 @@ namespace null::rml {
 			std::string path{ };
 
 		public:
-			i_file(std::string_view _path) : path{ _path } { }
+			i_file(std::string_view _path) : path(_path) { }
 			virtual ~i_file() { }
 
 		public:

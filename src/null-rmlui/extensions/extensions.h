@@ -1,5 +1,4 @@
 #pragma once
-#include "checkmark-decorator/checkmark-decorator.h"
 #include "linear-gradient-decorator/linear-gradient-decorator.h"
 #include "quad-gradient-decorator/quad-gradient-decorator.h"
 
@@ -8,7 +7,6 @@
 
 namespace null::rml::extensions {
 	static void register_all_decorators() {
-		c_checkmark::register_instancer();
 		c_linear_gradient::register_instancer();
 		c_quad_gradient::register_instancer();
 	}

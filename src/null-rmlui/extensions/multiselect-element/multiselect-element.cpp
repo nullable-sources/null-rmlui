@@ -1,18 +1,18 @@
 #include "null-rmlui.h"
 
 namespace null::rml::extensions {
-	c_widget_multi_dropdown::c_widget_multi_dropdown(Rml::ElementFormControl* element) : parent_element{ element } {
+	c_widget_multi_dropdown::c_widget_multi_dropdown(Rml::ElementFormControl* element) : parent_element(element) {
 		button_element = parent_element->AppendChild(Rml::Factory::InstanceElement(parent_element, "*", "selectarrow", Rml::XMLAttributes{ }), false);
 		value_element = parent_element->AppendChild(Rml::Factory::InstanceElement(parent_element, "*", "selectvalue", Rml::XMLAttributes{ }), false);
 		selection_element = parent_element->AppendChild(Rml::Factory::InstanceElement(parent_element, "*", "selectbox", Rml::XMLAttributes{ }), false);
 
-		value_element->SetProperty(Rml::PropertyId::OverflowX, Rml::Property{ Rml::Style::Overflow::Hidden });
-		value_element->SetProperty(Rml::PropertyId::OverflowY, Rml::Property{ Rml::Style::Overflow::Hidden });
+		value_element->SetProperty(Rml::PropertyId::OverflowX, Rml::Property(Rml::Style::Overflow::Hidden));
+		value_element->SetProperty(Rml::PropertyId::OverflowY, Rml::Property(Rml::Style::Overflow::Hidden));
 
-		selection_element->SetProperty(Rml::PropertyId::Visibility, Rml::Property{ Rml::Style::Visibility::Hidden });
-		selection_element->SetProperty(Rml::PropertyId::ZIndex, Rml::Property{ 1.0f, Rml::Unit::NUMBER });
-		selection_element->SetProperty(Rml::PropertyId::Clip, Rml::Property{ Rml::Style::Clip::Type::None });
-		selection_element->SetProperty(Rml::PropertyId::OverflowY, Rml::Property{ Rml::Style::Overflow::Auto });
+		selection_element->SetProperty(Rml::PropertyId::Visibility, Rml::Property(Rml::Style::Visibility::Hidden));
+		selection_element->SetProperty(Rml::PropertyId::ZIndex, Rml::Property(1.0f, Rml::Unit::NUMBER));
+		selection_element->SetProperty(Rml::PropertyId::Clip, Rml::Property(Rml::Style::Clip::Type::None));
+		selection_element->SetProperty(Rml::PropertyId::OverflowY, Rml::Property(Rml::Style::Overflow::Auto));
 
 		parent_element->AddEventListener(Rml::EventId::Click, this, true);
 		parent_element->AddEventListener(Rml::EventId::Blur, this);
@@ -23,7 +23,7 @@ namespace null::rml::extensions {
 	}
 
 	c_widget_multi_dropdown::~c_widget_multi_dropdown() {
-		for(const int& i : std::views::iota(0, selection_element->GetNumChildren()))
+		for(int i : std::views::iota(0, selection_element->GetNumChildren()))
 			selection_element->GetChild(i)->RemoveEventListener(Rml::EventId::Click, this);
 
 		parent_element->RemoveEventListener(Rml::EventId::Click, this, true);
@@ -38,9 +38,9 @@ namespace null::rml::extensions {
 
 	void c_widget_multi_dropdown::on_update() {
 		if(selection_dirty) {
-			std::vector<std::string> select_value{ parent_element->GetAttribute("value", std::string{ }) | std::views::split('&') | std::views::transform([](const auto& range) { return std::string{ range.begin(), range.end() }; }) | std::ranges::to<std::vector>() };
+			std::vector<std::string> select_value = parent_element->GetAttribute("value", std::string{ }) | std::views::split('&') | std::views::transform([](const auto& range) { return std::string(range.begin(), range.end()); }) | std::ranges::to<std::vector>();
 
-			for(Rml::Element* option : std::views::iota(0, selection_element->GetNumChildren()) | std::views::transform([&](const int& i) { return selection_element->GetChild(i); })) {
+			for(Rml::Element* option : std::views::iota(0, selection_element->GetNumChildren()) | std::views::transform([&](int i) { return selection_element->GetChild(i); })) {
 				if(option->HasAttribute("selected") || (!select_value.empty() && option->GetAttribute("value", std::string{ }) != std::string{ } && std::ranges::find(select_value, option->GetAttribute("value", std::string{ })) != select_value.end())) {
 					set_selection(option, true);
 				}
@@ -50,7 +50,7 @@ namespace null::rml::extensions {
 		}
 
 		if(value_rml_dirty) {
-			if(const std::vector<Rml::Element*>& selections{ get_selections() }; !selections.empty()) value_element->SetInnerRML(selections | std::views::transform([](const Rml::Element* element) { return element->GetInnerRML(); }) | std::views::join_with(std::string_view{ ", " }) | std::ranges::to<std::string>());
+			if(const std::vector<Rml::Element*>& selections = get_selections(); !selections.empty()) value_element->SetInnerRML(selections | std::views::transform([](const Rml::Element* element) { return element->GetInnerRML(); }) | std::views::join_with(std::string_view{ ", " }) | std::ranges::to<std::string>());
 			else value_element->SetInnerRML(parent_element->GetValue());
 
 			value_rml_dirty = false;
@@ -73,24 +73,23 @@ namespace null::rml::extensions {
 			const float offset_y_above{ -box.GetEdge(Rml::BoxArea::Margin, Rml::BoxEdge::Bottom) };
 
 			float window_height{ 100'000.f };
-			if(Rml::Context* context{ parent_element->GetContext() })
+			if(Rml::Context* context = parent_element->GetContext())
 				window_height = float(context->GetDimensions().y);
 
-			const float absolute_y{ parent_element->GetAbsoluteOffset(Rml::BoxArea::Border).y };
+			const float absolute_y = parent_element->GetAbsoluteOffset(Rml::BoxArea::Border).y;
 
-			const float height_below{ window_height - absolute_y - offset_y_below };
-			const float height_above{ absolute_y + offset_y_above };
+			const float height_below = window_height - absolute_y - offset_y_below;
+			const float height_above = absolute_y + offset_y_above;
 
 			Rml::ElementUtilities::FormatElement(selection_element, parent_element->GetBox().GetSize(Rml::BoxArea::Border));
-			const float content_height{ selection_element->GetOffsetHeight() };
+			const float content_height = selection_element->GetOffsetHeight();
 
-			if(content_height < height_below) selection_element->SetOffset(Rml::Vector2f{ offset_x, offset_y_below }, parent_element);
-			else if(content_height < height_above) selection_element->SetOffset(Rml::Vector2f{ offset_x, -content_height + offset_y_above }, parent_element);
+			if(content_height < height_below) selection_element->SetOffset(Rml::Vector2f(offset_x, offset_y_below), parent_element);
+			else if(content_height < height_above) selection_element->SetOffset(Rml::Vector2f(offset_x, -content_height + offset_y_above), parent_element);
 			else {
-				const float padding_border_size{
+				const float padding_border_size =
 					box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Top) + box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Bottom) +
-					box.GetEdge(Rml::BoxArea::Padding, Rml::BoxEdge::Top) + box.GetEdge(Rml::BoxArea::Padding, Rml::BoxEdge::Bottom)
-				};
+					box.GetEdge(Rml::BoxArea::Padding, Rml::BoxEdge::Top) + box.GetEdge(Rml::BoxArea::Padding, Rml::BoxEdge::Bottom);
 
 				float height{ };
 				float offset_y{ };
@@ -103,11 +102,11 @@ namespace null::rml::extensions {
 					offset_y = offset_y_above - height_above;
 				}
 
-				selection_element->SetProperty(Rml::PropertyId::Height, Rml::Property{ height, Rml::Unit::PX });
+				selection_element->SetProperty(Rml::PropertyId::Height, Rml::Property(height, Rml::Unit::PX));
 				selection_element->GetOwnerDocument()->UpdateDocument();
 				Rml::ElementUtilities::FormatElement(selection_element, parent_element->GetBox().GetSize(Rml::BoxArea::Border));
 
-				selection_element->SetOffset(Rml::Vector2f{ offset_x, offset_y }, parent_element);
+				selection_element->SetOffset(Rml::Vector2f(offset_x, offset_y), parent_element);
 			}
 
 			box_layout_dirty = false;
@@ -127,18 +126,18 @@ namespace null::rml::extensions {
 			button_element->SetPseudoClass("disabled", true);
 		}
 
-		Rml::Box parent_box{ parent_element->GetBox() };
+		Rml::Box parent_box = parent_element->GetBox();
 
-		Rml::ElementUtilities::PositionElement(button_element, Rml::Vector2f{ 0, 0 }, Rml::ElementUtilities::TOP_RIGHT);
-		Rml::ElementUtilities::PositionElement(selection_element, Rml::Vector2f{ 0, 0 }, Rml::ElementUtilities::TOP_LEFT);
+		Rml::ElementUtilities::PositionElement(button_element, Rml::Vector2f(0, 0), Rml::ElementUtilities::TOP_RIGHT);
+		Rml::ElementUtilities::PositionElement(selection_element, Rml::Vector2f(0, 0), Rml::ElementUtilities::TOP_LEFT);
 
-		Rml::Vector2f size{
+		Rml::Vector2f size(
 			parent_element->GetBox().GetSize(Rml::BoxArea::Content).x - button_element->GetBox().GetSize(Rml::BoxArea::Margin).x,
 			parent_element->GetBox().GetSize(Rml::BoxArea::Content).y
-		};
+		);
 
 		value_element->SetOffset(parent_element->GetBox().GetPosition(Rml::BoxArea::Content), parent_element);
-		value_element->SetBox(Rml::Box{ size });
+		value_element->SetBox(Rml::Box(size));
 
 		box_layout_dirty = true;
 		value_layout_dirty = true;
@@ -148,8 +147,8 @@ namespace null::rml::extensions {
 		if(element->GetParentNode() != selection_element || element->HasAttribute("data-for") || element->GetTagName() != "option")
 			return;
 
-		element->SetProperty(Rml::PropertyId::Display, Rml::Property{ Rml::Style::Display::Block });
-		element->SetProperty(Rml::PropertyId::Clip, Rml::Property{ Rml::Style::Clip::Type::Auto });
+		element->SetProperty(Rml::PropertyId::Display, Rml::Property(Rml::Style::Display::Block));
+		element->SetProperty(Rml::PropertyId::Clip, Rml::Property(Rml::Style::Clip::Type::Auto));
 		element->AddEventListener(Rml::EventId::Click, this);
 
 		if(element->HasAttribute("selected"))
@@ -179,8 +178,8 @@ namespace null::rml::extensions {
 		switch(event.GetId()) {
 			case Rml::EventId::Click: {
 				if(event.GetCurrentElement()->GetParentNode() == selection_element) {
-					for(const int& i : std::views::iota(0, selection_element->GetNumChildren())) {
-						if(Rml::Element* current_element{ event.GetCurrentElement() }; selection_element->GetChild(i) == current_element && !event.GetCurrentElement()->HasAttribute("disabled")) {
+					for(int i : std::views::iota(0, selection_element->GetNumChildren())) {
+						if(Rml::Element* current_element = event.GetCurrentElement(); selection_element->GetChild(i) == current_element && !event.GetCurrentElement()->HasAttribute("disabled")) {
 							switch_selection(current_element);
 							event.StopPropagation();
 
@@ -188,7 +187,7 @@ namespace null::rml::extensions {
 						}
 					}
 				} else {
-					Rml::Element* element{ event.GetTargetElement() };
+					Rml::Element* element = event.GetTargetElement();
 					while(element && element != parent_element) {
 						if(element == selection_element) return;
 						element = element->GetParentNode();
@@ -231,7 +230,7 @@ namespace null::rml::extensions {
 			case Rml::EventId::Scroll: {
 				if(box_visible) {
 					bool scrolls_selection_box{ };
-					for(Rml::Element* element{ event.GetTargetElement() }; element; element = element->GetParentNode()) {
+					for(Rml::Element* element = event.GetTargetElement(); element; element = element->GetParentNode()) {
 						if(element == selection_element) {
 							scrolls_selection_box = true;
 							break;
@@ -247,9 +246,9 @@ namespace null::rml::extensions {
 	
 	void c_widget_multi_dropdown::on_value_change(const std::string& value) {
 		if(!lock_selection) {
-			std::vector<std::string> values{ value | std::views::split('&') | std::views::transform([](const auto& range) { return std::string{ range.begin(), range.end() }; }) | std::ranges::to<std::vector>() };
-			for(Rml::Element* option : std::views::iota(0, selection_element->GetNumChildren()) | std::views::transform([&](const int& i) { return selection_element->GetChild(i); })) {
-				std::string option_value{ option->GetAttribute("value", std::string{ }) };
+			std::vector<std::string> values = value | std::views::split('&') | std::views::transform([](const auto& range) { return std::string{ range.begin(), range.end() }; }) | std::ranges::to<std::vector>();
+			for(Rml::Element* option : std::views::iota(0, selection_element->GetNumChildren()) | std::views::transform([&](int i) { return selection_element->GetChild(i); })) {
+				std::string option_value = option->GetAttribute("value", std::string{ });
 				set_selection(option, !option_value.empty() && std::ranges::find(values, option_value) != values.end());
 			}
 		}
@@ -262,7 +261,7 @@ namespace null::rml::extensions {
 	}
 
 	int c_widget_multi_dropdown::add_option(const std::string& rml, const std::string& option_value, const int& before, const bool& select, const bool& selectable) {
-		Rml::ElementPtr element{ Rml::Factory::InstanceElement(selection_element, "*", "option", Rml::XMLAttributes{ }) };
+		Rml::ElementPtr element = Rml::Factory::InstanceElement(selection_element, "*", "option", Rml::XMLAttributes{ });
 		element->SetInnerRML(rml);
 
 		element->SetAttribute("value", option_value);
@@ -279,7 +278,7 @@ namespace null::rml::extensions {
 			return -1;
 		}
 
-		const int num_children_before{ selection_element->GetNumChildren() };
+		const int num_children_before = selection_element->GetNumChildren();
 		int option_index{ };
 		if(before < 0 || before >= num_children_before) {
 			selection_element->AppendChild(std::move(element));
@@ -293,12 +292,12 @@ namespace null::rml::extensions {
 	}
 	
 	void c_widget_multi_dropdown::remove_option(const int& index) {
-		if(Rml::Element* element{ selection_element->GetChild(index) })
+		if(Rml::Element* element = selection_element->GetChild(index))
 			selection_element->RemoveChild(element);
 	}
 	
 	void c_widget_multi_dropdown::clear_options() {
-		while(Rml::Element* element{ selection_element->GetLastChild() })
+		while(Rml::Element* element = selection_element->GetLastChild())
 			selection_element->RemoveChild(element);
 	}
 	
@@ -336,13 +335,13 @@ namespace null::rml::extensions {
 
 	void c_widget_multi_dropdown::show_selectbox(const bool& show) {
 		if(show) {
-			selection_element->SetProperty(Rml::PropertyId::Visibility, Rml::Property{ Rml::Style::Visibility::Visible });
+			selection_element->SetProperty(Rml::PropertyId::Visibility, Rml::Property(Rml::Style::Visibility::Visible));
 			value_element->SetPseudoClass("checked", true);
 			button_element->SetPseudoClass("checked", true);
 			box_layout_dirty = true;
 			attach_scroll_event();
 		} else {
-			selection_element->SetProperty(Rml::PropertyId::Visibility, Rml::Property{ Rml::Style::Visibility::Hidden });
+			selection_element->SetProperty(Rml::PropertyId::Visibility, Rml::Property(Rml::Style::Visibility::Hidden));
 			selection_element->RemoveProperty(Rml::PropertyId::Height);
 			value_element->SetPseudoClass("checked", false);
 			button_element->SetPseudoClass("checked", false);
@@ -353,18 +352,18 @@ namespace null::rml::extensions {
 	}
 
 	void c_widget_multi_dropdown::attach_scroll_event() {
-		if(Rml::ElementDocument* document{ parent_element->GetOwnerDocument() })
+		if(Rml::ElementDocument* document = parent_element->GetOwnerDocument())
 			document->AddEventListener(Rml::EventId::Scroll, this, true);
 	}
 
 	void c_widget_multi_dropdown::detach_scroll_event() {
-		if(Rml::ElementDocument* document{ parent_element->GetOwnerDocument() })
+		if(Rml::ElementDocument* document = parent_element->GetOwnerDocument())
 			document->RemoveEventListener(Rml::EventId::Scroll, this, true);
 	}
 
 	void c_element_form_control_multiselect::move_children() {
-		while(Element* raw_child{ GetFirstChild() }) {
-			Rml::ElementPtr child{ RemoveChild(raw_child) };
+		while(Element* raw_child = GetFirstChild()) {
+			Rml::ElementPtr child = RemoveChild(raw_child);
 			widget->add_option(std::move(child), -1);
 		}
 	}
@@ -374,7 +373,7 @@ namespace null::rml::extensions {
 
 		ElementFormControl::OnAttributeChange(changed_attributes);
 
-		if(const auto& it{ changed_attributes.find("value") }; it != changed_attributes.end())
+		if(auto it = changed_attributes.find("value"); it != changed_attributes.end())
 			widget->on_value_change(it->second.Get<std::string>());
 	}
 }

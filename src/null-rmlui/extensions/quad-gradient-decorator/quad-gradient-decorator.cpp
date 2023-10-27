@@ -13,10 +13,10 @@ namespace null::rml::extensions {
 	}
 
 	Rml::DecoratorDataHandle c_quad_gradient::GenerateElementData(Rml::Element* element) const {
-		const Rml::Box& box{ element->GetBox() };
+		const Rml::Box& box = element->GetBox();
 
-		const Rml::Vector2f padding_size{ box.GetSize(Rml::BoxArea::Padding).Round() };
-		const Rml::Vector2f padding_position{ Rml::Math::Round(box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Left)), Rml::Math::Round(box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Top)) };
+		const Rml::Vector2f padding_size = box.GetSize(Rml::BoxArea::Padding).Round();
+		const Rml::Vector2f padding_position(Rml::Math::Round(box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Left)), Rml::Math::Round(box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Top)));
 
 		const Rml::ComputedValues& computed{ element->GetComputedValues() };
 		return (Rml::DecoratorDataHandle)new data_t{
@@ -27,9 +27,9 @@ namespace null::rml::extensions {
 	}
 
 	void c_quad_gradient::RenderElement(Rml::Element* element, Rml::DecoratorDataHandle element_data) const {
-		data_t* data{ (data_t*)element_data };
+		data_t* data = (data_t*)element_data;
 
-		const Rml::ComputedValues& computed{ element->GetComputedValues() };
+		const Rml::ComputedValues& computed = element->GetComputedValues();
 		render_interface->draw_list.add_command(std::make_unique<renderer::c_restore_command>());
 		render_interface->draw_list.add_convex_shape(
 			render::path::make_rect(data->box + (vec2_t<float>)element->GetAbsoluteOffset(Rml::BoxArea::Border), data->rounding),

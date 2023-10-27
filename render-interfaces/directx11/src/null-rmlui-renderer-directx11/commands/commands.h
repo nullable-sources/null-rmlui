@@ -8,7 +8,7 @@ namespace null::rml::directx11 {
 		ID3D11RasterizerState* state{ };
 
 	public:
-		c_clip_enable_command(bool _enable, ID3D11RasterizerState* _state) : i_clip_enable_command{ _enable }, state{ _state } { }
+		c_clip_enable_command(bool _enable, ID3D11RasterizerState* _state) : i_clip_enable_command(_enable), state(_state) { }
 
 	public:
 		void handle() override { render::directx11::shared.context->RSSetState(state); }

@@ -7,7 +7,7 @@ namespace null::rml::opengl3 {
         void on_create() override {
             if(!empty()) return;
             create();
-            compile(memory::resource_t{ "null-rmlui-renderer:opengl:shaders:passthrough.vert", "null-rmlui-renderer:opengl:resources" }.load());
+            compile(memory::resource_t("null-rmlui-renderer:opengl:shaders:passthrough.vert", "null-rmlui-renderer:opengl:resources").load());
         }
 
         void on_destroy() override { destroy(); }

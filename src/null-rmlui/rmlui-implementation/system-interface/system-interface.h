@@ -21,10 +21,10 @@ namespace null::rml {
 		};
 
 	public:
-		c_system_interface(const utils::win::c_window& window) : wnd_handle{ window.wnd_handle } { time_measurement.begin(); }
+		c_system_interface(const utils::win::c_window& window) : wnd_handle(window.wnd_handle) { time_measurement.begin(); }
 
 	public:
-		double GetElapsedTime() override { return std::chrono::duration<double>{ time_measurement.representation() }.count(); }
+		double GetElapsedTime() override { return std::chrono::duration<double>(time_measurement.representation()).count(); }
 
 		void SetMouseCursor(const std::string& cursor_name) override;
 

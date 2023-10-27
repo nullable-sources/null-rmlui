@@ -19,7 +19,7 @@ namespace null::rml::renderer {
 
 	public:
 		i_geometry_command(size_t _index_count, size_t _vertex_count, const Rml::Vector2f& _translation, Rml::TextureHandle _texture)
-			: translation{ _translation }, texture{ _texture } {
+			: translation(_translation), texture(_texture) {
 			index_count = _index_count;
 			vertex_count = _vertex_count;
 			index_offset = mesh->geometry_buffer.index_buffers_size;
@@ -38,7 +38,7 @@ namespace null::rml::renderer {
 			}
 			mesh->set();
 
-			render::backend::renderer->draw_geometry(vertex_count, index_count, vertex_offset, index_offset);
+			render::backend::renderer->draw_geometry(render::backend::e_topology::triangle_list, vertex_count, index_count, vertex_offset, index_offset);
 		}
 	};
 
@@ -47,6 +47,6 @@ namespace null::rml::renderer {
 		bool enable{ };
 
 	public:
-		i_clip_enable_command(bool _enable) : enable{ _enable } { }
+		i_clip_enable_command(bool _enable) : enable(_enable) { }
 	};
 }
