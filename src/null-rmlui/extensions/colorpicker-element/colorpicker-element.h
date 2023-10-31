@@ -30,7 +30,7 @@ namespace null::rml::extensions {
 		void set_elements_value(const std::string& value);
 		void on_value_change(const std::string& value);
 
-		color_t<int> build_color() const { return color_t<int>(hsv_color_t(hue_slider->GetAttribute("value", 0.f), canvas->GetAttribute("saturation", 0.f), canvas->GetAttribute("brightness", 0.f), alpha_slider->GetAttribute("value", 0.f)); }
+		color_t<int> build_color() const { return color_t<int>(hsv_color_t(hue_slider->GetAttribute("value", 0.f), canvas->GetAttribute("saturation", 0.f), canvas->GetAttribute("brightness", 0.f), alpha_slider->GetAttribute("value", 0.f))); }
 		std::string format_to_hex(const color_t<int>& color) const { return std::format("#{:02X}{:02X}{:02X}{:02X}", color.r, color.g, color.b, color.a); }
 
 	public:
