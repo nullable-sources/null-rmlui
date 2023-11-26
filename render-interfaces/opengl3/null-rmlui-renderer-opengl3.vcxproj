@@ -18,17 +18,21 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <PropertyGroup Label="NullVCXProperties">
+    <NullRmluiRendererOpengl3DependenciesPath Condition="Exists('$(SolutionDir)third-party\null-sdk\null-sdk.vcxproj')">$(SolutionDir)third-party\</NullRmluiRendererOpengl3DependenciesPath>
+    <NullRmluiRendererOpengl3DependenciesPath Condition="!Exists('$(SolutionDir)third-party\null-sdk\null-sdk.vcxproj')">..\..\..\</NullRmluiRendererOpengl3DependenciesPath>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\null-rmlui.vcxproj">
       <Project>{220d4d11-15cc-489d-8d93-58cfe85348bd}</Project>
     </ProjectReference>
-    <ProjectReference Include="$(SolutionDir)third-party\null-render\null-render.vcxproj">
+    <ProjectReference Include="$(NullRmluiRendererOpengl3DependenciesPath)null-render\null-render.vcxproj">
       <Project>{4abcf635-9767-40f9-989e-f0cdf5fb68ae}</Project>
     </ProjectReference>
-    <ProjectReference Include="$(SolutionDir)third-party\null-sdk\null-sdk.vcxproj">
+    <ProjectReference Include="$(NullRmluiRendererOpengl3DependenciesPath)null-sdk\null-sdk.vcxproj">
       <Project>{f7a10a5c-0fae-424b-8f2b-6cc4e4d898d1}</Project>
     </ProjectReference>
-    <ProjectReference Include="$(SolutionDir)third-party\null-render\backends\opengl3\null-render-backend-opengl3.vcxproj">
+    <ProjectReference Include="$(NullRmluiRendererOpengl3DependenciesPath)null-render\backends\opengl3\null-render-backend-opengl3.vcxproj">
       <Project>{97a6b7ae-9878-4584-a0b8-15287db604ac}</Project>
     </ProjectReference>
   </ItemGroup>
@@ -108,28 +112,28 @@
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
     <PublicIncludeDirectories>src\</PublicIncludeDirectories>
-    <TargetName>$(ProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
+    <TargetName>null-rmlui-renderer-opengl3-$(Configuration)-$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
     <PublicIncludeDirectories>src\</PublicIncludeDirectories>
-    <TargetName>$(ProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
+    <TargetName>null-rmlui-renderer-opengl3-$(Configuration)-$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
     <PublicIncludeDirectories>src\</PublicIncludeDirectories>
-    <TargetName>$(ProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
+    <TargetName>null-rmlui-renderer-opengl3-$(Configuration)-$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
     <PublicIncludeDirectories>src\</PublicIncludeDirectories>
-    <TargetName>$(ProjectName)-$(Configuration)-$(PlatformShortName)</TargetName>
+    <TargetName>null-rmlui-renderer-opengl3-$(Configuration)-$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
     <ClCompile>
@@ -143,7 +147,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
@@ -151,6 +155,9 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalOptions>/ignore:4221,4006 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
     <ClCompile>
@@ -166,7 +173,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
@@ -176,6 +183,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalOptions>/ignore:4221,4006 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
     <ClCompile>
@@ -189,7 +199,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
@@ -197,6 +207,9 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalOptions>/ignore:4221,4006 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
     <ClCompile>
@@ -212,7 +225,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
@@ -222,6 +235,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalOptions>/ignore:4221,4006 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

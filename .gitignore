@@ -1,22 +1,9 @@
 build/
 .vs/
 *.user
+*.static-linking.log
 
 examples/opengl3/glfw/GLFW
 
 render-interfaces/directx11/src/null-rmlui-renderer-directx11/shaders/shared-objects/passthrough/compiled
 render-interfaces/directx9/src/null-rmlui-renderer-directx9/shaders/shared-objects/passthrough/compiled
-
-third-party/null-render/backends/directx9/src/null-render-backend-directx9/shaders/shared-objects/passthrough/compiled
-third-party/null-render/backends/directx9/src/null-render-backend-directx9/shaders/passthrough-color/compiled
-third-party/null-render/backends/directx9/src/null-render-backend-directx9/shaders/passthrough-texture/compiled
-third-party/null-render/backends/directx9/src/null-render-backend-directx9/shaders/quad-gradient/compiled
-third-party/null-render/backends/directx9/src/null-render-backend-directx9/shaders/linear-gradient/compiled
-third-party/null-render/backends/directx9/src/null-render-backend-directx9/shaders/sdf/compiled
-
-third-party/null-render/backends/directx11/src/null-render-backend-directx11/shaders/shared-objects/passthrough/compiled
-third-party/null-render/backends/directx11/src/null-render-backend-directx11/shaders/passthrough-color/compiled
-third-party/null-render/backends/directx11/src/null-render-backend-directx11/shaders/passthrough-texture/compiled
-third-party/null-render/backends/directx11/src/null-render-backend-directx11/shaders/quad-gradient/compiled
-third-party/null-render/backends/directx11/src/null-render-backend-directx11/shaders/linear-gradient/compiled
-third-party/null-render/backends/directx11/src/null-render-backend-directx11/shaders/sdf/compiled

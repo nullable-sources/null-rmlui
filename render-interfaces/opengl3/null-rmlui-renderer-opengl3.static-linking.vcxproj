@@ -3,27 +3,14 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{64527024-e33c-4590-ac2d-eb2bf9c8225d}</ProjectGuid>
   </PropertyGroup>
-  
-  <PropertyGroup Label="NullProperties">
-    <NullRmluiRendererOpengl3SdkDependencies>third-party\null-sdk\null-sdk.static-linking.props</NullRmluiRendererOpengl3SdkDependencies>
-    <NullRmluiRendererOpengl3RenderDependencies>third-party\null-render\null-render.static-linking.props</NullRmluiRendererOpengl3RenderDependencies>
-    <NullRmluiRendererOpengl3BackendDependencies>third-party\null-render\backends\opengl3\null-render-backend-opengl3.static-linking.props</NullRmluiRendererOpengl3BackendDependencies>
-  </PropertyGroup>
-
   <Import Project="null-rmlui-renderer-opengl3.vcxproj" />
   <ItemGroup>
     <ProjectReference Remove="@(ProjectReference)" />
   </ItemGroup>
   <ImportGroup Label="PropertySheets">
-    <Import Condition="Exists('$(SolutionDir)$(NullRmluiRendererOpengl3SdkDependencies)')" Project="$(SolutionDir)$(NullRmluiRendererOpengl3SdkDependencies)" />
-    <Import Condition="!Exists('$(SolutionDir)$(NullRmluiRendererOpengl3SdkDependencies)')" Project="..\..\$(NullRmluiRendererOpengl3SdkDependencies)" />
-
-    <Import Condition="Exists('$(SolutionDir)$(NullRmluiRendererOpengl3RenderDependencies)')" Project="$(SolutionDir)$(NullRmluiRendererOpengl3RenderDependencies)" />
-    <Import Condition="!Exists('$(SolutionDir)$(NullRmluiRendererOpengl3RenderDependencies)')" Project="..\..\$(NullRmluiRendererOpengl3RenderDependencies)" />
-
-    <Import Condition="Exists('$(SolutionDir)$(NullRmluiRendererOpengl3BackendDependencies)')" Project="$(SolutionDir)$(NullRmluiRendererOpengl3BackendDependencies)" />
-    <Import Condition="!Exists('$(SolutionDir)$(NullRmluiRendererOpengl3BackendDependencies)')" Project="..\..\$(NullRmluiRendererOpengl3BackendDependencies)" />
-
+    <Import Project="$(NullRmluiRendererOpengl3DependenciesPath)null-sdk\null-sdk.static-linking.props" />
+    <Import Project="$(NullRmluiRendererOpengl3DependenciesPath)null-render\null-render.static-linking.props" />
+    <Import Project="$(NullRmluiRendererOpengl3DependenciesPath)null-render\backends\opengl3\null-render-backend-opengl3.static-linking.props" />
     <Import Project="..\..\third-party\RmlUi\RmlCore\RmlCore.static-linking.props" />
     <Import Project="..\..\null-rmlui.static-linking.props" />
   </ImportGroup>

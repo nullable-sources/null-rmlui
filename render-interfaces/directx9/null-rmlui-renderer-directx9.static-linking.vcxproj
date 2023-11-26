@@ -3,27 +3,14 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{57ff0ac9-5ed6-4b00-96fe-d44f6f05a3a5}</ProjectGuid>
   </PropertyGroup>
-  
-  <PropertyGroup Label="NullProperties">
-    <NullRmluiRendererDirectx9SdkDependencies>third-party\null-sdk\null-sdk.static-linking.props</NullRmluiRendererDirectx9SdkDependencies>
-    <NullRmluiRendererDirectx9RenderDependencies>third-party\null-render\null-render.static-linking.props</NullRmluiRendererDirectx9RenderDependencies>
-    <NullRmluiRendererDirectx9BackendDependencies>third-party\null-render\backends\directx9\null-render-backend-directx9.static-linking.props</NullRmluiRendererDirectx9BackendDependencies>
-  </PropertyGroup>
-
   <Import Project="null-rmlui-renderer-directx9.vcxproj" />
   <ItemGroup>
     <ProjectReference Remove="@(ProjectReference)" />
   </ItemGroup>
   <ImportGroup Label="PropertySheets">
-    <Import Condition="Exists('$(SolutionDir)$(NullRmluiRendererDirectx9SdkDependencies)')" Project="$(SolutionDir)$(NullRmluiRendererDirectx9SdkDependencies)" />
-    <Import Condition="!Exists('$(SolutionDir)$(NullRmluiRendererDirectx9SdkDependencies)')" Project="..\..\$(NullRmluiRendererDirectx9SdkDependencies)" />
-
-    <Import Condition="Exists('$(SolutionDir)$(NullRmluiRendererDirectx9RenderDependencies)')" Project="$(SolutionDir)$(NullRmluiRendererDirectx9RenderDependencies)" />
-    <Import Condition="!Exists('$(SolutionDir)$(NullRmluiRendererDirectx9RenderDependencies)')" Project="..\..\$(NullRmluiRendererDirectx9RenderDependencies)" />
-
-    <Import Condition="Exists('$(SolutionDir)$(NullRmluiRendererDirectx9BackendDependencies)')" Project="$(SolutionDir)$(NullRmluiRendererDirectx9BackendDependencies)" />
-    <Import Condition="!Exists('$(SolutionDir)$(NullRmluiRendererDirectx9BackendDependencies)')" Project="..\..\$(NullRmluiRendererDirectx9BackendDependencies)" />
-
+    <Import Project="$(NullRmluiRendererDirectx9DependenciesPath)null-sdk\null-sdk.static-linking.props" />
+    <Import Project="$(NullRmluiRendererDirectx9DependenciesPath)null-render\null-render.static-linking.props" />
+    <Import Project="$(NullRmluiRendererDirectx9DependenciesPath)null-render\backends\directx9\null-render-backend-directx9.static-linking.props" />
     <Import Project="..\..\third-party\RmlUi\RmlCore\RmlCore.static-linking.props" />
     <Import Project="..\..\null-rmlui.static-linking.props" />
   </ImportGroup>
