@@ -134,7 +134,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <AdditionalOptions>/ignore:4221,4006 %(AdditionalOptions) /machine:X86</AdditionalOptions>
       <AdditionalLibraryDirectories>$(ProjectDir)..\Dependencies\libs</AdditionalLibraryDirectories>
       <AdditionalDependencies>lunasvg-$(Configuration)-$(PlatformShortName).lib</AdditionalDependencies>
     </Lib>
@@ -168,7 +168,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <AdditionalOptions>/ignore:4221,4006 %(AdditionalOptions) /machine:X86</AdditionalOptions>
       <AdditionalLibraryDirectories>$(ProjectDir)..\Dependencies\libs</AdditionalLibraryDirectories>
       <AdditionalDependencies>lunasvg-$(Configuration)-$(PlatformShortName).lib</AdditionalDependencies>
     </Lib>
@@ -201,7 +201,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <AdditionalOptions>/ignore:4221,4006 %(AdditionalOptions) /machine:x64</AdditionalOptions>
       <AdditionalLibraryDirectories>$(ProjectDir)..\Dependencies\libs</AdditionalLibraryDirectories>
       <AdditionalDependencies>lunasvg-$(Configuration)-$(PlatformShortName).lib</AdditionalDependencies>
     </Lib>
@@ -237,7 +237,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <AdditionalOptions>/ignore:4221,4006 %(AdditionalOptions) /machine:x64</AdditionalOptions>
       <AdditionalLibraryDirectories>$(ProjectDir)..\Dependencies\libs</AdditionalLibraryDirectories>
       <AdditionalDependencies>lunasvg-$(Configuration)-$(PlatformShortName).lib</AdditionalDependencies>
     </Lib>
