@@ -3,12 +3,11 @@
 #include <null-render.h>
 
 #include "interfaces/commands.h"
-#include "interfaces/shaders.h"
 
 namespace null::rml {
 	class i_render_interface : public Rml::RenderInterface {
 	public:
-		render::c_draw_list draw_list{ };
+		render::c_command_buffer command_buffer{ };
 
 	public:
 		void SetScissorRegion(int x, int y, int width, int height) override;
@@ -29,10 +28,7 @@ namespace null::rml {
 
 	public:
 		virtual std::unique_ptr<renderer::i_mesh> instance_mesh() = 0;
-		virtual std::unique_ptr<renderer::i_geometry_command> instance_geometry_command(size_t index_count, size_t vertex_count, const Rml::Vector2f& translation, Rml::TextureHandle texture) { { return std::make_unique<renderer::i_geometry_command>(index_count, vertex_count, translation, texture); } }
-		virtual std::unique_ptr<renderer::i_clip_enable_command> instatnce_clip_enable_command(bool enable) = 0;
-
-		virtual std::unique_ptr<renderer::i_passthrough_color_shader> instance_passthrough_color_shader() = 0;
-		virtual std::unique_ptr<renderer::i_passthrough_texture_shader> instance_passthrough_texture_shader() = 0;
+		virtual std::shared_ptr<renderer::c_geometry_command> instance_geometry_command(size_t index_count, size_t vertex_count, const Rml::Vector2f& translation, Rml::TextureHandle texture) { return std::make_shared<renderer::c_geometry_command>(index_count, vertex_count, translation, texture); }
+		virtual std::shared_ptr<renderer::i_clip_enable_command> instatnce_clip_enable_command(bool enable) = 0;
 	}; inline std::unique_ptr<i_render_interface> render_interface{ };
 }

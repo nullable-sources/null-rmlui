@@ -6,7 +6,7 @@ null::render::directx11::c_window window{ };
 utils::c_cumulative_time_measurement frame_counter{ 60 };
 
 void main_loop() {
-	null::render::begin_frame(window); {
+	null::render::begin_frame(); {
 		context->Update();
 		context->Render();
 	} null::render::end_frame();

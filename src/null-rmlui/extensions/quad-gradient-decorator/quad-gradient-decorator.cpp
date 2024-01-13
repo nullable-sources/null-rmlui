@@ -19,23 +19,27 @@ namespace null::rml::extensions {
 		const Rml::Vector2f padding_position(Rml::Math::Round(box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Left)), Rml::Math::Round(box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Top)));
 
 		const Rml::ComputedValues& computed{ element->GetComputedValues() };
-		return (Rml::DecoratorDataHandle)new data_t{
-			{ style.color_tl, style.color_tr, style.color_bl, style.color_br },
-			{ padding_position, padding_position + padding_size },
-			{ computed.border_top_left_radius(), computed.border_top_right_radius(), computed.border_bottom_left_radius(), computed.border_bottom_right_radius() }
-		};
+		std::shared_ptr<render::c_quad_gradient_filter> filter = render::c_quad_gradient_filter::instance();
+		filter->set_colors({ style.color_tl, style.color_tr, style.color_bl, style.color_br });
+
+		std::shared_ptr<render::c_filter_brush> brush = render::c_filter_brush::instance();
+		brush->set_filter(filter);
+
+		std::shared_ptr<render::c_draw_list> draw_list = render::c_draw_list::instance(render::backend::factory->instance_mesh());
+		draw_list->add_convex_shape(
+			render::make_rect(rect_t<float>(padding_position, padding_position + padding_size), { computed.border_top_left_radius(), computed.border_top_right_radius(), computed.border_bottom_left_radius(), computed.border_bottom_right_radius() }),
+			brush
+		);
+
+		draw_list->compile();
+
+		return (Rml::DecoratorDataHandle)new data_t(std::move(draw_list));
 	}
 
 	void c_quad_gradient::RenderElement(Rml::Element* element, Rml::DecoratorDataHandle element_data) const {
 		data_t* data = (data_t*)element_data;
 
-		const Rml::ComputedValues& computed = element->GetComputedValues();
-		render_interface->draw_list.add_command(std::make_unique<renderer::c_restore_command>());
-		render_interface->draw_list.add_convex_shape(
-			render::path::make_rect(data->box + (vec2_t<float>)element->GetAbsoluteOffset(Rml::BoxArea::Border), data->rounding),
-			render::filter_brush_t{ }
-				.set_color({ 255, 255, 255, int(computed.opacity() * 255.f) })
-				.set_filter(render::quad_gradient_filter_t{ }.set_colors(data->colors))
-		);
+		render_interface->command_buffer.add_command(render::c_update_translation_command::instance(element->GetAbsoluteOffset(Rml::BoxArea::Border)));
+		render_interface->command_buffer.add_command(data->draw_list);
 	}
 }

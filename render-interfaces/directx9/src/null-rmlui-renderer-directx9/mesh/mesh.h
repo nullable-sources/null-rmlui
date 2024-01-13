@@ -10,12 +10,12 @@ namespace null::rml::directx9 {
 		IDirect3DIndexBuffer9* index_buffer{ };
 
 	public:
-		void on_create() override;
-		void on_destroy() override;
+		void create() override;
+		void destroy() override;
 
 	public:
 		void compile() override;
 
-		void set() override;
+		void use() override;
 	};
 }

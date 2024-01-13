@@ -1,19 +1,19 @@
-﻿<rml>
-<head>
-	<link type="text/css" href="[resource:rml] tutorial.rcss"/>
-	<title>Window</title>
-	<style>
-		body
-		{
-			width: 400dp;
-			height: 300dp;
-
-			margin: auto;
-		}
-	</style>
-</head>
-<body class="window">
-	<h1>абвгдеёжзийклмнопрстуфхцчшщъыьэюя</h1>
-	<input type="text"/>
-</body>
-</rml>
+﻿﻿<rml>
+	<head>
+		<link type="text/css" href="[resource:rml] tutorial.rcss"/>
+		<title>Window</title>
+		<style>
+			body
+			{
+				width: 400dp;
+				height: 300dp;
+	
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body class="window">
+		<h1>абвгдеёжзийклмнопрстуфхцчшщъыьэюя</h1>
+		<input type="text"/>
+	</body>
+	</rml>

@@ -11,6 +11,8 @@ body.window
 {
 	background-color: #f00f;
 	border-radius: 10px;
+
+	decorator: quad-gradient(rgb(200, 000, 200) rgb(100, 200, 100) rgb(200, 200, 200) rgb(200, 100, 200));
 }
 
 div

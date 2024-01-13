@@ -6,21 +6,21 @@
 
 namespace null::rml {
     void i_render_interface::SetScissorRegion(int x, int y, int width, int height) {
-        draw_list.add_command(std::make_unique<render::c_clip_command>(rect_t<float>(x, y, x + width, y + height)));
+        command_buffer.add_command(render::c_clip_command::instance(rect_t<float>(x, y, x + width, y + height)));
     }
     
     void i_render_interface::EnableScissorRegion(bool enable) {
-        draw_list.add_command(instatnce_clip_enable_command(enable));
+        command_buffer.add_command(instatnce_clip_enable_command(enable));
     }
 
     void i_render_interface::SetTransform(const Rml::Matrix4f* transform) {
         matrix4x4_t matrix = render::backend::renderer->get_projection_matrix();
         if(transform) matrix *= matrix4x4_t(*(std::array<float, 16>*)transform->data());
-        draw_list.add_command(std::make_unique<render::c_matrix_command>(matrix));
+        command_buffer.add_command(render::c_update_matrix_command::instance(matrix));
     }
 
     void i_render_interface::RenderGeometry(Rml::Vertex* vertices, int num_vertices, int* indices, int num_indices, Rml::TextureHandle texture, const Rml::Vector2f& translation) {
-        draw_list.add_command(instance_geometry_command(num_indices, num_vertices, translation, texture));
+        command_buffer.add_command(instance_geometry_command(num_indices, num_vertices, translation, texture));
         renderer::mesh->geometry_buffer.add_vertex_buffer({ vertices, (size_t)num_vertices });
         renderer::mesh->geometry_buffer.add_index_buffer({ indices, (size_t)num_indices });
     }
@@ -51,18 +51,23 @@ namespace null::rml {
 
     void i_render_interface::initialize() {
         renderer::mesh = instance_mesh();
-
-        renderer::passthrough_color_shader = instance_passthrough_color_shader();
-        renderer::passthrough_texture_shader = instance_passthrough_texture_shader();
     }
 
     void i_render_interface::render() {
         renderer::mesh->compile();
 
-        draw_list.handle();
-        draw_list.clear();
+        render::backend::state_pipeline->shaders.push(render::backend::passthrough_color_shader);
+        render::backend::state_pipeline->meshes.push(renderer::mesh);
+
+        command_buffer.handle();
+        command_buffer.clear();
+
+        render::backend::renderer->set_translation(0.f);
+        render::backend::renderer->set_matrix(render::backend::renderer->get_projection_matrix());
+
+        render::backend::state_pipeline->meshes.pop();
+        render::backend::state_pipeline->shaders.pop();
 
         renderer::mesh->clear_geometry();
-        render::backend::renderer->setup_state();
     }
 }

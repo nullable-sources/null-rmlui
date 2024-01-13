@@ -12,7 +12,7 @@ null::render::opengl3::c_window window{ };
 utils::c_cumulative_time_measurement frame_counter{ 60 };
 
 void main_loop() {
-	null::render::begin_frame(window); {
+	null::render::begin_frame(); {
 		//null::render::background.add_text(std::format("[ opengl3 ] fps: {:3.0f}", 1.f / std::chrono::duration<float>{ frame_counter.representation() }.count()), { (float)window.get_window_size().x, 10.f }, { }, null::render::e_text_flags{ -null::render::e_text_flags::aligin_right | -null::render::e_text_flags::aligin_center_y | -null::render::e_text_flags::outline });
 
 		context->Update();

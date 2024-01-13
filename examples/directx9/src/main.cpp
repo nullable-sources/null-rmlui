@@ -7,7 +7,7 @@ null::render::directx9::c_window window{ };
 utils::c_cumulative_time_measurement frame_counter{ 60 };
 
 void main_loop() {
-	null::render::begin_frame(window); {
+	null::render::begin_frame(); {
 		context->Update();
 		context->Render();
 	} null::render::end_frame();
@@ -39,6 +39,8 @@ int main() {
 		null::rml::set_default_interfaces(window);
 		null::rml::initialize();
 		null::rml::load_system_font();
+
+		null::rml::extensions::register_all_decorators();
 
 		if(!(context = Rml::CreateContext("main", window.size)))
 			utils::logger(utils::e_log_type::error, "Rml::CreateContext return nullptr");

@@ -4,6 +4,3 @@ build/
 *.static-linking.log
 
 examples/opengl3/glfw/GLFW
-
-render-interfaces/directx11/src/null-rmlui-renderer-directx11/shaders/shared-objects/passthrough/compiled
-render-interfaces/directx9/src/null-rmlui-renderer-directx9/shaders/shared-objects/passthrough/compiled

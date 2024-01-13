@@ -40,20 +40,9 @@
     <ClInclude Include="src\null-rmlui-renderer-opengl3\commands\commands.h" />
     <ClInclude Include="src\null-rmlui-renderer-opengl3\mesh\mesh.h" />
     <ClInclude Include="src\null-rmlui-renderer-opengl3.h" />
-    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\passthrough-color\passthrough-color.h" />
-    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\passthrough-texture\passthrough-texture.h" />
-    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\shared-objects\passthrough\compiled-object.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="resources\null-rmlui-opengl3-resources.rc" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\null-rmlui-renderer-opengl3\mesh\mesh.cpp" />
-    <ClCompile Include="src\null-rmlui-renderer-opengl3\shaders\passthrough-color\passthrough-color.cpp" />
-    <ClCompile Include="src\null-rmlui-renderer-opengl3\shaders\passthrough-texture\passthrough-texture.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\null-rmlui-renderer-opengl3\shaders\shared-objects\passthrough\glsl\rml-passthrough.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -42,7 +42,7 @@ namespace null::rml::extensions {
 			},
 		};
 
-		if(const Rml::Property * property{ properties.GetProperty(angle) }) {
+		if(const Rml::Property* property = properties.GetProperty(angle)) {
 			switch(property->unit) {
 				case Rml::Unit::RAD: { style.angle = property->Get<float>(); } break;
 				case Rml::Unit::DEG: { style.angle = angle_t<degrees_t>(property->Get<float>()); } break;
@@ -58,31 +58,31 @@ namespace null::rml::extensions {
 
 		const Rml::Vector2f padding_size = box.GetSize(Rml::BoxArea::Padding).Round();
 		const Rml::Vector2f padding_position(Rml::Math::Round(box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Left)), Rml::Math::Round(box.GetEdge(Rml::BoxArea::Border, Rml::BoxEdge::Top)));
-		const Rml::Vector2f border = element->GetAbsoluteOffset(Rml::BoxArea::Border);
 
 		const Rml::ComputedValues& computed = element->GetComputedValues();
-		return (Rml::DecoratorDataHandle)new data_t{
-			style.angle,
-			std::views::zip(style.colors, style.stops) | std::views::take(style.num_stops) | std::views::transform([](std::tuple<const color_t<int>&, const float&> tuple) { return std::pair(std::get<const color_t<int>&>(tuple), std::get<const float&>(tuple) * 0.01f); }) | std::ranges::to<std::vector>(),
-			{ padding_position, padding_position + padding_size },
-			{ computed.border_top_left_radius(), computed.border_top_right_radius(), computed.border_bottom_left_radius(), computed.border_bottom_right_radius() }
-		};
+
+		std::shared_ptr<render::c_linear_gradient_filter> filter = render::c_linear_gradient_filter::instance();
+		filter->set_angle(style.angle);
+		filter->set_stops(std::views::zip(style.colors, style.stops) | std::views::take(style.num_stops) | std::views::transform([](std::tuple<const color_t<int>&, const float&> tuple) { return std::pair(std::get<const color_t<int>&>(tuple), std::get<const float&>(tuple) * 0.01f); }) | std::ranges::to<std::vector>());
+
+		std::shared_ptr<render::c_filter_brush> brush = render::c_filter_brush::instance();
+		brush->set_filter(filter);
+
+		std::shared_ptr<render::c_draw_list> draw_list = render::c_draw_list::instance(render::backend::factory->instance_mesh());
+		draw_list->add_convex_shape(
+			render::make_rect(rect_t<float>(padding_position, padding_position + padding_size), { computed.border_top_left_radius(), computed.border_top_right_radius(), computed.border_bottom_left_radius(), computed.border_bottom_right_radius() }),
+			brush
+		);
+
+		draw_list->compile();
+
+		return (Rml::DecoratorDataHandle)new data_t(std::move(draw_list));
 	}
 
 	void c_linear_gradient::RenderElement(Rml::Element* element, Rml::DecoratorDataHandle element_data) const {
-		data_t* data{ (data_t*)element_data };
+		data_t* data = (data_t*)element_data;
 
-		const Rml::ComputedValues& computed = element->GetComputedValues();
-		render_interface->draw_list.add_command(std::make_unique<renderer::c_restore_command>());
-		render_interface->draw_list.add_convex_shape(
-			render::path::make_rect(data->box + (vec2_t<float>)element->GetAbsoluteOffset(Rml::BoxArea::Border), data->rounding),
-			render::filter_brush_t{ }
-				.set_color({ 255, 255, 255, int(computed.opacity() * 255.f) })
-				.set_filter(
-					render::linear_gradient_filter_t{ }
-						.set_angle(data->angle)
-						.set_stops(data->stops)
-				)
-		);
+		render_interface->command_buffer.add_command(render::c_update_translation_command::instance(element->GetAbsoluteOffset(Rml::BoxArea::Border)));
+		render_interface->command_buffer.add_command(data->draw_list);
 	}
 }

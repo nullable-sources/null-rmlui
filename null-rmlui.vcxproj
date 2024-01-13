@@ -57,7 +57,6 @@
     <ClInclude Include="src\null-rmlui\rmlui-implementation\file-interface\loaders\resource-loader.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\commands.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\mesh.h" />
-    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\render-interface.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\system-interface\system-interface.h" />
   </ItemGroup>

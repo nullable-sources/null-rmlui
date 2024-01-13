@@ -66,11 +66,7 @@ namespace null::rml::extensions {
 
 		struct data_t {
 		public:
-			radians_t angle{ };
-			std::vector<std::pair<color_t<int>, float>> stops{ };
-
-			rect_t<float> box{ };
-			render::path::rounding_t rounding{ };
+			std::shared_ptr<render::c_draw_list> draw_list{ };
 		};
 
 	public:

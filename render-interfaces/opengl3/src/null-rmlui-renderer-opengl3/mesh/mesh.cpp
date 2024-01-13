@@ -1,8 +1,8 @@
-#include "../shaders/shared-objects/passthrough/compiled-object.h"
+#include <null-render-backend-opengl3/shaders/shared-objects/passthrough/compiled-object.h>
 #include "mesh.h"
 
 namespace null::rml::opengl3 {
-    void c_mesh::on_create() {
+    void c_mesh::create() {
         if(vao != 0) return;
 
         opengl::gen_vertex_arrays(1, &vao);
@@ -13,9 +13,9 @@ namespace null::rml::opengl3 {
         render::opengl3::c_program program{ };
         program.create();
 
-        program.attach_shader(&passthrough_shader_object);
+        program.attach_shader(&render::opengl3::passthrough_shader_object);
         program.link();
-        program.detach_shader(&passthrough_shader_object);
+        program.detach_shader(&render::opengl3::passthrough_shader_object);
 
         position.get_location(&program, "position");
         uv.get_location(&program, "uv");
@@ -26,7 +26,7 @@ namespace null::rml::opengl3 {
         opengl::bind_vertex_array(0);
     }
 
-    void c_mesh::on_destroy() {
+    void c_mesh::destroy() {
         opengl::delete_vertex_arrays(1, &vao);
         opengl::delete_buffers(1, &vbo);
         opengl::delete_buffers(1, &ibo);
@@ -60,7 +60,7 @@ namespace null::rml::opengl3 {
         opengl::bind_vertex_array(0);
     }
 
-    void c_mesh::set() {
+    void c_mesh::use() {
         opengl::bind_vertex_array(vao);
     }
 }

@@ -35,10 +35,7 @@ namespace null::rml::extensions {
 
 		struct data_t {
 		public:
-			std::array<color_t<int>, 4> colors{ };
-
-			rect_t<float> box{ };
-			render::path::rounding_t rounding{ };
+			std::shared_ptr<render::c_draw_list> draw_list{ };
 		};
 
 	public:

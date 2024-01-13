@@ -1,7 +1,7 @@
 #include "mesh.h"
 
 namespace null::rml::directx9 {
-    void c_mesh::on_create() {
+    void c_mesh::create() {
         if(vertex_declaration) return;
 
         constexpr D3DVERTEXELEMENT9 elements[]{
@@ -15,13 +15,15 @@ namespace null::rml::directx9 {
             utils::logger(utils::e_log_type::error, "cant create vertex input layout, return code {}.", result);
     }
 
-    void c_mesh::on_destroy() {
+    void c_mesh::destroy() {
         if(index_buffer) { index_buffer->Release(); index_buffer = nullptr; }
         if(vertex_buffer) { vertex_buffer->Release(); vertex_buffer = nullptr; }
         if(vertex_declaration) { vertex_declaration->Release(); vertex_declaration = nullptr; }
     }
 
     void c_mesh::compile() {
+        if(!index_buffer) create();
+
         static int vtx_buffer_size = 5000, idx_buffer_size = 10000;
         if(!vertex_buffer || vtx_buffer_size < geometry_buffer.vertex_buffers_size) {
             if(vertex_buffer) { vertex_buffer->Release(); vertex_buffer = nullptr; }
@@ -46,13 +48,13 @@ namespace null::rml::directx9 {
 
         size_t vertex_offset{ };
         for(const std::span<Rml::Vertex>& vertex_buffer : geometry_buffer.vertex_buffers) {
-            std::ranges::move(vertex_buffer, (Rml::Vertex*)vertex_dst + vertex_offset);
+            std::ranges::move(vertex_buffer, vertex_dst + vertex_offset);
             vertex_offset += vertex_buffer.size();
         }
 
         size_t index_offset{ };
         for(const std::span<int>& index_buffer : geometry_buffer.index_buffers) {
-            std::ranges::move(index_buffer, (int*)index_dst + index_offset);
+            std::ranges::move(index_buffer, index_dst + index_offset);
             index_offset += index_buffer.size();
         }
 
@@ -60,7 +62,7 @@ namespace null::rml::directx9 {
         index_buffer->Unlock();
     }
 
-    void c_mesh::set() {
+    void c_mesh::use() {
         render::directx9::shared.device->SetStreamSource(0, vertex_buffer, 0, sizeof(Rml::Vertex));
         render::directx9::shared.device->SetIndices(index_buffer);
         render::directx9::shared.device->SetVertexDeclaration(vertex_declaration);
