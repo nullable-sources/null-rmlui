@@ -165,7 +165,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>$(ProjectDir)third-party\RmlUi\RmlCore\build\RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlDebugger\build\RmlDebugger-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlSvg\build\RmlSvg-$(ConfigurationName)-$(PlatformShortName).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(ProjectDir)third-party\RmlUi\RmlCore\build\RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlDebugger\build\RmlDebugger-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlSvg\build\RmlSvg-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlLottie\build\RmlLottie-$(ConfigurationName)-$(PlatformShortName).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>
@@ -199,7 +199,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>$(ProjectDir)third-party\RmlUi\RmlCore\build\RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlDebugger\build\RmlDebugger-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlSvg\build\RmlSvg-$(ConfigurationName)-$(PlatformShortName).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(ProjectDir)third-party\RmlUi\RmlCore\build\RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlDebugger\build\RmlDebugger-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlSvg\build\RmlSvg-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlLottie\build\RmlLottie-$(ConfigurationName)-$(PlatformShortName).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>
@@ -229,7 +229,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>$(ProjectDir)third-party\RmlUi\RmlCore\build\RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlDebugger\build\RmlDebugger-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlSvg\build\RmlSvg-$(ConfigurationName)-$(PlatformShortName).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(ProjectDir)third-party\RmlUi\RmlCore\build\RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlDebugger\build\RmlDebugger-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlSvg\build\RmlSvg-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlLottie\build\RmlLottie-$(ConfigurationName)-$(PlatformShortName).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>
@@ -263,7 +263,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>$(ProjectDir)third-party\RmlUi\RmlCore\build\RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlDebugger\build\RmlDebugger-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlSvg\build\RmlSvg-$(ConfigurationName)-$(PlatformShortName).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(ProjectDir)third-party\RmlUi\RmlCore\build\RmlCore-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlDebugger\build\RmlDebugger-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlSvg\build\RmlSvg-$(ConfigurationName)-$(PlatformShortName).lib;$(ProjectDir)third-party\RmlUi\RmlLottie\build\RmlLottie-$(ConfigurationName)-$(PlatformShortName).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>

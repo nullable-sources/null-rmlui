@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RmlDebugger", "RmlDebugger\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RmlSvg", "RmlSvg\RmlSvg.vcxproj", "{F09A85B5-4798-44AB-B318-9713590E7FF4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RmlLottie", "RmlLottie\RmlLottie.vcxproj", "{C859D46A-4AB7-41CC-98D3-9362605ED0C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		debug|x64 = debug|x64
@@ -41,6 +43,14 @@ Global
 		{F09A85B5-4798-44AB-B318-9713590E7FF4}.release|x64.Build.0 = release|x64
 		{F09A85B5-4798-44AB-B318-9713590E7FF4}.release|x86.ActiveCfg = release|Win32
 		{F09A85B5-4798-44AB-B318-9713590E7FF4}.release|x86.Build.0 = release|Win32
+		{C859D46A-4AB7-41CC-98D3-9362605ED0C4}.debug|x64.ActiveCfg = debug|x64
+		{C859D46A-4AB7-41CC-98D3-9362605ED0C4}.debug|x64.Build.0 = debug|x64
+		{C859D46A-4AB7-41CC-98D3-9362605ED0C4}.debug|x86.ActiveCfg = debug|Win32
+		{C859D46A-4AB7-41CC-98D3-9362605ED0C4}.debug|x86.Build.0 = debug|Win32
+		{C859D46A-4AB7-41CC-98D3-9362605ED0C4}.release|x64.ActiveCfg = release|x64
+		{C859D46A-4AB7-41CC-98D3-9362605ED0C4}.release|x64.Build.0 = release|x64
+		{C859D46A-4AB7-41CC-98D3-9362605ED0C4}.release|x86.ActiveCfg = release|Win32
+		{C859D46A-4AB7-41CC-98D3-9362605ED0C4}.release|x86.Build.0 = release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
