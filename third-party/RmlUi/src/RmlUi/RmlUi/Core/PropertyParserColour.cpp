@@ -138,6 +138,10 @@ bool PropertyParserColour::ParseValue(Property& property, const String& value, c
 			// We're parsing a percentage value.
 			if (values[i].size() > 0 && values[i][values[i].size() - 1] == '%')
 				component = int((float)atof(values[i].substr(0, values[i].size() - 1).c_str()) * (255.0f / 100.0f));
+#ifdef RMLUI_FLOAT_COLOR_PARSER
+			else if(values[i].size() > 1 && values[i][1] == '.')
+				component = int((float)atof(values[i].c_str()) * 255.f);
+#endif
 			// We're parsing a 0 -> 255 integer value.
 			else
 				component = atoi(values[i].c_str());
