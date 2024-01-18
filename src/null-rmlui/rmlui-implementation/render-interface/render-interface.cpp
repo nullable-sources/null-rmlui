@@ -64,6 +64,7 @@ namespace null::rml {
 
         render::backend::renderer->set_translation(0.f);
         render::backend::renderer->set_matrix(render::backend::renderer->get_projection_matrix());
+        render::backend::renderer->set_clip(rect_t<float>(vec2_t<float>(0.f), render::shared::viewport));
 
         render::backend::state_pipeline->meshes.pop();
         render::backend::state_pipeline->shaders.pop();
