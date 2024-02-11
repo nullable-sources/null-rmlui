@@ -67,6 +67,7 @@ namespace null::rml::extensions {
 
 		std::shared_ptr<render::c_filter_brush> brush = render::c_filter_brush::instance();
 		brush->set_filter(filter);
+		brush->set_color(color_t<int>(255, computed.opacity()));
 
 		std::shared_ptr<render::c_draw_list> draw_list = render::c_draw_list::instance(render::backend::factory->instance_mesh());
 		draw_list->add_convex_shape(

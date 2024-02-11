@@ -37,6 +37,7 @@
 #include "../../Include/RmlUi/Core/StyleSheetTypes.h"
 #include "../../Include/RmlUi/Core/Transform.h"
 #include "../../Include/RmlUi/Core/TransformPrimitive.h"
+#include "ComputeProperty.h"
 #include "ElementStyle.h"
 #include "TransformUtilities.h"
 
@@ -109,6 +110,13 @@ static Property InterpolateProperties(const Property& p0, const Property& p1, fl
 			float f = (1.0f - alpha) * f0 + alpha * f1;
 			return Property{f, Unit::PX};
 		}
+	}
+
+	if(Any(p0.unit & Unit::ANGLE) && Any(p1.unit & Unit::ANGLE)) {
+		float f0 = ComputeAngle(p0.GetNumericValue());
+		float f1 = ComputeAngle(p1.GetNumericValue());
+		float f = (1.0f - alpha) * f0 + alpha * f1;
+		return Property{ f, Unit::RAD };
 	}
 
 	if (p0.unit == Unit::KEYWORD && p1.unit == Unit::KEYWORD)
