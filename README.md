@@ -11,16 +11,12 @@ renderer, system and file interfaces for rmlui with with small extensions.
     * wnd_proc and small helper functions
 
 # extensions
-* decorators
-    * checkmark
-    * linear and quad gradient from null-render
 * elements
     * colorpicker
     * multiselect
 
 # plugins
 [null-rmlui-lua](https://github.com/nullptr-sources/null-rmlui-lua) - original [RmlSolLua](https://github.com/LoneBoco/RmlSolLua) lua bindings.\
-[null-rmlui-debugger](https://github.com/nullptr-sources/null-rmlui-debugger) - original debugger.
 
 # examples
 [![nullptr-injector](https://i.imgur.com/EAnyGo8.png)](https://github.com/nullptr-sources/nullptr-injector)

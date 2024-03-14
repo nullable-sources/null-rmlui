@@ -3,6 +3,7 @@
 #include <null-render.h>
 
 #include "../../compatibility/rect.h"
+#include "../../compatibility/vec2.h"
 #include "null-rmlui.h"
 #include "interfaces/shaders/texture.h"
 #include "interfaces/shaders/color.h"
@@ -54,7 +55,8 @@ namespace null::rml {
 		file_interface->Close(file_handle);
 
 		std::uint8_t* data = stbi_load_from_memory(file_data.data(), file_data.size(), &texture_dimensions.x, &texture_dimensions.y, nullptr, 4);
-		Rml::TextureHandle texture_handle = GenerateTexture({ data, (size_t)(texture_dimensions.x * texture_dimensions.y * 4) }, texture_dimensions);
+		std::unique_ptr<std::uint8_t[]> premultiplied_data = render::backend::renderer->premultiply_texture_color((vec2_t<int>)texture_dimensions, data);
+		Rml::TextureHandle texture_handle = GenerateTexture({ premultiplied_data.get(), (size_t)(texture_dimensions.x * texture_dimensions.y * 4) }, texture_dimensions);
 		stbi_image_free(data);
 
 		return texture_handle;
