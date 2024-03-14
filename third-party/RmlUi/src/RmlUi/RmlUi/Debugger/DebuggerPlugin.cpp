@@ -146,8 +146,6 @@ bool DebuggerPlugin::IsVisible()
 
 void DebuggerPlugin::Render()
 {
-	Geometry::FreePools();
-
 	// Render the outlines of the debug context's elements.
 	if (render_outlines && debug_context)
 	{

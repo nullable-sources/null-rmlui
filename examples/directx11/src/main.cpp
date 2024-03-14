@@ -5,21 +5,34 @@ Rml::Context* context{ };
 null::render::directx11::c_window window{ };
 utils::c_cumulative_time_measurement frame_counter{ 60 };
 
+void add_gemometry(const std::vector<vec2_t<float>>& points, std::shared_ptr<null::render::c_brush>& brush) {
+	auto mesh = null::render::backend::factory->instance_mesh();
+	auto draw_list = null::render::c_draw_list::instance(std::move(mesh));
+	draw_list->add_convex_shape(points, brush);
+	draw_list->compile();
+	//null::rml::render_interface->command_buffer.add_command(std::move(draw_list));
+}
+
 void main_loop() {
 	null::render::begin_frame(); {
+		std::shared_ptr<null::render::c_sdf_brush> text_brush = null::render::c_sdf_brush::instance();
+		text_brush->set_size(30.f);
+		text_brush->set_outline(1.f, { 100, 100, 255 }, { 100, 100, 255, 0 });
+		null::render::draw_list->add_text(std::format("[ directx11 ] fps: {:3.0f}", 1.f / std::chrono::duration<float>{ frame_counter.representation() }.count()), { }, text_brush);
+
 		context->Update();
-		context->Render();
 	} null::render::end_frame();
 
 	null::render::backend::renderer->begin_render();
-	null::rml::render_interface->render();
+	null::rml::render_interface->begin_render();
+	context->Render();
+	null::rml::render_interface->end_render();
 	null::render::backend::renderer->end_render();
 }
 
 
 int main() {
 	window = null::render::directx11::c_window{ };
-	window.size = { 1024, 768 };
 
 	window.callbacks.at<utils::win::e_window_callbacks::on_create>().add([&] { frame_counter.begin(); });
 	window.callbacks.at<utils::win::e_window_callbacks::on_main_loop>().add([&] { frame_counter.update(); });
@@ -30,7 +43,11 @@ int main() {
 	try {
 		window.create();
 
-		null::render::c_font::config_t config{ .glyph_config{ .ranges{ null::render::c_font::glyph_t::ranges_cyrillic() } } };
+		null::render::c_font::config_t config{
+			.glyph_config{ .ranges{ null::render::c_font::glyph_t::ranges_cyrillic() } },
+			.render_mode_type = null::render::e_render_mode_type::sdf
+		};
+		null::render::atlas.font_loader = std::make_unique<null::render::c_truetype_loader>();
 		null::render::atlas.add_font_default(&config);
 
 		null::rml::render_interface = std::make_unique<null::rml::directx11::c_render>();
@@ -41,7 +58,7 @@ int main() {
 		if(!(context = Rml::CreateContext("main", window.size)))
 			utils::logger(utils::e_log_type::error, "Rml::CreateContext return nullptr");
 
-		if(Rml::ElementDocument* document{ context->LoadDocument("[resource:rml] tutorial.rml") })
+		if(Rml::ElementDocument* document{ context->LoadDocument("[resource:rml] test.rml") })
 			document->Show();
 
 		window.main_loop();

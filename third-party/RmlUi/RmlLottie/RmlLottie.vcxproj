@@ -24,12 +24,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Lottie\ElementLottie.h" />
-    <ClInclude Include="..\src\RmlUi\RmlUi\Lottie\LottiePlugin.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\src\RmlUi\RmlUi\Lottie\ElementLottie.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\Lottie\LottiePlugin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Lottie\ElementLottie.h" />
+    <ClInclude Include="..\src\RmlUi\RmlUi\Lottie\LottiePlugin.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

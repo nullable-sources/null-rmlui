@@ -28,12 +28,6 @@
     <Filter Include="src\extensions">
       <UniqueIdentifier>{f32b4621-6f02-4524-8027-f21723ef9357}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\extensions\linear-gradient-decorator">
-      <UniqueIdentifier>{0b286ac0-b715-4f5e-a72c-480ea52ff14d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\extensions\quad-gradient-decorator">
-      <UniqueIdentifier>{83ba2b5b-28a5-478c-80e6-cf459a44861a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\extensions\multiselect-element">
       <UniqueIdentifier>{9d385adb-60d8-44f0-a2af-7f95c9902ab3}</UniqueIdentifier>
     </Filter>
@@ -42,6 +36,36 @@
     </Filter>
     <Filter Include="src\rmlui-implementation\render-interface\interfaces">
       <UniqueIdentifier>{988a476f-7849-426b-a1dd-da5946de0714}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\render-interface\interfaces\shaders">
+      <UniqueIdentifier>{8addd248-0cba-4d64-9688-7385aea0e2fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing">
+      <UniqueIdentifier>{d492a391-2e9b-49cf-8a58-6324c0b77bfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters">
+      <UniqueIdentifier>{0b2209ff-9089-4dd4-8bfb-3e8997af0c48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\factory">
+      <UniqueIdentifier>{d24e67fd-c202-4f09-8aa7-aa0412cbfa92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\color-matrix-filter">
+      <UniqueIdentifier>{53b3e4fd-f874-4aba-8eee-85ed8a7afe7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\mask-image-filter">
+      <UniqueIdentifier>{0f11fb3b-07df-43aa-a3da-9952433829fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\passthrough-filter">
+      <UniqueIdentifier>{3f1b2b5b-20e0-4288-9964-4c54d56cdc03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\gradient-shader-filter">
+      <UniqueIdentifier>{1395ca1a-10da-423b-8cf7-78fa4fe69743}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\blur-filter">
+      <UniqueIdentifier>{ab4820d6-64cd-4150-9996-a5ef5571594f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\shadow-filter">
+      <UniqueIdentifier>{fd82967a-f97c-48ec-9008-94b54866a473}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -63,14 +87,32 @@
     <ClCompile Include="src\null-rmlui\extensions\colorpicker-element\colorpicker-element.cpp">
       <Filter>src\extensions\colorpicker-element</Filter>
     </ClCompile>
-    <ClCompile Include="src\null-rmlui\extensions\linear-gradient-decorator\linear-gradient-decorator.cpp">
-      <Filter>src\extensions\linear-gradient-decorator</Filter>
-    </ClCompile>
     <ClCompile Include="src\null-rmlui\extensions\multiselect-element\multiselect-element.cpp">
       <Filter>src\extensions\multiselect-element</Filter>
     </ClCompile>
-    <ClCompile Include="src\null-rmlui\extensions\quad-gradient-decorator\quad-gradient-decorator.cpp">
-      <Filter>src\extensions\quad-gradient-decorator</Filter>
+    <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\layers.cpp">
+      <Filter>src\rmlui-implementation\render-interface\post-processing</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\factory\factory.cpp">
+      <Filter>src\rmlui-implementation\render-interface\post-processing\filters\factory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\color-matrix-filter\color-matrix-filter.cpp">
+      <Filter>src\rmlui-implementation\render-interface\post-processing\filters\color-matrix-filter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\passthrough-filter\passthrough-filter.cpp">
+      <Filter>src\rmlui-implementation\render-interface\post-processing\filters\passthrough-filter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\mask-image-filter\mask-image-filter.cpp">
+      <Filter>src\rmlui-implementation\render-interface\post-processing\filters\mask-image-filter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\gradient-filter\gradient-shader-filter.cpp">
+      <Filter>src\rmlui-implementation\render-interface\post-processing\filters\gradient-shader-filter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\blur-filter\blur-filter.cpp">
+      <Filter>src\rmlui-implementation\render-interface\post-processing\filters\blur-filter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\shadow-filter\shadow-filter.cpp">
+      <Filter>src\rmlui-implementation\render-interface\post-processing\filters\shadow-filter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,20 +152,62 @@
     <ClInclude Include="src\null-rmlui\extensions\colorpicker-element\colorpicker-element.h">
       <Filter>src\extensions\colorpicker-element</Filter>
     </ClInclude>
-    <ClInclude Include="src\null-rmlui\extensions\linear-gradient-decorator\linear-gradient-decorator.h">
-      <Filter>src\extensions\linear-gradient-decorator</Filter>
-    </ClInclude>
     <ClInclude Include="src\null-rmlui\extensions\multiselect-element\multiselect-element.h">
       <Filter>src\extensions\multiselect-element</Filter>
     </ClInclude>
-    <ClInclude Include="src\null-rmlui\extensions\quad-gradient-decorator\quad-gradient-decorator.h">
-      <Filter>src\extensions\quad-gradient-decorator</Filter>
-    </ClInclude>
-    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\commands.h">
-      <Filter>src\rmlui-implementation\render-interface\interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\mesh.h">
       <Filter>src\rmlui-implementation\render-interface\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\color-matrix.h">
+      <Filter>src\rmlui-implementation\render-interface\interfaces\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\drop-shadow.h">
+      <Filter>src\rmlui-implementation\render-interface\interfaces\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\gradient.h">
+      <Filter>src\rmlui-implementation\render-interface\interfaces\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\bliting.h">
+      <Filter>src\rmlui-implementation\render-interface\interfaces\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\blend-mask.h">
+      <Filter>src\rmlui-implementation\render-interface\interfaces\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\blur.h">
+      <Filter>src\rmlui-implementation\render-interface\interfaces\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\color.h">
+      <Filter>src\rmlui-implementation\render-interface\interfaces\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\layers.h">
+      <Filter>src\rmlui-implementation\render-interface\post-processing</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\factory\factory.h">
+      <Filter>src\rmlui-implementation\render-interface\post-processing\filters\factory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\color-matrix-filter\color-matrix-filter.h">
+      <Filter>src\rmlui-implementation\render-interface\post-processing\filters\color-matrix-filter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\passthrough-filter\passthrough-filter.h">
+      <Filter>src\rmlui-implementation\render-interface\post-processing\filters\passthrough-filter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\mask-image-filter\mask-image-filter.h">
+      <Filter>src\rmlui-implementation\render-interface\post-processing\filters\mask-image-filter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\gradient-filter\gradient-shader-filter.h">
+      <Filter>src\rmlui-implementation\render-interface\post-processing\filters\gradient-shader-filter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\blur-filter\blur-filter.h">
+      <Filter>src\rmlui-implementation\render-interface\post-processing\filters\blur-filter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\shadow-filter\shadow-filter.h">
+      <Filter>src\rmlui-implementation\render-interface\post-processing\filters\shadow-filter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\compatibility\rect.h">
+      <Filter>src\compatibility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\texture.h">
+      <Filter>src\rmlui-implementation\render-interface\interfaces\shaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

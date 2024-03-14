@@ -6,15 +6,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Debugger\Debugger.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Debugger\Header.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Debugger.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\BeaconSource.h">
       <Filter>RmlUi</Filter>
     </ClInclude>
@@ -49,6 +40,15 @@
       <Filter>RmlUi</Filter>
     </ClInclude>
     <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\MenuSource.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Debugger\Debugger.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Debugger\Header.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Debugger.h">
       <Filter>RmlUi</Filter>
     </ClInclude>
   </ItemGroup>

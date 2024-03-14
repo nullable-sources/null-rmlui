@@ -77,7 +77,7 @@ namespace null::rml::extensions {
 			if(color.size() == 4) alpha_slider->SetAttribute("value", hsv.a);
 		}
 
-		control_element->DispatchEvent(Rml::EventId::Change, { { "value", Rml::Variant{ value }  } });
+		control_element->DispatchEvent(Rml::EventId::Change, { { "value", Rml::Variant{ value } } });
 	}
 
 	void i_widget_colorpicker::ProcessEvent(Rml::Event& event) {

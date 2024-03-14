@@ -32,7 +32,7 @@
 #ifdef RMLUI_ENABLE_PROFILING
 
 	#define TRACY_ENABLE
-	#include <tracy/Tracy.hpp>
+	#include <Tracy.hpp>
 
 	#define RMLUI_ZoneNamed(varname, active) ZoneNamed(varname, active)
 	#define RMLUI_ZoneNamedN(varname, name, active) ZoneNamedN(varname, name, active)

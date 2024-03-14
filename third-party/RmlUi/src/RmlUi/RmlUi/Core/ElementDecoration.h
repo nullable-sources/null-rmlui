@@ -29,12 +29,18 @@
 #ifndef RMLUI_CORE_ELEMENTDECORATION_H
 #define RMLUI_CORE_ELEMENTDECORATION_H
 
+#include "../../Include/RmlUi/Core/CompiledFilterShader.h"
+#include "../../Include/RmlUi/Core/Filter.h"
 #include "../../Include/RmlUi/Core/Types.h"
 
 namespace Rml {
 
 class Decorator;
 class Element;
+class Filter;
+class CompiledFilter;
+
+enum class RenderStage { Enter, Decoration, Exit };
 
 /**
     Manages an elements decorator state
@@ -44,8 +50,6 @@ class Element;
 
 class ElementDecoration {
 public:
-	/// Constructor
-	/// @param element The element this decorator with acting on
 	ElementDecoration(Element* element);
 	~ElementDecoration();
 
@@ -53,7 +57,7 @@ public:
 	void InstanceDecorators();
 
 	/// Renders all appropriate decorators.
-	void RenderDecorators();
+	void RenderDecorators(RenderStage render_stage);
 
 	/// Mark decorators as dirty and force them to reset themselves.
 	void DirtyDecorators();
@@ -61,25 +65,31 @@ public:
 	void DirtyDecoratorsData();
 
 private:
-	// Releases existing decorators and loads all decorators required by the element's definition.
-	bool ReloadDecorators();
 	// Releases existing element data of decorators, and regenerates it.
 	void ReloadDecoratorsData();
 	// Releases all existing decorators and frees their data.
 	void ReleaseDecorators();
 
-	struct DecoratorHandle {
+	struct DecoratorEntry {
 		SharedPtr<const Decorator> decorator;
 		DecoratorDataHandle decorator_data;
+		BoxArea paint_area;
 	};
+	using DecoratorEntryList = Vector<DecoratorEntry>;
 
-	using DecoratorHandleList = Vector<DecoratorHandle>;
+	struct FilterEntry {
+		SharedPtr<const Filter> filter;
+		CompiledFilter compiled;
+	};
+	using FilterEntryList = Vector<FilterEntry>;
 
-	// The element this decorator belongs to
 	Element* element;
 
-	// The list of every decorator used by this element in every class.
-	DecoratorHandleList decorators;
+	// The list of decorators and filters used by this element from all style rules.
+	DecoratorEntryList decorators;
+	DecoratorEntryList mask_images;
+	FilterEntryList filters;
+	FilterEntryList backdrop_filters;
 
 	// If set, a full reload is necessary.
 	bool decorators_dirty = false;

@@ -3,9 +3,6 @@
 #include <null-rmlui-renderer-opengl3.h>
 #include <null-render-backend-opengl3.h>
 #include <null-rmlui.h>
-#include <Windows.h>
-
-WNDPROC old_wnd_proc{ };
 
 Rml::Context* context{ };
 null::render::opengl3::c_window window{ };
@@ -13,20 +10,14 @@ utils::c_cumulative_time_measurement frame_counter{ 60 };
 
 void main_loop() {
 	null::render::begin_frame(); {
-		//null::render::background.add_text(std::format("[ opengl3 ] fps: {:3.0f}", 1.f / std::chrono::duration<float>{ frame_counter.representation() }.count()), { (float)window.get_window_size().x, 10.f }, { }, null::render::e_text_flags{ -null::render::e_text_flags::aligin_right | -null::render::e_text_flags::aligin_center_y | -null::render::e_text_flags::outline });
-
 		context->Update();
-		context->Render();
 	} null::render::end_frame();
 
 	null::render::backend::renderer->begin_render();
-	null::rml::render_interface->render();
+	null::rml::render_interface->begin_render();
+	context->Render();
+	null::rml::render_interface->end_render();
 	null::render::backend::renderer->end_render();
-}
-
-static LRESULT CALLBACK win_proc(HWND hwnd, UINT msg, WPARAM w_param, LPARAM l_param) {
-	if(int result{ null::rml::backend::wnd_proc(context, hwnd, msg, w_param, l_param) }; result != -1) return result;
-	return CallWindowProc(old_wnd_proc, window.wnd_handle, msg, w_param, l_param);
 }
 
 int main() {
@@ -52,11 +43,8 @@ int main() {
 		if(!(context = Rml::CreateContext("main", window.size)))
 			utils::logger(utils::e_log_type::error, "Rml::CreateContext return nullptr");
 
-		if(Rml::ElementDocument* document{ context->LoadDocument("[resource:rml] tutorial.rml") })
+		if(Rml::ElementDocument* document{ context->LoadDocument("[resource:rml] test.rml") })
 			document->Show();
-		
-		/*old_wnd_proc = (WNDPROC)GetWindowLongPtr(window.wnd_handle, (-4));
-		SetWindowLongPtr(window.wnd_handle, (-4), (long)win_proc);*/
 
 		window.main_loop();
 

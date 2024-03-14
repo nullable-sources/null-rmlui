@@ -4,3 +4,19 @@ build/
 *.static-linking.log
 
 examples/opengl3/glfw/GLFW
+
+render-interfaces/directx9/src/null-rmlui-renderer-directx9/shaders/blend-mask/compiled
+render-interfaces/directx9/src/null-rmlui-renderer-directx9/shaders/bliting/compiled
+render-interfaces/directx9/src/null-rmlui-renderer-directx9/shaders/blur/compiled
+render-interfaces/directx9/src/null-rmlui-renderer-directx9/shaders/color/compiled
+render-interfaces/directx9/src/null-rmlui-renderer-directx9/shaders/color-matrix/compiled
+render-interfaces/directx9/src/null-rmlui-renderer-directx9/shaders/drop-shadow/compiled
+render-interfaces/directx9/src/null-rmlui-renderer-directx9/shaders/gradient/compiled
+
+render-interfaces/directx11/src/null-rmlui-renderer-directx11/shaders/blend-mask/compiled
+render-interfaces/directx11/src/null-rmlui-renderer-directx11/shaders/bliting/compiled
+render-interfaces/directx11/src/null-rmlui-renderer-directx11/shaders/blur/compiled
+render-interfaces/directx11/src/null-rmlui-renderer-directx11/shaders/color/compiled
+render-interfaces/directx11/src/null-rmlui-renderer-directx11/shaders/color-matrix/compiled
+render-interfaces/directx11/src/null-rmlui-renderer-directx11/shaders/drop-shadow/compiled
+render-interfaces/directx11/src/null-rmlui-renderer-directx11/shaders/gradient/compiled

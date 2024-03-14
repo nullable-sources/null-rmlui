@@ -29,10 +29,10 @@
 #ifndef RMLUI_SVG_ELEMENT_SVG_H
 #define RMLUI_SVG_ELEMENT_SVG_H
 
+#include "../Core/CallbackTexture.h"
 #include "../Core/Element.h"
 #include "../Core/Geometry.h"
 #include "../Core/Header.h"
-#include "../Core/Texture.h"
 
 namespace lunasvg {
 class Document;
@@ -73,13 +73,12 @@ private:
 	// Update the texture when necessary.
 	void UpdateTexture();
 
-	bool convert_to_rgba = false;
 	bool source_dirty = false;
 	bool geometry_dirty = false;
 	bool texture_dirty = false;
 
 	// The texture this element is rendering from.
-	Texture texture;
+	CallbackTexture texture;
 
 	// The image's intrinsic dimensions.
 	Vector2f intrinsic_dimensions;

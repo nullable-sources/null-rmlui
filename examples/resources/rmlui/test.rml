@@ -1,0 +1,58 @@
+﻿﻿<rml>
+	<head>
+		<style>
+			@keyframes animate-filter {
+				from { filter: drop-shadow(#f00) blur(20px); }
+				to   { filter: drop-shadow(#00f 30px 20px 5px) blur(30px); }
+			}
+
+			.gradient { decorator: linear-gradient(110deg, #fff3, #fff 10%, #c33 250dp, #3c3, #33c, #000 90%, #0003) border-box; }
+			.animate { animation: animate-filter 1.5s cubic-in-out infinite alternate; }
+
+			body {
+				position: relative;
+			}
+
+			div {
+				display: block;
+			}
+
+			div.b {
+				position: absolute;
+
+				top: 0dp;
+				left: 0dp;
+
+				width: 300dp;
+				height: 300dp;
+				background-color: rgb(0, 120, 0);
+
+				border-radius: 300dp;
+			
+				mask-image: image("[resource:images] image.png");
+				filter: blur(20px);
+			}
+			
+			div.inner {
+				position: absolute;
+
+				top: 100dp;
+				left: 100dp;
+
+				width: 100dp;
+				height: 100dp;
+
+				background-color: blue;
+				border-radius: 100dp;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="b gradient animate">
+			<div class="inner">
+				
+			</div>
+		</div>
+
+	</body>
+</rml>

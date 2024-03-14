@@ -30,7 +30,6 @@
 #define RMLUI_DEBUGGER_GEOMETRY_H
 
 #include "../../Include/RmlUi/Core/Types.h"
-#include "../../Include/RmlUi/Core/Vertex.h"
 
 namespace Rml {
 
@@ -46,8 +45,6 @@ namespace Debugger {
 
 class Geometry {
 public:
-	static void FreePools();
-
 	// Set the context to render through.
 	static void SetContext(Context* context);
 

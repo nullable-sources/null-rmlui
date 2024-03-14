@@ -4,10 +4,10 @@
 
 namespace null::rml::directx9 {
 	class c_mesh : public renderer::i_mesh {
-	public:
+	public: using i_mesh::i_mesh;
 		IDirect3DVertexDeclaration9* vertex_declaration{ };
-		IDirect3DVertexBuffer9* vertex_buffer{ };
-		IDirect3DIndexBuffer9* index_buffer{ };
+		IDirect3DVertexBuffer9* vtx_buffer{ };
+		IDirect3DIndexBuffer9* idx_buffer{ };
 
 	public:
 		void create() override;

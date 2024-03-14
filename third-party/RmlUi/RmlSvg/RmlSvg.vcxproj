@@ -24,12 +24,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\RmlUi\Include\RmlUi\SVG\ElementSVG.h" />
-    <ClInclude Include="..\src\RmlUi\RmlUi\SVG\SVGPlugin.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\src\RmlUi\RmlUi\SVG\ElementSVG.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\SVG\SVGPlugin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\RmlUi\Include\RmlUi\SVG\ElementSVG.h" />
+    <ClInclude Include="..\src\RmlUi\RmlUi\SVG\SVGPlugin.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

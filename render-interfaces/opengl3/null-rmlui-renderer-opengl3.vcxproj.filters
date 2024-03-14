@@ -4,27 +4,166 @@
     <Filter Include="src">
       <UniqueIdentifier>{d11addc5-089b-4237-a3dd-c21f8f81dcf1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\commands">
-      <UniqueIdentifier>{f2fbbf86-a2a6-4619-8fa9-0ec5def0c7e6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\mesh">
       <UniqueIdentifier>{71e7f982-1139-417c-94ea-f2ee22f3f1b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders">
+      <UniqueIdentifier>{f2fbbf86-a2a6-4619-8fa9-0ec5def0c7e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\color">
+      <UniqueIdentifier>{a24c82b6-cce7-4d54-aa4b-dbf6c0ccf624}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\color\glsl">
+      <UniqueIdentifier>{f7906df0-101b-4ab6-bb67-6b6902a91ab2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{a71a9c7a-1fa2-49cb-bd04-0a3423c70893}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\color-matrix">
+      <UniqueIdentifier>{48fb4db4-5d6a-4d8e-ab6c-69e4e357c52e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\color-matrix\glsl">
+      <UniqueIdentifier>{b4de36b8-3196-4730-921d-4169d7f99749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\blend-mask">
+      <UniqueIdentifier>{3d94191e-6e06-49e4-8568-15aaaeabe9a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\blend-mask\glsl">
+      <UniqueIdentifier>{f408b1ca-50c3-40f6-93de-b129ea276c9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\gradient">
+      <UniqueIdentifier>{d9b215a8-8c52-4178-9fe7-f3d83f723d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\gradient\glsl">
+      <UniqueIdentifier>{75232404-ef54-4590-b504-bd9c95fe9711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\blur">
+      <UniqueIdentifier>{c7709c49-0187-4fa6-91b7-f4a35268b5a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\blur\glsl">
+      <UniqueIdentifier>{6cc27ca8-113a-4319-ae87-813244884144}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\drop-shadow">
+      <UniqueIdentifier>{78f8f139-fdb4-4a14-80e6-79b677a63c5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\drop-shadow\glsl">
+      <UniqueIdentifier>{f0a52e7f-ae1a-4324-9c4d-b4974cf77469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\bliting">
+      <UniqueIdentifier>{a5321389-65b7-43d0-b1b5-a49d8d27b90e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\bliting\glsl">
+      <UniqueIdentifier>{30de7bd3-1f02-4957-8b35-77b0f35e0b7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\texture">
+      <UniqueIdentifier>{f699ac59-4ca8-4716-9f20-15ec541bf438}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\null-rmlui-renderer-opengl3.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\null-rmlui-renderer-opengl3\commands\commands.h">
-      <Filter>src\commands</Filter>
-    </ClInclude>
     <ClInclude Include="src\null-rmlui-renderer-opengl3\mesh\mesh.h">
       <Filter>src\mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\color\color.h">
+      <Filter>src\shaders\color</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\color\compiled-object.h">
+      <Filter>src\shaders\color</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\color-matrix\color-matrix.h">
+      <Filter>src\shaders\color-matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\color-matrix\compiled-object.h">
+      <Filter>src\shaders\color-matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\blend-mask\blend-mask.h">
+      <Filter>src\shaders\blend-mask</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\blend-mask\compiled-object.h">
+      <Filter>src\shaders\blend-mask</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\gradient\compiled-object.h">
+      <Filter>src\shaders\gradient</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\gradient\gradient.h">
+      <Filter>src\shaders\gradient</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\blur\blur.h">
+      <Filter>src\shaders\blur</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\blur\compiled-object.h">
+      <Filter>src\shaders\blur</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\drop-shadow\drop-shadow.h">
+      <Filter>src\shaders\drop-shadow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\drop-shadow\compiled-object.h">
+      <Filter>src\shaders\drop-shadow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\bliting\compiled-object.h">
+      <Filter>src\shaders\bliting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\bliting\bliting.h">
+      <Filter>src\shaders\bliting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-opengl3\shaders\texture\texture.h">
+      <Filter>src\shaders\texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\null-rmlui-renderer-opengl3\mesh\mesh.cpp">
       <Filter>src\mesh</Filter>
     </ClCompile>
+    <ClCompile Include="src\null-rmlui-renderer-opengl3.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui-renderer-opengl3\shaders\color-matrix\color-matrix.cpp">
+      <Filter>src\shaders\color-matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui-renderer-opengl3\shaders\gradient\gradient.cpp">
+      <Filter>src\shaders\gradient</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui-renderer-opengl3\shaders\blur\blur.cpp">
+      <Filter>src\shaders\blur</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui-renderer-opengl3\shaders\drop-shadow\drop-shadow.cpp">
+      <Filter>src\shaders\drop-shadow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\null-rmlui-renderer-opengl3\shaders\bliting\bliting.cpp">
+      <Filter>src\shaders\bliting</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\null-rmlui-renderer-opengl3\shaders\color\glsl\color.vert">
+      <Filter>src\shaders\color\glsl</Filter>
+    </None>
+    <None Include="src\null-rmlui-renderer-opengl3\shaders\color-matrix\glsl\color-matrix.frag">
+      <Filter>src\shaders\color-matrix\glsl</Filter>
+    </None>
+    <None Include="src\null-rmlui-renderer-opengl3\shaders\blend-mask\glsl\blend-mask.frag">
+      <Filter>src\shaders\blend-mask\glsl</Filter>
+    </None>
+    <None Include="src\null-rmlui-renderer-opengl3\shaders\gradient\glsl\gradient.frag">
+      <Filter>src\shaders\gradient\glsl</Filter>
+    </None>
+    <None Include="src\null-rmlui-renderer-opengl3\shaders\blur\glsl\blur.vert">
+      <Filter>src\shaders\blur\glsl</Filter>
+    </None>
+    <None Include="src\null-rmlui-renderer-opengl3\shaders\blur\glsl\blur.frag">
+      <Filter>src\shaders\blur\glsl</Filter>
+    </None>
+    <None Include="src\null-rmlui-renderer-opengl3\shaders\drop-shadow\glsl\drop-shadow.frag">
+      <Filter>src\shaders\drop-shadow\glsl</Filter>
+    </None>
+    <None Include="src\null-rmlui-renderer-opengl3\shaders\bliting\glsl\bliting.frag">
+      <Filter>src\shaders\bliting\glsl</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources\null-rmlui-opengl3-resources.rc">
+      <Filter>resources</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

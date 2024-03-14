@@ -3,6 +3,7 @@
 #include "null-rmlui/rmlui-implementation/file-interface/file-interface.h"
 #include "null-rmlui/rmlui-implementation/system-interface/system-interface.h"
 #include "null-rmlui/rmlui-implementation/render-interface/render-interface.h"
+#include "null-rmlui/rmlui-implementation/render-interface/post-processing/layers.h"
 
 #include "null-rmlui/extensions/extensions.h"
 
