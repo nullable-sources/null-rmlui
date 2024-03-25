@@ -85,8 +85,13 @@ namespace null::rml {
 	}
 
 	void i_render_interface::PushLayer(Rml::LayerFill layer_fill) {
-		if(layer_fill == Rml::LayerFill::Clone) renderer::layers->push_clone();
+		render::backend::i_frame_buffer* source_layer = renderer::layers->top();
+
+		if(layer_fill == Rml::LayerFill::Link) renderer::layers->push_clone();
 		else renderer::layers->push();
+
+		if(layer_fill == Rml::LayerFill::Copy)
+			renderer::layers->top()->copy_from(source_layer);
 
 		render::backend::state_pipeline->framebuffers.push(renderer::layers->top());
 		if(layer_fill == Rml::LayerFill::Clear) renderer::layers->top()->clear();

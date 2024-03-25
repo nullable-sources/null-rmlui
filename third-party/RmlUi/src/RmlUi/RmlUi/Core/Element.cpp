@@ -1963,7 +1963,7 @@ void Element::SetOwnerDocument(ElementDocument* document)
 
 void Element::SetDataModel(DataModel* new_data_model)
 {
-	RMLUI_ASSERTMSG(!data_model || !new_data_model, "We must either attach a new data model, or detach the old one.");
+	//RMLUI_ASSERTMSG(!data_model || !new_data_model, "We must either attach a new data model, or detach the old one.");
 
 	if (data_model == new_data_model)
 		return;
