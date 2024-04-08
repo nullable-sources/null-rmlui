@@ -35,7 +35,7 @@
 namespace Rml {
 
 /**
-    Templated class for a generic rectangle.
+    Templated class for a generic axis-aligned rectangle.
  */
 template <typename Type>
 class Rectangle {

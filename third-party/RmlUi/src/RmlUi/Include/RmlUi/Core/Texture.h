@@ -74,6 +74,7 @@ public:
 
 	Texture GetTexture(RenderManager& render_manager) const;
 
+	const String& GetSource() const;
 	const String& GetDefinitionSource() const;
 
 private:

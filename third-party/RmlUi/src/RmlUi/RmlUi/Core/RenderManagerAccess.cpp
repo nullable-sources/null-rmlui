@@ -53,6 +53,11 @@ void RenderManagerAccess::GetTextureSourceList(RenderManager* render_manager, St
 	render_manager->GetTextureSourceList(source_list);
 }
 
+bool RenderManagerAccess::ReleaseTexture(RenderManager* render_manager, const String& texture_source)
+{
+	return render_manager->ReleaseTexture(texture_source);
+}
+
 void RenderManagerAccess::ReleaseAllTextures(RenderManager* render_manager)
 {
 	render_manager->ReleaseAllTextures();

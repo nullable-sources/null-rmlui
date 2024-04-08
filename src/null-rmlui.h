@@ -7,6 +7,7 @@
 
 #include "null-rmlui/extensions/extensions.h"
 
+#include "null-rmlui/compatibility/vec4.h"
 #include "null-rmlui/compatibility/vec2.h"
 #include "null-rmlui/compatibility/color.h"
 

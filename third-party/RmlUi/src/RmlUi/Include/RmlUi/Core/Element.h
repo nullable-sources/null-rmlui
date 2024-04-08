@@ -51,7 +51,6 @@ class ElementInstancer;
 class EventDispatcher;
 class EventListener;
 class ElementBackgroundBorder;
-class ElementDecoration;
 class ElementDefinition;
 class ElementDocument;
 class ElementScroll;
@@ -473,8 +472,9 @@ public:
 	//@{
 
 	/// Gives focus to the current element.
+	/// @param[in] focus_visible True to indicate that the focus should be visually indicated by setting the ':focus-visible' pseudo class.
 	/// @return True if the change focus request was successful
-	bool Focus();
+	bool Focus(bool focus_visible = false);
 	/// Removes focus from from this element.
 	void Blur();
 	/// Fakes a mouse click on this element.
@@ -565,6 +565,9 @@ public:
 	/// @param[in] selectors The selector or comma-separated selectors to match against.
 	/// @performance Prefer GetElementById/TagName/ClassName whenever possible.
 	void QuerySelectorAll(ElementList& elements, const String& selectors);
+	/// Check if the element matches the given RCSS selector query.
+	/// @return True if the element matches the given RCSS selector query, false otherwise.
+	bool Matches(const String& selectors);
 
 	//@}
 
@@ -578,8 +581,6 @@ public:
 	String GetEventDispatcherSummary() const;
 	/// Access the element background and border.
 	ElementBackgroundBorder* GetElementBackgroundBorder() const;
-	/// Access the element decorators.
-	ElementDecoration* GetElementDecoration() const;
 	/// Returns the element's scrollbar functionality.
 	ElementScroll* GetElementScroll() const;
 	/// Returns the element's nearest scroll container that can be scrolled, if any.

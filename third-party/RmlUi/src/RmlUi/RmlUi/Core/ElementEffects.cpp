@@ -26,7 +26,7 @@
  *
  */
 
-#include "ElementDecoration.h"
+#include "ElementEffects.h"
 #include "../../Include/RmlUi/Core/ComputedValues.h"
 #include "../../Include/RmlUi/Core/Decorator.h"
 #include "../../Include/RmlUi/Core/Element.h"
@@ -38,23 +38,23 @@
 
 namespace Rml {
 
-ElementDecoration::ElementDecoration(Element* _element) : element(_element) {}
+ElementEffects::ElementEffects(Element* _element) : element(_element) {}
 
-ElementDecoration::~ElementDecoration()
+ElementEffects::~ElementEffects()
 {
-	ReleaseDecorators();
+	ReleaseEffects();
 }
 
-void ElementDecoration::InstanceDecorators()
+void ElementEffects::InstanceEffects()
 {
-	if (!decorators_dirty)
+	if (!effects_dirty)
 		return;
 
-	decorators_dirty = false;
-	decorators_data_dirty = true;
+	effects_dirty = false;
+	effects_data_dirty = true;
 
 	RMLUI_ZoneScopedC(0xB22222);
-	ReleaseDecorators();
+	ReleaseEffects();
 
 	RenderManager* render_manager = element->GetRenderManager();
 	if (!render_manager)
@@ -151,11 +151,11 @@ void ElementDecoration::InstanceDecorators()
 	}
 }
 
-void ElementDecoration::ReloadDecoratorsData()
+void ElementEffects::ReloadEffectsData()
 {
-	if (decorators_data_dirty)
+	if (effects_data_dirty)
 	{
-		decorators_data_dirty = false;
+		effects_data_dirty = false;
 
 		bool decorator_data_failed = false;
 		for (DecoratorEntryList* list : {&decorators, &mask_images})
@@ -172,7 +172,7 @@ void ElementDecoration::ReloadDecoratorsData()
 		}
 
 		if (decorator_data_failed)
-			Log::Message(Log::LT_WARNING, "Could not load decorator data on element: %s", element->GetAddress().c_str());
+			Log::Message(Log::LT_WARNING, "Could not generate decorator element data: %s", element->GetAddress().c_str());
 
 		bool filter_compile_failed = false;
 		for (FilterEntryList* list : {&filters, &backdrop_filters})
@@ -190,7 +190,7 @@ void ElementDecoration::ReloadDecoratorsData()
 	}
 }
 
-void ElementDecoration::ReleaseDecorators()
+void ElementEffects::ReleaseEffects()
 {
 	for (DecoratorEntryList* list : {&decorators, &mask_images})
 	{
@@ -206,10 +206,10 @@ void ElementDecoration::ReleaseDecorators()
 	backdrop_filters.clear();
 }
 
-void ElementDecoration::RenderDecorators(RenderStage render_stage)
+void ElementEffects::RenderEffects(RenderStage render_stage)
 {
-	InstanceDecorators();
-	ReloadDecoratorsData();
+	InstanceEffects();
+	ReloadEffectsData();
 
 	if (!decorators.empty())
 	{
@@ -269,13 +269,45 @@ void ElementDecoration::RenderDecorators(RenderStage render_stage)
 		render_manager->SetScissorRegion(Rectanglei(filter_region));
 	};
 
-	if (!filters.empty() || !mask_images.empty())
+	if (render_stage == RenderStage::Enter)
 	{
-		if (render_stage == RenderStage::Enter)
+		const LayerHandle backdrop_source_layer = render_manager->GetTopLayer();
+
+		if (!filters.empty() || !mask_images.empty())
 		{
-			render_manager->PushLayer(backdrop_filters.empty() ? LayerFill::Clear : LayerFill::Copy);
+			render_manager->PushLayer();
 		}
-		else if (render_stage == RenderStage::Exit)
+
+		if (!backdrop_filters.empty())
+		{
+			const LayerHandle backdrop_destination_layer = render_manager->GetTopLayer();
+
+			// @performance We strictly only need this temporary buffer when having to read from outside the element
+			// boundaries, which currently only applies to blur and drop-shadow. Alternatively, we could avoid this
+			// completely if we introduced a render interface API concept of different input and output clipping. That
+			// is, we set a large input scissor to cover all input data, which can be used e.g. during blurring, and use
+			// our small border-area-only clipping region for the composite layers output.
+			ApplyScissorRegionForBackdrop();
+			render_manager->PushLayer();
+			const LayerHandle backdrop_temp_layer = render_manager->GetTopLayer();
+
+			FilterHandleList filter_handles;
+			for (auto& filter : backdrop_filters)
+				filter.compiled.AddHandleTo(filter_handles);
+
+			// Render the backdrop filters in the extended scissor region including any ink overflow.
+			render_manager->CompositeLayers(backdrop_source_layer, backdrop_temp_layer, BlendMode::Blend, filter_handles);
+
+			// Then composite the filter output to our destination while applying our clipping region, including any border-radius.
+			ApplyClippingRegion(PropertyId::BackdropFilter);
+			render_manager->CompositeLayers(backdrop_temp_layer, backdrop_destination_layer, BlendMode::Blend, {});
+			render_manager->PopLayer();
+			render_manager->SetScissorRegion(initial_scissor_region);
+		}
+	}
+	else if (render_stage == RenderStage::Exit)
+	{
+		if (!filters.empty() || !mask_images.empty())
 		{
 			ApplyClippingRegion(PropertyId::Filter);
 
@@ -288,7 +320,7 @@ void ElementDecoration::RenderDecorators(RenderStage render_stage)
 
 			if (!mask_images.empty())
 			{
-				render_manager->PushLayer(LayerFill::Clear);
+				render_manager->PushLayer();
 
 				for (int i = (int)mask_images.size() - 1; i >= 0; i--)
 				{
@@ -298,42 +330,24 @@ void ElementDecoration::RenderDecorators(RenderStage render_stage)
 				}
 				mask_image_filter = render_manager->SaveLayerAsMaskImage();
 				mask_image_filter.AddHandleTo(filter_handles);
-				render_manager->PopLayer(BlendMode::Discard, {});
+				render_manager->PopLayer();
 			}
 
-			render_manager->PopLayer(BlendMode::Blend, filter_handles);
-			render_manager->SetScissorRegion(initial_scissor_region);
-		}
-	}
-
-	if (!backdrop_filters.empty())
-	{
-		if (render_stage == RenderStage::Enter)
-		{
-			ApplyScissorRegionForBackdrop();
-			render_manager->PushLayer(LayerFill::Copy);
-			render_manager->PushLayer(LayerFill::Link);
-
-			FilterHandleList filter_handles;
-			for (auto& filter : backdrop_filters)
-				filter.compiled.AddHandleTo(filter_handles);
-
-			render_manager->PopLayer(BlendMode::Replace, filter_handles);
-			ApplyClippingRegion(PropertyId::BackdropFilter);
-			render_manager->PopLayer(BlendMode::Blend, {});
+			render_manager->CompositeLayers(render_manager->GetTopLayer(), render_manager->GetNextLayer(), BlendMode::Blend, filter_handles);
+			render_manager->PopLayer();
 			render_manager->SetScissorRegion(initial_scissor_region);
 		}
 	}
 }
 
-void ElementDecoration::DirtyDecorators()
+void ElementEffects::DirtyEffects()
 {
-	decorators_dirty = true;
+	effects_dirty = true;
 }
 
-void ElementDecoration::DirtyDecoratorsData()
+void ElementEffects::DirtyEffectsData()
 {
-	decorators_data_dirty = true;
+	effects_data_dirty = true;
 }
 
 } // namespace Rml

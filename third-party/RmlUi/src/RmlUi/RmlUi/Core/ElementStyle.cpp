@@ -44,7 +44,6 @@
 #include "../../Include/RmlUi/Core/StyleSheetSpecification.h"
 #include "../../Include/RmlUi/Core/TransformPrimitive.h"
 #include "ComputeProperty.h"
-#include "ElementDecoration.h"
 #include "ElementDefinition.h"
 #include "PropertiesIterator.h"
 #include <algorithm>
@@ -869,6 +868,13 @@ PropertyIdSet ElementStyle::ComputeValues(Style::ComputedValues& values, const S
 			values.flex_basis(ComputeLengthPercentageAuto(p, font_size, document_font_size, dp_ratio, vp_dimensions));
 			break;
 
+		case PropertyId::RmlUi_Language:
+			values.language(p->Get<String>());
+			break;
+		case PropertyId::RmlUi_Direction:
+			values.direction(p->Get<Direction>());
+			break;
+
 		// Fetched from element's properties.
 		case PropertyId::Cursor:
 		case PropertyId::Transition:
@@ -881,6 +887,12 @@ PropertyIdSet ElementStyle::ComputeValues(Style::ComputedValues& values, const S
 		case PropertyId::FlexShrink:
 		case PropertyId::FlexWrap:
 		case PropertyId::JustifyContent:
+			break;
+		// Navigation properties. Must be manually retrieved with 'GetProperty()'.
+		case PropertyId::NavUp:
+		case PropertyId::NavDown:
+		case PropertyId::NavLeft:
+		case PropertyId::NavRight:
 			break;
 		// Unhandled properties. Must be manually retrieved with 'GetProperty()'.
 		case PropertyId::FillImage:

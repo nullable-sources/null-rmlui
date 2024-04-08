@@ -76,6 +76,7 @@ public:
 
 	void GetSourceList(StringList& source_list) const;
 
+	bool ReleaseTexture(RenderInterface* render_interface, const String& source);
 	void ReleaseAllTextures(RenderInterface* render_interface);
 
 private:

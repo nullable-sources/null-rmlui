@@ -41,7 +41,7 @@ namespace Rml {
  */
 
 template <typename T>
-class RMLUICORE_API Span {
+class Span {
 public:
 	Span() = default;
 	Span(T* data, size_t size) : m_data(data), m_size(size) { RMLUI_ASSERT(data != nullptr || size == 0); }

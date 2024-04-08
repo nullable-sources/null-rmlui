@@ -36,6 +36,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Config\Config.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\RmlUi\Include\RmlUi\Core\Animation.h">
       <Filter>RmlUi</Filter>
     </ClInclude>
@@ -300,6 +303,9 @@
     <ClInclude Include="..\src\RmlUi\Include\RmlUi\Core\SystemInterface.h">
       <Filter>RmlUi</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Core\TextShapingContext.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\RmlUi\Include\RmlUi\Core\Texture.h">
       <Filter>RmlUi</Filter>
     </ClInclude>
@@ -355,9 +361,6 @@
       <Filter>RmlUi</Filter>
     </ClInclude>
     <ClInclude Include="..\src\RmlUi\Include\RmlUi\Core.h">
-      <Filter>RmlUi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Config\Config.h">
       <Filter>RmlUi</Filter>
     </ClInclude>
     <ClInclude Include="..\src\RmlUi\RmlUi\Core\Clock.h">
@@ -420,10 +423,10 @@
     <ClInclude Include="..\src\RmlUi\RmlUi\Core\ElementBackgroundBorder.h">
       <Filter>RmlUi</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\RmlUi\RmlUi\Core\ElementDecoration.h">
+    <ClInclude Include="..\src\RmlUi\RmlUi\Core\ElementDefinition.h">
       <Filter>RmlUi</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\RmlUi\RmlUi\Core\ElementDefinition.h">
+    <ClInclude Include="..\src\RmlUi\RmlUi\Core\ElementEffects.h">
       <Filter>RmlUi</Filter>
     </ClInclude>
     <ClInclude Include="..\src\RmlUi\RmlUi\Core\ElementHandle.h">
@@ -839,13 +842,13 @@
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementBackgroundBorder.cpp">
       <Filter>RmlUi</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementDecoration.cpp">
-      <Filter>RmlUi</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementDefinition.cpp">
       <Filter>RmlUi</Filter>
     </ClCompile>
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementDocument.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementEffects.cpp">
       <Filter>RmlUi</Filter>
     </ClCompile>
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementHandle.cpp">

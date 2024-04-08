@@ -47,8 +47,8 @@
 #include "DataModel.h"
 #include "ElementAnimation.h"
 #include "ElementBackgroundBorder.h"
-#include "ElementDecoration.h"
 #include "ElementDefinition.h"
+#include "ElementEffects.h"
 #include "ElementStyle.h"
 #include "EventDispatcher.h"
 #include "EventSpecification.h"
@@ -92,12 +92,12 @@ static float GetScrollOffsetDelta(ScrollAlignment alignment, float begin_offset,
 
 // Meta objects for element collected in a single struct to reduce memory allocations
 struct ElementMeta {
-	ElementMeta(Element* el) : event_dispatcher(el), style(el), background_border(), decoration(el), scroll(el), computed_values(el) {}
+	ElementMeta(Element* el) : event_dispatcher(el), style(el), background_border(), effects(el), scroll(el), computed_values(el) {}
 	SmallUnorderedMap<EventId, EventListener*> attribute_event_listeners;
 	EventDispatcher event_dispatcher;
 	ElementStyle style;
 	ElementBackgroundBorder background_border;
-	ElementDecoration decoration;
+	ElementEffects effects;
 	ElementScroll scroll;
 	Style::ComputedValues computed_values;
 };
@@ -153,7 +153,7 @@ Element::~Element()
 
 void Element::Update(float dp_ratio, Vector2f vp_dimensions)
 {
-#ifdef RMLUI_ENABLE_PROFILING
+#ifdef RMLUI_TRACY_PROFILING
 	auto name = GetAddress(false, false);
 	RMLUI_ZoneScoped;
 	RMLUI_ZoneText(name.c_str(), name.size());
@@ -177,7 +177,7 @@ void Element::Update(float dp_ratio, Vector2f vp_dimensions)
 		UpdateProperties(dp_ratio, vp_dimensions);
 	}
 
-	meta->decoration.InstanceDecorators();
+	meta->effects.InstanceEffects();
 
 	for (size_t i = 0; i < children.size(); i++)
 		children[i]->Update(dp_ratio, vp_dimensions);
@@ -213,7 +213,7 @@ void Element::UpdateProperties(const float dp_ratio, const Vector2f vp_dimension
 
 void Element::Render()
 {
-#ifdef RMLUI_ENABLE_PROFILING
+#ifdef RMLUI_TRACY_PROFILING
 	auto name = GetAddress(false, false);
 	RMLUI_ZoneScoped;
 	RMLUI_ZoneText(name.c_str(), name.size());
@@ -233,13 +233,13 @@ void Element::Render()
 	// Apply our transform
 	ElementUtilities::ApplyTransform(*this);
 
-	meta->decoration.RenderDecorators(RenderStage::Enter);
+	meta->effects.RenderEffects(RenderStage::Enter);
 
 	// Set up the clipping region for this element.
 	if (ElementUtilities::SetClippingRegion(this))
 	{
 		meta->background_border.Render(this);
-		meta->decoration.RenderDecorators(RenderStage::Decoration);
+		meta->effects.RenderEffects(RenderStage::Decoration);
 
 		{
 			RMLUI_ZoneScopedNC("OnRender", 0x228B22);
@@ -252,7 +252,7 @@ void Element::Render()
 	for (Element* element : stacking_context)
 		element->Render();
 
-	meta->decoration.RenderDecorators(RenderStage::Exit);
+	meta->effects.RenderEffects(RenderStage::Exit);
 }
 
 ElementPtr Element::Clone() const
@@ -452,7 +452,7 @@ void Element::SetBox(const Box& box)
 
 		meta->background_border.DirtyBackground();
 		meta->background_border.DirtyBorder();
-		meta->decoration.DirtyDecoratorsData();
+		meta->effects.DirtyEffectsData();
 	}
 }
 
@@ -464,7 +464,7 @@ void Element::AddBox(const Box& box, Vector2f offset)
 
 	meta->background_border.DirtyBackground();
 	meta->background_border.DirtyBorder();
-	meta->decoration.DirtyDecoratorsData();
+	meta->effects.DirtyEffectsData();
 }
 
 const Box& Element::GetBox()
@@ -1105,7 +1105,7 @@ void Element::SetInnerRML(const String& rml)
 		Factory::InstanceElementText(this, rml);
 }
 
-bool Element::Focus()
+bool Element::Focus(bool focus_visible)
 {
 	// Are we allowed focus?
 	Style::Focus focus_property = meta->computed_values.focus();
@@ -1117,7 +1117,7 @@ bool Element::Focus()
 	if (context == nullptr)
 		return false;
 
-	if (!context->OnFocusChange(this))
+	if (!context->OnFocusChange(this, focus_visible))
 		return false;
 
 	// Set this as the end of the focus chain.
@@ -1538,6 +1538,28 @@ void Element::QuerySelectorAll(ElementList& elements, const String& selectors)
 	QuerySelectorAllMatchRecursive(elements, leaf_nodes, this);
 }
 
+bool Element::Matches(const String& selectors)
+{
+	StyleSheetNode root_node;
+	StyleSheetNodeListRaw leaf_nodes = StyleSheetParser::ConstructNodes(root_node, selectors);
+
+	if (leaf_nodes.empty())
+	{
+		Log::Message(Log::LT_WARNING, "Query selector '%s' is empty. In element %s", selectors.c_str(), GetAddress().c_str());
+		return false;
+	}
+
+	for (const StyleSheetNode* node : leaf_nodes)
+	{
+		if (node->IsApplicable(this))
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
 EventDispatcher* Element::GetEventDispatcher() const
 {
 	return &meta->event_dispatcher;
@@ -1551,11 +1573,6 @@ String Element::GetEventDispatcherSummary() const
 ElementBackgroundBorder* Element::GetElementBackgroundBorder() const
 {
 	return &meta->background_border;
-}
-
-ElementDecoration* Element::GetElementDecoration() const
-{
-	return &meta->decoration;
 }
 
 ElementScroll* Element::GetElementScroll() const
@@ -1660,6 +1677,32 @@ void Element::OnAttributeChange(const ElementAttributes& changed_attributes)
 			}
 			else if (value.GetType() != Variant::NONE)
 				Log::Message(Log::LT_WARNING, "Invalid 'style' attribute, string type required. In element: %s", GetAddress().c_str());
+		}
+		else if (attribute == "lang")
+		{
+			if (value.GetType() == Variant::STRING)
+				meta->style.SetProperty(PropertyId::RmlUi_Language, Property(value.GetReference<String>(), Unit::STRING));
+			else if (value.GetType() != Variant::NONE)
+				Log::Message(Log::LT_WARNING, "Invalid 'lang' attribute, string type required. In element: %s", GetAddress().c_str());
+		}
+		else if (attribute == "dir")
+		{
+			if (value.GetType() == Variant::STRING)
+			{
+				const String& dir_value = value.GetReference<String>();
+
+				if (dir_value == "auto")
+					meta->style.SetProperty(PropertyId::RmlUi_Direction, Property(Style::Direction::Auto));
+				else if (dir_value == "ltr")
+					meta->style.SetProperty(PropertyId::RmlUi_Direction, Property(Style::Direction::Ltr));
+				else if (dir_value == "rtl")
+					meta->style.SetProperty(PropertyId::RmlUi_Direction, Property(Style::Direction::Rtl));
+				else
+					Log::Message(Log::LT_WARNING, "Invalid 'dir' attribute '%s', value must be 'auto', 'ltr', or 'rtl'. In element: %s",
+						dir_value.c_str(), GetAddress().c_str());
+			}
+			else if (value.GetType() != Variant::NONE)
+				Log::Message(Log::LT_WARNING, "Invalid 'dir' attribute, string type required. In element: %s", GetAddress().c_str());
 		}
 	}
 
@@ -1795,18 +1838,18 @@ void Element::OnPropertyChange(const PropertyIdSet& changed_properties)
 		meta->background_border.DirtyBorder();
 	}
 
-	// Dirty the decoration if it's changed.
+	// Dirty the effects if they've changed.
 	if (border_radius_changed || filter_or_mask_changed || changed_properties.Contains(PropertyId::Decorator))
 	{
-		meta->decoration.DirtyDecorators();
+		meta->effects.DirtyEffects();
 	}
 
-	// Dirty the decoration data when its visual looks may have changed.
+	// Dirty the effects data when their visual looks may have changed.
 	if (border_radius_changed ||                            //
 		changed_properties.Contains(PropertyId::Opacity) || //
 		changed_properties.Contains(PropertyId::ImageColor))
 	{
-		meta->decoration.DirtyDecoratorsData();
+		meta->effects.DirtyEffectsData();
 	}
 
 	// Check for `perspective' and `perspective-origin' changes
@@ -1893,8 +1936,15 @@ void Element::ProcessDefaultAction(Event& event)
 		{
 		case EventId::Mouseover: SetPseudoClass("hover", true); break;
 		case EventId::Mouseout: SetPseudoClass("hover", false); break;
-		case EventId::Focus: SetPseudoClass("focus", true); break;
-		case EventId::Blur: SetPseudoClass("focus", false); break;
+		case EventId::Focus:
+			SetPseudoClass("focus", true);
+			if (event.GetParameter("focus_visible", false))
+				SetPseudoClass("focus-visible", true);
+			break;
+		case EventId::Blur:
+			SetPseudoClass("focus", false);
+			SetPseudoClass("focus-visible", false);
+			break;
 		default: break;
 		}
 	}
@@ -1963,7 +2013,9 @@ void Element::SetOwnerDocument(ElementDocument* document)
 
 void Element::SetDataModel(DataModel* new_data_model)
 {
-	//RMLUI_ASSERTMSG(!data_model || !new_data_model, "We must either attach a new data model, or detach the old one.");
+#ifndef RMLUI_ALLOW_NESTED_DATAMODELS
+	RMLUI_ASSERTMSG(!data_model || !new_data_model, "We must either attach a new data model, or detach the old one.");
+#endif
 
 	if (data_model == new_data_model)
 		return;
@@ -2813,7 +2865,7 @@ void Element::UpdateTransformState()
 
 void Element::OnStyleSheetChangeRecursive()
 {
-	GetElementDecoration()->DirtyDecorators();
+	meta->effects.DirtyEffects();
 
 	OnStyleSheetChange();
 
@@ -2825,7 +2877,7 @@ void Element::OnStyleSheetChangeRecursive()
 
 void Element::OnDpRatioChangeRecursive()
 {
-	GetElementDecoration()->DirtyDecorators();
+	meta->effects.DirtyEffects();
 	GetStyle()->DirtyPropertiesWithUnits(Unit::DP_SCALABLE_LENGTH);
 
 	OnDpRatioChange();

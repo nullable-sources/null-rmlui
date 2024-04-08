@@ -112,12 +112,6 @@ bool Initialise()
 #endif
 	}
 
-	EventSpecificationInterface::Initialize();
-
-	render_managers = MakeUnique<SmallUnorderedMap<RenderInterface*, UniquePtr<RenderManager>>>();
-	if (render_interface)
-		(*render_managers)[render_interface] = MakeUnique<RenderManager>(render_interface);
-
 	if (!font_interface)
 	{
 #ifndef RMLUI_NO_FONT_INTERFACE_DEFAULT
@@ -128,6 +122,14 @@ bool Initialise()
 		return false;
 #endif
 	}
+
+	EventSpecificationInterface::Initialize();
+
+	render_managers = MakeUnique<SmallUnorderedMap<RenderInterface*, UniquePtr<RenderManager>>>();
+	if (render_interface)
+		(*render_managers)[render_interface] = MakeUnique<RenderManager>(render_interface);
+
+	font_interface->Initialize();
 
 	StyleSheetSpecification::Initialise();
 	StyleSheetParser::Initialise();
@@ -169,17 +171,18 @@ void Shutdown()
 	StyleSheetParser::Shutdown();
 	StyleSheetSpecification::Shutdown();
 
-	font_interface = nullptr;
-	default_font_interface.reset();
+	font_interface->Shutdown();
 
 	render_managers.reset();
 
 	initialised = false;
 
+	font_interface = nullptr;
 	render_interface = nullptr;
 	file_interface = nullptr;
 	system_interface = nullptr;
 
+	default_font_interface.reset();
 	default_file_interface.reset();
 
 	ReleaseMemoryPools();
@@ -323,9 +326,9 @@ bool LoadFontFace(const String& file_path, bool fallback_face, Style::FontWeight
 	return font_interface->LoadFontFace(file_path, fallback_face, weight);
 }
 
-bool LoadFontFace(const byte* data, int data_size, const String& font_family, Style::FontStyle style, Style::FontWeight weight, bool fallback_face)
+bool LoadFontFace(Span<const byte> data, const String& font_family, Style::FontStyle style, Style::FontWeight weight, bool fallback_face)
 {
-	return font_interface->LoadFontFace(data, data_size, font_family, style, weight, fallback_face);
+	return font_interface->LoadFontFace(data, font_family, style, weight, fallback_face);
 }
 
 void RegisterPlugin(Plugin* plugin)
@@ -372,6 +375,22 @@ void ReleaseTextures(RenderInterface* match_render_interface)
 	}
 }
 
+bool ReleaseTexture(const String& source, RenderInterface* match_render_interface)
+{
+	if (!render_managers)
+		return false;
+	bool result = false;
+	for (auto& render_manager : *render_managers)
+	{
+		if (!match_render_interface || render_manager.first == match_render_interface)
+		{
+			if (RenderManagerAccess::ReleaseTexture(render_manager.second.get(), source))
+				result = true;
+		}
+	}
+	return result;
+}
+
 void ReleaseCompiledGeometry(RenderInterface* match_render_interface)
 {
 	if (!render_managers)
@@ -411,7 +430,7 @@ namespace CoreInternal {
 
 	bool HasRenderManager(RenderInterface* match_render_interface)
 	{
-		return render_managers && (*render_managers).find(match_render_interface) != render_managers->end();
+		return render_managers && render_managers->find(match_render_interface) != render_managers->end();
 	}
 
 } // namespace CoreInternal

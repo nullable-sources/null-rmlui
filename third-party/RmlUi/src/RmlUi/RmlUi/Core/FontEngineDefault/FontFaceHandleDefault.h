@@ -68,7 +68,7 @@ public:
 	/// @return The index to use when generating geometry using this configuration.
 	int GenerateLayerConfiguration(const FontEffectList& font_effects);
 	/// Generates the texture data for a layer (for the texture database).
-	/// @param[out] texture_data The pointer to be set to the generated texture data.
+	/// @param[out] texture_data The generated texture data.
 	/// @param[out] texture_dimensions The dimensions of the texture.
 	/// @param[in] font_effect The font effect used for the layer.
 	/// @param[in] texture_id The index of the texture within the layer to generate.

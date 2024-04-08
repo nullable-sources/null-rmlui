@@ -30,6 +30,7 @@
 #include "../../../Include/RmlUi/Core/ComputedValues.h"
 #include "../../../Include/RmlUi/Core/Element.h"
 #include "../../../Include/RmlUi/Core/ElementScroll.h"
+#include "../../../Include/RmlUi/Core/Profiling.h"
 #include "../../../Include/RmlUi/Core/Types.h"
 #include "ContainerBox.h"
 #include "LayoutDetails.h"
@@ -42,6 +43,7 @@ namespace Rml {
 
 UniquePtr<LayoutBox> FlexFormattingContext::Format(ContainerBox* parent_container, Element* element, const Box* override_initial_box)
 {
+	RMLUI_ZoneScopedC(0xAFAF4F);
 	auto flex_container_box = MakeUnique<FlexContainer>(element, parent_container);
 
 	ElementScroll* element_scroll = element->GetElementScroll();
@@ -114,6 +116,28 @@ UniquePtr<LayoutBox> FlexFormattingContext::Format(ContainerBox* parent_containe
 	}
 
 	return flex_container_box;
+}
+
+Vector2f FlexFormattingContext::GetMaxContentSize(Element* element)
+{
+	// A large but finite number is used here, because the flexbox formatting algorithm
+	// needs to round numbers, and it doesn't support infinities.
+	const Vector2f infinity(10000.0f, 10000.0f);
+	RootBox root(infinity);
+	auto flex_container_box = MakeUnique<FlexContainer>(element, &root);
+
+	FlexFormattingContext context;
+	context.flex_container_box = flex_container_box.get();
+	context.element_flex = element;
+	context.flex_available_content_size = Vector2f(-1, -1);
+	context.flex_content_containing_block = infinity;
+	context.flex_max_size = Vector2f(FLT_MAX, FLT_MAX);
+
+	// Format the flexbox and all its children.
+	Vector2f flex_resulting_content_size, content_overflow_size;
+	float flex_baseline = 0.f;
+	context.Format(flex_resulting_content_size, content_overflow_size, flex_baseline);
+	return flex_resulting_content_size;
 }
 
 struct FlexItem {
@@ -234,9 +258,10 @@ void FlexFormattingContext::Format(Vector2f& flex_resulting_content_size, Vector
 	const float cross_size_base_value = (cross_available_size < 0.0f ? 0.0f : cross_available_size);
 
 	// -- Build a list of all flex items with base size information --
-	Vector<FlexItem> items;
-
 	const int num_flex_children = element_flex->GetNumChildren();
+	Vector<FlexItem> items;
+	items.reserve(num_flex_children);
+
 	for (int i = 0; i < num_flex_children; i++)
 	{
 		Element* element = element_flex->GetChild(i);
@@ -312,10 +337,11 @@ void FlexFormattingContext::Format(Vector2f& flex_resulting_content_size, Vector
 			RMLUI_ASSERT(initial_box_size.y < 0.f);
 
 			Box format_box = item.box;
-			if (initial_box_size.x < 0.f)
+			if (initial_box_size.x < 0.f && flex_available_content_size.x >= 0.f)
 				format_box.SetContent(Vector2f(flex_available_content_size.x - item.cross.sum_edges, initial_box_size.y));
 
-			FormattingContext::FormatIndependent(flex_container_box, element, &format_box, FormattingContextType::Block);
+			FormattingContext::FormatIndependent(flex_container_box, element, (format_box.GetSize().x >= 0 ? &format_box : nullptr),
+				FormattingContextType::Block);
 			item.inner_flex_base_size = element->GetBox().GetSize().y;
 		}
 
@@ -562,6 +588,21 @@ void FlexFormattingContext::Format(Vector2f& flex_resulting_content_size, Vector
 					{
 						item.main_auto_margin_size_a = space_per_edge;
 						item.main_auto_margin_size_b = space_per_edge;
+					}
+				}
+				break;
+				case JustifyContent::SpaceEvenly:
+				{
+					const float space_per_edge = remaining_free_space / float(2 * (num_items + 1));
+					for (int i = 0; i < num_items; i++)
+					{
+						FlexItem& item = line.items[i];
+						item.main_auto_margin_size_a = space_per_edge;
+						item.main_auto_margin_size_b = space_per_edge;
+						if (i == 0)
+							item.main_auto_margin_size_a *= 2.0f;
+						else if (i == num_items - 1)
+							item.main_auto_margin_size_b *= 2.0f;
 					}
 				}
 				break;
@@ -816,6 +857,21 @@ void FlexFormattingContext::Format(Vector2f& flex_resulting_content_size, Vector
 				{
 					line.cross_spacing_a = space_per_edge;
 					line.cross_spacing_b = space_per_edge;
+				}
+			}
+			break;
+			case AlignContent::SpaceEvenly:
+			{
+				const float space_per_edge = remaining_free_space / float(2 * (num_lines + 1));
+				for (int i = 0; i < num_lines; i++)
+				{
+					FlexLine& line = container.lines[i];
+					line.cross_spacing_a = space_per_edge;
+					line.cross_spacing_b = space_per_edge;
+					if (i == 0)
+						line.cross_spacing_a *= 2.0f;
+					else if (i == num_lines - 1)
+						line.cross_spacing_b *= 2.0f;
 				}
 			}
 			break;

@@ -52,8 +52,9 @@ namespace null::rml {
 		void EnableClipMask(bool enable) override;
 		void RenderToClipMask(Rml::ClipMaskOperation mask_operation, Rml::CompiledGeometryHandle geometry, Rml::Vector2f translation) override;
 
-		void PushLayer(Rml::LayerFill layer_fill) override;
-		void PopLayer(Rml::BlendMode blend_mode, Rml::Span<const Rml::CompiledFilterHandle> filters) override;
+		Rml::LayerHandle PushLayer() override;
+		void CompositeLayers(Rml::LayerHandle source, Rml::LayerHandle destination, Rml::BlendMode blend_mode, Rml::Span<const Rml::CompiledFilterHandle> filters) override;
+		void PopLayer() override;
 
 		Rml::TextureHandle SaveLayerAsTexture(Rml::Vector2i dimensions) override;
 		Rml::CompiledFilterHandle SaveLayerAsMaskImage() override;

@@ -26,22 +26,22 @@
  *
  */
 
-#include "../../Include/RmlUi/Core/Profiling.h"
+#ifndef RMLUI_CORE_TEXTSHAPINGCONTEXT_H
+#define RMLUI_CORE_TEXTSHAPINGCONTEXT_H
 
-#ifdef RMLUI_TRACY_MEMORY_PROFILING
-	#include <memory>
+#include "StyleTypes.h"
+#include "Types.h"
 
-void* operator new(std::size_t n)
-{
-	// Overload global new and delete for memory inspection
-	void* ptr = malloc(n);
-	TracyAlloc(ptr, n);
-	return ptr;
-}
-void operator delete(void* ptr) noexcept
-{
-	TracyFree(ptr);
-	free(ptr);
-}
+namespace Rml {
 
+/*
+    Data extracted from the properties of an element to help provide context for text shaping and spacing.
+*/
+struct TextShapingContext {
+	const String& language;
+	Style::Direction text_direction = Style::Direction::Auto;
+	float letter_spacing = 0.0f; // Measured in pixels.
+};
+
+} // namespace Rml
 #endif

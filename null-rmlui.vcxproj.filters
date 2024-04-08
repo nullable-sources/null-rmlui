@@ -209,6 +209,9 @@
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\texture.h">
       <Filter>src\rmlui-implementation\render-interface\interfaces\shaders</Filter>
     </ClInclude>
+    <ClInclude Include="src\null-rmlui\compatibility\vec4.h">
+      <Filter>src\compatibility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

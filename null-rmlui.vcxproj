@@ -51,6 +51,7 @@
     <ClInclude Include="src\null-rmlui\compatibility\color.h" />
     <ClInclude Include="src\null-rmlui\compatibility\rect.h" />
     <ClInclude Include="src\null-rmlui\compatibility\vec2.h" />
+    <ClInclude Include="src\null-rmlui\compatibility\vec4.h" />
     <ClInclude Include="src\null-rmlui\extensions\colorpicker-element\colorpicker-element.h" />
     <ClInclude Include="src\null-rmlui\extensions\extensions.h" />
     <ClInclude Include="src\null-rmlui\extensions\multiselect-element\multiselect-element.h" />

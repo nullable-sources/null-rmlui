@@ -37,6 +37,7 @@
 #include "../../Include/RmlUi/Core/FontEngineInterface.h"
 #include "../../Include/RmlUi/Core/Math.h"
 #include "../../Include/RmlUi/Core/RenderManager.h"
+#include "../../Include/RmlUi/Core/TextShapingContext.h"
 #include "DataController.h"
 #include "DataModel.h"
 #include "DataView.h"
@@ -158,13 +159,14 @@ float ElementUtilities::GetDensityIndependentPixelRatio(Element* element)
 
 int ElementUtilities::GetStringWidth(Element* element, const String& string, Character prior_character)
 {
-	const float letter_spacing = element->GetComputedValues().letter_spacing();
+	const auto& computed = element->GetComputedValues();
+	const TextShapingContext text_shaping_context{ computed.language(), computed.direction(), computed.letter_spacing() };
 
 	FontFaceHandle font_face_handle = element->GetFontFaceHandle();
 	if (font_face_handle == 0)
 		return 0;
 
-	return GetFontEngineInterface()->GetStringWidth(font_face_handle, string, letter_spacing, prior_character);
+	return GetFontEngineInterface()->GetStringWidth(font_face_handle, string, text_shaping_context, prior_character);
 }
 
 bool ElementUtilities::GetClippingRegion(Element* element, Rectanglei& out_clip_region, ClipMaskGeometryList* out_clip_mask_list,
@@ -290,7 +292,7 @@ bool ElementUtilities::GetBoundingBox(Rectanglef& out_rectangle, Element* elemen
 	if (box_area == BoxArea::Auto)
 	{
 		// 'Auto' acts like border box extended to encompass any ink overflow, including the element's box-shadow.
-		// Note: Does not currently include ink overflow due to filters, as that is handled manually in ElementDecoration.
+		// Note: Does not currently include ink overflow due to filters, as that is handled manually in ElementEffects.
 		box_area = BoxArea::Border;
 
 		if (const Property* p_box_shadow = element->GetLocalProperty(PropertyId::BoxShadow))

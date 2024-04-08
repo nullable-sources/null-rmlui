@@ -121,6 +121,7 @@
     <ClInclude Include="..\src\RmlUi\Include\RmlUi\Core\StyleSheetTypes.h" />
     <ClInclude Include="..\src\RmlUi\Include\RmlUi\Core\StyleTypes.h" />
     <ClInclude Include="..\src\RmlUi\Include\RmlUi\Core\SystemInterface.h" />
+    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Core\TextShapingContext.h" />
     <ClInclude Include="..\src\RmlUi\Include\RmlUi\Core\Texture.h" />
     <ClInclude Include="..\src\RmlUi\Include\RmlUi\Core\Traits.h" />
     <ClInclude Include="..\src\RmlUi\Include\RmlUi\Core\Transform.h" />
@@ -159,8 +160,8 @@
     <ClInclude Include="..\src\RmlUi\RmlUi\Core\DocumentHeader.h" />
     <ClInclude Include="..\src\RmlUi\RmlUi\Core\ElementAnimation.h" />
     <ClInclude Include="..\src\RmlUi\RmlUi\Core\ElementBackgroundBorder.h" />
-    <ClInclude Include="..\src\RmlUi\RmlUi\Core\ElementDecoration.h" />
     <ClInclude Include="..\src\RmlUi\RmlUi\Core\ElementDefinition.h" />
+    <ClInclude Include="..\src\RmlUi\RmlUi\Core\ElementEffects.h" />
     <ClInclude Include="..\src\RmlUi\RmlUi\Core\ElementHandle.h" />
     <ClInclude Include="..\src\RmlUi\RmlUi\Core\ElementStyle.h" />
     <ClInclude Include="..\src\RmlUi\RmlUi\Core\Elements\ElementImage.h" />
@@ -300,9 +301,9 @@
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\Element.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementAnimation.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementBackgroundBorder.cpp" />
-    <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementDecoration.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementDefinition.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementDocument.cpp" />
+    <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementEffects.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementHandle.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementInstancer.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementScroll.cpp" />
@@ -532,7 +533,7 @@
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_ALLOW_NESTED_DATAMODELS;RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -565,7 +566,7 @@
       </FunctionLevelLinking>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_ALLOW_NESTED_DATAMODELS;RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -594,7 +595,7 @@
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_ALLOW_NESTED_DATAMODELS;RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -628,7 +629,7 @@
       </FunctionLevelLinking>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_ALLOW_NESTED_DATAMODELS;RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>

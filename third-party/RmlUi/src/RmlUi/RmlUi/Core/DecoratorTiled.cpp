@@ -119,6 +119,7 @@ void DecoratorTiled::Tile::GenerateGeometry(Mesh& mesh, const ComputedValues& co
 
 	Vector2f final_tile_dimensions;
 	bool offset_and_clip_tile = false;
+	Vector2f repeat_factor = Vector2f(1);
 
 	switch (fit_mode)
 	{
@@ -164,6 +165,20 @@ void DecoratorTiled::Tile::GenerateGeometry(Mesh& mesh, const ComputedValues& co
 		offset_and_clip_tile = true;
 	}
 	break;
+	case REPEAT:
+		final_tile_dimensions = surface_dimensions;
+		repeat_factor = surface_dimensions / tile_dimensions;
+	break;
+	case REPEAT_X:
+		final_tile_dimensions = Vector2f(surface_dimensions.x, tile_dimensions.y);
+		repeat_factor.x = surface_dimensions.x / tile_dimensions.x;
+		offset_and_clip_tile = true;
+	break;
+	case REPEAT_Y:
+		final_tile_dimensions = Vector2f(tile_dimensions.x, surface_dimensions.y);
+		repeat_factor.y = surface_dimensions.y / tile_dimensions.y;
+		offset_and_clip_tile = true;
+	break;
 	}
 
 	Vector2f tile_offset(0, 0);
@@ -205,6 +220,9 @@ void DecoratorTiled::Tile::GenerateGeometry(Mesh& mesh, const ComputedValues& co
 		}
 	}
 
+	scaled_texcoords[0] *= repeat_factor;
+	scaled_texcoords[1] *= repeat_factor;
+
 	// Generate the vertices for the tiled surface.
 	Vector2f tile_position = (surface_origin + tile_offset);
 	Math::SnapToPixelGrid(tile_position, final_tile_dimensions);
@@ -238,7 +256,9 @@ void DecoratorTiledInstancer::RegisterTileProperty(const String& name, bool regi
 	if (register_fit_modes)
 	{
 		String fit_name = CreateString(32, "%s-fit", name.c_str());
-		ids.fit = RegisterProperty(fit_name, "fill").AddParser("keyword", "fill, contain, cover, scale-none, scale-down").GetId();
+		ids.fit = RegisterProperty(fit_name, "fill")
+					  .AddParser("keyword", "fill, contain, cover, scale-none, scale-down, repeat, repeat-x, repeat-y")
+					  .GetId();
 
 		String align_x_name = CreateString(32, "%s-align-x", name.c_str());
 		ids.align_x = RegisterProperty(align_x_name, "center").AddParser("keyword", "left, center, right").AddParser("length_percent").GetId();
@@ -289,8 +309,10 @@ bool DecoratorTiledInstancer::GetTileProperties(DecoratorTiled::Tile* tiles, Tex
 		DecoratorTiled::Tile& tile = tiles[i];
 		Texture& texture = textures[i];
 
+		const Sprite* sprite = instancer_interface.GetSprite(texture_name);
+
 		// A tile is always either a sprite or an image.
-		if (const Sprite* sprite = instancer_interface.GetSprite(texture_name))
+		if (sprite)
 		{
 			tile.position = sprite->rectangle.Position();
 			tile.size = sprite->rectangle.Size();
@@ -323,6 +345,14 @@ bool DecoratorTiledInstancer::GetTileProperties(DecoratorTiled::Tile* tiles, Tex
 			RMLUI_ASSERT(ids.align_x != PropertyId::Invalid && ids.align_y != PropertyId::Invalid);
 			const Property& fit_property = *properties.GetProperty(ids.fit);
 			tile.fit_mode = (DecoratorTiled::TileFitMode)fit_property.value.Get<int>();
+
+			if (sprite &&
+				(tile.fit_mode == DecoratorTiled::TileFitMode::REPEAT || tile.fit_mode == DecoratorTiled::TileFitMode::REPEAT_X ||
+					tile.fit_mode == DecoratorTiled::TileFitMode::REPEAT_Y))
+			{
+				Log::Message(Log::LT_WARNING, "Decorator 'fit' value is '%s', which is incompatible with sprites", fit_property.ToString().c_str());
+				return false;
+			}
 
 			const Property* align_properties[2] = {properties.GetProperty(ids.align_x), properties.GetProperty(ids.align_y)};
 

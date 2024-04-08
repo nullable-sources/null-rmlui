@@ -84,7 +84,46 @@ namespace null::rml {
 		render::backend::stencil_buffer->set_operation(render::backend::e_stencil_operation::end_write);
 	}
 
-	void i_render_interface::PushLayer(Rml::LayerFill layer_fill) {
+	Rml::LayerHandle i_render_interface::PushLayer() {
+		const Rml::LayerHandle layer_handle = renderer::layers->push();
+
+		render::backend::i_frame_buffer* framebuffer = renderer::layers->layer_by_handle(layer_handle);
+		render::backend::state_pipeline->framebuffers.push(framebuffer);
+		framebuffer->clear();
+
+		return layer_handle;
+	}
+
+	void i_render_interface::CompositeLayers(Rml::LayerHandle source, Rml::LayerHandle destination, Rml::BlendMode blend_mode, Rml::Span<const Rml::CompiledFilterHandle> filters) {
+		renderer::layers->primary()->copy_from(renderer::layers->layer_by_handle(source));
+
+		for(const Rml::CompiledFilterHandle filter_handle : filters) {
+			const compiled_filter_t& filter = *(const compiled_filter_t*)(filter_handle);
+			filter.filter->render();
+		}
+
+		if(blend_mode == Rml::BlendMode::Replace)
+			set_blend_state(false);
+
+		render::backend::state_pipeline->framebuffers.push(renderer::layers->layer_by_handle(destination));
+		render::backend::post_processing->blit_buffer(renderer::layers->primary());
+		render::backend::state_pipeline->framebuffers.pop();
+
+		if(destination != renderer::layers->top_layer_handle()) {
+			render::backend::state_pipeline->framebuffers.pop();
+			render::backend::state_pipeline->framebuffers.push(renderer::layers->top());
+		}
+
+		if(blend_mode == Rml::BlendMode::Replace)
+			set_blend_state(true);
+	}
+
+	void i_render_interface::PopLayer() {
+		render::backend::state_pipeline->framebuffers.pop();
+		renderer::layers->pop();
+	}
+
+	/*void i_render_interface::PushLayer(Rml::LayerFill layer_fill) {
 		render::backend::i_frame_buffer* source_layer = renderer::layers->top();
 
 		if(layer_fill == Rml::LayerFill::Link) renderer::layers->push_clone();
@@ -126,7 +165,7 @@ namespace null::rml {
 
 		if(blend_mode == Rml::BlendMode::Replace)
 			set_blend_state(true);
-	}
+	}*/
 
 	Rml::TextureHandle i_render_interface::SaveLayerAsTexture(Rml::Vector2i dimensions) {
 		Rml::TextureHandle render_texture = GenerateTexture({}, dimensions);

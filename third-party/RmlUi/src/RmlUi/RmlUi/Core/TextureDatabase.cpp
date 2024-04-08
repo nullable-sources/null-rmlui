@@ -172,6 +172,23 @@ void FileTextureDatabase::GetSourceList(StringList& source_list) const
 		source_list.push_back(texture.first);
 }
 
+bool FileTextureDatabase::ReleaseTexture(RenderInterface* render_interface, const String& source)
+{
+	auto it = texture_map.find(source);
+	if (it == texture_map.end())
+		return false;
+
+	FileTextureEntry& texture = texture_list[size_t(it->second)];
+	if (texture.texture_handle)
+	{
+		render_interface->ReleaseTexture(texture.texture_handle);
+		texture.texture_handle = {};
+		return true;
+	}
+
+	return false;
+}
+
 void FileTextureDatabase::ReleaseAllTextures(RenderInterface* render_interface)
 {
 	for (FileTextureEntry& texture : texture_list)

@@ -40,8 +40,9 @@ namespace Rml {
     A vector-like container that returns stable indices to refer to entries.
 
     The indices are only invalidated when the element is erased. Pointers on the other hand are invalidated just like for a
-    vector. The container is implemented as a vector with a separate bit mask to track free slots. For simplicity, freed
-    slots are simply replaced with value-initialized elements.
+    vector. The container is implemented as a vector with a separate bit mask to track free slots.
+
+    @note For simplicity, freed slots are simply replaced with value-initialized elements instead of being destroyed.
  */
 template <typename T>
 class StableVector {
@@ -74,7 +75,12 @@ public:
 	void reserve(size_t reserve_size)
 	{
 		elements.reserve(reserve_size);
+
+#if !defined(__GNUC__) || defined(__llvm__) || (__GNUC__ < 13)
+		// Skipped on GCC 13.1+, as this emits a curious warning in some situations.
+		// https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110498
 		free_slots.reserve(reserve_size);
+#endif
 	}
 
 	void clear()

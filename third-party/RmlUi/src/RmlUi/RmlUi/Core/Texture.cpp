@@ -64,6 +64,11 @@ Texture TextureSource::GetTexture(RenderManager& render_manager) const
 	return texture;
 }
 
+const String& TextureSource::GetSource() const
+{
+	return source;
+}
+
 const String& TextureSource::GetDefinitionSource() const
 {
 	return document_path;

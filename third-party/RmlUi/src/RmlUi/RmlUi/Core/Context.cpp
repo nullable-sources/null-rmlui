@@ -38,10 +38,10 @@
 #include "../../Include/RmlUi/Core/RenderManager.h"
 #include "../../Include/RmlUi/Core/StreamMemory.h"
 #include "../../Include/RmlUi/Core/SystemInterface.h"
+#include "../../Include/RmlUi/Core/Debug.h"
 #include "DataModel.h"
 #include "EventDispatcher.h"
 #include "PluginRegistry.h"
-#include "RmlUi/Core/Debug.h"
 #include "ScrollController.h"
 #include "StreamFile.h"
 #include <algorithm>
@@ -279,7 +279,7 @@ ElementDocument* Context::LoadDocument(Stream* stream)
 	if (!element)
 		return nullptr;
 
-	ElementDocument* document = static_cast<ElementDocument*>(element.get());
+	ElementDocument* document = rmlui_static_cast<ElementDocument*>(element.get());
 
 	root->AppendChild(std::move(element));
 
@@ -972,7 +972,7 @@ void Context::OnElementDetach(Element* element)
 		scroll_controller->Reset();
 }
 
-bool Context::OnFocusChange(Element* new_focus)
+bool Context::OnFocusChange(Element* new_focus, bool focus_visible)
 {
 	RMLUI_ASSERT(new_focus);
 
@@ -1003,10 +1003,13 @@ bool Context::OnFocusChange(Element* new_focus)
 		element = element->GetParentNode();
 	}
 
-	Dictionary parameters;
-
 	// Send out blur/focus events.
+	Dictionary parameters;
 	SendEvents(old_chain, new_chain, EventId::Blur, parameters);
+
+	if (focus_visible)
+		parameters["focus_visible"] = true;
+
 	SendEvents(new_chain, old_chain, EventId::Focus, parameters);
 
 	focus = new_focus;

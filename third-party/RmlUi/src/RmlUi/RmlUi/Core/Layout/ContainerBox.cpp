@@ -31,6 +31,7 @@
 #include "../../../Include/RmlUi/Core/Element.h"
 #include "../../../Include/RmlUi/Core/ElementScroll.h"
 #include "../../../Include/RmlUi/Core/Profiling.h"
+#include "FlexFormattingContext.h"
 #include "FormattingContext.h"
 #include "LayoutDetails.h"
 #include <algorithm>
@@ -275,6 +276,16 @@ bool FlexContainer::Close(const Vector2f content_overflow_size, const Box& box, 
 	return true;
 }
 
+float FlexContainer::GetShrinkToFitWidth() const
+{
+	// For the trivial case of a fixed width, we simply return that.
+	if (element->GetComputedValues().width().type == Style::Width::Type::Length)
+		return box.GetSize().x;
+
+	// Infer shrink-to-fit width from the intrinsic width of the element.
+	return FlexFormattingContext::GetMaxContentSize(element).x;
+}
+
 String FlexContainer::DebugDumpTree(int depth) const
 {
 	return String(depth * 2, ' ') + "FlexContainer" + " | " + LayoutDetails::GetDebugElementName(element);
@@ -297,6 +308,16 @@ void TableWrapper::Close(const Vector2f content_overflow_size, const Box& box, f
 
 	SubmitElementLayout();
 	SetElementBaseline(element_baseline);
+}
+
+float TableWrapper::GetShrinkToFitWidth() const
+{
+	// We don't currently support shrink-to-fit layout of tables. However, for the trivial case of a fixed width, we
+	// simply return that.
+	if (element->GetComputedValues().width().type == Style::Width::Type::Length)
+		return box.GetSize().x;
+
+	return 0.0f;
 }
 
 String TableWrapper::DebugDumpTree(int depth) const

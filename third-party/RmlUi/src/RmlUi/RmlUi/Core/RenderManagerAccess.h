@@ -53,9 +53,10 @@ private:
 	static Vector2i GetDimensions(RenderManager* render_manager, StableVectorIndex callback_texture);
 
 	static void Render(RenderManager* render_manager, const Geometry& geometry, Vector2f translation, Texture texture, const CompiledShader& shader);
-	
+
 	static void GetTextureSourceList(RenderManager* render_manager, StringList& source_list);
 
+	static bool ReleaseTexture(RenderManager* render_manager, const String& texture_source);
 	static void ReleaseAllTextures(RenderManager* render_manager);
 	static void ReleaseAllCompiledGeometry(RenderManager* render_manager);
 
@@ -66,6 +67,7 @@ private:
 	friend class Texture;
 
 	friend StringList Rml::GetTextureSourceList();
+	friend bool Rml::ReleaseTexture(const String&, RenderInterface*);
 	friend void Rml::ReleaseTextures(RenderInterface*);
 	friend void Rml::ReleaseCompiledGeometry(RenderInterface*);
 };
