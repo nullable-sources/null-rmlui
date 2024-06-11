@@ -55,11 +55,17 @@ DataVariableType DataVariable::Type()
 	return definition->Type();
 }
 
-bool VariableDefinition::Get(void* /*ptr*/, Variant& /*variant*/)
-{
+#ifdef RMLUI_DATAMODELS_EXTENSIONS
+bool VariableDefinition::Get(void* ptr, Variant& variant) {
+	variant = ptr;
+	return true;
+}
+#else
+bool VariableDefinition::Get(void* /*ptr*/, Variant& /*variant*/) {
 	Log::Message(Log::LT_WARNING, "Values can only be retrieved from scalar data types.");
 	return false;
 }
+#endif
 bool VariableDefinition::Set(void* /*ptr*/, const Variant& /*variant*/)
 {
 	Log::Message(Log::LT_WARNING, "Values can only be assigned to scalar data types.");
@@ -152,7 +158,13 @@ bool BasePointerDefinition::Get(void* ptr, Variant& variant)
 {
 	if (!ptr)
 		return false;
+#ifdef RMLUI_DATAMODELS_EXTENSIONS
+	if(void* next_ptr = DereferencePointer(ptr))
+		return underlying_definition->Get(next_ptr, variant);
+	return false;
+#else
 	return underlying_definition->Get(DereferencePointer(ptr), variant);
+#endif
 }
 
 bool BasePointerDefinition::Set(void* ptr, const Variant& variant)
@@ -173,7 +185,13 @@ DataVariable BasePointerDefinition::Child(void* ptr, const DataAddressEntry& add
 {
 	if (!ptr)
 		return DataVariable();
+#ifdef RMLUI_DATAMODELS_EXTENSIONS
+	if(void* next_ptr = DereferencePointer(ptr))
+		return underlying_definition->Child(next_ptr, address);
+	return DataVariable();
+#else
 	return underlying_definition->Child(DereferencePointer(ptr), address);
+#endif
 }
 
 } // namespace Rml

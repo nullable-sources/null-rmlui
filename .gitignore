@@ -20,3 +20,4 @@ render-interfaces/directx11/src/null-rmlui-renderer-directx11/shaders/color/comp
 render-interfaces/directx11/src/null-rmlui-renderer-directx11/shaders/color-matrix/compiled
 render-interfaces/directx11/src/null-rmlui-renderer-directx11/shaders/drop-shadow/compiled
 render-interfaces/directx11/src/null-rmlui-renderer-directx11/shaders/gradient/compiled
+/examples/resources/rmlui/test-clip.rml

@@ -60,6 +60,9 @@ public:
 	bool EraseAliases(Element* element);
 	void CopyAliases(Element* source_element, Element* target_element);
 
+#ifdef RMLUI_DATAMODELS_EXTENSIONS
+	bool TryResolveAddress(DataAddress& address, const String& address_str, Element* element) const;
+#endif
 	DataAddress ResolveAddress(const String& address_str, Element* element) const;
 	const DataEventFunc* GetEventCallback(const String& name);
 

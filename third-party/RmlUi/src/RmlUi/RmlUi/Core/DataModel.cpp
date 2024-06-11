@@ -249,6 +249,48 @@ void DataModel::CopyAliases(Element* from_element, Element* to_element)
 	}
 }
 
+#ifdef RMLUI_DATAMODELS_EXTENSIONS
+bool DataModel::TryResolveAddress(DataAddress& address, const String& address_str, Element* element) const {
+	address = ParseAddress(address_str);
+
+	if(address.empty())
+		return false;
+
+	const String& first_name = address.front().name;
+
+	auto it = variables.find(first_name);
+	if(it != variables.end())
+		return true;
+
+	// Look for a variable alias for the first name.
+
+	Element* ancestor = element;
+	while(ancestor && ancestor->GetDataModel() == this) {
+		auto it_element = aliases.find(ancestor);
+		if(it_element != aliases.end()) {
+			const auto& alias_names = it_element->second;
+			auto it_alias_name = alias_names.find(first_name);
+			if(it_alias_name != alias_names.end()) {
+				const DataAddress& replace_address = it_alias_name->second;
+				if(replace_address.empty() || replace_address.front().name.empty()) {
+					// Variable alias is invalid
+					return false;
+				}
+
+				// Insert the full alias address, replacing the first element.
+				address[0] = replace_address[0];
+				address.insert(address.begin() + 1, replace_address.begin() + 1, replace_address.end());
+				return true;
+			}
+		}
+
+		ancestor = ancestor->GetParentNode();
+	}
+
+	return false;
+}
+#endif
+
 DataAddress DataModel::ResolveAddress(const String& address_str, Element* element) const
 {
 	DataAddress address = ParseAddress(address_str);
@@ -341,8 +383,10 @@ bool DataModel::GetVariableInto(const DataAddress& address, Variant& out_value) 
 {
 	DataVariable variable = GetVariable(address);
 	bool result = (variable && variable.Get(out_value));
+#ifndef RMLUI_DATAMODELS_EXTENSIONS
 	if (!result)
 		Log::Message(Log::LT_WARNING, "Could not get value from data variable '%s'.", DataAddressToString(address).c_str());
+#endif
 	return result;
 }
 

@@ -42,7 +42,7 @@ namespace null::rml {
 
 	void i_render_interface::ReleaseGeometry(Rml::CompiledGeometryHandle geometry) {
 		compiled_geometry_t* compiled_geometry = (compiled_geometry_t*)geometry;
-		compiled_geometry->mesh->destroy();
+		mesh_pool.pop(compiled_geometry->mesh);
 		delete compiled_geometry;
 	}
 
@@ -122,50 +122,6 @@ namespace null::rml {
 		render::backend::state_pipeline->framebuffers.pop();
 		renderer::layers->pop();
 	}
-
-	/*void i_render_interface::PushLayer(Rml::LayerFill layer_fill) {
-		render::backend::i_frame_buffer* source_layer = renderer::layers->top();
-
-		if(layer_fill == Rml::LayerFill::Link) renderer::layers->push_clone();
-		else renderer::layers->push();
-
-		if(layer_fill == Rml::LayerFill::Copy)
-			renderer::layers->top()->copy_from(source_layer);
-
-		render::backend::state_pipeline->framebuffers.push(renderer::layers->top());
-		if(layer_fill == Rml::LayerFill::Clear) renderer::layers->top()->clear();
-	}
-
-	void i_render_interface::PopLayer(Rml::BlendMode blend_mode, Rml::Span<const Rml::CompiledFilterHandle> filters) {
-		render::backend::state_pipeline->framebuffers.pop();
-
-		if(blend_mode == Rml::BlendMode::Discard) {
-			renderer::layers->pop();
-			render::backend::state_pipeline->framebuffers.pop();
-			render::backend::state_pipeline->framebuffers.push(renderer::layers->top());
-			return;
-		}
-
-
-		renderer::layers->blit_top();
-
-		for(const Rml::CompiledFilterHandle filter_handle : filters) {
-			const compiled_filter_t& filter = *(const compiled_filter_t*)(filter_handle);
-			filter.filter->render();
-		}
-
-		renderer::layers->pop();
-
-		if(blend_mode == Rml::BlendMode::Replace)
-			set_blend_state(false);
-
-		render::backend::state_pipeline->framebuffers.push(renderer::layers->top());
-		render::backend::post_processing->blit_buffer(renderer::layers->primary());
-		render::backend::state_pipeline->framebuffers.pop();
-
-		if(blend_mode == Rml::BlendMode::Replace)
-			set_blend_state(true);
-	}*/
 
 	Rml::TextureHandle i_render_interface::SaveLayerAsTexture(Rml::Vector2i dimensions) {
 		Rml::TextureHandle render_texture = GenerateTexture({}, dimensions);

@@ -8,6 +8,7 @@ namespace null::rml::renderer {
 		std::span<const int> index_buffer{ };
 
 	public:
+		i_mesh() { }
 		i_mesh(const std::span<const Rml::Vertex>& _vertex_buffer, const std::span<const int>& _index_buffer)
 			: vertex_buffer(_vertex_buffer), index_buffer(_index_buffer) { }
 

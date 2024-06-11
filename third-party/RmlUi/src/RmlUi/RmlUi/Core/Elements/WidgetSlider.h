@@ -41,7 +41,11 @@ class ElementFormControl;
     @author Peter Curry
  */
 
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+class WidgetSlider : public EventListener {
+#else
 class WidgetSlider final : public EventListener {
+#endif
 public:
 	enum Orientation { VERTICAL, HORIZONTAL };
 
@@ -84,11 +88,19 @@ public:
 	/// Formats the slider's elements.
 	void FormatElements();
 
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+protected:
+#else
 private:
+#endif
 	/// Lays out and resizes the slider's internal elements.
 	/// @param[in] containing_block The padded box containing the slider. This is used to resolve relative properties.
 	/// @param[in] slider_length The total length, in pixels, of the slider widget.
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+	virtual void FormatElements(Vector2f containing_block, float slider_length);
+#else
 	void FormatElements(Vector2f containing_block, float slider_length);
+#endif
 	/// Lays out and positions the bar element.
 	void FormatBar();
 

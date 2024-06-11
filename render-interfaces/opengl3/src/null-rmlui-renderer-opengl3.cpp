@@ -31,7 +31,9 @@ namespace null::rml::opengl3 {
 	}
 
 	Rml::CompiledGeometryHandle c_render::CompileGeometry(Rml::Span<const Rml::Vertex> vertices, Rml::Span<const int> indices) {
-		return (Rml::CompiledGeometryHandle)new i_render_interface::compiled_geometry_t(std::make_unique<c_mesh>(vertices, indices));
+		i_render_interface::compiled_geometry_t* geometry = new i_render_interface::compiled_geometry_t(mesh_pool.push(std::make_unique<c_mesh>()));
+		geometry->compile_mesh(vertices, indices);
+		return (Rml::CompiledGeometryHandle)geometry;
 	}
 
 	void c_render::EnableScissorRegion(bool enable) {

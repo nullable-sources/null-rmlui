@@ -74,7 +74,7 @@ namespace null::rml::extensions {
 			hue_slider->SetAttribute("value", hsv.h);
 			canvas->SetAttribute("saturation", hsv.s);
 			canvas->SetAttribute("brightness", hsv.v);
-			if(color.size() == 4) alpha_slider->SetAttribute("value", hsv.a);
+			if(color.size() == 4 && !ignore_alpha) alpha_slider->SetAttribute("value", hsv.a);
 		}
 
 		control_element->DispatchEvent(Rml::EventId::Change, { { "value", Rml::Variant{ value } } });

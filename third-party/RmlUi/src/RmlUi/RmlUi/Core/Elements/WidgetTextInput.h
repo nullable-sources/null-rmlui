@@ -84,13 +84,21 @@ public:
 	void ForceFormattingOnNextLayout();
 
 	/// Updates the cursor, if necessary.
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+	virtual void OnUpdate();
+#else
 	void OnUpdate();
+#endif
 	/// Renders the cursor, if it is visible.
 	void OnRender();
 	/// Formats the widget's internal content.
 	void OnLayout();
 	/// Called when the parent element's size changes.
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+	virtual void OnResize();
+#else
 	void OnResize();
+#endif
 
 protected:
 	enum class CursorMovement { Begin = -4, BeginLine = -3, PreviousWord = -2, Left = -1, Right = 1, NextWord = 2, EndLine = 3, End = 4 };
@@ -104,7 +112,11 @@ protected:
 	/// Adds new characters to the string at the cursor position.
 	/// @param[in] string The characters to add.
 	/// @return True if at least one character was successfully added, false otherwise.
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+	virtual bool AddCharacters(String string);
+#else
 	bool AddCharacters(String string);
+#endif
 	/// Deletes characters from the string.
 	/// @param[in] direction Movement of cursor for deletion.
 	/// @return True if a character was deleted, false otherwise.
@@ -127,7 +139,11 @@ protected:
 	/// Dispatches a change event to the widget's element.
 	void DispatchChangeEvent(bool linebreak = false);
 
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+protected:
+#else
 private:
+#endif
 	/// Returns the displayed value of the text field.
 	/// @note For password fields this would only return the displayed asterisks '****', while the attribute value below contains the underlying text.
 	const String& GetValue() const;
@@ -178,7 +194,11 @@ private:
 	/// Formats the input element's text field.
 	/// @param[in] height_constraint Abort formatting when the formatted size grows larger than this height.
 	/// @return The content area of the element.
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+	virtual Vector2f FormatText(float height_constraint = FLT_MAX);
+#else
 	Vector2f FormatText(float height_constraint = FLT_MAX);
+#endif
 
 	/// Updates the position to render the cursor.
 	/// @param[in] update_ideal_cursor_position Generally should be true on horizontal movement and false on vertical movement.

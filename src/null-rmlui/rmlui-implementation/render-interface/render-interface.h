@@ -8,14 +8,47 @@
 namespace null::rml {
 	class i_render_interface : public Rml::RenderInterface {
 	public:
+		class c_mesh_pool {
+		public:
+			size_t last_used_index{ };
+			std::list<std::unique_ptr<renderer::i_mesh>> meshes{ };
+
+		public:
+			~c_mesh_pool() {
+				for(auto it : std::views::iota(meshes.begin(), meshes.end()))
+					(*it)->destroy();
+			}
+		public:
+			renderer::i_mesh* push(std::unique_ptr<renderer::i_mesh>&& new_object) {
+				int index = last_used_index++;
+				if(index >= meshes.size()) {
+					std::unique_ptr<renderer::i_mesh>& new_mesh = meshes.emplace_back(std::move(new_object));
+					new_mesh->create();
+					return new_mesh.get();
+				}
+				return std::next(meshes.begin(), index)->get();
+			}
+
+			void pop(renderer::i_mesh* mesh) {
+				if(auto finded = std::ranges::find(meshes, mesh, std::bind(&std::unique_ptr<renderer::i_mesh>::get, std::placeholders::_1)); finded != meshes.end()) {
+					meshes.splice(meshes.end(), meshes, finded);
+					last_used_index--;
+				}
+			}
+		} mesh_pool{ };
+
 		struct compiled_geometry_t {
 		public:
-			std::unique_ptr<renderer::i_mesh> mesh{ };
+			renderer::i_mesh* mesh{ };
 
 		public:
 			compiled_geometry_t() { }
-			compiled_geometry_t(std::unique_ptr<renderer::i_mesh>&& _mesh) : mesh(std::move(_mesh)) {
-				mesh->create();
+			compiled_geometry_t(renderer::i_mesh* _mesh) : mesh(_mesh) { }
+
+		public:
+			void compile_mesh(std::span<const Rml::Vertex> vertex_buffer, std::span<const int> index_buffer) {
+				mesh->vertex_buffer = vertex_buffer;
+				mesh->index_buffer = index_buffer;
 				mesh->compile();
 			}
 		};

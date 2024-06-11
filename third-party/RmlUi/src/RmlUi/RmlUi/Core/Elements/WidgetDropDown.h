@@ -46,9 +46,17 @@ public:
 	virtual ~WidgetDropDown();
 
 	/// Updates the select value rml if necessary.
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+	virtual void OnUpdate();
+#else
 	void OnUpdate();
+#endif
 	/// Updates the selection box layout if necessary.
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+	virtual void OnRender();
+#else
 	void OnRender();
+#endif
 	/// Positions the drop-down's internal elements.
 	void OnLayout();
 
@@ -58,7 +66,11 @@ public:
 	/// Sets the option element as the new selection.
 	/// @param[in] option_element The option element to select.
 	/// @param[in] force Forces the new selection, even if the widget believes the selection to not have changed.
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+	virtual void SetSelection(Element* option_element, bool force = false);
+#else
 	void SetSelection(Element* option_element, bool force = false);
+#endif
 	/// Seek to the next or previous valid (visible and not disabled) option.
 	/// @param[in] seek_forward True to select the next valid option, false to select the previous valid option.
 	void SeekSelection(bool seek_forward = true);
@@ -100,7 +112,11 @@ public:
 	/// Processes the incoming event.
 	void ProcessEvent(Event& event) override;
 
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+protected:
+#else
 private:
+#endif
 	// Shows or hides the selection box.
 	void ShowSelectBox(bool show);
 

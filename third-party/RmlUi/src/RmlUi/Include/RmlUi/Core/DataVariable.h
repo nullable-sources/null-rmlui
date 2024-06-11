@@ -51,6 +51,9 @@ public:
 	DataVariable() {}
 	DataVariable(VariableDefinition* definition, void* ptr) : definition(definition), ptr(ptr) {}
 
+#ifdef RMLUI_DATAMODELS_EXTENSIONS
+	const VariableDefinition* Definition() const { return definition; }
+#endif
 	explicit operator bool() const { return definition; }
 
 	bool Get(Variant& variant);
@@ -197,6 +200,11 @@ public:
 	bool Set(void* ptr, const Variant& variant) override;
 	int Size(void* ptr) override;
 	DataVariable Child(void* ptr, const DataAddressEntry& address) override;
+
+#ifdef RMLUI_DATAMODELS_EXTENSIONS
+public:
+	const VariableDefinition* UnderlyingDefinition() const { return underlying_definition; }
+#endif
 
 protected:
 	virtual void* DereferencePointer(void* ptr) = 0;

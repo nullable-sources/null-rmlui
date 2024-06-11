@@ -391,6 +391,18 @@ public:
 };
 
 template <>
+class TypeConverter<void*, bool> {
+public:
+	static bool Convert(void* const& src, bool& dest) { dest = (src != nullptr); return true; }
+};
+
+template <>
+class TypeConverter<void*, double> {
+public:
+	static bool Convert(void* const& src, double& dest) { dest = (src == nullptr ? 0.0 : 1.0); return true; }
+};
+
+template <>
 class TypeConverter<ScriptInterface*, String> {
 public:
 	static bool Convert(ScriptInterface* const& src, String& dest) { return FormatString(dest, 32, "%p", static_cast<void*>(src)) > 0; }

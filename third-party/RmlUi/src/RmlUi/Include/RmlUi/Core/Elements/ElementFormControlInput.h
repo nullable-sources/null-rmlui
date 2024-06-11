@@ -109,7 +109,11 @@ protected:
 	/// @return True.
 	bool GetIntrinsicDimensions(Vector2f& dimensions, float& ratio) override;
 
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+protected:
+#else
 private:
+#endif
 	UniquePtr<InputType> type;
 	String type_name;
 };
