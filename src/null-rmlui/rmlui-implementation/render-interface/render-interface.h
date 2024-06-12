@@ -18,6 +18,7 @@ namespace null::rml {
 				for(auto it : std::views::iota(meshes.begin(), meshes.end()))
 					(*it)->destroy();
 			}
+
 		public:
 			renderer::i_mesh* push(std::unique_ptr<renderer::i_mesh>&& new_object) {
 				int index = last_used_index++;

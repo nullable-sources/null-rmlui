@@ -128,10 +128,18 @@ private:
 	/// @return The normalized bar position [0, 1]
 	float AbsolutePositionToBarPosition(float absolute_position) const;
 
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+	virtual void PositionBar();
+#else
 	void PositionBar();
+#endif
 
 	// Clamps the new value, sets it on the slider and returns it as a normalized number from 0 to 1.
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+	virtual float SetValueInternal(float new_value, bool force_submit_change_event = true);
+#else
 	float SetValueInternal(float new_value, bool force_submit_change_event = true);
+#endif
 
 	ElementFormControl* parent;
 
