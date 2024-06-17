@@ -4,6 +4,9 @@ build/
 *.static-linking.log
 
 examples/opengl3/glfw/GLFW
+third-party/RmlUi/Dependencies/build
+third-party/RmlUi/Dependencies/libs/*.pdb
+third-party/RmlUi/Dependencies/libs/*.idb
 
 render-interfaces/directx9/src/null-rmlui-renderer-directx9/shaders/blend-mask/compiled
 render-interfaces/directx9/src/null-rmlui-renderer-directx9/shaders/bliting/compiled
