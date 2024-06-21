@@ -1,12 +1,12 @@
-null-rml:opengl:shaders:color.vert			null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/color/glsl/color.vert"
+null-rml:opengl:shaders:color.vert          null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/color/glsl/color.vert"
 
-null-rml:opengl:shaders:bliting.frag		null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/bliting/glsl/bliting.frag"
+null-rml:opengl:shaders:bliting.frag        null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/bliting/glsl/bliting.frag"
 
-null-rml:opengl:shaders:drop-shadow.frag	null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/drop-shadow/glsl/drop-shadow.frag"
+null-rml:opengl:shaders:drop-shadow.frag    null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/drop-shadow/glsl/drop-shadow.frag"
 
-null-rml:opengl:shaders:color-matrix.frag	null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/color-matrix/glsl/color-matrix.frag"
-null-rml:opengl:shaders:blend-mask.frag		null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/blend-mask/glsl/blend-mask.frag"
-null-rml:opengl:shaders:gradient.frag		null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/gradient/glsl/gradient.frag"
+null-rml:opengl:shaders:color-matrix.frag   null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/color-matrix/glsl/color-matrix.frag"
+null-rml:opengl:shaders:blend-mask.frag     null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/blend-mask/glsl/blend-mask.frag"
+null-rml:opengl:shaders:gradient.frag       null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/gradient/glsl/gradient.frag"
 
-null-rml:opengl:shaders:blur.frag			null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/blur/glsl/blur.frag"
-null-rml:opengl:shaders:blur.vert			null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/blur/glsl/blur.vert"
+null-rml:opengl:shaders:blur.frag           null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/blur/glsl/blur.frag"
+null-rml:opengl:shaders:blur.vert           null-rml:opengl:resources "../src/null-rmlui-renderer-opengl3/shaders/blur/glsl/blur.vert"

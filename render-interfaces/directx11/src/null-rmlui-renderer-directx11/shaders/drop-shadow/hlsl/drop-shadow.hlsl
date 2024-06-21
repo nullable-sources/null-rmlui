@@ -12,7 +12,7 @@ struct ps_input_t {
 sampler texture_sampler;
 Texture2D texture_source;
 
-float4 main(ps_input_t input) : SV_Target {    
+float4 main(ps_input_t input) : SV_Target {
     float2 in_region = step(uv_limits.xy, input.uv) * step(input.uv, uv_limits.zw);
     return texture_source.Sample(texture_sampler, input.uv).a * in_region.x * in_region.y * shadow_color;
 }

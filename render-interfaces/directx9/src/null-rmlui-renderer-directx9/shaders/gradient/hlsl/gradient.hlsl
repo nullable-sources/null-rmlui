@@ -30,7 +30,7 @@ float4 mix_stop_colors(float t) {
 
 float mod(float x, float y) { return x - y * floor(x / y); }
 
-float4 main(ps_input_t input) : COLOR {    
+float4 main(ps_input_t input) : COLOR {
     float t = 0.0;
 
     if (func == _linear || func == _repeating_linear) {

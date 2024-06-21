@@ -11,7 +11,7 @@ in vec4 color;
 out vec2 frag_uv[_blur_size];
 
 void main() {
-	for(int i = 0; i < _blur_size; i++)
-		frag_uv[i] = uv - float(i - _num_weights + 1) * texel_offset;
+    for(int i = 0; i < _blur_size; i++)
+        frag_uv[i] = uv - float(i - _num_weights + 1) * texel_offset;
     gl_Position = vec4(position, 0.0, 1.0);
 }

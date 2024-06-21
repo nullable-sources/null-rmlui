@@ -2,5 +2,5 @@
 #include <null-render/backend/internal/shader.h>
 
 namespace null::rml::renderer {
-	class i_color_shader : public virtual render::backend::i_shader { }; inline std::unique_ptr<i_color_shader> color_shader{ };
+    class i_color_shader : public virtual render::backend::i_shader { }; inline std::unique_ptr<i_color_shader> color_shader{ };
 }

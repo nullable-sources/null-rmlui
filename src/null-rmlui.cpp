@@ -1,40 +1,40 @@
 #include "null-rmlui.h"
 
 namespace null::rml {
-	void set_default_interfaces(const utils::win::c_window& window) {
-		file_interface = std::make_unique<rml::c_file_interface>();
-		system_interface = std::make_unique<rml::c_system_interface>(window);
-		renderer::c_filter_factory::register_default_instancers();
-	}
+    void set_default_interfaces(const utils::win::c_window& window) {
+        file_interface = std::make_unique<rml::c_file_interface>();
+        system_interface = std::make_unique<rml::c_system_interface>(window);
+        renderer::c_filter_factory::register_default_instancers();
+    }
 
-	void load_system_font() {
-		Rml::LoadFontFace("{system-fonts}\\Tahoma.ttf", true);
-	}
+    void load_system_font() {
+        Rml::LoadFontFace("{system-fonts}\\Tahoma.ttf", true);
+    }
 
-	void initialize() {
-		if(file_interface) Rml::SetFileInterface(file_interface.get());
-		else utils::logger(utils::e_log_type::error, "file_interface is empty.");
+    void initialize() {
+        if(file_interface) Rml::SetFileInterface(file_interface.get());
+        else utils::logger(utils::e_log_type::error, "file_interface is empty.");
 
-		if(system_interface) Rml::SetSystemInterface(system_interface.get());
-		else utils::logger(utils::e_log_type::error, "system_interface is empty.");
-		
-		if(render_interface) Rml::SetRenderInterface(render_interface.get());
-		else utils::logger(utils::e_log_type::error, "system_interface is empty.");
+        if(system_interface) Rml::SetSystemInterface(system_interface.get());
+        else utils::logger(utils::e_log_type::error, "system_interface is empty.");
 
-		renderer::layers = std::make_unique<renderer::c_layers>();
-		renderer::layers->initialize();
-		render_interface->initialize();
+        if(render_interface) Rml::SetRenderInterface(render_interface.get());
+        else utils::logger(utils::e_log_type::error, "system_interface is empty.");
 
-		if(!Rml::Initialise()) utils::logger(utils::e_log_type::error, "Rml::Initialise return false.");
-	}
+        renderer::layers = std::make_unique<renderer::c_layers>();
+        renderer::layers->initialize();
+        render_interface->initialize();
 
-	void shutdown() {
-		Rml::Shutdown();
+        if(!Rml::Initialise()) utils::logger(utils::e_log_type::error, "Rml::Initialise return false.");
+    }
 
-		render_interface->shutdown();
+    void shutdown() {
+        Rml::Shutdown();
 
-		render_interface.reset();
-		system_interface.reset();
-		file_interface.reset();
-	}
+        render_interface->shutdown();
+
+        render_interface.reset();
+        system_interface.reset();
+        file_interface.reset();
+    }
 }

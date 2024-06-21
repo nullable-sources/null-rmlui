@@ -8,6 +8,6 @@ sampler texture_sampler;
 
 float4 uv_limits : register(c0);
 
-float4 main(ps_input_t input) : COLOR {    
+float4 main(ps_input_t input) : COLOR {
     return tex2D(texture_sampler, clamp(input.uv, uv_limits.xy, uv_limits.zw));
 }

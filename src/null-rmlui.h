@@ -12,9 +12,9 @@
 #include "null-rmlui/compatibility/color.h"
 
 namespace null::rml {
-	void set_default_interfaces(const utils::win::c_window& window);
-	void load_system_font();
+    void set_default_interfaces(const utils::win::c_window& window);
+    void load_system_font();
 
-	void initialize();
-	void shutdown();
+    void initialize();
+    void shutdown();
 }

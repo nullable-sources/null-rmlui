@@ -9,7 +9,7 @@ sampler texture_sampler;
 float4 uv_limits : register(c0);
 float4 shadow_color : register(c1);
 
-float4 main(ps_input_t input) : COLOR {    
+float4 main(ps_input_t input) : COLOR {
     float2 in_region = step(uv_limits.xy, input.uv) * step(input.uv, uv_limits.zw);
     return tex2D(texture_sampler, input.uv).a * in_region.x * in_region.y * shadow_color;
 }

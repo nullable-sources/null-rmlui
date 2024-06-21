@@ -10,7 +10,7 @@ out vec2 frag_uv;
 out vec4 frag_color;
 
 void main() {
-	frag_uv = uv;
-	frag_color = color;
-	gl_Position = matrix * vec4(position + translation, 0.0, 1.0);
+    frag_uv = uv;
+    frag_color = color;
+    gl_Position = matrix * vec4(position + translation, 0.0, 1.0);
 }
