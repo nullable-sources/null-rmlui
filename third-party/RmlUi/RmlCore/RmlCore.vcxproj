@@ -533,7 +533,7 @@
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>RMLUI_DATAMODELS_EXTENSIONS;RMLUI_ELEMENTS_EXTENSIONS;RMLUI_ALLOW_NESTED_DATAMODELS;RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_DATAMODELS_EXTENSIONS;RMLUI_ELEMENTS_EXTENSIONS;RMLUI_ALLOW_NESTED_DATAMODELS;RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;RMLUI_FIX_DRAG_CLONE_POSITION;%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -566,7 +566,7 @@
       </FunctionLevelLinking>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>RMLUI_DATAMODELS_EXTENSIONS;RMLUI_ELEMENTS_EXTENSIONS;RMLUI_ALLOW_NESTED_DATAMODELS;RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_DATAMODELS_EXTENSIONS;RMLUI_ELEMENTS_EXTENSIONS;RMLUI_ALLOW_NESTED_DATAMODELS;RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;RMLUI_FIX_DRAG_CLONE_POSITION;%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -595,7 +595,7 @@
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>RMLUI_DATAMODELS_EXTENSIONS;RMLUI_ELEMENTS_EXTENSIONS;RMLUI_ALLOW_NESTED_DATAMODELS;RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_DATAMODELS_EXTENSIONS;RMLUI_ELEMENTS_EXTENSIONS;RMLUI_ALLOW_NESTED_DATAMODELS;RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;RMLUI_FIX_DRAG_CLONE_POSITION;%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -629,7 +629,7 @@
       </FunctionLevelLinking>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>RMLUI_DATAMODELS_EXTENSIONS;RMLUI_ELEMENTS_EXTENSIONS;RMLUI_ALLOW_NESTED_DATAMODELS;RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RMLUI_DATAMODELS_EXTENSIONS;RMLUI_ELEMENTS_EXTENSIONS;RMLUI_ALLOW_NESTED_DATAMODELS;RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;RMLUI_FIX_DRAG_CLONE_POSITION;%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;RMLUI_VERSION="6.0-dev";RMLUI_STATIC_LIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>

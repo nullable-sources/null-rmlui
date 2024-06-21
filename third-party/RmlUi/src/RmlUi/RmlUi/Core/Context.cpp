@@ -1252,7 +1252,11 @@ void Context::CreateDragClone(Element* element)
 
 	// Position the clone. Use projected mouse coordinates to handle any ancestor transforms.
 	const Vector2f absolute_pos = element->GetAbsoluteOffset(BoxArea::Border);
+#ifdef RMLUI_FIX_DRAG_CLONE_POSITION
+    Vector2f projected_mouse_position = Vector2f(last_click_mouse_position);
+#else
 	Vector2f projected_mouse_position = Vector2f(mouse_position);
+#endif
 	if (Element* parent = element->GetParentNode())
 		parent->Project(projected_mouse_position);
 

@@ -100,6 +100,21 @@ public:
 		return CreateMemberScalarGetSetFuncDefinition<UnderlyingType>(name, member_get_func_ptr, member_set_func_ptr);
 	}
 
+#ifdef RMLUI_DATAMODELS_EXTENSIONS
+    template <typename ReturnType, typename AssignType>
+    bool RegisterMember(const String& name, ReturnType(Object::* member_get_func_ptr)() const, void (Object::* member_set_func_ptr)(AssignType)) {
+        using BasicReturnType = typename std::remove_reference<ReturnType>::type;
+        using BasicAssignType = typename std::remove_const<typename std::remove_reference<AssignType>::type>::type;
+        using UnderlyingType = typename std::conditional<IsVoidMemberFunc<ReturnType>::value, BasicAssignType, BasicReturnType>::type;
+
+        static_assert(IsVoidMemberFunc<ReturnType>::value || IsVoidMemberFunc<AssignType>::value ||
+            std::is_same<BasicReturnType, BasicAssignType>::value,
+            "Provided getter and setter functions must get and set the same type.");
+
+        return CreateMemberScalarGetSetFuncDefinition<UnderlyingType>(name, member_get_func_ptr, member_set_func_ptr);
+    }
+#endif
+
 	explicit operator bool() const { return type_register && struct_definition; }
 
 private:
