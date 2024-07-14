@@ -48,8 +48,7 @@ namespace null::rml {
 
         public:
             void compile_mesh(std::span<const Rml::Vertex> vertex_buffer, std::span<const int> index_buffer) {
-                mesh->vertex_buffer = vertex_buffer;
-                mesh->index_buffer = index_buffer;
+                mesh->reassign(vertex_buffer, index_buffer);
                 mesh->compile();
             }
         };

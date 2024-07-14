@@ -32,8 +32,14 @@ int main() {
     try {
         window.create();
 
-        null::render::c_font::config_t config{ .glyph_config{ .ranges{ null::render::c_font::glyph_t::ranges_cyrillic() } } };
-        null::render::atlas.add_font_default(&config);
+        null::render::font_config_t config{ };
+        config.load_font_default()
+            .set_render_mode(null::render::e_font_render_mode::sdf)
+            .set_pixel_range(2.f)
+            .set_size(14.f);
+
+        null::render::atlas.font_loader = std::make_unique<null::render::c_freetype_loader>();
+        null::render::atlas.add_font(config);
 
         null::rml::render_interface = std::make_unique<null::rml::opengl3::c_render>();
         null::rml::set_default_interfaces(window);

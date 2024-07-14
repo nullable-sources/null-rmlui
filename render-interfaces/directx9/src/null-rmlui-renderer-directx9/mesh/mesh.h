@@ -5,9 +5,13 @@
 namespace null::rml::directx9 {
     class c_mesh : public renderer::i_mesh {
     public: using i_mesh::i_mesh;
-          IDirect3DVertexDeclaration9* vertex_declaration{ };
-          IDirect3DVertexBuffer9* vtx_buffer{ };
-          IDirect3DIndexBuffer9* idx_buffer{ };
+    public:
+        IDirect3DVertexDeclaration9* vertex_declaration{ };
+        IDirect3DVertexBuffer9* vtx_buffer{ };
+        IDirect3DIndexBuffer9* idx_buffer{ };
+
+    public:
+        void reassign(std::span<const Rml::Vertex>& _vertex_buffer, std::span<const int>& _index_buffer) override;
 
     public:
         void create() override;

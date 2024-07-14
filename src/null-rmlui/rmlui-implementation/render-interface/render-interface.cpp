@@ -33,7 +33,7 @@ namespace null::rml {
 
         render::backend::state_pipeline->meshes.push(compiled_geometry->mesh);
         render::backend::renderer->update_translation(*(vec2_t<float>*) & translation);
-        render::backend::renderer->draw_geometry(render::backend::e_topology::triangle_list, compiled_geometry->mesh->vertex_buffer.size(), compiled_geometry->mesh->index_buffer.size(), 0, 0);
+        render::backend::renderer->draw_geometry(render::backend::e_topology::triangle_list, compiled_geometry->mesh->vertex_buffer_size(), compiled_geometry->mesh->index_buffer_size(), 0, 0);
         render::backend::state_pipeline->meshes.pop();
 
         if(texture) render::backend::state_pipeline->textures.pop();

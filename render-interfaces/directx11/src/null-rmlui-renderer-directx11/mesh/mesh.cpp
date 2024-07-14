@@ -2,6 +2,18 @@
 #include "mesh.h"
 
 namespace null::rml::directx11 {
+    void c_mesh::reassign(std::span<const Rml::Vertex>& _vertex_buffer, std::span<const int>& _index_buffer) {
+        if(_vertex_buffer.size() > vertex_buffer.size()) {
+            if(vtx_buffer) { vtx_buffer->Release(); vtx_buffer = nullptr; }
+        }
+
+        if(_index_buffer.size() > index_buffer.size()) {
+            if(idx_buffer) { idx_buffer->Release(); idx_buffer = nullptr; }
+        }
+
+        i_mesh::reassign(_vertex_buffer, _index_buffer);
+    }
+
     void c_mesh::create() {
         if(input_layout) return;
 

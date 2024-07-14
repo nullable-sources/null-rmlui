@@ -17,7 +17,7 @@ namespace null::rml::renderer::filters {
         render::backend::state_pipeline->meshes.push(geometry->mesh);
 
         render::backend::renderer->update_translation(*(vec2_t<float>*)&translation);
-        render::backend::renderer->draw_geometry(render::backend::e_topology::triangle_list, geometry->mesh->vertex_buffer.size(), geometry->mesh->index_buffer.size(), 0, 0);
+        render::backend::renderer->draw_geometry(render::backend::e_topology::triangle_list, geometry->mesh->vertex_buffer_size(), geometry->mesh->index_buffer_size(), 0, 0);
 
         render::backend::state_pipeline->meshes.pop();
         render::backend::state_pipeline->shaders.pop();

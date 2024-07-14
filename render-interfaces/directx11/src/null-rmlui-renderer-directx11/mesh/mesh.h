@@ -10,6 +10,9 @@ namespace null::rml::directx11 {
         ID3D11Buffer* vtx_buffer{ }, * idx_buffer{ };
 
     public:
+        void reassign(std::span<const Rml::Vertex>& _vertex_buffer, std::span<const int>& _index_buffer) override;
+
+    public:
         void create() override;
         void destroy() override;
 
