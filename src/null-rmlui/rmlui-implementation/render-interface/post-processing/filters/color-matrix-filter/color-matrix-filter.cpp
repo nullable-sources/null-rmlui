@@ -4,7 +4,7 @@
 
 namespace null::rml::renderer::filters {
     void c_color_mask_filter::render() {
-        render_interface->set_blend_state(false);
+        render::backend::state_pipeline->blends.push(render_interface->blend_state_disabled);
 
         color_matrix_shader->set_constants(constants);
         render::backend::state_pipeline->shaders.push(color_matrix_shader);
@@ -15,7 +15,7 @@ namespace null::rml::renderer::filters {
 
         layers->swap_primary_secondary();
 
-        render_interface->set_blend_state(true);
+        render::backend::state_pipeline->blends.pop();
     }
 
     std::unique_ptr<i_filter> c_brightness_filter_instancer::instance_filter(const Rml::Dictionary& parameters) {

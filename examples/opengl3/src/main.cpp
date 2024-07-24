@@ -10,6 +10,13 @@ utils::c_cumulative_time_measurement frame_counter{ 60 };
 
 void main_loop() {
     null::render::begin_frame(); {
+        std::shared_ptr<null::render::c_sdf_brush> text_brush = null::render::c_sdf_brush::instance();
+        text_brush->set_size(30.f);
+        text_brush->set_outline_blur(1.f);
+        text_brush->set_outline_color(color_t<int>(100, 100, 255));
+        text_brush->set_outline_width(2.f);
+        null::render::draw_list->add_text(std::format("[ opengl3 ] fps: {:3.0f}", 1.f / std::chrono::duration<float>{ frame_counter.representation() }.count()), { }, text_brush);
+
         context->Update();
     } null::render::end_frame();
 

@@ -17,28 +17,10 @@ namespace null::rml::opengl3 {
         opengl::active_texture(opengl::e_texture0);
     }
 
-    void c_render::set_blend_state(bool enabled) {
-        enabled ? opengl::enable(opengl::e_blend) : opengl::disable(opengl::e_blend);
-    }
-
-    void c_render::set_blend_function(bool enabled, float alpha) {
-        if(!enabled) {
-            opengl::blend_func(opengl::e_constant_alpha, 0);
-            opengl::blend_color(0.0f, 0.0f, 0.0f, alpha);
-        } else {
-            opengl::blend_func(1, opengl::e_one_minus_src_alpha);
-        }
-    }
-
     Rml::CompiledGeometryHandle c_render::CompileGeometry(Rml::Span<const Rml::Vertex> vertices, Rml::Span<const int> indices) {
         i_render_interface::compiled_geometry_t* geometry = new i_render_interface::compiled_geometry_t(mesh_pool.push(std::make_unique<c_mesh>()));
         geometry->compile_mesh(vertices, indices);
         return (Rml::CompiledGeometryHandle)geometry;
-    }
-
-    void c_render::EnableScissorRegion(bool enable) {
-        enable ? opengl::enable(opengl::e_scissor_test) : opengl::disable(opengl::e_scissor_test);
-        if(!enable) scissor = rect_t<int>();
     }
 
     void c_render::initialize() {
@@ -50,5 +32,6 @@ namespace null::rml::opengl3 {
         renderer::gradient_shader = std::make_unique<c_gradient_shader>();
         renderer::blur_shader = std::make_unique<c_blur_shader>();
         renderer::drop_shadow_shader = std::make_unique<c_drop_shadow_shader>();
+        i_render_interface::initialize();
     }
 }

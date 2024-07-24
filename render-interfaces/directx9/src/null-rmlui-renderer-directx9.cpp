@@ -15,30 +15,10 @@ namespace null::rml::directx9 {
         render::directx9::shared.device->SetTexture(1, (IDirect3DTexture9*)texture);
     }
 
-    void c_render::set_blend_state(bool enabled) {
-        render::directx9::shared.device->SetRenderState(D3DRS_ALPHABLENDENABLE, enabled);
-    }
-
-    void c_render::set_blend_function(bool enabled, float alpha) {
-        if(!enabled) {
-            render::directx9::shared.device->SetRenderState(D3DRS_BLENDFACTOR, D3DCOLOR_COLORVALUE(0.f, 0.f, 0.f, alpha));
-            render::directx9::shared.device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_BLENDFACTOR);
-            render::directx9::shared.device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ZERO);
-        } else {
-            render::directx9::shared.device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_ONE);
-            render::directx9::shared.device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
-        }
-    }
-
     Rml::CompiledGeometryHandle c_render::CompileGeometry(Rml::Span<const Rml::Vertex> vertices, Rml::Span<const int> indices) {
         i_render_interface::compiled_geometry_t* geometry = new i_render_interface::compiled_geometry_t(mesh_pool.push(std::make_unique<c_mesh>()));
         geometry->compile_mesh(vertices, indices);
         return (Rml::CompiledGeometryHandle)geometry;
-    }
-
-    void c_render::EnableScissorRegion(bool enable) {
-        render::directx9::shared.device->SetRenderState(D3DRS_SCISSORTESTENABLE, enable);
-        if(!enable) scissor = rect_t<float>();
     }
 
     void c_render::initialize() {
@@ -50,5 +30,6 @@ namespace null::rml::directx9 {
         renderer::gradient_shader = std::make_unique<c_gradient_shader>();
         renderer::blur_shader = std::make_unique<c_blur_shader>();
         renderer::drop_shadow_shader = std::make_unique<c_drop_shadow_shader>();
+        i_render_interface::initialize();
     }
 }

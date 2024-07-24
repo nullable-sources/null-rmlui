@@ -10,6 +10,14 @@
 #include "post-processing/layers.h"
 
 namespace null::rml {
+    void i_render_interface::EnableScissorRegion(bool enable) {
+        if(enable) render::backend::state_pipeline->rasterizers.append_last();
+        else {
+            rasterizer_state_disabled_scissor->use();
+            scissor = rect_t<int>();
+        }
+    }
+
     void i_render_interface::SetScissorRegion(Rml::Rectanglei region) {
         scissor = region;
         render::backend::renderer->set_clip(rect_t<float>(region.p0.x, region.p0.y, region.p1.x, region.p1.y));
@@ -103,7 +111,7 @@ namespace null::rml {
         }
 
         if(blend_mode == Rml::BlendMode::Replace)
-            set_blend_state(false);
+            render::backend::state_pipeline->blends.push(render_interface->blend_state_disabled);
 
         render::backend::state_pipeline->framebuffers.push(renderer::layers->layer_by_handle(destination));
         render::backend::post_processing->blit_buffer(renderer::layers->primary());
@@ -115,7 +123,7 @@ namespace null::rml {
         }
 
         if(blend_mode == Rml::BlendMode::Replace)
-            set_blend_state(true);
+            render::backend::state_pipeline->blends.pop();
     }
 
     void i_render_interface::PopLayer() {
@@ -149,11 +157,11 @@ namespace null::rml {
     Rml::CompiledFilterHandle i_render_interface::SaveLayerAsMaskImage() {
         renderer::layers->blit_top();
 
-        set_blend_state(false);
+        render::backend::state_pipeline->blends.push(render_interface->blend_state_disabled);
         render::backend::state_pipeline->framebuffers.push(renderer::layers->blend_mask());
         render::backend::post_processing->blit_buffer(renderer::layers->primary());
         render::backend::state_pipeline->framebuffers.pop();
-        set_blend_state(true);
+        render::backend::state_pipeline->blends.pop();
 
         renderer::i_filter_instancer* instancer = renderer::c_filter_factory::get_filter_instancer("mask-image");
         if(!instancer) {
@@ -198,6 +206,26 @@ namespace null::rml {
         delete reinterpret_cast<compiled_geometry_filter_t*>(shader_handle);
     }
 
+    void i_render_interface::initialize() {
+        rasterizer_state_disabled_scissor = render::backend::factory->instance_rasterizer_state();
+        rasterizer_state_disabled_scissor->unlock();
+        rasterizer_state_disabled_scissor->scissor_disable.set(true);
+        rasterizer_state_disabled_scissor->lock();
+
+        blend_state_disabled = render::backend::factory->instance_blend_state();
+        blend_state_disabled->unlock();
+        blend_state_disabled->blend_enable.set(false);
+        blend_state_disabled->lock();
+
+        blend_state_factor = render::backend::factory->instance_blend_state();
+        blend_state_factor->unlock();
+        blend_state_factor->src_blend.set(render::backend::e_blend::constant_factor);
+        blend_state_factor->src_alpha_blend.set(render::backend::e_blend::constant_factor);
+        blend_state_factor->dst_blend.set(render::backend::e_blend::zero);
+        blend_state_factor->dst_alpha_blend.set(render::backend::e_blend::zero);
+        blend_state_factor->lock();
+    }
+
     void i_render_interface::begin_render() {
         renderer::layers->push();
         render::backend::state_pipeline->framebuffers.push(renderer::layers->top());
@@ -212,6 +240,5 @@ namespace null::rml {
         renderer::layers->pop();
 
         scissor = rect_t<int>();
-        render::backend::state_pipeline->setup_state();
     }
 }

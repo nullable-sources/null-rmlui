@@ -12,7 +12,7 @@ namespace null::rml::renderer::filters {
         render::backend::i_frame_buffer* primary = layers->primary();
         render::backend::i_frame_buffer* secondary = layers->secondary();
 
-        render_interface->set_blend_state(false);
+        render::backend::state_pipeline->blends.push(render_interface->blend_state_disabled);
 
         i_drop_shadow_shader::constants_t shadow_constants{ };
         shadow_constants.from_region(render_interface->scissor);
@@ -33,7 +33,7 @@ namespace null::rml::renderer::filters {
         if(sigma >= 0.5f)
             c_blur_filter::make_blur(sigma, secondary, layers->tertiary());
 
-        render_interface->set_blend_state(true);
+        render::backend::state_pipeline->blends.pop();
         render::backend::post_processing->blit_buffer(primary);
 
         render::backend::state_pipeline->framebuffers.pop();

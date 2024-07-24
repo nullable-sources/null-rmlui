@@ -64,14 +64,15 @@ namespace null::rml {
         };
 
     public:
+        std::unique_ptr<render::backend::i_rasterizer_state> rasterizer_state_disabled_scissor{ };
+        std::unique_ptr<render::backend::i_blend_state> blend_state_disabled{ }, blend_state_factor{ };
         rect_t<int> scissor{ };
 
     public:
         virtual void set_secondary_texture(void* texture) = 0;
-        virtual void set_blend_state(bool enabled) = 0;
-        virtual void set_blend_function(bool enabled, float alpha) = 0;
 
     public:
+        void EnableScissorRegion(bool enable);
         void SetScissorRegion(Rml::Rectanglei region) override;
         void SetTransform(const Rml::Matrix4f* transform) override;
 
@@ -100,7 +101,7 @@ namespace null::rml {
         void ReleaseShader(Rml::CompiledShaderHandle effect_handle) override;
 
     public:
-        virtual void initialize() { }
+        virtual void initialize();
         virtual void shutdown() { }
 
         virtual void begin_render();
