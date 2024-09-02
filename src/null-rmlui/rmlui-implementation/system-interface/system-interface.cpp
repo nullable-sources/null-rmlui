@@ -13,7 +13,7 @@ namespace ntl::rml {
     }
 
     void c_system_interface::SetClipboardText(const std::string& text_utf8) {
-        if(!wnd_handle) { utils::logger(utils::e_log_type::warning, "wnd_handle is empty."); return; }
+        if(!wnd_handle) { sdk::logger(sdk::e_log_type::warning, "wnd_handle is empty."); return; }
 
         if(!OpenClipboard(wnd_handle))
             return;
@@ -33,7 +33,7 @@ namespace ntl::rml {
     }
 
     void c_system_interface::GetClipboardText(std::string& text) {
-        if(!wnd_handle) { utils::logger(utils::e_log_type::warning, "wnd_handle is empty."); return; }
+        if(!wnd_handle) { sdk::logger(sdk::e_log_type::warning, "wnd_handle is empty."); return; }
 
         if(!OpenClipboard(wnd_handle))
             return;
@@ -73,11 +73,11 @@ namespace ntl::rml {
         switch(log_type) {
             case Rml::Log::LT_INFO:
             case Rml::Log::LT_DEBUG:
-            case Rml::Log::LT_ALWAYS: { utils::logger(utils::e_log_type::info, "rmlui | {}", message); } break;
+            case Rml::Log::LT_ALWAYS: { sdk::logger(sdk::e_log_type::info, "rmlui | {}", message); } break;
 
-            case Rml::Log::LT_ERROR: { utils::logger(utils::e_log_type::error, "rmlui | {}", message); } break;
+            case Rml::Log::LT_ERROR: { sdk::logger(sdk::e_log_type::error, "rmlui | {}", message); } break;
 
-            case Rml::Log::LT_WARNING: { utils::logger(utils::e_log_type::warning, "rmlui | {}", message); } break;
+            case Rml::Log::LT_WARNING: { sdk::logger(sdk::e_log_type::warning, "rmlui | {}", message); } break;
             default: { return SystemInterface::LogMessage(log_type, message); } break;
         }
         return true;

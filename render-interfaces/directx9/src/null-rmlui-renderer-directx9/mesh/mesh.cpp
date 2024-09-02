@@ -24,7 +24,7 @@ namespace ntl::rml::directx9 {
         };
 
         if(auto result = render::directx9::shared.device->CreateVertexDeclaration(elements, &vertex_declaration); FAILED(result))
-            utils::logger(utils::e_log_type::error, "cant create vertex input layout, return code {}.", result);
+            sdk::logger(sdk::e_log_type::error, "cant create vertex input layout, return code {}.", result);
     }
 
     void c_mesh::destroy() {
@@ -38,20 +38,20 @@ namespace ntl::rml::directx9 {
 
         if(!vtx_buffer) {
             if(auto result = render::directx9::shared.device->CreateVertexBuffer(vertex_buffer.size() * sizeof(Rml::Vertex), D3DUSAGE_DYNAMIC | D3DUSAGE_WRITEONLY, 0, D3DPOOL_DEFAULT, &vtx_buffer, nullptr); FAILED(result))
-                utils::logger(utils::e_log_type::error, "cant create vertex buffer, return code {}.", result);
+                sdk::logger(sdk::e_log_type::error, "cant create vertex buffer, return code {}.", result);
         }
 
         if(!idx_buffer) {
             if(auto result = render::directx9::shared.device->CreateIndexBuffer(index_buffer.size() * sizeof(int), D3DUSAGE_DYNAMIC | D3DUSAGE_WRITEONLY, D3DFMT_INDEX32, D3DPOOL_DEFAULT, &idx_buffer, nullptr); FAILED(result))
-                utils::logger(utils::e_log_type::error, "cant create index buffer, return code {}.", result);
+                sdk::logger(sdk::e_log_type::error, "cant create index buffer, return code {}.", result);
         }
 
         Rml::Vertex* vertex_dst{ };
         int* index_dst{ };
         if(auto result = vtx_buffer->Lock(0, (UINT)(vertex_buffer.size() * sizeof(Rml::Vertex)), (void**)&vertex_dst, D3DLOCK_DISCARD); FAILED(result))
-            utils::logger(utils::e_log_type::error, "cant lock vertex buffer, return code {}.", result);
+            sdk::logger(sdk::e_log_type::error, "cant lock vertex buffer, return code {}.", result);
         if(auto result = idx_buffer->Lock(0, (UINT)(index_buffer.size() * sizeof(int)), (void**)&index_dst, D3DLOCK_DISCARD); FAILED(result))
-            utils::logger(utils::e_log_type::error, "cant lock index buffer, return code {}.", result);
+            sdk::logger(sdk::e_log_type::error, "cant lock index buffer, return code {}.", result);
 
         std::ranges::move(vertex_buffer, vertex_dst);
         std::ranges::move(index_buffer, index_dst);

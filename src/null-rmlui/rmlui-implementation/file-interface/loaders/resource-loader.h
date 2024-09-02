@@ -13,8 +13,8 @@ namespace ntl::rml {
 
         public:
             file_t(std::string_view name, std::string_view type) : i_file(name) {
-                if(mem::resource_t* resource = mem::c_module::self().find_resource(name, type))
-                    file = mem::resource_cast_t<std::string>::cast(resource->load());
+                if(resource_t* resource = c_module::self().find_resource(name, type))
+                    file = resource_cast_t<std::string>::cast(resource->load());
             }
 
         public:
@@ -60,14 +60,14 @@ namespace ntl::rml {
         static inline const std::regex regex{ "(\\[resource(:|\\|)([^\\]]*)\\]|\\[resource\\])\\s*([^\\s]*)" }; //@note: [resource:type] name or [resource|type] name
 
     public:
-        resource_loader_t() { mem::c_module::self().load_resources(); }
+        resource_loader_t() { c_module::self().load_resources(); }
 
     public:
         virtual bool create(std::string& path) override {
             std::smatch match{ };
             if(!std::regex_search(path, match, regex)) return false;
-            if(match[3].matched && std::ranges::find(mem::c_module::self().resources, match[3].str(), &mem::resource_t::type) == mem::c_module::self().resources.end()) {
-                utils::logger(utils::e_log_type::warning, "cant find \"{}\" resource", path);
+            if(match[3].matched && std::ranges::find(c_module::self().resources, match[3].str(), &resource_t::type) == c_module::self().resources.end()) {
+                sdk::logger(sdk::e_log_type::warning, "cant find \"{}\" resource", path);
                 return false;
             }
 

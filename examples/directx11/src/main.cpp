@@ -64,7 +64,7 @@ int main() {
         ntl::rml::load_system_font();
 
         if(!(context = Rml::CreateContext("main", window.size)))
-            ntl::utils::logger(ntl::utils::e_log_type::error, "Rml::CreateContext return nullptr");
+            ntl::sdk::logger(ntl::sdk::e_log_type::error, "Rml::CreateContext return nullptr");
 
         Rml::SVG::Initialise();
         Rml::Lottie::Initialise();
