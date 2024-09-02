@@ -2,7 +2,7 @@
 #include "../../layers.h"
 #include "mask-image-filter.h"
 
-namespace null::rml::renderer::filters {
+namespace ntl::rml::renderer::filters {
     void c_mask_image_filter::render() {
         render::backend::state_pipeline->blends.push(render_interface->blend_state_disabled);
 

@@ -9,7 +9,7 @@
 #include "interfaces/shaders/color.h"
 #include "post-processing/layers.h"
 
-namespace null::rml {
+namespace ntl::rml {
     void i_render_interface::EnableScissorRegion(bool enable) {
         if(enable) render::backend::state_pipeline->rasterizers.append_last();
         else {

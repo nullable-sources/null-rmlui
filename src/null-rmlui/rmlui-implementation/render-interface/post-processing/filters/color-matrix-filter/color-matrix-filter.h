@@ -2,7 +2,7 @@
 #include "../factory/factory.h"
 #include "../../../interfaces/shaders/color-matrix.h"
 
-namespace null::rml::renderer::filters {
+namespace ntl::rml::renderer::filters {
     class c_color_mask_filter : public i_filter {
     public:
         i_color_matrix_shader::constants_t constants{ };

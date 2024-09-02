@@ -11,8 +11,8 @@
 #include "null-rmlui/compatibility/vec2.h"
 #include "null-rmlui/compatibility/color.h"
 
-namespace null::rml {
-    void set_default_interfaces(const utils::win::c_window& window);
+namespace ntl::rml {
+    void set_default_interfaces(const win::c_window& window);
     void load_system_font();
 
     void initialize();

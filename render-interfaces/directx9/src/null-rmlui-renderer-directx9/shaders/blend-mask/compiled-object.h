@@ -1,7 +1,7 @@
 #pragma once
 #include <null-render-backend-directx9/wrapper/pixel/pixel.h>
 
-namespace null::rml::directx9 {
+namespace ntl::rml::directx9 {
     namespace sources {
         static const std::vector<byte>& blend_mask() {
 #include "compiled/blend-mask.h"

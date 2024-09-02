@@ -1,73 +1,81 @@
-﻿#define RMLUI_STATIC_LIB
-#include <null-rmlui-renderer-directx11.h>
+﻿#include <null-rmlui-renderer-directx11.h>
 #include <null-rmlui.h>
-Rml::Context* context{ };
-null::render::directx11::c_window window{ };
-utils::c_cumulative_time_measurement frame_counter{ 60 };
 
-void add_gemometry(const std::vector<vec2_t<float>>& points, std::shared_ptr<null::render::c_brush>& brush) {
-    auto mesh = null::render::backend::factory->instance_mesh();
-    auto draw_list = null::render::c_draw_list::instance(std::move(mesh));
+#include <RmlUi/Lottie/LottiePlugin.h>
+#include <RmlUi/SVG/SVGPlugin.h>
+#include <RmlUi/Debugger.h>
+
+Rml::Context* context{ };
+ntl::render::directx11::c_window window{ };
+ntl::c_cumulative_time_measurement frame_counter{ 60 };
+
+void add_gemometry(const std::vector<vec2_t<float>>& points, std::shared_ptr<ntl::render::c_brush>& brush) {
+    auto mesh = ntl::render::backend::factory->instance_mesh();
+    auto draw_list = ntl::render::c_draw_list::instance(std::move(mesh));
     draw_list->add_convex_shape(points, brush);
     draw_list->compile();
-    //null::rml::render_interface->command_buffer.add_command(std::move(draw_list));
+    //ntl::rml::render_interface->command_buffer.add_command(std::move(draw_list));
 }
 
 void main_loop() {
-    null::render::begin_frame(); {
-        std::shared_ptr<null::render::c_sdf_brush> text_brush = null::render::c_sdf_brush::instance();
+    ntl::render::begin_frame(); {
+        std::shared_ptr<ntl::render::c_sdf_brush> text_brush = ntl::render::c_sdf_brush::instance();
         text_brush->set_size(30.f);
         text_brush->set_outline_blur(1.f);
         text_brush->set_outline_color(color_t<int>(100, 100, 255));
         text_brush->set_outline_width(2.f);
-        null::render::draw_list->add_text(std::format("[ directx11 ] fps: {:3.0f}", 1.f / std::chrono::duration<float>{ frame_counter.representation() }.count()), { }, text_brush);
+        ntl::render::draw_list->add_text(std::format("[ directx11 ] fps: {:3.0f}", 1.f / std::chrono::duration<float>{ frame_counter.representation() }.count()), { }, text_brush);
 
         context->Update();
-    } null::render::end_frame();
+    } ntl::render::end_frame();
 
-    null::render::backend::renderer->begin_render();
-    null::rml::render_interface->begin_render();
+    ntl::render::backend::renderer->begin_render();
+    ntl::rml::render_interface->begin_render();
     context->Render();
-    null::rml::render_interface->end_render();
-    null::render::backend::renderer->end_render();
+    ntl::rml::render_interface->end_render();
+    ntl::render::backend::renderer->end_render();
 }
 
 
 int main() {
-    window = null::render::directx11::c_window{ };
+    window = ntl::render::directx11::c_window{ };
 
-    window.callbacks.at<utils::win::e_window_callbacks::on_create>().add([&] { frame_counter.begin(); });
-    window.callbacks.at<utils::win::e_window_callbacks::on_main_loop>().add([&] { frame_counter.update(); });
+    window.callbacks.at<ntl::win::e_window_callbacks::on_create>().add([&] { frame_counter.begin(); });
+    window.callbacks.at<ntl::win::e_window_callbacks::on_main_loop>().add([&] { frame_counter.update(); });
 
-    window.callbacks.at<utils::win::e_window_callbacks::on_main_loop>().add(main_loop);
-    window.callbacks.at<utils::win::e_window_callbacks::on_wnd_proc>().add([&](HWND hwnd, UINT msg, WPARAM w_param, LPARAM l_param) { return null::rml::backend::wnd_proc(context, hwnd, msg, w_param, l_param); });
+    window.callbacks.at<ntl::win::e_window_callbacks::on_main_loop>().add(main_loop);
+    window.callbacks.at<ntl::win::e_window_callbacks::on_wnd_proc>().add([&](HWND hwnd, UINT msg, WPARAM w_param, LPARAM l_param) { return ntl::rml::backend::wnd_proc(context, hwnd, msg, w_param, l_param); });
 
     try {
         window.create();
 
-        null::render::font_config_t config{ };
+        ntl::render::font_config_t config{ };
         config.load_font_default()
-              .set_render_mode(null::render::e_font_render_mode::sdf)
+              .set_render_mode(ntl::render::e_font_render_mode::sdf)
               .set_pixel_range(2.f)
               .set_size(14.f);
 
-        null::render::atlas.font_loader = std::make_unique<null::render::c_freetype_loader>();
-        null::render::atlas.add_font(config);
+        ntl::render::atlas.font_loader = std::make_unique<ntl::render::c_freetype_loader>();
+        ntl::render::atlas.add_font(config);
 
-        null::rml::render_interface = std::make_unique<null::rml::directx11::c_render>();
-        null::rml::set_default_interfaces(window);
-        null::rml::initialize();
-        null::rml::load_system_font();
+        ntl::rml::render_interface = std::make_unique<ntl::rml::directx11::c_render>();
+        ntl::rml::set_default_interfaces(window);
+        ntl::rml::initialize();
+        ntl::rml::load_system_font();
 
         if(!(context = Rml::CreateContext("main", window.size)))
-            utils::logger(utils::e_log_type::error, "Rml::CreateContext return nullptr");
+            ntl::utils::logger(ntl::utils::e_log_type::error, "Rml::CreateContext return nullptr");
+
+        Rml::SVG::Initialise();
+        Rml::Lottie::Initialise();
+        Rml::Debugger::Initialise(context);
 
         if(Rml::ElementDocument* document{ context->LoadDocument("[resource:rml] test.rml") })
             document->Show();
 
         window.main_loop();
 
-        null::rml::shutdown();
+        ntl::rml::shutdown();
 
         window.destroy();
     } catch(const std::exception& exception) {

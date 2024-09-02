@@ -1,7 +1,7 @@
 #pragma once
 #include <null-render/backend/internal/shader.h>
 
-namespace null::rml::renderer {
+namespace ntl::rml::renderer {
     class i_color_matrix_shader : public virtual render::backend::i_shader {
     public:
         struct constants_t {

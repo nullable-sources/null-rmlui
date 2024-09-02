@@ -1,7 +1,7 @@
 #pragma once
 #include "bliting.h"
 
-namespace null::rml::renderer {
+namespace ntl::rml::renderer {
     class i_drop_shadow_shader : public virtual render::backend::i_shader {
     public:
         struct constants_t : public i_bliting_shader::constants_t {

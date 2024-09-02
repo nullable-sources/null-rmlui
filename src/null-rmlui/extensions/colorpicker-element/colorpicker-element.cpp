@@ -1,6 +1,6 @@
 #include "null-rmlui.h"
 
-namespace null::rml::extensions {
+namespace ntl::rml::extensions {
     void i_widget_colorpicker::add_events() {
         canvas->AddEventListener(Rml::EventId::Mousedown, this);
         canvas->AddEventListener(Rml::EventId::Drag, this);

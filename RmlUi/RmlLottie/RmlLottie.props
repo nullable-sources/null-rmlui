@@ -4,19 +4,20 @@
         <RmlLottieRoot>$(MSBuildThisFileDirectory)</RmlLottieRoot>
         <RmlLottieConfiguration Condition="'$(UseDebugLibraries)' == 'true'">debug</RmlLottieConfiguration>
         <RmlLottieConfiguration Condition="'$(UseDebugLibraries)' == 'false'">release</RmlLottieConfiguration>
+        <RmlLottieLibPostfix>$(RmlLottieConfiguration)-$(LibrariesArchitecture)</RmlLottieLibPostfix>
     </PropertyGroup>
 
     <ItemDefinitionGroup>
         <ClCompile>
-            <AdditionalIncludeDirectories>$(RmlLottieRoot)..\Dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+            <PreprocessorDefinitions>RLOTTIE_BUILD=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
         </ClCompile>
         <Lib>
             <AdditionalLibraryDirectories>$(RmlLottieRoot)build;$(RmlLottieRoot)..\Dependencies\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-            <AdditionalDependencies>RmlLottie-$(RmlLottieConfiguration)-$(LibrariesArchitecture).lib;rlottie-$(RmlLottieConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
+            <AdditionalDependencies>RmlLottie-$(RmlLottieLibPostfix).lib;rlottie-$(RmlLottieLibPostfix).lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Lib>
         <Link>
             <AdditionalLibraryDirectories>$(RmlLottieRoot)build;$(RmlLottieRoot)..\Dependencies\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-            <AdditionalDependencies>RmlLottie-$(RmlLottieConfiguration)-$(LibrariesArchitecture).lib;rlottie-$(RmlLottieConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
+            <AdditionalDependencies>RmlLottie-$(RmlLottieLibPostfix).lib;rlottie-$(RmlLottieLibPostfix).lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Link>
     </ItemDefinitionGroup>
 </Project>

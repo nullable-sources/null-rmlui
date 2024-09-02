@@ -1,7 +1,7 @@
 #pragma once
 #include <null-render-backend-directx11/shaders/passthrough/compiled-object.h>
 
-namespace null::rml::directx11 {
+namespace ntl::rml::directx11 {
     namespace sources {
         static const std::vector<byte>& gradient() {
 #include "compiled/gradient.h"

@@ -2,7 +2,7 @@
 #include "../factory/factory.h"
 #include "../../../interfaces/shaders/gradient.h"
 
-namespace null::rml::renderer::filters {
+namespace ntl::rml::renderer::filters {
     class c_gradient_shader_filter : public i_geometry_filter {
     public:
         static void stops_to_constants(i_gradient_shader::constants_t& constants, const Rml::ColorStopList& stops);

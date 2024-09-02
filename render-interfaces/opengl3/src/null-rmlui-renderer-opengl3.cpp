@@ -10,7 +10,7 @@
 #include "null-rmlui-renderer-opengl3/shaders/blur/blur.h"
 #include "null-rmlui-renderer-opengl3/shaders/drop-shadow/drop-shadow.h"
 
-namespace null::rml::opengl3 {
+namespace ntl::rml::opengl3 {
     void c_render::set_secondary_texture(void* texture) {
         opengl::active_texture(opengl::e_texture1);
         opengl::bind_texture(opengl::e_texture_2d, (std::uint32_t)texture);

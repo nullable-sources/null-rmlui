@@ -1,7 +1,7 @@
 #include <null-render/backend/backend.h>
 #include "layers.h"
 
-namespace null::rml::renderer {
+namespace ntl::rml::renderer {
     void c_layers::initialize() {
         for(auto& buffer : post_process) {
             buffer = render::backend::factory->instance_frame_buffer(render::shared::viewport, render::backend::e_frame_buffer_type::postprocessing, render::backend::e_frame_buffer_flags::none);

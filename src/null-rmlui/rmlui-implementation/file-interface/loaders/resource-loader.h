@@ -3,7 +3,7 @@
 
 #include "file-loader.h"
 
-namespace null::rml {
+namespace ntl::rml {
     struct resource_loader_t : public i_file_loader {
     public:
         struct file_t : public i_file {
@@ -13,8 +13,8 @@ namespace null::rml {
 
         public:
             file_t(std::string_view name, std::string_view type) : i_file(name) {
-                if(memory::resource_t* resource = memory::c_module::self().find_resource(name, type))
-                    file = memory::resource_cast_t<std::string>::cast(resource->load());
+                if(mem::resource_t* resource = mem::c_module::self().find_resource(name, type))
+                    file = mem::resource_cast_t<std::string>::cast(resource->load());
             }
 
         public:
@@ -60,13 +60,13 @@ namespace null::rml {
         static inline const std::regex regex{ "(\\[resource(:|\\|)([^\\]]*)\\]|\\[resource\\])\\s*([^\\s]*)" }; //@note: [resource:type] name or [resource|type] name
 
     public:
-        resource_loader_t() { memory::c_module::self().load_resources(); }
+        resource_loader_t() { mem::c_module::self().load_resources(); }
 
     public:
         virtual bool create(std::string& path) override {
             std::smatch match{ };
             if(!std::regex_search(path, match, regex)) return false;
-            if(match[3].matched && std::ranges::find(memory::c_module::self().resources, match[3].str(), &memory::resource_t::type) == memory::c_module::self().resources.end()) {
+            if(match[3].matched && std::ranges::find(mem::c_module::self().resources, match[3].str(), &mem::resource_t::type) == mem::c_module::self().resources.end()) {
                 utils::logger(utils::e_log_type::warning, "cant find \"{}\" resource", path);
                 return false;
             }

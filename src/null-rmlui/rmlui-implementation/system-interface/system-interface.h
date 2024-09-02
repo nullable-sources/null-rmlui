@@ -2,13 +2,13 @@
 #include <RmlUi/Core.h>
 #include <null-sdk.h>
 
-namespace null::rml {
+namespace ntl::rml {
     class c_system_interface : public Rml::SystemInterface {
     public:
         HWND wnd_handle{ };
 
     private:
-        utils::c_immediate_time_measurement time_measurement{ };
+        c_immediate_time_measurement time_measurement{ };
 
         std::unordered_map<std::string, HCURSOR> cursors{
             { "arrow", LoadCursor(nullptr, IDC_ARROW) },
@@ -21,7 +21,7 @@ namespace null::rml {
         };
 
     public:
-        c_system_interface(const utils::win::c_window& window) : wnd_handle(window.wnd_handle) { time_measurement.begin(); }
+        c_system_interface(const win::c_window& window) : wnd_handle(window.wnd_handle) { time_measurement.begin(); }
 
     public:
         double GetElapsedTime() override { return std::chrono::duration<double>(time_measurement.representation()).count(); }

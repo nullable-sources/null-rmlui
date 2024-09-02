@@ -6,7 +6,7 @@
 #include "../blur-filter/blur-filter.h"
 #include "../shadow-filter/shadow-filter.h"
 
-namespace null::rml::renderer {
+namespace ntl::rml::renderer {
     void c_filter_factory::register_default_instancers() {
         default_instancers.brightness_filter = std::make_unique<filters::c_brightness_filter_instancer>();
         default_instancers.contrast_filter = std::make_unique<filters::c_contrast_filter_instancer>();

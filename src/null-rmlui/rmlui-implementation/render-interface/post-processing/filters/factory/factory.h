@@ -2,7 +2,7 @@
 #include <null-sdk.h>
 #include <RmlUi/Core/Types.h>
 
-namespace null::rml::renderer {
+namespace ntl::rml::renderer {
     class i_filter {
     public:
         virtual void render() = 0;

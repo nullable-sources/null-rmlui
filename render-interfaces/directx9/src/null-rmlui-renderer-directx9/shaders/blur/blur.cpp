@@ -1,6 +1,6 @@
 #include "blur.h"
 
-namespace null::rml::directx9 {
+namespace ntl::rml::directx9 {
     void c_blur_shader::set_constants(const constants_t& constants) {
         vertex_shader->set_constant(1, constants.texel_offset.coordinates.data());
 

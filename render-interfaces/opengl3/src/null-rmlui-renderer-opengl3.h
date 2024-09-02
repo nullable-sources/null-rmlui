@@ -1,7 +1,7 @@
 #pragma once
 #include "null-rmlui-renderer-opengl3/mesh/mesh.h"
 
-namespace null::rml::opengl3 {
+namespace ntl::rml::opengl3 {
     class c_render : public i_render_interface {
     public:
         void set_secondary_texture(void* texture) override;

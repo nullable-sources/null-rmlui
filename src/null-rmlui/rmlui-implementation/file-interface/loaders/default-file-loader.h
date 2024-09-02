@@ -3,7 +3,7 @@
 
 #include "file-loader.h"
 
-namespace null::rml {
+namespace ntl::rml {
     struct default_file_loader_t : public i_file_loader {
     public:
         struct file_t : public i_file {

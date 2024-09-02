@@ -3,7 +3,7 @@
 #include <null-render-backend-opengl3/internal/shader/shader.h>
 #include "compiled-object.h"
 
-namespace null::rml::opengl3 {
+namespace ntl::rml::opengl3 {
     class c_color_matrix_shader : public renderer::i_color_matrix_shader, public render::opengl3::c_shader {
     public:
         render::opengl3::c_uniform<matrix4x4_t> color_matrix{ };

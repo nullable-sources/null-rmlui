@@ -22,23 +22,6 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\null-rmlui.vcxproj">
-      <Project>{220d4d11-15cc-489d-8d93-58cfe85348bd}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\render-interfaces\directx9\null-rmlui-renderer-directx9.vcxproj">
-      <Project>{57ff0ac9-5ed6-4b00-96fe-d44f6f05a3a5}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\third-party\null-render\null-render.vcxproj">
-      <Project>{4abcf635-9767-40f9-989e-f0cdf5fb68ae}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\third-party\null-render\backends\directx9\null-render-backend-directx9.vcxproj">
-      <Project>{95843de7-57a5-4b57-b7f2-7a60b0115992}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\third-party\null-sdk\null-sdk.vcxproj">
-      <Project>{f7a10a5c-0fae-424b-8f2b-6cc4e4d898d1}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="..\resources\shared-resources.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -178,6 +161,14 @@
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  
+  <Import Project="..\..\null-rmlui.props" />
+  <Import Project="..\..\render-interfaces\directx9\null-rmlui-renderer-directx9.props"/>
+  <Import Project="..\..\RmlUi\RmlCore\RmlCore.props" />
+  <Import Project="..\..\RmlUi\RmlDebugger\RmlDebugger.props" />
+  <Import Project="..\..\RmlUi\RmlLottie\RmlLottie.props" />
+  <Import Project="..\..\RmlUi\RmlSvg\RmlSvg.props" />
+  <Import Project="..\..\third-party\null-sdk\null-sdk.props" />
+  <Import Project="..\..\third-party\null-render\null-render.props" />
+  <Import Project="..\..\third-party\null-render\backends\directx9\null-render-backend-directx9.props" />
 </Project>

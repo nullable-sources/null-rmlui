@@ -2,7 +2,7 @@
 #include <null-render-backend-directx11/wrapper/shaders/pixel.h>
 #include <null-render-backend-directx11/wrapper/shaders/vertex.h>
 
-namespace null::rml::directx11 {
+namespace ntl::rml::directx11 {
     namespace sources {
         static const std::vector<byte>& color() {
 #include "compiled/color.h"

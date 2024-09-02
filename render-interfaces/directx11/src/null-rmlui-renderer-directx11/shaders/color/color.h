@@ -4,7 +4,7 @@
 #include <null-render-backend-directx11/shaders/color/compiled-object.h>
 #include "compiled-object.h"
 
-namespace null::rml::directx11 {
+namespace ntl::rml::directx11 {
     class c_color_shader : public renderer::i_color_shader, public render::directx11::c_shader {
     public:
         c_color_shader() : c_shader(&render::directx11::color_pixel_shader_object, &color_shader_object) { }

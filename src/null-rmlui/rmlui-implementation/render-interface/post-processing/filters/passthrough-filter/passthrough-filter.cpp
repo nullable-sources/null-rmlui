@@ -2,7 +2,7 @@
 #include "../../layers.h"
 #include "passthrough-filter.h"
 
-namespace null::rml::renderer::filters {
+namespace ntl::rml::renderer::filters {
     void c_passthrough_filter::render() {
         render_interface->blend_state_factor->unlock();
         render_interface->blend_state_factor->factor.set(blend_factor);

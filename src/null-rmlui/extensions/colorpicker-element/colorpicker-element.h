@@ -1,7 +1,7 @@
 #pragma once
 #include <RmlUi/Core.h>
 
-namespace null::rml::extensions {
+namespace ntl::rml::extensions {
     //@note: you style the necessary colorpicker yourself, an example will be later
     class i_widget_colorpicker : public Rml::EventListener {
     protected:

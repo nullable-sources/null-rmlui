@@ -2,7 +2,7 @@
 #include <null-render/backend/internal/shader.h>
 #include <null-render/backend/renderer/renderer.h>
 
-namespace null::rml::renderer {
+namespace ntl::rml::renderer {
     class i_bliting_shader : public virtual render::backend::i_shader {
     public:
         struct constants_t {

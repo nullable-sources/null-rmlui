@@ -2,7 +2,7 @@
 #include "../factory/factory.h"
 #include "../../../interfaces/shaders/drop-shadow.h"
 
-namespace null::rml::renderer::filters {
+namespace ntl::rml::renderer::filters {
     class c_shadow_filter : public i_filter {
     public:
         float sigma{ };

@@ -1,61 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="src">
-      <UniqueIdentifier>{d11addc5-089b-4237-a3dd-c21f8f81dcf1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\mesh">
-      <UniqueIdentifier>{561327f7-6ad4-48d7-8fad-64e890e8b114}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders">
-      <UniqueIdentifier>{af383c31-b951-42e8-a2a6-d199cb9dffa8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\color">
-      <UniqueIdentifier>{66c11c31-7357-494a-b6f1-9289dff9d4b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\texture">
-      <UniqueIdentifier>{84b1b34a-8312-418c-9064-ecd9786faf0c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\color\hlsl">
-      <UniqueIdentifier>{16123d4d-8fb1-4ae4-848c-356431312426}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\color-matrix">
-      <UniqueIdentifier>{c4a13674-3b43-4f70-86c3-3dd428e30f39}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\color-matrix\hlsl">
-      <UniqueIdentifier>{1cb7b5b4-fd1b-4370-9f4e-452d11f6179d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\blend-mask">
-      <UniqueIdentifier>{4ae2549c-f72d-4ec4-ae06-2510877f2626}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\blend-mask\hlsl">
-      <UniqueIdentifier>{49f1eb75-b6bf-432d-95df-0e659a6ed10a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\bliting">
-      <UniqueIdentifier>{9b7fe27f-86dd-47ce-b8bb-cc5189dae1ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\blur">
-      <UniqueIdentifier>{f748d60b-dbc9-4ff2-82da-a0e6349fceea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\gradient">
-      <UniqueIdentifier>{e68380e4-83e8-4662-8337-66039dee4e2b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\bliting\hlsl">
-      <UniqueIdentifier>{f5110e3d-039a-4a68-99e5-6e886467233f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\drop-shadow">
-      <UniqueIdentifier>{3195e306-5010-4df6-8281-f58af02b8e3f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\blur\hlsl">
-      <UniqueIdentifier>{2c0dc382-c800-41c2-8a94-25bfbc6844b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\drop-shadow\hlsl">
-      <UniqueIdentifier>{2c8aaef6-9cfc-4f1d-a069-fd1d2d2e9667}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\gradient\hlsl">
-      <UniqueIdentifier>{546a4d09-332c-4c86-a1f1-ad8e14d9be60}</UniqueIdentifier>
-    </Filter>
+    <Filter Include="src"/>
+    <Filter Include="src\mesh"/>
+    <Filter Include="src\shaders"/>
+    <Filter Include="src\shaders\color"/>
+    <Filter Include="src\shaders\texture"/>
+    <Filter Include="src\shaders\color\hlsl"/>
+    <Filter Include="src\shaders\color-matrix"/>
+    <Filter Include="src\shaders\color-matrix\hlsl"/>
+    <Filter Include="src\shaders\blend-mask"/>
+    <Filter Include="src\shaders\blend-mask\hlsl"/>
+    <Filter Include="src\shaders\bliting"/>
+    <Filter Include="src\shaders\blur"/>
+    <Filter Include="src\shaders\gradient"/>
+    <Filter Include="src\shaders\bliting\hlsl"/>
+    <Filter Include="src\shaders\drop-shadow"/>
+    <Filter Include="src\shaders\blur\hlsl"/>
+    <Filter Include="src\shaders\drop-shadow\hlsl"/>
+    <Filter Include="src\shaders\gradient\hlsl"/>
   </ItemGroup>
+
   <ItemGroup>
     <ClInclude Include="src\null-rmlui-renderer-directx9.h">
       <Filter>src</Filter>
@@ -109,6 +74,7 @@
       <Filter>src\shaders\gradient</Filter>
     </ClInclude>
   </ItemGroup>
+
   <ItemGroup>
     <ClCompile Include="src\null-rmlui-renderer-directx9\mesh\mesh.cpp">
       <Filter>src\mesh</Filter>
@@ -132,6 +98,7 @@
       <Filter>src\shaders\gradient</Filter>
     </ClCompile>
   </ItemGroup>
+  
   <ItemGroup>
     <FxCompile Include="src\null-rmlui-renderer-directx9\shaders\color\hlsl\color.hlsl">
       <Filter>src\shaders\color\hlsl</Filter>

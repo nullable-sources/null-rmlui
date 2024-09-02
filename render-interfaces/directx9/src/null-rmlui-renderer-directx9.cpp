@@ -10,7 +10,7 @@
 #include "null-rmlui-renderer-directx9/shaders/blur/blur.h"
 #include "null-rmlui-renderer-directx9/shaders/drop-shadow/drop-shadow.h"
 
-namespace null::rml::directx9 {
+namespace ntl::rml::directx9 {
     void c_render::set_secondary_texture(void* texture) {
         render::directx9::shared.device->SetTexture(1, (IDirect3DTexture9*)texture);
     }

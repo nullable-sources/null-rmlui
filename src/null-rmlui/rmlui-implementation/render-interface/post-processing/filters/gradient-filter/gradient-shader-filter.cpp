@@ -3,7 +3,7 @@
 #include "../../../render-interface.h"
 #include "gradient-shader-filter.h"
 
-namespace null::rml::renderer::filters {
+namespace ntl::rml::renderer::filters {
     void c_gradient_shader_filter::stops_to_constants(i_gradient_shader::constants_t& constants, const Rml::ColorStopList& stops) {
         for(const Rml::ColorStop& stop : stops)
             constants.stops.push_back({ color_t<int>(stop.color), stop.position.number });

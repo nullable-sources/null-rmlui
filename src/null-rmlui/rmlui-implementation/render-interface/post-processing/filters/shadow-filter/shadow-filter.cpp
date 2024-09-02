@@ -7,7 +7,7 @@
 #include "../blur-filter/blur-filter.h"
 #include "shadow-filter.h"
 
-namespace null::rml::renderer::filters {
+namespace ntl::rml::renderer::filters {
     void c_shadow_filter::render() {
         render::backend::i_frame_buffer* primary = layers->primary();
         render::backend::i_frame_buffer* secondary = layers->secondary();

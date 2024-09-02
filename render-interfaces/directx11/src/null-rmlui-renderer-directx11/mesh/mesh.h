@@ -2,7 +2,7 @@
 #include <null-render-backend-directx11.h>
 #include <null-rmlui.h>
 
-namespace null::rml::directx11 {
+namespace ntl::rml::directx11 {
     class c_mesh : public renderer::i_mesh {
     public: using i_mesh::i_mesh;
     public:

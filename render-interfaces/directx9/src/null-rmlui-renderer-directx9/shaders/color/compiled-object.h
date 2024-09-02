@@ -2,7 +2,7 @@
 #include <null-render-backend-directx9/wrapper/vertex/vertex.h>
 #include <null-render-backend-directx9/wrapper/pixel/pixel.h>
 
-namespace null::rml::directx9 {
+namespace ntl::rml::directx9 {
     namespace sources {
         static const std::vector<byte>& color() {
 #include "compiled/color.h"

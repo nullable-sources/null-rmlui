@@ -8,7 +8,8 @@
 
     <ItemDefinitionGroup>
         <ClCompile>
-            <AdditionalIncludeDirectories>$(RmlCoreRoot)..\src\RmlUi;$(RmlCoreRoot)..\src\RmlUi\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+            <PreprocessorDefinitions>RMLUI_DATAMODELS_EXTENSIONS;RMLUI_ELEMENTS_EXTENSIONS;RMLUI_ALLOW_NESTED_DATAMODELS;RMLUI_FLOAT_COLOR_PARSER;RMLUI_OLD_SCROLL_PADDING;RMLUI_FIX_DRAG_CLONE_POSITION;RMLUI_STATIC_LIB;RMLUI_VERSION="6.0-dev";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+            <AdditionalIncludeDirectories>$(RmlCoreRoot)..\src\RmlUi;$(RmlCoreRoot)..\src\RmlUi\Include;$(ProjectDir)..\Dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
         </ClCompile>
         <Lib>
             <AdditionalLibraryDirectories>$(RmlCoreRoot)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

@@ -1,7 +1,7 @@
 #pragma once
 #include <RmlUi/Core.h>
 
-namespace null::rml::extensions {
+namespace ntl::rml::extensions {
     class c_widget_multi_dropdown : public Rml::EventListener {
     protected:
         Rml::ElementFormControl* parent_element{ };

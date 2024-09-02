@@ -1,6 +1,6 @@
 #include "drop-shadow.h"
 
-namespace null::rml::opengl3 {
+namespace ntl::rml::opengl3 {
     void c_drop_shadow_shader::create() {
         if(!empty()) return;
         c_shader::create();

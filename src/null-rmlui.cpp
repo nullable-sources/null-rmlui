@@ -1,9 +1,9 @@
 #include "null-rmlui.h"
 
-namespace null::rml {
-    void set_default_interfaces(const utils::win::c_window& window) {
-        file_interface = std::make_unique<rml::c_file_interface>();
-        system_interface = std::make_unique<rml::c_system_interface>(window);
+namespace ntl::rml {
+    void set_default_interfaces(const win::c_window& window) {
+        file_interface = std::make_unique<c_file_interface>();
+        system_interface = std::make_unique<c_system_interface>(window);
         renderer::c_filter_factory::register_default_instancers();
     }
 

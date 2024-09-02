@@ -2,7 +2,7 @@
 #include "../factory/factory.h"
 #include "../../../interfaces/shaders/blend-mask.h"
 
-namespace null::rml::renderer::filters {
+namespace ntl::rml::renderer::filters {
     class c_mask_image_filter : public i_filter {
     public:
         void render() override;

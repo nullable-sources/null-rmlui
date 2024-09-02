@@ -1,7 +1,7 @@
 #pragma once
 #include <RmlUi/Core/Vertex.h>
 
-namespace null::rml::renderer {
+namespace ntl::rml::renderer {
     class i_mesh : public render::backend::i_mesh {
     protected:
         std::span<const Rml::Vertex> vertex_buffer{ };

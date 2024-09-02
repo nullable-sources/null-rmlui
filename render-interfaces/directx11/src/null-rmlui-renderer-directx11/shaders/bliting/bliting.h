@@ -2,7 +2,7 @@
 #include <null-render-backend-directx11/internal/shader.h>
 #include "compiled-object.h"
 
-namespace null::rml::directx11 {
+namespace ntl::rml::directx11 {
     class c_bliting_shader : public renderer::i_bliting_shader, public render::directx11::c_shader {
     public:
         c_bliting_shader() : c_shader(&bliting_shader_object, &render::directx11::passthrough_vertex_shader_object) { }

@@ -1,61 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="src">
-      <UniqueIdentifier>{d11addc5-089b-4237-a3dd-c21f8f81dcf1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\mesh">
-      <UniqueIdentifier>{fc8cbc61-47a9-4f01-a0bc-4ebbce95b877}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders">
-      <UniqueIdentifier>{81c00d40-fd3c-48ab-916d-730f8ea734fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\blend-mask">
-      <UniqueIdentifier>{294e6932-932c-4477-a3f1-7197def59870}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\bliting">
-      <UniqueIdentifier>{15d8f8a7-a917-49fa-8ed8-55016b6a622f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\blur">
-      <UniqueIdentifier>{93bbf752-0fe3-4ba6-a6f3-19c6a12af943}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\color">
-      <UniqueIdentifier>{957d86c6-970e-46fc-8345-184a2d1d56d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\color-matrix">
-      <UniqueIdentifier>{afa0e6e7-b4bb-4346-b38d-e7db68a3dbeb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\drop-shadow">
-      <UniqueIdentifier>{4638b67b-6413-4e87-bf35-f5f0d1303bd9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\gradient">
-      <UniqueIdentifier>{44b12fc9-0ed8-4fcd-966b-ee0ec221e69f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\texture">
-      <UniqueIdentifier>{98ad946d-aeb9-47e0-9e24-ff73a5d54331}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\color\hlsl">
-      <UniqueIdentifier>{c8208e89-d3d6-4b30-942b-150573b3c9e9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\bliting\hlsl">
-      <UniqueIdentifier>{00452cae-4fd1-4209-8eb6-cafe950015d4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\color-matrix\hlsl">
-      <UniqueIdentifier>{91f82899-efea-45d9-a684-cbd4f9025675}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\blend-mask\hlsl">
-      <UniqueIdentifier>{68b9edc2-2b7b-423d-b4ec-541746e62618}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\gradient\hlsl">
-      <UniqueIdentifier>{0a3b5bce-fd32-4bd1-838e-604627d31fc7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\blur\hlsl">
-      <UniqueIdentifier>{1cb02b63-dc09-4332-88e9-29c47da987c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\shaders\drop-shadow\hlsl">
-      <UniqueIdentifier>{6182f34c-28af-4c35-86b2-8aab5a45c7e1}</UniqueIdentifier>
-    </Filter>
+    <Filter Include="src"/>
+    <Filter Include="src\mesh"/>
+    <Filter Include="src\shaders"/>
+    <Filter Include="src\shaders\blend-mask"/>
+    <Filter Include="src\shaders\bliting"/>
+    <Filter Include="src\shaders\blur"/>
+    <Filter Include="src\shaders\color"/>
+    <Filter Include="src\shaders\color-matrix"/>
+    <Filter Include="src\shaders\drop-shadow"/>
+    <Filter Include="src\shaders\gradient"/>
+    <Filter Include="src\shaders\texture"/>
+    <Filter Include="src\shaders\color\hlsl"/>
+    <Filter Include="src\shaders\bliting\hlsl"/>
+    <Filter Include="src\shaders\color-matrix\hlsl"/>
+    <Filter Include="src\shaders\blend-mask\hlsl"/>
+    <Filter Include="src\shaders\gradient\hlsl"/>
+    <Filter Include="src\shaders\blur\hlsl"/>
+    <Filter Include="src\shaders\drop-shadow\hlsl"/>
   </ItemGroup>
+
   <ItemGroup>
     <ClCompile Include="src\null-rmlui-renderer-directx11.cpp">
       <Filter>src</Filter>
@@ -85,6 +50,7 @@
       <Filter>src\shaders\drop-shadow</Filter>
     </ClCompile>
   </ItemGroup>
+
   <ItemGroup>
     <ClInclude Include="src\null-rmlui-renderer-directx11.h">
       <Filter>src</Filter>

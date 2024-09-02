@@ -2,7 +2,7 @@
 
 #include "backend.h"
 
-namespace null::rml::backend {
+namespace ntl::rml::backend {
     int wnd_proc(Rml::Context* context, HWND window_handle, UINT message, WPARAM w_param, LPARAM l_param) {
         if(!context) return -1;
 

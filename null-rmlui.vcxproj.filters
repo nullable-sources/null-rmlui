@@ -1,73 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="src">
-      <UniqueIdentifier>{d11addc5-089b-4237-a3dd-c21f8f81dcf1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\compatibility">
-      <UniqueIdentifier>{0bc36266-8ef6-46a5-936c-5c3415d3f6e6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation">
-      <UniqueIdentifier>{e0f37d85-2d29-40d9-af23-13e542845f8a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\backend">
-      <UniqueIdentifier>{6160a0a5-6b9e-4785-ad78-79869acbc920}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\file-interface">
-      <UniqueIdentifier>{19734107-5828-499c-8617-e8049b8827a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\file-interface\loaders">
-      <UniqueIdentifier>{8177076d-6d90-4f53-896b-1291aead2531}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\render-interface">
-      <UniqueIdentifier>{2b7aff8a-45b1-492c-a3f7-47123f421d64}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\system-interface">
-      <UniqueIdentifier>{e37c2fed-55f7-427e-864d-ecc07f7ba987}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\extensions">
-      <UniqueIdentifier>{f32b4621-6f02-4524-8027-f21723ef9357}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\extensions\multiselect-element">
-      <UniqueIdentifier>{9d385adb-60d8-44f0-a2af-7f95c9902ab3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\extensions\colorpicker-element">
-      <UniqueIdentifier>{4d411ede-f420-47e7-a059-b19be71921cf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\render-interface\interfaces">
-      <UniqueIdentifier>{988a476f-7849-426b-a1dd-da5946de0714}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\render-interface\interfaces\shaders">
-      <UniqueIdentifier>{8addd248-0cba-4d64-9688-7385aea0e2fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\render-interface\post-processing">
-      <UniqueIdentifier>{d492a391-2e9b-49cf-8a58-6324c0b77bfe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters">
-      <UniqueIdentifier>{0b2209ff-9089-4dd4-8bfb-3e8997af0c48}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\factory">
-      <UniqueIdentifier>{d24e67fd-c202-4f09-8aa7-aa0412cbfa92}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\color-matrix-filter">
-      <UniqueIdentifier>{53b3e4fd-f874-4aba-8eee-85ed8a7afe7a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\mask-image-filter">
-      <UniqueIdentifier>{0f11fb3b-07df-43aa-a3da-9952433829fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\passthrough-filter">
-      <UniqueIdentifier>{3f1b2b5b-20e0-4288-9964-4c54d56cdc03}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\gradient-shader-filter">
-      <UniqueIdentifier>{1395ca1a-10da-423b-8cf7-78fa4fe69743}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\blur-filter">
-      <UniqueIdentifier>{ab4820d6-64cd-4150-9996-a5ef5571594f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\shadow-filter">
-      <UniqueIdentifier>{fd82967a-f97c-48ec-9008-94b54866a473}</UniqueIdentifier>
-    </Filter>
+    <Filter Include="src"/>
+    <Filter Include="src\compatibility"/>
+    <Filter Include="src\rmlui-implementation"/>
+    <Filter Include="src\rmlui-implementation\backend"/>
+    <Filter Include="src\rmlui-implementation\file-interface"/>
+    <Filter Include="src\rmlui-implementation\file-interface\loaders"/>
+    <Filter Include="src\rmlui-implementation\render-interface"/>
+    <Filter Include="src\rmlui-implementation\system-interface"/>
+    <Filter Include="src\extensions"/>
+    <Filter Include="src\extensions\multiselect-element"/>
+    <Filter Include="src\extensions\colorpicker-element"/>
+    <Filter Include="src\rmlui-implementation\render-interface\interfaces"/>
+    <Filter Include="src\rmlui-implementation\render-interface\interfaces\shaders"/>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing"/>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters"/>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\factory"/>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\color-matrix-filter"/>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\mask-image-filter"/>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\passthrough-filter"/>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\gradient-shader-filter"/>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\blur-filter"/>
+    <Filter Include="src\rmlui-implementation\render-interface\post-processing\filters\shadow-filter"/>
   </ItemGroup>
+
   <ItemGroup>
     <ClCompile Include="src\null-rmlui.cpp">
       <Filter>src</Filter>
@@ -115,6 +72,7 @@
       <Filter>src\rmlui-implementation\render-interface\post-processing\filters\shadow-filter</Filter>
     </ClCompile>
   </ItemGroup>
+
   <ItemGroup>
     <ClInclude Include="src\null-rmlui.h">
       <Filter>src</Filter>
@@ -213,6 +171,7 @@
       <Filter>src\compatibility</Filter>
     </ClInclude>
   </ItemGroup>
+  
   <ItemGroup>
     <None Include="README.md" />
   </ItemGroup>

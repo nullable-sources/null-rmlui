@@ -1,7 +1,7 @@
 #include "../shaders/color/compiled-object.h"
 #include "mesh.h"
 
-namespace null::rml::opengl3 {
+namespace ntl::rml::opengl3 {
     void c_mesh::create() {
         if(vao != 0) return;
 

@@ -1,6 +1,6 @@
 #include "file-interface.h"
 
-namespace null::rml {
+namespace ntl::rml {
     Rml::FileHandle c_file_interface::Open(const Rml::String& path) {
         std::string new_path = path;
         if(std::ranges::any_of(file_loaders, std::bind(std::mem_fn(&i_file_loader::create), std::placeholders::_1, std::ref(new_path))))

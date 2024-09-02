@@ -3,7 +3,7 @@
 #include <null-render-backend-opengl3/internal/shader/shader.h>
 #include "compiled-object.h"
 
-namespace null::rml::opengl3 {
+namespace ntl::rml::opengl3 {
     class c_bliting_shader : public renderer::i_bliting_shader, public render::opengl3::c_shader {
     public:
         render::opengl3::c_uniform<vec2_t<float>> uv_min{ };

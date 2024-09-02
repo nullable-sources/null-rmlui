@@ -5,7 +5,7 @@
 #include "loaders/resource-loader.h"
 #include "loaders/default-file-loader.h"
 
-namespace null::rml {
+namespace ntl::rml {
     class c_file_interface : public Rml::FileInterface {
     public:
         std::vector<i_file_loader*> file_loaders{ &default_file_loader, &resource_loader };

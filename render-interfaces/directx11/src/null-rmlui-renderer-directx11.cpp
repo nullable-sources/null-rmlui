@@ -9,7 +9,7 @@
 #include "null-rmlui-renderer-directx11/shaders/blur/blur.h"
 #include "null-rmlui-renderer-directx11/shaders/drop-shadow/drop-shadow.h"
 
-namespace null::rml::directx11 {
+namespace ntl::rml::directx11 {
     void c_render::set_secondary_texture(void* texture) {
         render::directx11::shared.context->PSSetShaderResources(1, 1, (ID3D11ShaderResourceView**)&texture);
     }

@@ -1,6 +1,6 @@
 #include "gradient.h"
 
-namespace null::rml::opengl3 {
+namespace ntl::rml::opengl3 {
     void c_gradient_shader::create() {
         if(!empty()) return;
         c_default_shader::create();

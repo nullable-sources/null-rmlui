@@ -1,7 +1,7 @@
 #pragma once
 #include <null-render-backend-directx9/shaders/passthrough/compiled-object.h>
 
-namespace null::rml::directx9 {
+namespace ntl::rml::directx9 {
     namespace sources {
         static const std::vector<byte>& color_matrix() {
 #include "compiled/color-matrix.h"

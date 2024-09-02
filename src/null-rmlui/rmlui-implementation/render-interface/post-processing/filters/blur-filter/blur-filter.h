@@ -3,7 +3,7 @@
 #include "../factory/factory.h"
 #include "../../../interfaces/shaders/blur.h"
 
-namespace null::rml::renderer::filters {
+namespace ntl::rml::renderer::filters {
     class c_blur_filter : public i_filter {
     private:
         static void calculate_weights(std::vector<float>& weights, float sigma);

@@ -32,12 +32,27 @@
 				mask-image: image("[resource:images] image.png");
 				filter: blur(20px);
 			}
+
+			div.outer {
+				clip: always;
+				overflow: hiddsen;
+				position: absolute;
+
+				top: 0dp;
+				left: 0dp;
+
+				width: 300dp;
+				height: 300dp;
+				background-color: rgba(0, 120, 0, 100);
+
+				border-radius: 300dp;
+			}
 			
 			div.inner {
 				position: absolute;
 
-				top: 100dp;
-				left: 100dp;
+				top: 200dp;
+				left: 200dp;
 
 				width: 100dp;
 				height: 100dp;
@@ -48,7 +63,7 @@
 		</style>
 	</head>
 	<body>
-		<div class="b gradient animate">
+		<div class="outer clip">
 			<div class="inner">
 				
 			</div>

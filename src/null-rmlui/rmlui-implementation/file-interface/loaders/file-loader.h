@@ -1,7 +1,7 @@
 #pragma once
 #include <null-sdk.h>
 
-namespace null::rml {
+namespace ntl::rml {
     struct i_file_loader {
     public:
         struct i_file {

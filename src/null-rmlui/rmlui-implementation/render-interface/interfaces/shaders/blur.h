@@ -1,7 +1,7 @@
 #pragma once
 #include "bliting.h"
 
-namespace null::rml::renderer {
+namespace ntl::rml::renderer {
     class i_blur_shader : public virtual render::backend::i_shader {
     public:
         constexpr static int _blur_size = 7;

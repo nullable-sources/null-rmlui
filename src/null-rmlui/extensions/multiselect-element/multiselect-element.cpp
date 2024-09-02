@@ -1,6 +1,6 @@
 #include "null-rmlui.h"
 
-namespace null::rml::extensions {
+namespace ntl::rml::extensions {
     c_widget_multi_dropdown::c_widget_multi_dropdown(Rml::ElementFormControl* element) : parent_element(element) {
         button_element = parent_element->AppendChild(Rml::Factory::InstanceElement(parent_element, "*", "selectarrow", Rml::XMLAttributes{ }), false);
         value_element = parent_element->AppendChild(Rml::Factory::InstanceElement(parent_element, "*", "selectvalue", Rml::XMLAttributes{ }), false);

@@ -1,7 +1,7 @@
 #pragma comment(lib, "imm32")
 #include "../backend/backend.h"
 
-namespace null::rml {
+namespace ntl::rml {
     void c_system_interface::SetMouseCursor(const std::string& cursor_name) {
         if(!wnd_handle) return;
 

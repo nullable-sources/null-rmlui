@@ -2,7 +2,7 @@
 #include <null-render/backend/post-processing/post-processing.h>
 #include <RmlUi/Core/Types.h>
 
-namespace null::rml::renderer {
+namespace ntl::rml::renderer {
     class c_layers {
     public:
         int involved_layers{ };

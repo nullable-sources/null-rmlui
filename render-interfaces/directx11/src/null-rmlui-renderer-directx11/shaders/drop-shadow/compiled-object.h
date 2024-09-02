@@ -2,7 +2,7 @@
 #include <null-rmlui/rmlui-implementation/render-interface/interfaces/shaders/drop-shadow.h>
 #include <null-render-backend-directx11/shaders/passthrough/compiled-object.h>
 
-namespace null::rml::directx11 {
+namespace ntl::rml::directx11 {
     namespace sources {
         static const std::vector<byte>& drop_shadow() {
 #include "compiled/drop-shadow.h"

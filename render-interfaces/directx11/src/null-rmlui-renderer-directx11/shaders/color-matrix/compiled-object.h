@@ -2,7 +2,7 @@
 #include <null-rmlui/rmlui-implementation/render-interface/interfaces/shaders/color-matrix.h>
 #include <null-render-backend-directx11/shaders/passthrough/compiled-object.h>
 
-namespace null::rml::directx11 {
+namespace ntl::rml::directx11 {
     namespace sources {
         static const std::vector<byte>& color_matrix() {
 #include "compiled/color-matrix.h"

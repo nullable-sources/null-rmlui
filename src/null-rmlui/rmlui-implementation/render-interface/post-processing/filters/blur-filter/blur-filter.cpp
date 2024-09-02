@@ -4,7 +4,7 @@
 #include "../../layers.h"
 #include "blur-filter.h"
 
-namespace null::rml::renderer::filters {
+namespace ntl::rml::renderer::filters {
     void c_blur_filter::calculate_weights(std::vector<float>& weights, float sigma) {
         const double double_pi_sqrt = std::sqrt(2.f * std::numbers::pi) * sigma;
         const double double_sigma = 2.0f * std::pow(sigma, 2);

@@ -5,7 +5,7 @@
 #include "interfaces/mesh.h"
 #include "post-processing/filters/factory/factory.h"
 
-namespace null::rml {
+namespace ntl::rml {
     class i_render_interface : public Rml::RenderInterface {
     public:
         class c_mesh_pool {

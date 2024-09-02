@@ -1,7 +1,7 @@
 #include <null-render-backend-directx11/shaders/passthrough/compiled-object.h>
 #include "mesh.h"
 
-namespace null::rml::directx11 {
+namespace ntl::rml::directx11 {
     void c_mesh::reassign(std::span<const Rml::Vertex>& _vertex_buffer, std::span<const int>& _index_buffer) {
         if(_vertex_buffer.size() > vertex_buffer.size()) {
             if(vtx_buffer) { vtx_buffer->Release(); vtx_buffer = nullptr; }

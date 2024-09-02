@@ -2,7 +2,7 @@
 #include <null-render-backend-opengl3.h>
 #include <null-rmlui.h>
 
-namespace null::rml::opengl3 {
+namespace ntl::rml::opengl3 {
     class c_mesh : public renderer::i_mesh {
     public: using i_mesh::i_mesh;
     public:

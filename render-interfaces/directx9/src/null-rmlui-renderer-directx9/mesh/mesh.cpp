@@ -1,6 +1,6 @@
 #include "mesh.h"
 
-namespace null::rml::directx9 {
+namespace ntl::rml::directx9 {
     void c_mesh::reassign(std::span<const Rml::Vertex>& _vertex_buffer, std::span<const int>& _index_buffer) {
         if(_vertex_buffer.size() > vertex_buffer.size()) {
             if(vtx_buffer) { vtx_buffer->Release(); vtx_buffer = nullptr; }

@@ -1,7 +1,7 @@
 #pragma once
 #include "null-rmlui-renderer-directx9/mesh/mesh.h"
 
-namespace null::rml::directx9 {
+namespace ntl::rml::directx9 {
     class c_render : public i_render_interface {
     public:
         void set_secondary_texture(void* texture) override;
