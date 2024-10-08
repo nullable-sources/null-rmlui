@@ -29,11 +29,11 @@ void main_loop() {
         context->Update();
     } ntl::render::end_frame();
 
-    ntl::render::backend::renderer->begin_render();
+    ntl::render::backend::renderer_pipeline->begin();
     ntl::rml::render_interface->begin_render();
     context->Render();
     ntl::rml::render_interface->end_render();
-    ntl::render::backend::renderer->end_render();
+    ntl::render::backend::renderer_pipeline->end();
 }
 
 
