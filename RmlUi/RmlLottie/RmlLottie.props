@@ -13,7 +13,6 @@
         </ClCompile>
         <Lib>
             <AdditionalLibraryDirectories>$(RmlLottieRoot)build;$(RmlLottieRoot)..\Dependencies\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-            <AdditionalDependencies>RmlLottie-$(RmlLottieLibPostfix).lib;rlottie-$(RmlLottieLibPostfix).lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Lib>
         <Link>
             <AdditionalLibraryDirectories>$(RmlLottieRoot)build;$(RmlLottieRoot)..\Dependencies\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1770fd49-9301-4a65-b628-3b612e7ac6ee}</ProjectGuid>
+  </PropertyGroup>
+
+  <PropertyGroup Label="NullVCXProperties">
+    <NullRmluiRendererDirectx11Feature>feature1</NullRmluiRendererDirectx11Feature>
+  </PropertyGroup>
+
+  <Import Project="null-rmlui-renderer-directx11.vcxproj" />
+</Project>

@@ -9,7 +9,6 @@
     <ItemDefinitionGroup>
         <Lib>
             <AdditionalLibraryDirectories>$(RmlSvgRoot)build;$(RmlSvgRoot)..\Dependencies\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-            <AdditionalDependencies>RmlSVG-$(RmlSvgConfiguration)-$(LibrariesArchitecture).lib;lunasvg-$(RmlSvgConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Lib>
         <Link>
             <AdditionalLibraryDirectories>$(RmlSvgRoot)build;$(RmlSvgRoot)..\Dependencies\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

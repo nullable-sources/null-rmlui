@@ -10,10 +10,6 @@
         <ClCompile>
             <AdditionalIncludeDirectories>$(NullRmluiRoot)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
         </ClCompile>
-        <Lib>
-            <AdditionalLibraryDirectories>$(NullRmluiRoot)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-            <AdditionalDependencies>null-rmlui-$(NullRmluiConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
-        </Lib>
         <Link>
             <AdditionalLibraryDirectories>$(NullRmluiRoot)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
             <AdditionalDependencies>null-rmlui-$(NullRmluiConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>

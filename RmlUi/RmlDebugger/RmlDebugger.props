@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemDefinitionGroup>
-        <Lib>
-            <AdditionalLibraryDirectories>$(RmlDebuggerRoot)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-            <AdditionalDependencies>RmlDebugger-$(RmlDebuggerConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
-        </Lib>
         <Link>
             <AdditionalLibraryDirectories>$(RmlDebuggerRoot)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
             <AdditionalDependencies>RmlDebugger-$(RmlDebuggerConfiguration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>

@@ -10,10 +10,6 @@
         <ClCompile>
             <AdditionalIncludeDirectories>$(NullRmluiRendererOpengl3Root)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
         </ClCompile>
-        <Lib>
-            <AdditionalLibraryDirectories>$(NullRmluiRendererOpengl3Root)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-            <AdditionalDependencies>null-rmlui-renderer-opengl3-$(NullRmluiRendererOpengl3Configuration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
-        </Lib>
         <Link>
             <AdditionalLibraryDirectories>$(NullRmluiRendererOpengl3Root)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
             <AdditionalDependencies>null-rmlui-renderer-opengl3-$(NullRmluiRendererOpengl3Configuration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>

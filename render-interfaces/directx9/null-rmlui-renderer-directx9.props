@@ -10,10 +10,6 @@
         <ClCompile>
             <AdditionalIncludeDirectories>$(NullRmluiRendererDirectx9Root)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
         </ClCompile>
-        <Lib>
-            <AdditionalLibraryDirectories>$(NullRmluiRendererDirectx9Root)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-            <AdditionalDependencies>null-rmlui-renderer-directx9-$(NullRmluiRendererDirectx9Configuration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>
-        </Lib>
         <Link>
             <AdditionalLibraryDirectories>$(NullRmluiRendererDirectx9Root)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
             <AdditionalDependencies>null-rmlui-renderer-directx9-$(NullRmluiRendererDirectx9Configuration)-$(LibrariesArchitecture).lib;%(AdditionalDependencies)</AdditionalDependencies>

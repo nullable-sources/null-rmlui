@@ -164,5 +164,6 @@
   <Import Project="..\..\RmlUi\RmlCore\RmlCore.props" />
   <Import Project="$(NullRmluiRendererDirectx11DependenciesPath)null-sdk\null-sdk.props" />
   <Import Project="$(NullRmluiRendererDirectx11DependenciesPath)null-render\null-render.props" />
-  <Import Project="$(NullRmluiRendererDirectx11DependenciesPath)null-render\backends\directx11\null-render-backend-directx11.props" />
+  <Import Condition="'$(NullRmluiRendererDirectx11Feature)'==''" Project="$(NullRmluiRendererDirectx11DependenciesPath)null-render\backends\directx11\null-render-backend-directx11.props" />
+  <Import Condition="'$(NullRmluiRendererDirectx11Feature)'=='feature1'" Project="$(NullRmluiRendererDirectx11DependenciesPath)null-render\backends\directx11\null-render-backend-directx11-feature1.props" />
 </Project>
