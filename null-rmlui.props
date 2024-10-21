@@ -8,7 +8,7 @@
 
     <ItemDefinitionGroup>
         <ClCompile>
-            <AdditionalIncludeDirectories>$(NullRmluiRoot)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+            <AdditionalIncludeDirectories>$(NullRmluiRoot)src;$(NullRmluiRoot)RmlUi\Dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
         </ClCompile>
         <Link>
             <AdditionalLibraryDirectories>$(NullRmluiRoot)build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
