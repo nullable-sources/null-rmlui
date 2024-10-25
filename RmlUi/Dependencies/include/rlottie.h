@@ -27,19 +27,7 @@
 #include <vector>
 #include <memory>
 
-#if defined _WIN32 || defined __CYGWIN__
-  #ifdef RLOTTIE_BUILD
-    #define RLOTTIE_API __declspec(dllexport)
-  #else
-    #define RLOTTIE_API __declspec(dllimport)
-  #endif
-#else
-  #ifdef RLOTTIE_BUILD
-      #define RLOTTIE_API __attribute__ ((visibility ("default")))
-  #else
-      #define RLOTTIE_API
-  #endif
-#endif
+#define RLOTTIE_API
 
 class AnimationImpl;
 struct LOTNode;
@@ -108,11 +96,11 @@ enum class Property {
     FillOpacity,   /*!< Opacity property of Fill object , value type is float [ 0 .. 100] */
     StrokeColor,   /*!< Color property of Stroke object , value type is rlottie::Color */
     StrokeOpacity, /*!< Opacity property of Stroke object , value type is float [ 0 .. 100] */
-    StrokeWidth,   /*!< stroke width property of Stroke object , value type is float */
+    StrokeWidth,   /*!< stroke with property of Stroke object , value type is float */
     TrAnchor,      /*!< Transform Anchor property of Layer and Group object , value type is rlottie::Point */
     TrPosition,    /*!< Transform Position property of Layer and Group object , value type is rlottie::Point */
     TrScale,       /*!< Transform Scale property of Layer and Group object , value type is rlottie::Size. range[0 ..100] */
-    TrRotation,    /*!< Transform Rotation property of Layer and Group object , value type is float. range[0 .. 360] in degrees*/
+    TrRotation,    /*!< Transform Scale property of Layer and Group object , value type is float. range[0 .. 360] in degrees*/
     TrOpacity      /*!< Transform Opacity property of Layer and Group object , value type is float [ 0 .. 100] */
 };
 
