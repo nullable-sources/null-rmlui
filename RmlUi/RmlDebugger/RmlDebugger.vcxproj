@@ -18,7 +18,6 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-
   <ItemGroup>
     <ClInclude Include="..\src\RmlUi\Include\RmlUi\Debugger.h" />
     <ClInclude Include="..\src\RmlUi\Include\RmlUi\Debugger\Debugger.h" />
@@ -28,6 +27,7 @@
     <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\DebuggerPlugin.h" />
     <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\DebuggerSystemInterface.h" />
     <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\ElementContextHook.h" />
+    <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\ElementDebugDocument.h" />
     <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\ElementInfo.h" />
     <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\ElementLog.h" />
     <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\FontSource.h" />
@@ -35,16 +35,15 @@
     <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\InfoSource.h" />
     <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\LogSource.h" />
     <ClInclude Include="..\src\RmlUi\RmlUi\Debugger\MenuSource.h" />
-
     <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\Debugger.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\DebuggerPlugin.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\DebuggerSystemInterface.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\ElementContextHook.cpp" />
+    <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\ElementDebugDocument.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\ElementInfo.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\ElementLog.cpp" />
     <ClCompile Include="..\src\RmlUi\RmlUi\Debugger\Geometry.cpp" />
   </ItemGroup>
-
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -52,7 +51,6 @@
     <RootNamespace>RmlDebugger</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
-
   <PropertyGroup Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
@@ -61,11 +59,9 @@
     <UseDebugLibraries Condition="'$(Configuration)'=='release'">false</UseDebugLibraries>
     <WholeProgramOptimization Condition="'$(Configuration)'=='release'">true</WholeProgramOptimization>
   </PropertyGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  
   <PropertyGroup>
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
@@ -74,7 +70,6 @@
     <LinkIncremental Condition="'$(Configuration)'=='debug'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)'=='release'">false</LinkIncremental>
   </PropertyGroup>
-  
   <ItemDefinitionGroup>
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
@@ -100,7 +95,6 @@
       <AdditionalOptions>/ignore:4221,4006 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="..\RmlCore\RmlCore.props" />
 </Project>

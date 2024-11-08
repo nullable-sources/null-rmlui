@@ -90,7 +90,7 @@ namespace ntl::rml {
         void CompositeLayers(Rml::LayerHandle source, Rml::LayerHandle destination, Rml::BlendMode blend_mode, Rml::Span<const Rml::CompiledFilterHandle> filters) override;
         void PopLayer() override;
 
-        Rml::TextureHandle SaveLayerAsTexture(Rml::Vector2i dimensions) override;
+        Rml::TextureHandle SaveLayerAsTexture() override;
         Rml::CompiledFilterHandle SaveLayerAsMaskImage() override;
 
         Rml::CompiledFilterHandle CompileFilter(const Rml::String& name, const Rml::Dictionary& parameters) override;

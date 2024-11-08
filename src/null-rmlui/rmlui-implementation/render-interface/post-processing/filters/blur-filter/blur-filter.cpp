@@ -106,6 +106,6 @@ namespace ntl::rml::renderer::filters {
     }
 
     std::unique_ptr<i_filter> c_blur_filter_instancer::instance_filter(const Rml::Dictionary& parameters) {
-        return std::make_unique<c_blur_filter>(0.5f * Rml::Get(parameters, "radius", 1.0f));
+        return std::make_unique<c_blur_filter>(Rml::Get(parameters, "sigma", 1.0f));
     }
 }

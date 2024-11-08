@@ -76,12 +76,13 @@ public:
 	RenderManager(RenderInterface* render_interface);
 	~RenderManager();
 
-	void PrepareRender();
+	void PrepareRender(Vector2i dimensions);
 	void SetViewport(Vector2i dimensions);
 	Vector2i GetViewport() const;
 
 	void DisableScissorRegion();
 	void SetScissorRegion(Rectanglei region);
+	Rectanglei GetScissorRegion() const;
 
 	void DisableClipMask();
 	void SetClipMask(ClipMaskGeometryList clip_elements);

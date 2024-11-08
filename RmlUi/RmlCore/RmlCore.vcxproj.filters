@@ -735,6 +735,18 @@
     <ClInclude Include="..\src\RmlUi\RmlUi\Core\XMLParseTools.h">
       <Filter>RmlUi</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Core\TextInputContext.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\Include\RmlUi\Core\TextInputHandler.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\Core\ElementMeta.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RmlUi\RmlUi\Core\ControlledLifetimeResource.h">
+      <Filter>RmlUi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\BaseXMLParser.cpp">
@@ -1290,6 +1302,12 @@
       <Filter>RmlUi</Filter>
     </ClCompile>
     <ClCompile Include="..\src\RmlUi\RmlUi\Core\XMLParseTools.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RmlUi\RmlUi\Core\ElementMeta.cpp">
+      <Filter>RmlUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RmlUi\RmlUi\Core\Traits.cpp">
       <Filter>RmlUi</Filter>
     </ClCompile>
   </ItemGroup>

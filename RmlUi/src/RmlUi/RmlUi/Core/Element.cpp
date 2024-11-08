@@ -49,6 +49,7 @@
 #include "ElementBackgroundBorder.h"
 #include "ElementDefinition.h"
 #include "ElementEffects.h"
+#include "ElementMeta.h"
 #include "ElementStyle.h"
 #include "EventDispatcher.h"
 #include "EventSpecification.h"
@@ -90,20 +91,6 @@ static float GetScrollOffsetDelta(ScrollAlignment alignment, float begin_offset,
 	return 0.f;
 }
 
-// Meta objects for element collected in a single struct to reduce memory allocations
-struct ElementMeta {
-	ElementMeta(Element* el) : event_dispatcher(el), style(el), background_border(), effects(el), scroll(el), computed_values(el) {}
-	SmallUnorderedMap<EventId, EventListener*> attribute_event_listeners;
-	EventDispatcher event_dispatcher;
-	ElementStyle style;
-	ElementBackgroundBorder background_border;
-	ElementEffects effects;
-	ElementScroll scroll;
-	Style::ComputedValues computed_values;
-};
-
-static Pool<ElementMeta> element_meta_chunk_pool(200, true);
-
 Element::Element(const String& tag) :
 	local_stacking_context(false), local_stacking_context_forced(false), stacking_context_dirty(false), computed_values_are_default_initialized(true),
 	visible(true), offset_fixed(false), absolute_offset_dirty(true), dirty_definition(false), dirty_child_definitions(false), dirty_animation(false),
@@ -117,7 +104,7 @@ Element::Element(const String& tag) :
 	owner_document = nullptr;
 	offset_parent = nullptr;
 
-	client_area = BoxArea::Padding;
+	clip_area = BoxArea::Padding;
 
 	baseline = 0.0f;
 
@@ -125,7 +112,7 @@ Element::Element(const String& tag) :
 
 	z_index = 0;
 
-	meta = element_meta_chunk_pool.AllocateAndConstruct(this);
+	meta = ElementMetaPool::element_meta_pool->pool.AllocateAndConstruct(this);
 	data_model = nullptr;
 }
 
@@ -148,7 +135,7 @@ Element::~Element()
 	children.clear();
 	num_non_dom_children = 0;
 
-	element_meta_chunk_pool.DestroyAndDeallocate(meta);
+	ElementMetaPool::element_meta_pool->pool.DestroyAndDeallocate(meta);
 }
 
 void Element::Update(float dp_ratio, Vector2f vp_dimensions)
@@ -419,25 +406,23 @@ Vector2f Element::GetAbsoluteOffset(BoxArea area)
 	return absolute_offset + GetBox().GetPosition(area);
 }
 
-void Element::SetClientArea(BoxArea _client_area)
+void Element::SetClipArea(BoxArea _clip_area)
 {
-	client_area = _client_area;
+	clip_area = _clip_area;
 }
 
-BoxArea Element::GetClientArea() const
+BoxArea Element::GetClipArea() const
 {
-	return client_area;
+	return clip_area;
 }
 
-void Element::SetScrollableOverflowRectangle(Vector2f _scrollable_overflow_rectangle)
+void Element::SetScrollableOverflowRectangle(Vector2f _scrollable_overflow_rectangle, bool clamp_scroll_offset)
 {
 	if (scrollable_overflow_rectangle != _scrollable_overflow_rectangle)
 	{
 		scrollable_overflow_rectangle = _scrollable_overflow_rectangle;
-
-		scroll_offset.x = Math::Min(scroll_offset.x, GetScrollWidth() - GetClientWidth());
-		scroll_offset.y = Math::Min(scroll_offset.y, GetScrollHeight() - GetClientHeight());
-		DirtyAbsoluteOffset();
+		if (clamp_scroll_offset)
+			ClampScrollOffset();
 	}
 }
 
@@ -642,9 +627,9 @@ float Element::ResolveNumericValue(NumericValue value, float base_value)
 
 Vector2f Element::GetContainingBlock()
 {
-	Vector2f containing_block(0, 0);
+	Vector2f containing_block;
 
-	if (offset_parent != nullptr)
+	if (offset_parent)
 	{
 		using namespace Style;
 		Position position_property = GetPosition();
@@ -658,6 +643,10 @@ Vector2f Element::GetContainingBlock()
 		{
 			containing_block = parent_box.GetSize(BoxArea::Padding);
 		}
+	}
+	else if (Context* context = GetContext())
+	{
+		containing_block = Vector2f(context->GetDimensions());
 	}
 
 	return containing_block;
@@ -878,22 +867,22 @@ float Element::GetAbsoluteTop()
 
 float Element::GetClientLeft()
 {
-	return GetBox().GetPosition(client_area).x;
+	return GetBox().GetPosition(BoxArea::Padding).x;
 }
 
 float Element::GetClientTop()
 {
-	return GetBox().GetPosition(client_area).y;
+	return GetBox().GetPosition(BoxArea::Padding).y;
 }
 
 float Element::GetClientWidth()
 {
-	return GetBox().GetSize(client_area).x - meta->scroll.GetScrollbarSize(ElementScroll::VERTICAL);
+	return GetBox().GetSize(BoxArea::Padding).x - meta->scroll.GetScrollbarSize(ElementScroll::VERTICAL);
 }
 
 float Element::GetClientHeight()
 {
-	return GetBox().GetSize(client_area).y - meta->scroll.GetScrollbarSize(ElementScroll::HORIZONTAL);
+	return GetBox().GetSize(BoxArea::Padding).y - meta->scroll.GetScrollbarSize(ElementScroll::HORIZONTAL);
 }
 
 Element* Element::GetOffsetParent()
@@ -1964,8 +1953,11 @@ void Element::GetRML(String& content)
 
 	for (auto& pair : attributes)
 	{
-		auto& name = pair.first;
-		auto& variant = pair.second;
+		const String& name = pair.first;
+		if (name == "style")
+			continue;
+
+		const Variant& variant = pair.second;
 		String value;
 		if (variant.GetInto(value))
 		{
@@ -1976,6 +1968,24 @@ void Element::GetRML(String& content)
 			content += "\"";
 		}
 	}
+
+	const PropertyMap& local_properties = meta->style.GetLocalStyleProperties();
+	if (!local_properties.empty())
+		content += " style=\"";
+
+	for (const auto& pair : local_properties)
+	{
+		const PropertyId id = pair.first;
+		const Property& property = pair.second;
+
+		content += StyleSheetSpecification::GetPropertyName(id);
+		content += ": ";
+		content += StringUtilities::EncodeRml(property.ToString());
+		content += "; ";
+	}
+
+	if (!local_properties.empty())
+		content.back() = '\"';
 
 	if (HasChildNodes())
 	{
@@ -2444,6 +2454,16 @@ ElementAnimationList::iterator Element::StartAnimation(PropertyId property_id, c
 
 	if (it != animations.end())
 	{
+		const bool allow_overwriting_animation = !initiated_by_animation_property;
+		if (!allow_overwriting_animation)
+		{
+			Log::Message(Log::LT_WARNING,
+				"Could not animate property '%s' on element: %s. "
+				"Please ensure that the property does not appear in multiple animations on the same element.",
+				StyleSheetSpecification::GetPropertyName(property_id).c_str(), GetAddress().c_str());
+			return it;
+		}
+
 		*it = ElementAnimation{};
 	}
 	else
@@ -2897,6 +2917,28 @@ void Element::DirtyFontFaceRecursive()
 	const int num_children = GetNumChildren(true);
 	for (int i = 0; i < num_children; ++i)
 		GetChild(i)->DirtyFontFaceRecursive();
+}
+
+void Element::ClampScrollOffset()
+{
+	const Vector2f new_scroll_offset = {
+		Math::Min(scroll_offset.x, GetScrollWidth() - GetClientWidth()),
+		Math::Min(scroll_offset.y, GetScrollHeight() - GetClientHeight()),
+	};
+
+	if (new_scroll_offset != scroll_offset)
+	{
+		scroll_offset = new_scroll_offset;
+		DirtyAbsoluteOffset();
+	}
+}
+
+void Element::ClampScrollOffsetRecursive()
+{
+	ClampScrollOffset();
+	const int num_children = GetNumChildren(true);
+	for (int i = 0; i < num_children; ++i)
+		GetChild(i)->ClampScrollOffsetRecursive();
 }
 
 } // namespace Rml

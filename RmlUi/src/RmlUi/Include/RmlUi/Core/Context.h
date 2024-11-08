@@ -47,6 +47,7 @@ class DataModelConstructor;
 class DataTypeRegister;
 class ScrollController;
 class RenderManager;
+class TextInputHandler;
 enum class EventId : uint16_t;
 
 /**
@@ -60,7 +61,8 @@ public:
 	/// Constructs a new, uninitialised context. This should not be called directly, use CreateContext() instead.
 	/// @param[in] name The name of the context.
 	/// @param[in] render_manager The render manager used for this context.
-	Context(const String& name, RenderManager* render_manager);
+	/// @param[in] text_input_handler The text input handler used for this context.
+	Context(const String& name, RenderManager* render_manager, TextInputHandler* text_input_handler);
 	/// Destroys a context.
 	virtual ~Context();
 
@@ -75,10 +77,10 @@ public:
 	/// @return The current dimensions of the context.
 	Vector2i GetDimensions() const;
 
-	/// Changes the size ratio of 'dp' unit to 'px' unit
+	/// Changes the ratio of the 'dp' unit to the 'px' unit.
 	/// @param[in] dp_ratio The new density-independent pixel ratio of the context.
-	void SetDensityIndependentPixelRatio(float density_independent_pixel_ratio);
-	/// Returns the size ratio of 'dp' unit to 'px' unit
+	void SetDensityIndependentPixelRatio(float dp_ratio);
+	/// Returns the ratio of the 'dp' unit to the 'px' unit.
 	/// @return The current density-independent pixel ratio of the context.
 	float GetDensityIndependentPixelRatio() const;
 
@@ -116,7 +118,7 @@ public:
 
 	/// Enable or disable handling of the mouse cursor from this context.
 	/// When enabled, changes to the cursor name is transmitted through the system interface.
-	/// @param[in] show True to enable mouse cursor handling, false to disable.
+	/// @param[in] enable True to enable mouse cursor handling, false to disable.
 	void EnableMouseCursor(bool enable);
 
 	/// Activate or deactivate a media theme. Themes can be used in RCSS media queries.
@@ -250,6 +252,9 @@ public:
 	/// Retrieves the render manager which can be used to submit changes to the render state.
 	RenderManager& GetRenderManager();
 
+	/// Obtains the text input handler.
+	TextInputHandler* GetTextInputHandler() const;
+
 	/// Sets the instancer to use for releasing this object.
 	/// @param[in] instancer The context's instancer.
 	void SetInstancer(ContextInstancer* instancer);
@@ -371,6 +376,8 @@ private:
 	DataModels data_models;
 
 	UniquePtr<DataTypeRegister> default_data_type_register;
+
+	TextInputHandler* text_input_handler;
 
 	// Time in seconds until Update and Render should be called again. This allows applications to only redraw the ui if needed.
 	// See RequestNextUpdate() and NextUpdateRequested() for details.

@@ -31,14 +31,27 @@
 #include "../../Include/RmlUi/Core/StringUtilities.h"
 #include "../../Include/RmlUi/Core/URL.h"
 #include "LogDefault.h"
+#include <chrono>
 
 namespace Rml {
 
-static String clipboard_text;
+static String& GlobalClipBoardText()
+{
+	static String clipboard_text;
+	return clipboard_text;
+}
 
 SystemInterface::SystemInterface() {}
 
 SystemInterface::~SystemInterface() {}
+
+double SystemInterface::GetElapsedTime()
+{
+	static const auto start = std::chrono::steady_clock::now();
+	const auto current = std::chrono::steady_clock::now();
+	std::chrono::duration<double> diff = current - start;
+	return diff.count();
+}
 
 bool SystemInterface::LogMessage(Log::Type type, const String& message)
 {
@@ -50,12 +63,12 @@ void SystemInterface::SetMouseCursor(const String& /*cursor_name*/) {}
 void SystemInterface::SetClipboardText(const String& text)
 {
 	// The default implementation will only copy and paste within the application
-	clipboard_text = text;
+	GlobalClipBoardText() = text;
 }
 
 void SystemInterface::GetClipboardText(String& text)
 {
-	text = clipboard_text;
+	text = GlobalClipBoardText();
 }
 
 int SystemInterface::TranslateString(String& translated, const String& input)

@@ -68,7 +68,7 @@ RenderManager::~RenderManager()
 	ReleaseAllTextures();
 }
 
-void RenderManager::PrepareRender()
+void RenderManager::PrepareRender(Vector2i dimensions)
 {
 #ifdef RMLUI_DEBUG
 	const RenderState default_state;
@@ -77,6 +77,8 @@ void RenderManager::PrepareRender()
 	RMLUI_ASSERT(state.transform == default_state.transform);
 	RMLUI_ASSERTMSG(render_stack.empty(), "Unbalanced render stack detected, ensure every PushLayer call has a corresponding call to PopLayer.");
 #endif
+
+	SetViewport(dimensions);
 }
 
 void RenderManager::SetViewport(Vector2i dimensions)
@@ -125,13 +127,18 @@ void RenderManager::SetScissorRegion(Rectanglei new_region)
 
 	if (new_scissor_enable)
 	{
-		new_region.Intersect(Rectanglei::FromSize(viewport_dimensions));
+		new_region = new_region.Intersect(Rectanglei::FromSize(viewport_dimensions));
 
 		if (new_region != state.scissor_region)
 			render_interface->SetScissorRegion(new_region);
 	}
 
 	state.scissor_region = new_region;
+}
+
+Rectanglei RenderManager::GetScissorRegion() const
+{
+	return state.scissor_region;
 }
 
 void RenderManager::DisableClipMask()

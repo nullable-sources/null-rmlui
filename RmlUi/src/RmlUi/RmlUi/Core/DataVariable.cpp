@@ -61,7 +61,8 @@ bool VariableDefinition::Get(void* ptr, Variant& variant) {
 	return true;
 }
 #else
-bool VariableDefinition::Get(void* /*ptr*/, Variant& /*variant*/) {
+bool VariableDefinition::Get(void* /*ptr*/, Variant& /*variant*/)
+{
 	Log::Message(Log::LT_WARNING, "Values can only be retrieved from scalar data types.");
 	return false;
 }

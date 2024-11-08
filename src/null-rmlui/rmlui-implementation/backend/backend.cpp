@@ -50,15 +50,15 @@ namespace ntl::rml::backend {
                 if(c >= 0xD800 && c < 0xDC00) {
                     first_u16_code_unit = c;
                 } else {
-                    if(c >= 0xDC00 && c < 0xE000 && first_u16_code_unit != 0) character = Rml::StringUtilities::ToCharacter(convert_to_utf8(std::wstring(first_u16_code_unit, c)).data());
+                    std::string utf8 = convert_to_utf8(std::wstring(first_u16_code_unit, c));
+                    if(c >= 0xDC00 && c < 0xE000 && first_u16_code_unit != 0) character = Rml::StringUtilities::ToCharacter(utf8.data(), utf8.data() + utf8.size());
                     else if(c == '\r') character = (Rml::Character)'\n';
 
                     first_u16_code_unit = 0;
 
                     if((((char32_t)character >= 32 || character == (Rml::Character)'\n') && character != (Rml::Character)127) && !context->ProcessTextInput(character)) return 0;
                 }
-            }
-                        break;
+            } break;
         }
 
         return -1;

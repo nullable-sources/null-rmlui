@@ -73,9 +73,9 @@ namespace Math {
 		return sinf(angle);
 	}
 
-	RMLUICORE_API float ASin(float angle)
+	RMLUICORE_API float ASin(float value)
 	{
-		return asinf(angle);
+		return asinf(value);
 	}
 
 	RMLUICORE_API float Tan(float angle)
@@ -182,6 +182,11 @@ namespace Math {
 		const Vector2f bottom_right = position + size;
 		position = position.Round();
 		size = bottom_right.Round() - position;
+	}
+
+	RMLUICORE_API void SnapToPixelGrid(Rectanglef& rectangle)
+	{
+		rectangle = Rectanglef::FromCorners(rectangle.TopLeft().Round(), rectangle.BottomRight().Round());
 	}
 
 	RMLUICORE_API void ExpandToPixelGrid(Vector2f& position, Vector2f& size)
