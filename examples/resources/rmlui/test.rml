@@ -35,7 +35,7 @@
 
 			div.outer {
 				clip: always;
-				overflow: hiddsen;
+				overflow: hidden;
 				position: absolute;
 
 				top: 0dp;

@@ -21,7 +21,7 @@ namespace ntl::rml::renderer::filters {
         render::backend::state_pipeline->shaders.push(drop_shadow_shader);
         render::backend::state_pipeline->framebuffers.push(secondary);
 
-        const vec2_t<float> uv_offset = offset / vec2_t<float>(-(float)render::shared::viewport.x, (float)render::shared::viewport.y);
+        const vec2_t<float> uv_offset = offset / vec2_t<float>(-(float)render::shared::viewport.x, -(float)render::shared::viewport.y);
         render::backend::post_processing->generate_geometry(
             render::backend::c_post_processing::normalized_viewport,
             render::backend::c_post_processing::normalized_uvs + uv_offset

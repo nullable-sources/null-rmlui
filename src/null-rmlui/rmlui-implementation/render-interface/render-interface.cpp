@@ -105,10 +105,15 @@ namespace ntl::rml {
     void i_render_interface::CompositeLayers(Rml::LayerHandle source, Rml::LayerHandle destination, Rml::BlendMode blend_mode, Rml::Span<const Rml::CompiledFilterHandle> filters) {
         renderer::layers->primary()->copy_from(renderer::layers->layer_by_handle(source));
 
+        //@note: opengl does not require setting the standard stencil state,
+        //       but for dx9/dx11 it is necessary, otherwise no filters will work
+        const bool restore_stencil_state = render::backend::stencil_buffer->is_testing();
+        if(restore_stencil_state) ntl::render::backend::state_pipeline->stencils.push(ntl::render::backend::default_stencil_state);
         for(const Rml::CompiledFilterHandle filter_handle : filters) {
             const compiled_filter_t& filter = *(const compiled_filter_t*)(filter_handle);
             filter.filter->render();
         }
+        if(restore_stencil_state) ntl::render::backend::state_pipeline->stencils.pop();
 
         if(blend_mode == Rml::BlendMode::Replace)
             render::backend::state_pipeline->blends.push(render_interface->blend_state_disabled);
