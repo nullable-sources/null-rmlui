@@ -1,32 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="src"/>
-    <Filter Include="src\mesh"/>
-    <Filter Include="src\shaders"/>
-    <Filter Include="src\shaders\blend-mask"/>
-    <Filter Include="src\shaders\bliting"/>
-    <Filter Include="src\shaders\blur"/>
-    <Filter Include="src\shaders\color"/>
-    <Filter Include="src\shaders\color-matrix"/>
-    <Filter Include="src\shaders\drop-shadow"/>
-    <Filter Include="src\shaders\gradient"/>
-    <Filter Include="src\shaders\texture"/>
-    <Filter Include="src\shaders\color\hlsl"/>
-    <Filter Include="src\shaders\bliting\hlsl"/>
-    <Filter Include="src\shaders\color-matrix\hlsl"/>
-    <Filter Include="src\shaders\blend-mask\hlsl"/>
-    <Filter Include="src\shaders\gradient\hlsl"/>
-    <Filter Include="src\shaders\blur\hlsl"/>
-    <Filter Include="src\shaders\drop-shadow\hlsl"/>
+    <Filter Include="src" />
+    <Filter Include="src\shaders" />
+    <Filter Include="src\shaders\blend-mask" />
+    <Filter Include="src\shaders\bliting" />
+    <Filter Include="src\shaders\blur" />
+    <Filter Include="src\shaders\color" />
+    <Filter Include="src\shaders\color-matrix" />
+    <Filter Include="src\shaders\drop-shadow" />
+    <Filter Include="src\shaders\gradient" />
+    <Filter Include="src\shaders\texture" />
+    <Filter Include="src\shaders\color\hlsl" />
+    <Filter Include="src\shaders\bliting\hlsl" />
+    <Filter Include="src\shaders\color-matrix\hlsl" />
+    <Filter Include="src\shaders\blend-mask\hlsl" />
+    <Filter Include="src\shaders\gradient\hlsl" />
+    <Filter Include="src\shaders\blur\hlsl" />
+    <Filter Include="src\shaders\drop-shadow\hlsl" />
+    <Filter Include="src\mesh-pool" />
   </ItemGroup>
-
   <ItemGroup>
     <ClCompile Include="src\null-rmlui-renderer-directx11.cpp">
       <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\null-rmlui-renderer-directx11\mesh\mesh.cpp">
-      <Filter>src\mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\null-rmlui-renderer-directx11\shaders\color\color.cpp">
       <Filter>src\shaders\color</Filter>
@@ -49,14 +45,13 @@
     <ClCompile Include="src\null-rmlui-renderer-directx11\shaders\drop-shadow\drop-shadow.cpp">
       <Filter>src\shaders\drop-shadow</Filter>
     </ClCompile>
+    <ClCompile Include="src\null-rmlui-renderer-directx11\mesh-pool\mesh-pool.cpp">
+      <Filter>src\mesh-pool</Filter>
+    </ClCompile>
   </ItemGroup>
-
   <ItemGroup>
     <ClInclude Include="src\null-rmlui-renderer-directx11.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\null-rmlui-renderer-directx11\mesh\mesh.h">
-      <Filter>src\mesh</Filter>
     </ClInclude>
     <ClInclude Include="src\null-rmlui-renderer-directx11\shaders\texture\texture.h">
       <Filter>src\shaders\texture</Filter>
@@ -102,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="src\null-rmlui-renderer-directx11\shaders\drop-shadow\compiled-object.h">
       <Filter>src\shaders\drop-shadow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\null-rmlui-renderer-directx11\mesh-pool\mesh-pool.h">
+      <Filter>src\mesh-pool</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

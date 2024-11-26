@@ -18,13 +18,13 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-
   <ItemGroup>
     <ClCompile Include="src\null-rmlui\extensions\colorpicker-element\colorpicker-element.cpp" />
     <ClCompile Include="src\null-rmlui\extensions\multiselect-element\multiselect-element.cpp" />
     <ClCompile Include="src\null-rmlui.cpp" />
     <ClCompile Include="src\null-rmlui\rmlui-implementation\backend\backend.cpp" />
     <ClCompile Include="src\null-rmlui\rmlui-implementation\file-interface\file-interface.cpp" />
+    <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\mesh-pool\offsetAllocator.cpp" />
     <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\blur-filter\blur-filter.cpp" />
     <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\color-matrix-filter\color-matrix-filter.cpp" />
     <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\factory\factory.cpp" />
@@ -35,7 +35,6 @@
     <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\layers.cpp" />
     <ClCompile Include="src\null-rmlui\rmlui-implementation\render-interface\render-interface.cpp" />
     <ClCompile Include="src\null-rmlui\rmlui-implementation\system-interface\system-interface.cpp" />
-
     <ClInclude Include="src\null-rmlui\compatibility\color.h" />
     <ClInclude Include="src\null-rmlui\compatibility\rect.h" />
     <ClInclude Include="src\null-rmlui\compatibility\vec2.h" />
@@ -49,7 +48,6 @@
     <ClInclude Include="src\null-rmlui\rmlui-implementation\file-interface\loaders\default-file-loader.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\file-interface\loaders\file-loader.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\file-interface\loaders\resource-loader.h" />
-    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\mesh.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\blend-mask.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\blur.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\color-matrix.h" />
@@ -58,6 +56,8 @@
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\gradient.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\bliting.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\interfaces\shaders\texture.h" />
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\mesh-pool\mesh-pool.h" />
+    <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\mesh-pool\offsetAllocator.hpp" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\blur-filter\blur-filter.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\color-matrix-filter\color-matrix-filter.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\filters\factory\factory.h" />
@@ -68,10 +68,8 @@
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\post-processing\layers.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\render-interface\render-interface.h" />
     <ClInclude Include="src\null-rmlui\rmlui-implementation\system-interface\system-interface.h" />
-
     <None Include="README.md" />
   </ItemGroup>
-
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -79,12 +77,10 @@
     <RootNamespace>null_rmlui</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
-
   <PropertyGroup Label="NullVCXProperties">
     <NullRmluiDependenciesPath Condition="Exists('$(SolutionDir)third-party\null-sdk\null-sdk.sln')">$(SolutionDir)third-party\</NullRmluiDependenciesPath>
     <NullRmluiDependenciesPath Condition="!Exists('$(SolutionDir)third-party\null-sdk\null-sdk.sln')">..\</NullRmluiDependenciesPath>
   </PropertyGroup>
-
   <PropertyGroup Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
@@ -93,11 +89,9 @@
     <UseDebugLibraries Condition="'$(Configuration)'=='release'">false</UseDebugLibraries>
     <WholeProgramOptimization Condition="'$(Configuration)'=='release'">true</WholeProgramOptimization>
   </PropertyGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  
   <PropertyGroup>
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
@@ -106,7 +100,6 @@
     <LinkIncremental Condition="'$(Configuration)'=='debug'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)'=='release'">false</LinkIncremental>
   </PropertyGroup>
-
   <ItemDefinitionGroup>
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
@@ -132,7 +125,6 @@
       <AdditionalOptions>/ignore:4221,4006 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="$(NullRmluiDependenciesPath)null-sdk\null-sdk.props" />
   <Import Project="$(NullRmluiDependenciesPath)null-render\null-render.props" />

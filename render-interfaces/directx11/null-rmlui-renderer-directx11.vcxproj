@@ -18,10 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-
   <ItemGroup>
-    <ClCompile Include="src\null-rmlui-renderer-directx11\mesh\mesh.cpp" />
     <ClCompile Include="src\null-rmlui-renderer-directx11.cpp" />
+    <ClCompile Include="src\null-rmlui-renderer-directx11\mesh-pool\mesh-pool.cpp" />
     <ClCompile Include="src\null-rmlui-renderer-directx11\shaders\bliting\bliting.cpp" />
     <ClCompile Include="src\null-rmlui-renderer-directx11\shaders\blur\blur.cpp" />
     <ClCompile Include="src\null-rmlui-renderer-directx11\shaders\color-matrix\color-matrix.cpp" />
@@ -29,9 +28,8 @@
     <ClCompile Include="src\null-rmlui-renderer-directx11\shaders\drop-shadow\drop-shadow.cpp" />
     <ClCompile Include="src\null-rmlui-renderer-directx11\shaders\gradient\gradient.cpp" />
     <ClCompile Include="src\null-rmlui-renderer-directx11\shaders\texture\texture.cpp" />
-
-    <ClInclude Include="src\null-rmlui-renderer-directx11\mesh\mesh.h" />
     <ClInclude Include="src\null-rmlui-renderer-directx11.h" />
+    <ClInclude Include="src\null-rmlui-renderer-directx11\mesh-pool\mesh-pool.h" />
     <ClInclude Include="src\null-rmlui-renderer-directx11\shaders\blend-mask\blend-mask.h" />
     <ClInclude Include="src\null-rmlui-renderer-directx11\shaders\blend-mask\compiled-object.h" />
     <ClInclude Include="src\null-rmlui-renderer-directx11\shaders\bliting\bliting.h" />
@@ -47,7 +45,6 @@
     <ClInclude Include="src\null-rmlui-renderer-directx11\shaders\gradient\compiled-object.h" />
     <ClInclude Include="src\null-rmlui-renderer-directx11\shaders\gradient\gradient.h" />
     <ClInclude Include="src\null-rmlui-renderer-directx11\shaders\texture\texture.h" />
-
     <FxCompile Include="src\null-rmlui-renderer-directx11\shaders\blend-mask\hlsl\blend-mask.hlsl">
       <VariableName>shader_data</VariableName>
       <HeaderFileOutput>%(RootDir)%(Directory)..\compiled\%(Filename).h</HeaderFileOutput>
@@ -97,7 +94,6 @@
       <ShaderModel>4.0</ShaderModel>
     </FxCompile>
   </ItemGroup>
-
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -105,12 +101,10 @@
     <RootNamespace>null_rmlui_renderer_directx11</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
-
   <PropertyGroup Label="NullVCXProperties">
     <NullRmluiRendererDirectx11DependenciesPath Condition="Exists('$(SolutionDir)third-party\null-sdk\null-sdk.sln')">$(SolutionDir)third-party\</NullRmluiRendererDirectx11DependenciesPath>
     <NullRmluiRendererDirectx11DependenciesPath Condition="!Exists('$(SolutionDir)third-party\null-sdk\null-sdk.sln')">..\..\..\</NullRmluiRendererDirectx11DependenciesPath>
   </PropertyGroup>
-
   <PropertyGroup Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
@@ -119,11 +113,9 @@
     <UseDebugLibraries Condition="'$(Configuration)'=='release'">false</UseDebugLibraries>
     <WholeProgramOptimization Condition="'$(Configuration)'=='release'">true</WholeProgramOptimization>
   </PropertyGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-
   <PropertyGroup>
     <OutDir>$(ProjectDir)build\</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)-$(PlatformShortName)\obj-$(ProjectName)\</IntDir>
@@ -132,7 +124,6 @@
     <LinkIncremental Condition="'$(Configuration)'=='debug'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)'=='release'">false</LinkIncremental>
   </PropertyGroup>
-
   <ItemDefinitionGroup>
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
@@ -158,7 +149,6 @@
       <AdditionalOptions>/ignore:4221,4006 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="..\..\null-rmlui.props" />
   <Import Project="..\..\RmlUi\RmlCore\RmlCore.props" />

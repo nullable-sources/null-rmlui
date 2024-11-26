@@ -9,14 +9,6 @@ Rml::Context* context{ };
 ntl::render::directx11::c_window window{ };
 ntl::c_cumulative_time_measurement frame_counter{ 60 };
 
-void add_gemometry(const std::vector<vec2_t<float>>& points, std::shared_ptr<ntl::render::c_brush>& brush) {
-    auto mesh = ntl::render::backend::factory->instance_mesh();
-    auto draw_list = ntl::render::c_draw_list::instance(std::move(mesh));
-    draw_list->add_convex_shape(points, brush);
-    draw_list->compile();
-    //ntl::rml::render_interface->command_buffer.add_command(std::move(draw_list));
-}
-
 void main_loop() {
     ntl::render::begin_frame(); {
         std::shared_ptr<ntl::render::c_sdf_brush> text_brush = ntl::render::c_sdf_brush::instance();
@@ -30,6 +22,7 @@ void main_loop() {
     } ntl::render::end_frame();
 
     ntl::render::backend::renderer_pipeline->begin();
+    ntl::render::backend::renderer_pipeline->flush();
     ntl::rml::render_interface->begin_render();
     context->Render();
     ntl::rml::render_interface->end_render();

@@ -113,7 +113,11 @@ private:
 	/// Called when the slider's bar position is set or dragged.
 	/// @param[in] bar_position The new position of the bar (0 representing the start of the track, 1 representing the end).
 	/// @return The new position of the bar.
-	float OnBarChange(float bar_position);
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+    virtual float OnBarChange(float bar_position);
+#else
+    float float OnBarChange(float bar_position);
+#endif
 	/// Called when the slider is incremented by one 'line', either by the down / right key or a mouse-click on the
 	/// increment arrow.
 	/// @return The new position of the bar.

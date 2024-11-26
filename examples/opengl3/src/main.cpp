@@ -24,6 +24,7 @@ void main_loop() {
     } ntl::render::end_frame();
 
     ntl::render::backend::renderer_pipeline->begin();
+    ntl::render::backend::renderer_pipeline->flush();
     ntl::rml::render_interface->begin_render();
     context->Render();
     ntl::rml::render_interface->end_render();

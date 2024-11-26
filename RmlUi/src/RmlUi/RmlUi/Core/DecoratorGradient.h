@@ -119,7 +119,11 @@ public:
 	SharedPtr<Decorator> InstanceDecorator(const String& name, const PropertyDictionary& properties,
 		const DecoratorInstancerInterface& instancer_interface) override;
 
+#ifdef RMLUI_ELEMENTS_EXTENSIONS
+public:
+#else
 private:
+#endif
 	enum class Direction {
 		None = 0,
 		Top = 1,

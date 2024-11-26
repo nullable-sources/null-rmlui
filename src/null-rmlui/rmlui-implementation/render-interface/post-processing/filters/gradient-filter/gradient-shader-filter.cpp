@@ -10,14 +10,14 @@ namespace ntl::rml::renderer::filters {
     }
 
     void c_gradient_shader_filter::render(Rml::CompiledGeometryHandle geometry_handle, const Rml::Vector2f& translation, Rml::TextureHandle texture) {
-        i_render_interface::compiled_geometry_t* geometry = (i_render_interface::compiled_geometry_t*)geometry_handle;
+        renderer::i_mesh_pool::mesh_t* mesh = (renderer::i_mesh_pool::mesh_t*)geometry_handle;
 
         gradient_shader->set_constants(constants);
         render::backend::state_pipeline->shaders.push(gradient_shader);
-        render::backend::state_pipeline->meshes.push(geometry->mesh);
+        render::backend::state_pipeline->meshes.push(mesh->pool);
 
         render::backend::renderer->update_translation(*(vec2_t<float>*)&translation);
-        render::backend::renderer->draw_geometry(render::backend::e_topology::triangle_list, geometry->mesh->vertex_buffer_size(), geometry->mesh->index_buffer_size(), 0, 0);
+        render::backend::renderer->draw_geometry(render::backend::e_topology::triangle_list, mesh->vertex_count, mesh->index_count, mesh->vertex_offset, mesh->index_offset);
 
         render::backend::state_pipeline->meshes.pop();
         render::backend::state_pipeline->shaders.pop();

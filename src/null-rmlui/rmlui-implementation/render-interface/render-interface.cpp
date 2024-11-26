@@ -29,8 +29,26 @@ namespace ntl::rml {
         render::backend::renderer->update_matrix(matrix);
     }
 
+    Rml::CompiledGeometryHandle i_render_interface::CompileGeometry(Rml::Span<const Rml::Vertex> vertices, Rml::Span<const int> indices) {
+        renderer::i_mesh_pool::mesh_t new_mesh{ };
+
+        for(std::unique_ptr<renderer::i_mesh_pool>& pool : mesh_pools) {
+            if(pool->create(new_mesh, vertices, indices))
+                return Rml::CompiledGeometryHandle(new renderer::i_mesh_pool::mesh_t(new_mesh));
+        }
+
+        std::unique_ptr<renderer::i_mesh_pool>& new_pool = mesh_pools.emplace_back(std::move(instance_mesh_pool()));
+        if(new_pool->create(new_mesh, vertices, indices))
+            return Rml::CompiledGeometryHandle(new renderer::i_mesh_pool::mesh_t(new_mesh));
+
+        RMLUI_ASSERTMSG(false, "failed to create mesh from mesh pools");
+
+        return Rml::CompiledGeometryHandle();
+    }
+
     void i_render_interface::RenderGeometry(Rml::CompiledGeometryHandle geometry, Rml::Vector2f translation, Rml::TextureHandle texture) {
-        compiled_geometry_t* compiled_geometry = (compiled_geometry_t*)geometry;
+        renderer::i_mesh_pool::mesh_t* mesh = (renderer::i_mesh_pool::mesh_t*)geometry;
+        if(!mesh) return;
 
         if(texture) {
             render::backend::state_pipeline->shaders.push(renderer::texture_shader);
@@ -39,9 +57,9 @@ namespace ntl::rml {
             render::backend::state_pipeline->shaders.push(renderer::color_shader);
         }
 
-        render::backend::state_pipeline->meshes.push(compiled_geometry->mesh);
+        render::backend::state_pipeline->meshes.push(mesh->pool);
         render::backend::renderer->update_translation(*(vec2_t<float>*)&translation);
-        render::backend::renderer->draw_geometry(render::backend::e_topology::triangle_list, compiled_geometry->mesh->vertex_buffer_size(), compiled_geometry->mesh->index_buffer_size(), 0, 0);
+        render::backend::renderer->draw_geometry(render::backend::e_topology::triangle_list, mesh->vertex_count, mesh->index_count, mesh->vertex_offset, mesh->index_offset);
         render::backend::state_pipeline->meshes.pop();
 
         if(texture) render::backend::state_pipeline->textures.pop();
@@ -49,9 +67,11 @@ namespace ntl::rml {
     }
 
     void i_render_interface::ReleaseGeometry(Rml::CompiledGeometryHandle geometry) {
-        compiled_geometry_t* compiled_geometry = (compiled_geometry_t*)geometry;
-        mesh_pool.pop(compiled_geometry->mesh);
-        delete compiled_geometry;
+        renderer::i_mesh_pool::mesh_t* mesh = (renderer::i_mesh_pool::mesh_t*)geometry;
+        if(!mesh || !mesh->pool) return;
+
+        mesh->pool->free(*mesh);
+        delete mesh;
     }
 
     Rml::TextureHandle i_render_interface::LoadTexture(Rml::Vector2i& texture_dimensions, const std::string& source) {
@@ -107,7 +127,7 @@ namespace ntl::rml {
 
         //@note: opengl does not require setting the standard stencil state,
         //       but for dx9/dx11 it is necessary, otherwise no filters will work
-        const bool restore_stencil_state = render::backend::stencil_buffer->is_testing();
+        const bool restore_stencil_state = render::backend::stencil_buffer->is_testing() && !filters.empty();
         if(restore_stencil_state) ntl::render::backend::state_pipeline->stencils.push(ntl::render::backend::default_stencil_state);
         for(const Rml::CompiledFilterHandle filter_handle : filters) {
             const compiled_filter_t& filter = *(const compiled_filter_t*)(filter_handle);

@@ -1,5 +1,4 @@
 #include "null-rmlui-renderer-directx9.h"
-#include "null-rmlui-renderer-directx9/mesh/mesh.h"
 
 #include "null-rmlui-renderer-directx9/shaders/color/color.h"
 #include "null-rmlui-renderer-directx9/shaders/texture/texture.h"
@@ -15,10 +14,8 @@ namespace ntl::rml::directx9 {
         render::directx9::shared.device->SetTexture(1, (IDirect3DTexture9*)texture);
     }
 
-    Rml::CompiledGeometryHandle c_render::CompileGeometry(Rml::Span<const Rml::Vertex> vertices, Rml::Span<const int> indices) {
-        i_render_interface::compiled_geometry_t* geometry = new i_render_interface::compiled_geometry_t(mesh_pool.push(std::make_unique<c_mesh>()));
-        geometry->compile_mesh(vertices, indices);
-        return (Rml::CompiledGeometryHandle)geometry;
+    std::unique_ptr<renderer::i_mesh_pool> c_render::instance_mesh_pool() {
+        return std::make_unique<c_mesh_pool>();
     }
 
     void c_render::initialize() {

@@ -17,10 +17,8 @@ namespace ntl::rml::opengl3 {
         opengl::active_texture(opengl::e_texture0);
     }
 
-    Rml::CompiledGeometryHandle c_render::CompileGeometry(Rml::Span<const Rml::Vertex> vertices, Rml::Span<const int> indices) {
-        i_render_interface::compiled_geometry_t* geometry = new i_render_interface::compiled_geometry_t(mesh_pool.push(std::make_unique<c_mesh>()));
-        geometry->compile_mesh(vertices, indices);
-        return (Rml::CompiledGeometryHandle)geometry;
+    std::unique_ptr<renderer::i_mesh_pool> c_render::instance_mesh_pool() {
+        return std::make_unique<c_mesh_pool>();
     }
 
     void c_render::initialize() {

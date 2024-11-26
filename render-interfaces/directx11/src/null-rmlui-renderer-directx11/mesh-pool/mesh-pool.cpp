@@ -1,20 +1,25 @@
 #include <null-render-backend-directx11/shaders/passthrough/compiled-object.h>
-#include "mesh.h"
+#include "mesh-pool.h"
 
 namespace ntl::rml::directx11 {
-    void c_mesh::reassign(std::span<const Rml::Vertex>& _vertex_buffer, std::span<const int>& _index_buffer) {
-        if(_vertex_buffer.size() > vertex_buffer.size()) {
-            if(vtx_buffer) { vtx_buffer->Release(); vtx_buffer = nullptr; }
-        }
+    bool c_mesh_pool::create(mesh_t& mesh, Rml::Span<const Rml::Vertex>& vertex_buffer, Rml::Span<const int>& index_buffer) {
+        if(!vtx_buffer || !idx_buffer) create();
+        if(!i_mesh_pool::create(mesh, vertex_buffer, index_buffer)) return false;
 
-        if(_index_buffer.size() > index_buffer.size()) {
-            if(idx_buffer) { idx_buffer->Release(); idx_buffer = nullptr; }
-        }
+        D3D11_BOX box{ .top = 0, .front = 0, .bottom = 1, .back = 1 };
+        box.left = mesh.vertex_offset * sizeof(Rml::Vertex);
+        box.right = box.left + vertex_buffer.size() * sizeof(Rml::Vertex);
 
-        i_mesh::reassign(_vertex_buffer, _index_buffer);
+        render::directx11::shared.context->UpdateSubresource(vtx_buffer, 0, &box, vertex_buffer.data(), 0, 0);
+
+        box.left = mesh.index_offset * sizeof(int);
+        box.right = box.left + index_buffer.size() * sizeof(int);
+        render::directx11::shared.context->UpdateSubresource(idx_buffer, 0, &box, index_buffer.data(), 0, 0);
+
+        return true;
     }
 
-    void c_mesh::create() {
+    void c_mesh_pool::create() {
         if(input_layout) return;
 
         D3D11_INPUT_ELEMENT_DESC desc[] = {
@@ -24,21 +29,13 @@ namespace ntl::rml::directx11 {
         };
         if(auto result = render::directx11::shared.device->CreateInputLayout(desc, 3, render::directx11::sources::passthrough_vs().data(), render::directx11::sources::passthrough_vs().size(), &input_layout); FAILED(result))
             sdk::logger(sdk::e_log_type::error, "cant create vertex input layout, return code {}.", result);
-    }
 
-    void c_mesh::destroy() {
-        if(idx_buffer) { idx_buffer->Release(); idx_buffer = nullptr; }
-        if(vtx_buffer) { vtx_buffer->Release(); vtx_buffer = nullptr; }
-        if(input_layout) { input_layout->Release(); input_layout = nullptr; }
-    }
-
-    void c_mesh::compile() {
         if(!vtx_buffer) {
             D3D11_BUFFER_DESC buffer_desc{
-                .ByteWidth = (std::uint32_t)vertex_buffer.size() * sizeof(Rml::Vertex),
-                .Usage = D3D11_USAGE_DYNAMIC,
-                .BindFlags = D3D11_BIND_VERTEX_BUFFER,
-                .CPUAccessFlags = D3D11_CPU_ACCESS_WRITE,
+                .ByteWidth = (std::uint32_t)pool_size * sizeof(Rml::Vertex),
+                .Usage = D3D11_USAGE_DEFAULT,
+                .BindFlags = D3D11_BIND_INDEX_BUFFER,
+                .CPUAccessFlags = 0,
                 .MiscFlags = 0
             };
             if(auto result = render::directx11::shared.device->CreateBuffer(&buffer_desc, nullptr, &vtx_buffer); FAILED(result)) {
@@ -49,10 +46,10 @@ namespace ntl::rml::directx11 {
 
         if(!idx_buffer) {
             D3D11_BUFFER_DESC buffer_desc{
-                .ByteWidth = (std::uint32_t)index_buffer.size() * sizeof(int),
-                .Usage = D3D11_USAGE_DYNAMIC,
+                .ByteWidth = (std::uint32_t)pool_size * sizeof(int),
+                .Usage = D3D11_USAGE_DEFAULT,
                 .BindFlags = D3D11_BIND_INDEX_BUFFER,
-                .CPUAccessFlags = D3D11_CPU_ACCESS_WRITE,
+                .CPUAccessFlags = 0,
                 .MiscFlags = 0
             };
 
@@ -61,25 +58,15 @@ namespace ntl::rml::directx11 {
                 return;
             }
         }
-
-        D3D11_MAPPED_SUBRESOURCE vtx_buffer_subresource{ }, idx_buffer_subresource{ };
-        if(auto result = render::directx11::shared.context->Map(vtx_buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &vtx_buffer_subresource); FAILED(result)) {
-            sdk::logger(sdk::e_log_type::error, "map vertex buffer failed, return code {}.", result);
-            return;
-        }
-        if(auto result = render::directx11::shared.context->Map(idx_buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &idx_buffer_subresource); FAILED(result)) {
-            sdk::logger(sdk::e_log_type::error, "map index buffer failed, return code {}.", result);
-            return;
-        }
-
-        std::ranges::move(vertex_buffer, (Rml::Vertex*)vtx_buffer_subresource.pData);
-        std::ranges::move(index_buffer, (int*)idx_buffer_subresource.pData);
-
-        render::directx11::shared.context->Unmap(vtx_buffer, 0);
-        render::directx11::shared.context->Unmap(idx_buffer, 0);
     }
 
-    void c_mesh::use() {
+    void c_mesh_pool::destroy() {
+        if(idx_buffer) { idx_buffer->Release(); idx_buffer = nullptr; }
+        if(vtx_buffer) { vtx_buffer->Release(); vtx_buffer = nullptr; }
+        if(input_layout) { input_layout->Release(); input_layout = nullptr; }
+    }
+
+    void c_mesh_pool::use() {
         std::uint32_t stride = sizeof(Rml::Vertex);
         std::uint32_t offset{ };
         render::directx11::shared.context->IASetInputLayout(input_layout);
