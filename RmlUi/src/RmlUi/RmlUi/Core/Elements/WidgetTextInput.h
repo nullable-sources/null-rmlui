@@ -52,6 +52,12 @@ public:
 	WidgetTextInput(ElementFormControl* parent);
 	virtual ~WidgetTextInput();
 
+#ifdef RMLUI_TEXTINPUT_EXTENSIONS
+    virtual bool AreValueCopyAllowed();
+    virtual void AllowValueCopy();
+    virtual void DisallowValueCopy();
+#endif
+
 	/// Sets the value of the text field.
 	/// @param[in] value The new value to set on the text field.
 	/// @note The value will be sanitized and synchronized with the element's value attribute.
@@ -320,6 +326,10 @@ private:
 	Vector2f cursor_position;
 	Vector2f cursor_size;
 	Geometry cursor_geometry;
+
+#ifdef RMLUI_TEXTINPUT_EXTENSIONS
+    bool value_copy_allowed;
+#endif
 };
 
 } // namespace Rml

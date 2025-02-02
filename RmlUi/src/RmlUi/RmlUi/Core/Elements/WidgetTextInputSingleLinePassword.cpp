@@ -31,7 +31,11 @@
 
 namespace Rml {
 
-WidgetTextInputSingleLinePassword::WidgetTextInputSingleLinePassword(ElementFormControl* parent) : WidgetTextInputSingleLine(parent) {}
+WidgetTextInputSingleLinePassword::WidgetTextInputSingleLinePassword(ElementFormControl* parent) : WidgetTextInputSingleLine(parent) {
+#ifdef RMLUI_TEXTINPUT_EXTENSIONS
+    DisallowValueCopy();
+#endif
+}
 
 void WidgetTextInputSingleLinePassword::TransformValue(String& value)
 {

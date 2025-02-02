@@ -9,3 +9,4 @@
 - The standard RmlUI supports only percentage and integer color components, support for floating-point color components is added through RMLUI_FLOAT_COLOR_PARSER (used by default)
 - RmlUi throws assert when using nested data-models (I personally have not noticed any errors because of this), to disable assert, you can use RMLUI_ALLOW_NESTED_DATAMODELS (used by default)
 - RMLUI_FIX_DRAG_CLONE_POSITION (used by default) - corrects the drag_clone position when creating
+- RMLUI_TEXTINPUT_EXTENSIONS (used by default) - corrects copying of text from input type password

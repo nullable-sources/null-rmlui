@@ -245,6 +245,10 @@ WidgetTextInput::WidgetTextInput(ElementFormControl* _parent)
 	last_update_time = 0;
 	ink_overflow = false;
 
+#ifdef RMLUI_TEXTINPUT_EXTENSIONS
+    value_copy_allowed = true;
+#endif
+
 	ShowCursor(false);
 }
 
@@ -272,6 +276,20 @@ WidgetTextInput::~WidgetTextInput()
 	parent->RemoveChild(selected_text_element);
 	parent->RemoveChild(selection_element);
 }
+
+#ifdef RMLUI_TEXTINPUT_EXTENSIONS
+bool WidgetTextInput::AreValueCopyAllowed() {
+    return value_copy_allowed;
+}
+
+void WidgetTextInput::AllowValueCopy() {
+    value_copy_allowed = true;
+}
+
+void WidgetTextInput::DisallowValueCopy() {
+    value_copy_allowed = false;
+}
+#endif
 
 void WidgetTextInput::SetValue(String value)
 {
@@ -591,20 +609,34 @@ void WidgetTextInput::ProcessEvent(Event& event)
 
 		case Input::KI_C:
 		{
+#ifdef RMLUI_TEXTINPUT_EXTENSIONS
+		    if(value_copy_allowed && ctrl && selection_length > 0)
+		        CopySelection();
+#else
 			if (ctrl && selection_length > 0)
 				CopySelection();
+#endif
 		}
 		break;
 
-		case Input::KI_X:
-		{
-			if (ctrl && selection_length > 0)
-			{
-				CopySelection();
-				DeleteSelection();
-				DispatchChangeEvent();
-				ShowCursor(true);
-			}
+        case Input::KI_X:
+        {
+
+#ifdef RMLUI_TEXTINPUT_EXTENSIONS
+            if(value_copy_allowed && ctrl && selection_length > 0) {
+                CopySelection();
+                DeleteSelection();
+                DispatchChangeEvent();
+                ShowCursor(true);
+            }
+#else
+            if(ctrl && selection_length > 0) {
+                CopySelection();
+                DeleteSelection();
+                DispatchChangeEvent();
+                ShowCursor(true);
+            }
+#endif
 		}
 		break;
 
